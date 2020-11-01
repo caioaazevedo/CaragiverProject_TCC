@@ -1,0 +1,6 @@
+framework module Pods_CaregiverProject_CaregiverProjectUITests {
+  umbrella header "Pods-CaregiverProject-CaregiverProjectUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

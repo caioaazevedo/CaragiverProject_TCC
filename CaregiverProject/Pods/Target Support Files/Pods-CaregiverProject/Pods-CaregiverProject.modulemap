@@ -1,0 +1,6 @@
+framework module Pods_CaregiverProject {
+  umbrella header "Pods-CaregiverProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
