@@ -39,11 +39,22 @@ class AuthenticationViewController: UIViewController {
     }
     
     @objc func signIn() {
-        
+        let email = loginView.username.text!
+        let password = loginView.password.text!
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let self = self else { return }
+            
+            if error != nil {
+                self.loginView.feedBackLabel.isHidden = false
+                self.loginView.feedBackLabel.text = String(describing: error)
+            } else {
+                self.present(StartFamilyViewController(), animated: true)
+            }
+        }
     }
     
     @objc func register() {
-        
+        self.present(RegisterViewController(), animated: true, completion: nil)
     }
 
 }

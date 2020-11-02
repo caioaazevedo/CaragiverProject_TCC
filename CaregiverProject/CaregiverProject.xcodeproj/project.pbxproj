@@ -13,6 +13,7 @@
 		E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202115725509B7300790DA9 /* StartFamilyView.swift */; };
 		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
 		E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202116A2550A21100790DA9 /* RegisterViewController.swift */; };
+		E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */; };
 		E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6C254F3118007F4F53 /* AppDelegate.swift */; };
 		E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6E254F3118007F4F53 /* SceneDelegate.swift */; };
 		E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */; };
@@ -55,6 +56,7 @@
 		E202115725509B7300790DA9 /* StartFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFamilyView.swift; sourceTree = "<group>"; };
 		E20211652550A0E100790DA9 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E202116A2550A21100790DA9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFamilyViewController.swift; sourceTree = "<group>"; };
 		E2137F69254F3118007F4F53 /* CaregiverProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaregiverProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2137F6C254F3118007F4F53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2137F6E254F3118007F4F53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			children = (
 				E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */,
 				E202116A2550A21100790DA9 /* RegisterViewController.swift */,
+				E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 			files = (
 				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
+				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
 				E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */,
 				E20211662550A0E100790DA9 /* RegisterView.swift in Sources */,
