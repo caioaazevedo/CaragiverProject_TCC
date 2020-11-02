@@ -14,9 +14,12 @@
 		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
 		E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202116A2550A21100790DA9 /* RegisterViewController.swift */; };
 		E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */; };
+		E202117C2550B2EC00790DA9 /* FirebaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202117B2550B2EC00790DA9 /* FirebaseInteractor.swift */; };
+		E20211832550B35900790DA9 /* ViewCodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211822550B35900790DA9 /* ViewCodeProtocol.swift */; };
+		E202118E2550B55700790DA9 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202118D2550B55700790DA9 /* Member.swift */; };
 		E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6C254F3118007F4F53 /* AppDelegate.swift */; };
 		E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6E254F3118007F4F53 /* SceneDelegate.swift */; };
-		E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */; };
+		E2137F71254F3118007F4F53 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F70254F3118007F4F53 /* LoginViewController.swift */; };
 		E2137F74254F3118007F4F53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2137F72254F3118007F4F53 /* Main.storyboard */; };
 		E2137F76254F311A007F4F53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2137F75254F311A007F4F53 /* Assets.xcassets */; };
 		E2137F79254F311A007F4F53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2137F77254F311A007F4F53 /* LaunchScreen.storyboard */; };
@@ -57,10 +60,13 @@
 		E20211652550A0E100790DA9 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E202116A2550A21100790DA9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFamilyViewController.swift; sourceTree = "<group>"; };
+		E202117B2550B2EC00790DA9 /* FirebaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInteractor.swift; sourceTree = "<group>"; };
+		E20211822550B35900790DA9 /* ViewCodeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeProtocol.swift; sourceTree = "<group>"; };
+		E202118D2550B55700790DA9 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		E2137F69254F3118007F4F53 /* CaregiverProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaregiverProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2137F6C254F3118007F4F53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2137F6E254F3118007F4F53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		E2137F70254F3118007F4F53 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E2137F73254F3118007F4F53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2137F75254F311A007F4F53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2137F78254F311A007F4F53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,6 +134,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E20211802550B33700790DA9 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				E20211812550B34000790DA9 /* Protocols */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		E20211812550B34000790DA9 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E20211822550B35900790DA9 /* ViewCodeProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		E2137F60254F3118007F4F53 = {
 			isa = PBXGroup;
 			children = (
@@ -153,8 +175,8 @@
 		E2137F6B254F3118007F4F53 /* CaregiverProject */ = {
 			isa = PBXGroup;
 			children = (
+				E20211802550B33700790DA9 /* General */,
 				E2137FA1254F3F11007F4F53 /* Authentication */,
-				E2137FA8254F3FC3007F4F53 /* Database */,
 				E2137F75254F311A007F4F53 /* Assets.xcassets */,
 				E2137F9F254F3E75007F4F53 /* Application */,
 				E2137F72254F3118007F4F53 /* Main.storyboard */,
@@ -239,6 +261,7 @@
 		E2137FA6254F3F60007F4F53 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				E202117B2550B2EC00790DA9 /* FirebaseInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -246,15 +269,9 @@
 		E2137FA7254F3F6C007F4F53 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				E202118D2550B55700790DA9 /* Member.swift */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		E2137FA8254F3FC3007F4F53 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Database;
 			sourceTree = "<group>";
 		};
 		E2137FA9254F4090007F4F53 /* View */ = {
@@ -270,7 +287,7 @@
 		E2137FAA254F4097007F4F53 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */,
+				E2137F70254F3118007F4F53 /* LoginViewController.swift */,
 				E202116A2550A21100790DA9 /* RegisterViewController.swift */,
 				E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */,
 			);
@@ -516,13 +533,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
+				E2137F71254F3118007F4F53 /* LoginViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
 				E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */,
 				E20211662550A0E100790DA9 /* RegisterView.swift in Sources */,
+				E20211832550B35900790DA9 /* ViewCodeProtocol.swift in Sources */,
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
+				E202118E2550B55700790DA9 /* Member.swift in Sources */,
+				E202117C2550B2EC00790DA9 /* FirebaseInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 			);

@@ -7,17 +7,24 @@
 
 import Foundation
 
-protocol ViewCodeProtocol {
-    func setUpView()
-    func setUpViewHierarchy()
-    func setUpViewConstraints()
-    func setUpAditionalConficuration()
+protocol ViewToPresenterAuthenticationProtocol {
+    var view: PresenterToViewAuthenticationProtocol? {get set}
+    var interactor: PresenterToInteractorAuthenticationProtocol? {get set}
+    var router: PresenterToRouterAuthenticationProtocol? {get set}
 }
 
-extension ViewCodeProtocol {
-    func setUpView() {
-        setUpViewHierarchy()
-        setUpViewConstraints()
-        setUpAditionalConficuration()
-    }
+protocol PresenterToViewAuthenticationProtocol {
+    
+}
+
+protocol PresenterToInteractorAuthenticationProtocol {
+    
+}
+
+protocol InteractorToPresenterAuthenticationProtocol {
+    
+}
+
+protocol PresenterToRouterAuthenticationProtocol {
+    
 }
