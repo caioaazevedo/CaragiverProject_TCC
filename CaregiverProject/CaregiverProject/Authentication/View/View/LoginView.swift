@@ -38,6 +38,10 @@ class LoginView: UIView {
         let attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         text.attributedPlaceholder = attributedPlaceholder
         text.borderStyle = .roundedRect
+        text.textAlignment = .center
+        text.keyboardType = .emailAddress
+        text.textContentType = .emailAddress
+        text.autocapitalizationType = .none
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -49,6 +53,9 @@ class LoginView: UIView {
         let attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         text.attributedPlaceholder = attributedPlaceholder
         text.borderStyle = .roundedRect
+        text.textAlignment = .center
+        text.textContentType = .password
+        text.autocapitalizationType = .none
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()

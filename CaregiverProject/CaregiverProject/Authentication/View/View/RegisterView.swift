@@ -38,6 +38,9 @@ class RegisterView: UIView {
         let attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         text.attributedPlaceholder = attributedPlaceholder
         text.borderStyle = .roundedRect
+        text.textAlignment = .center
+        text.textContentType = .name
+        text.isHidden = true
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -49,6 +52,10 @@ class RegisterView: UIView {
         let attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         text.attributedPlaceholder = attributedPlaceholder
         text.borderStyle = .roundedRect
+        text.textAlignment = .center
+        text.keyboardType = .emailAddress
+        text.textContentType = .emailAddress
+        text.autocapitalizationType = .none
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -60,13 +67,16 @@ class RegisterView: UIView {
         let attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         text.attributedPlaceholder = attributedPlaceholder
         text.borderStyle = .roundedRect
+        text.textAlignment = .center
+        text.textContentType = .password
+        text.autocapitalizationType = .none
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
     var feedBackLabel: UILabel = {
         var label = UILabel(frame: .zero)
-        label.text = "Incorrect username or passowrd. Please try again."
+        label.text = "Empty fields. Please try again."
         let font = UIFont.preferredFont(forTextStyle: .body)
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
@@ -123,10 +133,10 @@ extension RegisterView: ViewCodeProtocol {
             username.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             username.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            password.bottomAnchor.constraint(equalTo: username.topAnchor, constant: -20),
-            password.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            password.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            
+            realName.bottomAnchor.constraint(equalTo: username.topAnchor, constant: -20),
+            realName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            realName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+//
             password.topAnchor.constraint(equalTo: username.bottomAnchor, constant: 20),
             password.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             password.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
