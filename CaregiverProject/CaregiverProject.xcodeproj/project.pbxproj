@@ -3,16 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3D70518B36F56B2232101679 /* Pods_CaregiverProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E89D9C51D1BB3FC9AF6353 /* Pods_CaregiverProjectTests.framework */; };
 		4BD3A5C5D65CE1B0C16B1C8E /* Pods_CaregiverProject_CaregiverProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5626F3D20B479EF9448ABBB0 /* Pods_CaregiverProject_CaregiverProjectUITests.framework */; };
 		9C00F9FB1AF087749AF5A0FA /* Pods_CaregiverProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091EFD7CDA50175B4C06AC99 /* Pods_CaregiverProject.framework */; };
+		E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202115725509B7300790DA9 /* StartFamilyView.swift */; };
+		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
+		E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202116A2550A21100790DA9 /* RegisterViewController.swift */; };
 		E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6C254F3118007F4F53 /* AppDelegate.swift */; };
 		E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6E254F3118007F4F53 /* SceneDelegate.swift */; };
-		E2137F71254F3118007F4F53 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F70254F3118007F4F53 /* ViewController.swift */; };
+		E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */; };
 		E2137F74254F3118007F4F53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2137F72254F3118007F4F53 /* Main.storyboard */; };
 		E2137F76254F311A007F4F53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2137F75254F311A007F4F53 /* Assets.xcassets */; };
 		E2137F79254F311A007F4F53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2137F77254F311A007F4F53 /* LaunchScreen.storyboard */; };
@@ -20,6 +23,7 @@
 		E2137F8F254F311A007F4F53 /* CaregiverProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F8E254F311A007F4F53 /* CaregiverProjectUITests.swift */; };
 		E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137FAB254F4108007F4F53 /* AuthenticationProtocols.swift */; };
 		E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137FB0254F4204007F4F53 /* LoginView.swift */; };
+		E2137FD5255092E1007F4F53 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,10 +52,13 @@
 		A6BEA0585759BB828FE7E367 /* Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D069511B0B3B9ACB3B6130A1 /* Pods-CaregiverProject-CaregiverProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D5E89D9C51D1BB3FC9AF6353 /* Pods_CaregiverProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaregiverProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E202115725509B7300790DA9 /* StartFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFamilyView.swift; sourceTree = "<group>"; };
+		E20211652550A0E100790DA9 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		E202116A2550A21100790DA9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E2137F69254F3118007F4F53 /* CaregiverProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaregiverProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2137F6C254F3118007F4F53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2137F6E254F3118007F4F53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E2137F70254F3118007F4F53 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		E2137F73254F3118007F4F53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2137F75254F311A007F4F53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2137F78254F311A007F4F53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +71,7 @@
 		E2137F90254F311A007F4F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2137FAB254F4108007F4F53 /* AuthenticationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProtocols.swift; sourceTree = "<group>"; };
 		E2137FB0254F4204007F4F53 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		E2137FBA254F4919007F4F53 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2A601298ED268B7EB5F3AA6 /* Pods-CaregiverProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject/Pods-CaregiverProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +123,6 @@
 				13ABC7CBC1087DABDBF7C098 /* Pods-CaregiverProjectTests.debug.xcconfig */,
 				A45221F7331BC0815E03654C /* Pods-CaregiverProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -145,14 +151,14 @@
 		E2137F6B254F3118007F4F53 /* CaregiverProject */ = {
 			isa = PBXGroup;
 			children = (
-				E2137FA1254F3F11007F4F53 /* Login-Register */,
+				E2137FA1254F3F11007F4F53 /* Authentication */,
 				E2137FA8254F3FC3007F4F53 /* Database */,
 				E2137F75254F311A007F4F53 /* Assets.xcassets */,
 				E2137F9F254F3E75007F4F53 /* Application */,
 				E2137F72254F3118007F4F53 /* Main.storyboard */,
 				E2137F77254F311A007F4F53 /* LaunchScreen.storyboard */,
 				E2137F7A254F311A007F4F53 /* Info.plist */,
-				E2137FBA254F4919007F4F53 /* GoogleService-Info.plist */,
+				E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */,
 			);
 			path = CaregiverProject;
 			sourceTree = "<group>";
@@ -184,7 +190,7 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
-		E2137FA1254F3F11007F4F53 /* Login-Register */ = {
+		E2137FA1254F3F11007F4F53 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
 				E2137FA4254F3F4D007F4F53 /* Protocols */,
@@ -194,7 +200,7 @@
 				E2137FA7254F3F6C007F4F53 /* Entity */,
 				E2137FA3254F3F46007F4F53 /* Router */,
 			);
-			path = "Login-Register";
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		E2137FA2254F3F40007F4F53 /* View */ = {
@@ -253,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				E2137FB0254F4204007F4F53 /* LoginView.swift */,
+				E202115725509B7300790DA9 /* StartFamilyView.swift */,
+				E20211652550A0E100790DA9 /* RegisterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -260,7 +268,8 @@
 		E2137FAA254F4097007F4F53 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E2137F70254F3118007F4F53 /* ViewController.swift */,
+				E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */,
+				E202116A2550A21100790DA9 /* RegisterViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -374,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2137F79254F311A007F4F53 /* LaunchScreen.storyboard in Resources */,
+				E2137FD5255092E1007F4F53 /* GoogleService-Info.plist in Resources */,
 				E2137F76254F311A007F4F53 /* Assets.xcassets in Resources */,
 				E2137F74254F3118007F4F53 /* Main.storyboard in Resources */,
 			);
@@ -503,8 +513,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2137F71254F3118007F4F53 /* ViewController.swift in Sources */,
+				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
+				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
+				E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */,
+				E20211662550A0E100790DA9 /* RegisterView.swift in Sources */,
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
