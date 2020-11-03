@@ -11,6 +11,7 @@ import Firebase
 class RegisterViewController: UIViewController {
     
     var registerView = RegisterView()
+    var presenter: ViewToPresenterRegisterProtocol?
     
     override func loadView() {
         super.loadView()
@@ -28,15 +29,14 @@ class RegisterViewController: UIViewController {
     @objc func register() {
         let email = registerView.username.text!
         let password = registerView.password.text!
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (authResult, error) in
-            guard let self = self else { return }
-            
-            if error != nil {
-                self.registerView.feedBackLabel.text = String(describing: error)
-            } else {
-                self.dismiss(animated: true)
-            }
-        }
+        let member = Member(email: email, password: password)
+        presenter?.registerUser(member: member)
     }
 
+}
+
+extension RegisterViewController: PresenterToViewRegisterProtocol {
+    func showError(errorMsg: String) {
+        self.registerView.feedBackLabel.text = errorMsg
+    }
 }
