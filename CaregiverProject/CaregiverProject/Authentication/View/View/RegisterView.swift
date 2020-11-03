@@ -40,7 +40,6 @@ class RegisterView: UIView {
         text.borderStyle = .roundedRect
         text.textAlignment = .center
         text.textContentType = .name
-        text.isHidden = true
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -69,6 +68,7 @@ class RegisterView: UIView {
         text.borderStyle = .roundedRect
         text.textAlignment = .center
         text.textContentType = .password
+        text.isSecureTextEntry = true
         text.autocapitalizationType = .none
         text.translatesAutoresizingMaskIntoConstraints = false
         return text

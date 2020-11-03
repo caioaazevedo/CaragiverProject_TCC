@@ -55,6 +55,7 @@ class LoginView: UIView {
         text.borderStyle = .roundedRect
         text.textAlignment = .center
         text.textContentType = .password
+        text.isSecureTextEntry = true
         text.autocapitalizationType = .none
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
