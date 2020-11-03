@@ -5,26 +5,32 @@
 //  Created by Caio Azevedo on 01/11/20.
 //
 
-import Foundation
+import UIKit
 
-protocol ViewToPresenterAuthenticationProtocol {
+protocol ViewToPresenterAuthenticationProtocol: class {
     var view: PresenterToViewAuthenticationProtocol? {get set}
     var interactor: PresenterToInteractorAuthenticationProtocol? {get set}
     var router: PresenterToRouterAuthenticationProtocol? {get set}
+    func loginUser()
 }
 
-protocol PresenterToViewAuthenticationProtocol {
-    
+protocol PresenterToViewAuthenticationProtocol: class {
+    func showError(errorMsg: String)
 }
 
-protocol PresenterToInteractorAuthenticationProtocol {
-    
+protocol PresenterToInteractorAuthenticationProtocol: class {
+    var presenter: InteractorToPresenterAuthenticationProtocol? { get set }
+    func authenticateUser(email: String, password: String)
+    func addStateListener()
+    func removeStateListener()
 }
 
-protocol InteractorToPresenterAuthenticationProtocol {
-    
+protocol InteractorToPresenterAuthenticationProtocol: class {
+    func loginSucceded()
+    func failedToLogin(error: Error)
 }
 
-protocol PresenterToRouterAuthenticationProtocol {
-    
+protocol PresenterToRouterAuthenticationProtocol: class {
+    static func createModule()-> StartFamilyViewController
+    func pushToMovieScreen(navigationConroller:UINavigationController)
 }

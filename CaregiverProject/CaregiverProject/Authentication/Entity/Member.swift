@@ -12,5 +12,5 @@ struct Member {
     var name: String?
     var email: String
     var password: String
-    var isAdmin: Bool
+    var isAdmin: Bool = false
 }
