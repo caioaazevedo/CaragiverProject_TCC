@@ -45,7 +45,7 @@ class AuthenticationViewController: UIViewController {
     }
     
     @objc func register() {
-        self.present(RegisterViewController(), animated: true, completion: nil)
+        self.present(RegisterRouter.createModule(), animated: true, completion: nil)
     }
 }
 
