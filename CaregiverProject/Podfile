@@ -6,6 +6,7 @@ target 'CaregiverProject' do
   use_frameworks!
 
   # Pods for CaregiverProject
+  pod 'Firebase'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
 
