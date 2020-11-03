@@ -9,7 +9,7 @@ import Foundation
 
 struct Member {
     var id: String?
-    var name: String?
+    var name: String
     var email: String
     var password: String
     var isAdmin: Bool = false
