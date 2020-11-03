@@ -32,5 +32,6 @@ protocol InteractorToPresenterAuthenticationProtocol: class {
 
 protocol PresenterToRouterAuthenticationProtocol: class {
     static func createModule()-> AuthenticationViewController
-    func pushToMovieScreen()
+    func pushToStartFamilyScreen()
+    func pushToRegisterScreen()
 }

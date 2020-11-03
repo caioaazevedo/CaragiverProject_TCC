@@ -30,6 +30,10 @@
 		E2137FD5255092E1007F4F53 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */; };
 		E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */; };
 		E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96D325519E6B00A89A04 /* AuthenticationRouter.swift */; };
+		E2DD96DF2551A52200A89A04 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96DE2551A52200A89A04 /* RegisterProtocols.swift */; };
+		E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96E32551A66E00A89A04 /* RegisterInteractor.swift */; };
+		E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96E82551A96800A89A04 /* RegisterPresenter.swift */; };
+		E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96ED2551AA5F00A89A04 /* RegisterRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,10 @@
 		E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutheticationPresenter.swift; sourceTree = "<group>"; };
 		E2DD96D325519E6B00A89A04 /* AuthenticationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRouter.swift; sourceTree = "<group>"; };
+		E2DD96DE2551A52200A89A04 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
+		E2DD96E32551A66E00A89A04 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
+		E2DD96E82551A96800A89A04 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		E2DD96ED2551AA5F00A89A04 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		F2A601298ED268B7EB5F3AA6 /* Pods-CaregiverProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject/Pods-CaregiverProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				E2DD96D325519E6B00A89A04 /* AuthenticationRouter.swift */,
+				E2DD96ED2551AA5F00A89A04 /* RegisterRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -252,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				E2137FAB254F4108007F4F53 /* AuthenticationProtocols.swift */,
+				E2DD96DE2551A52200A89A04 /* RegisterProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -260,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */,
+				E2DD96E82551A96800A89A04 /* RegisterPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -268,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				E202117B2550B2EC00790DA9 /* AuthenticationInteractor.swift */,
+				E2DD96E32551A66E00A89A04 /* RegisterInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -539,8 +551,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2DD96DF2551A52200A89A04 /* RegisterProtocols.swift in Sources */,
 				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
+				E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */,
+				E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */,
+				E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
 				E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */,

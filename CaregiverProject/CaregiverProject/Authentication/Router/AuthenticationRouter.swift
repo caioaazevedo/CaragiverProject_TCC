@@ -8,6 +8,7 @@
 import UIKit
 
 class AuthenticationRouter: PresenterToRouterAuthenticationProtocol {
+    
     static func createModule() -> AuthenticationViewController {
         let view = AuthenticationViewController()
         let presenter: ViewToPresenterAuthenticationProtocol & InteractorToPresenterAuthenticationProtocol = AuthenticationPresenter()
@@ -23,7 +24,11 @@ class AuthenticationRouter: PresenterToRouterAuthenticationProtocol {
         return view
     }
     
-    func pushToMovieScreen() {
-        // Start Family
+    func pushToStartFamilyScreen() {
+        
+    }
+    
+    func pushToRegisterScreen() {
+        
     }
 }
