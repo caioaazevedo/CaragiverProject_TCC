@@ -12,6 +12,7 @@ class AuthenticationViewController: UIViewController {
     
     var loginView = LoginView()
     var handler: AuthStateDidChangeListenerHandle?
+    var presenter: ViewToPresenterAuthenticationProtocol?
     
     override func loadView(){
         super.loadView()
@@ -28,34 +29,30 @@ class AuthenticationViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        handler = Auth.auth().addStateDidChangeListener { (auth, user) in
-            
-        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        Auth.auth().removeStateDidChangeListener(handler!)
+        
     }
     
     @objc func signIn() {
         let email = loginView.username.text!
         let password = loginView.password.text!
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            guard let self = self else { return }
-            
-            if error != nil {
-                self.loginView.feedBackLabel.isHidden = false
-                self.loginView.feedBackLabel.text = String(describing: error)
-            } else {
-                self.present(StartFamilyViewController(), animated: true)
-            }
-        }
+        
+        presenter?.loginUser(email: email, password: password)
     }
     
     @objc func register() {
         self.present(RegisterViewController(), animated: true, completion: nil)
     }
+}
 
+extension AuthenticationViewController: PresenterToViewAuthenticationProtocol {
+    func showError(errorMsg: String) {
+        self.loginView.feedBackLabel.isHidden = false
+        self.loginView.feedBackLabel.text = errorMsg
+    }
 }
 

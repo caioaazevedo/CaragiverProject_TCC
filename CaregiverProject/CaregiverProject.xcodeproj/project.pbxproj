@@ -14,12 +14,12 @@
 		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
 		E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202116A2550A21100790DA9 /* RegisterViewController.swift */; };
 		E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */; };
-		E202117C2550B2EC00790DA9 /* FirebaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202117B2550B2EC00790DA9 /* FirebaseInteractor.swift */; };
+		E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202117B2550B2EC00790DA9 /* AuthenticationInteractor.swift */; };
 		E20211832550B35900790DA9 /* ViewCodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211822550B35900790DA9 /* ViewCodeProtocol.swift */; };
 		E202118E2550B55700790DA9 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202118D2550B55700790DA9 /* Member.swift */; };
 		E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6C254F3118007F4F53 /* AppDelegate.swift */; };
 		E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6E254F3118007F4F53 /* SceneDelegate.swift */; };
-		E2137F71254F3118007F4F53 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F70254F3118007F4F53 /* LoginViewController.swift */; };
+		E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */; };
 		E2137F74254F3118007F4F53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2137F72254F3118007F4F53 /* Main.storyboard */; };
 		E2137F76254F311A007F4F53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2137F75254F311A007F4F53 /* Assets.xcassets */; };
 		E2137F79254F311A007F4F53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2137F77254F311A007F4F53 /* LaunchScreen.storyboard */; };
@@ -28,6 +28,8 @@
 		E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137FAB254F4108007F4F53 /* AuthenticationProtocols.swift */; };
 		E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137FB0254F4204007F4F53 /* LoginView.swift */; };
 		E2137FD5255092E1007F4F53 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */; };
+		E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */; };
+		E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96D325519E6B00A89A04 /* AuthenticationRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,13 +62,13 @@
 		E20211652550A0E100790DA9 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E202116A2550A21100790DA9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFamilyViewController.swift; sourceTree = "<group>"; };
-		E202117B2550B2EC00790DA9 /* FirebaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInteractor.swift; sourceTree = "<group>"; };
+		E202117B2550B2EC00790DA9 /* AuthenticationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationInteractor.swift; sourceTree = "<group>"; };
 		E20211822550B35900790DA9 /* ViewCodeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeProtocol.swift; sourceTree = "<group>"; };
 		E202118D2550B55700790DA9 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		E2137F69254F3118007F4F53 /* CaregiverProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaregiverProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2137F6C254F3118007F4F53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2137F6E254F3118007F4F53 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E2137F70254F3118007F4F53 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		E2137F73254F3118007F4F53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E2137F75254F311A007F4F53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2137F78254F311A007F4F53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,6 +82,8 @@
 		E2137FAB254F4108007F4F53 /* AuthenticationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProtocols.swift; sourceTree = "<group>"; };
 		E2137FB0254F4204007F4F53 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutheticationPresenter.swift; sourceTree = "<group>"; };
+		E2DD96D325519E6B00A89A04 /* AuthenticationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRouter.swift; sourceTree = "<group>"; };
 		F2A601298ED268B7EB5F3AA6 /* Pods-CaregiverProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject/Pods-CaregiverProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +243,7 @@
 		E2137FA3254F3F46007F4F53 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				E2DD96D325519E6B00A89A04 /* AuthenticationRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 		E2137FA5254F3F57007F4F53 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -261,7 +267,7 @@
 		E2137FA6254F3F60007F4F53 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				E202117B2550B2EC00790DA9 /* FirebaseInteractor.swift */,
+				E202117B2550B2EC00790DA9 /* AuthenticationInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -287,7 +293,7 @@
 		E2137FAA254F4097007F4F53 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E2137F70254F3118007F4F53 /* LoginViewController.swift */,
+				E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */,
 				E202116A2550A21100790DA9 /* RegisterViewController.swift */,
 				E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */,
 			);
@@ -533,16 +539,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2137F71254F3118007F4F53 /* LoginViewController.swift in Sources */,
+				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
+				E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */,
 				E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */,
 				E20211662550A0E100790DA9 /* RegisterView.swift in Sources */,
 				E20211832550B35900790DA9 /* ViewCodeProtocol.swift in Sources */,
+				E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */,
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
-				E202117C2550B2EC00790DA9 /* FirebaseInteractor.swift in Sources */,
+				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 			);
