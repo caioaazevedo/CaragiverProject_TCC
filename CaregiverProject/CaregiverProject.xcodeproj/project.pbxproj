@@ -13,6 +13,7 @@
 		AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873262552E1CB0084590D /* FamilyManageViewController.swift */; };
 		AC3873292552E2330084590D /* FamilyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873282552E2330084590D /* FamilyListView.swift */; };
 		AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732C2552E5580084590D /* FamilyManageView.swift */; };
+		AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732E2552E8190084590D /* CRUDOperations.swift */; };
 		AC3D574E2552D41D0013D470 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D574D2552D41D0013D470 /* Family.swift */; };
 		AC3D57552552D6470013D470 /* FamilyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57542552D6470013D470 /* FamilyListViewController.swift */; };
 		AC3D57582552D7250013D470 /* FamilyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57572552D7250013D470 /* FamilyPresenter.swift */; };
@@ -75,6 +76,7 @@
 		AC3873262552E1CB0084590D /* FamilyManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageViewController.swift; sourceTree = "<group>"; };
 		AC3873282552E2330084590D /* FamilyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyListView.swift; sourceTree = "<group>"; };
 		AC38732C2552E5580084590D /* FamilyManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageView.swift; sourceTree = "<group>"; };
+		AC38732E2552E8190084590D /* CRUDOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDOperations.swift; sourceTree = "<group>"; };
 		AC3D574D2552D41D0013D470 /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
 		AC3D57542552D6470013D470 /* FamilyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyListViewController.swift; sourceTree = "<group>"; };
 		AC3D57572552D7250013D470 /* FamilyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyPresenter.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				AC3D57602552D8140013D470 /* Metrics.swift */,
+				AC38732E2552E8190084590D /* CRUDOperations.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 				E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
 				AC3D57552552D6470013D470 /* FamilyListViewController.swift in Sources */,
+				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
 				E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */,

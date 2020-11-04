@@ -9,7 +9,10 @@ import Foundation
 
 typealias Families = [Family]
 
-struct Family{
+protocol ModelProtocol{
+    var id: UUID {get}
+}
+struct Family: ModelProtocol{
     let id: UUID
     let name: String
     var members: [Member]

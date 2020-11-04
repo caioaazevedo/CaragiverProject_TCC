@@ -8,8 +8,6 @@
 import Foundation
 
 final class Builder{
-    
-    
     class func buildFamilyModule(familyView: inout FamilyListViewController){
         let interactor = FamilyInteractor()
         familyView.presenter = FamilyPresenter(with: interactor)

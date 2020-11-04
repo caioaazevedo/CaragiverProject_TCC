@@ -10,28 +10,24 @@ import Foundation
 typealias FamilyInteractorProtocol = FamilyManagementLogic & MemberManagementLogic
 
 protocol FamilyManagementLogic{
-      func addFamily(_ member: Family, completion: (Bool) -> ())
-      func readFamily(_ familyID: UUID, completion: (Family) -> ())
-      func updateFamily(_ member: Family, completion: (Bool) -> ())
-      func removefamily(_ memberID: UUID, completion: (Bool) -> ())
-}
-
-protocol MemberManagementLogic{
-    func addMember(_ member: Member, completion: (Bool) -> ())
-    func readMember(_ memberID: UUID, completion: (Member) -> ())
-    func updateMember(_ member: Member, completion: (Bool) -> ())
-    func removeMember(_ memberID: UUID, completion: (Bool) -> ())
-}
-
-
-class FamilyInteractor:  FamilyInteractorProtocol{    
-    func addFamily(_ member: Family, completion: (Bool) -> ()) {}
-    func readFamily(_ familyID: UUID, completion: (Family) -> ()) {}
-    func updateFamily(_ member: Family, completion: (Bool) -> ()) {}
-    func removefamily(_ memberID: UUID, completion: (Bool) -> ()) {}
+      typealias ResultClosure<T> = (Result<T?,Error>) -> Void
     
-    func addMember(_ member: Member, completion: (Bool) -> ()) {}
-    func readMember(_ memberID: UUID, completion: (Member) -> ()) {}
-    func updateMember(_ member: Member, completion: (Bool) -> ()) {}
-    func removeMember(_ memberID: UUID, completion: (Bool) -> ()) {}
+      func addValue(_ entity: ModelProtocol, completion: (Bool) -> ())
+      func readValue(_ dataID: UUID, completion: (ModelProtocol?) -> ())
+      func updateValue(_ entity: ModelProtocol, completion: (Bool) -> ())
+      func deleteValue(_ dataID: UUID, completion: (Bool) -> ())
+}
+
+protocol MemberManagementLogic{}
+
+
+class FamilyInteractor:  FamilyInteractorProtocol{
+    func addValue(_ entity: ModelProtocol, completion: (Bool) -> ()) {}
+    
+    func readValue(_ dataID: UUID, completion: (ModelProtocol?) -> ()) {}
+    
+    func updateValue(_ entity: ModelProtocol, completion: (Bool) -> ()) {}
+    
+    func deleteValue(_ dataID: UUID, completion: (Bool) -> ()) {}
+    
 }
