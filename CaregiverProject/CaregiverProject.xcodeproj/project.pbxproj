@@ -12,6 +12,7 @@
 		9C00F9FB1AF087749AF5A0FA /* Pods_CaregiverProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091EFD7CDA50175B4C06AC99 /* Pods_CaregiverProject.framework */; };
 		AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873262552E1CB0084590D /* FamilyManageViewController.swift */; };
 		AC3873292552E2330084590D /* FamilyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873282552E2330084590D /* FamilyListView.swift */; };
+		AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732C2552E5580084590D /* FamilyManageView.swift */; };
 		AC3D574E2552D41D0013D470 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D574D2552D41D0013D470 /* Family.swift */; };
 		AC3D57552552D6470013D470 /* FamilyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57542552D6470013D470 /* FamilyListViewController.swift */; };
 		AC3D57582552D7250013D470 /* FamilyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57572552D7250013D470 /* FamilyPresenter.swift */; };
@@ -73,6 +74,7 @@
 		A6BEA0585759BB828FE7E367 /* Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AC3873262552E1CB0084590D /* FamilyManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageViewController.swift; sourceTree = "<group>"; };
 		AC3873282552E2330084590D /* FamilyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyListView.swift; sourceTree = "<group>"; };
+		AC38732C2552E5580084590D /* FamilyManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageView.swift; sourceTree = "<group>"; };
 		AC3D574D2552D41D0013D470 /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
 		AC3D57542552D6470013D470 /* FamilyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyListViewController.swift; sourceTree = "<group>"; };
 		AC3D57572552D7250013D470 /* FamilyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyPresenter.swift; sourceTree = "<group>"; };
@@ -156,12 +158,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AC3873252552E1680084590D /* Family Management */ = {
+		AC38732A2552E5340084590D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				AC3873262552E1CB0084590D /* FamilyManageViewController.swift */,
+				AC3D57542552D6470013D470 /* FamilyListViewController.swift */,
 			);
-			path = "Family Management";
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AC38732B2552E5410084590D /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				AC3873282552E2330084590D /* FamilyListView.swift */,
+				AC38732C2552E5580084590D /* FamilyManageView.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		AC3D574F2552D5D50013D470 /* Family */ = {
@@ -187,10 +199,9 @@
 		AC3D57532552D60A0013D470 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AC3873252552E1680084590D /* Family Management */,
+				AC38732B2552E5410084590D /* UIView */,
+				AC38732A2552E5340084590D /* Controller */,
 				AC3D575C2552D7AC0013D470 /* TableView */,
-				AC3D57542552D6470013D470 /* FamilyListViewController.swift */,
-				AC3873282552E2330084590D /* FamilyListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,8 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				AC3D57622552DBD90013D470 /* FamilyTableView.swift */,
-				AC3D57642552DD9C0013D470 /* FamilyList+DD.swift */,
 				AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */,
+				AC3D57642552DD9C0013D470 /* FamilyList+DD.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -687,6 +698,7 @@
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
+				AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

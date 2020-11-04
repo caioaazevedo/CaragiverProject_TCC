@@ -10,10 +10,19 @@ import UIKit
 final class FamilyListView: UIView{
     
     lazy var tableView: FamilyTableView = {
-         let view = FamilyTableView(frame: .zero, style: .plain)
-         view.register(FamilyTableViewCell.self, forCellReuseIdentifier: "Cell")
-         return view
-     }()
+        let view = FamilyTableView(frame: .zero, style: .plain)
+        view.register(FamilyTableViewCell.self, forCellReuseIdentifier: "Cell")
+        return view
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        setUpView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension FamilyListView: ViewCodeProtocol{
