@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol FamilyInteractorLogic{
+    
+}
+
 class FamilyInteractor{
     
 }
