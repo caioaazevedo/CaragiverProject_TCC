@@ -10,6 +10,12 @@
 		3D70518B36F56B2232101679 /* Pods_CaregiverProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E89D9C51D1BB3FC9AF6353 /* Pods_CaregiverProjectTests.framework */; };
 		4BD3A5C5D65CE1B0C16B1C8E /* Pods_CaregiverProject_CaregiverProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5626F3D20B479EF9448ABBB0 /* Pods_CaregiverProject_CaregiverProjectUITests.framework */; };
 		9C00F9FB1AF087749AF5A0FA /* Pods_CaregiverProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091EFD7CDA50175B4C06AC99 /* Pods_CaregiverProject.framework */; };
+		AC3D574E2552D41D0013D470 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D574D2552D41D0013D470 /* Family.swift */; };
+		AC3D57552552D6470013D470 /* FamilyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57542552D6470013D470 /* FamilyListViewController.swift */; };
+		AC3D57582552D7250013D470 /* FamilyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57572552D7250013D470 /* FamilyPresenter.swift */; };
+		AC3D575B2552D75D0013D470 /* FamilyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D575A2552D75D0013D470 /* FamilyInteractor.swift */; };
+		AC3D575E2552D7B90013D470 /* FamilyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */; };
+		AC3D57612552D8140013D470 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57602552D8140013D470 /* Metrics.swift */; };
 		E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202115725509B7300790DA9 /* StartFamilyView.swift */; };
 		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
 		E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202116A2550A21100790DA9 /* RegisterViewController.swift */; };
@@ -60,6 +66,12 @@
 		8AC5EFEDB0B5DA56F4B30531 /* Pods-CaregiverProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProject/Pods-CaregiverProject.debug.xcconfig"; sourceTree = "<group>"; };
 		A45221F7331BC0815E03654C /* Pods-CaregiverProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6BEA0585759BB828FE7E367 /* Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AC3D574D2552D41D0013D470 /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
+		AC3D57542552D6470013D470 /* FamilyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyListViewController.swift; sourceTree = "<group>"; };
+		AC3D57572552D7250013D470 /* FamilyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyPresenter.swift; sourceTree = "<group>"; };
+		AC3D575A2552D75D0013D470 /* FamilyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyInteractor.swift; sourceTree = "<group>"; };
+		AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTableViewCell.swift; sourceTree = "<group>"; };
+		AC3D57602552D8140013D470 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		D069511B0B3B9ACB3B6130A1 /* Pods-CaregiverProject-CaregiverProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D5E89D9C51D1BB3FC9AF6353 /* Pods_CaregiverProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaregiverProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E202115725509B7300790DA9 /* StartFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFamilyView.swift; sourceTree = "<group>"; };
@@ -134,6 +146,66 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AC3D574F2552D5D50013D470 /* Family */ = {
+			isa = PBXGroup;
+			children = (
+				AC3D57532552D60A0013D470 /* View */,
+				AC3D57592552D74E0013D470 /* Interactor */,
+				AC3D57562552D7120013D470 /* Presenter */,
+				AC3D57522552D6040013D470 /* Entity */,
+			);
+			path = Family;
+			sourceTree = "<group>";
+		};
+		AC3D57522552D6040013D470 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				AC3D574D2552D41D0013D470 /* Family.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		AC3D57532552D60A0013D470 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC3D575C2552D7AC0013D470 /* TableView */,
+				AC3D57542552D6470013D470 /* FamilyListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AC3D57562552D7120013D470 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				AC3D57572552D7250013D470 /* FamilyPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AC3D57592552D74E0013D470 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				AC3D575A2552D75D0013D470 /* FamilyInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		AC3D575C2552D7AC0013D470 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		AC3D575F2552D8040013D470 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AC3D57602552D8140013D470 /* Metrics.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		AD862F4A5B54F4BB784192BA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +222,7 @@
 		E20211802550B33700790DA9 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				AC3D575F2552D8040013D470 /* Utils */,
 				E20211812550B34000790DA9 /* Protocols */,
 			);
 			path = General;
@@ -191,6 +264,7 @@
 				E2DD97792552168400A89A04 /* CaregiverProject.entitlements */,
 				E20211802550B33700790DA9 /* General */,
 				E2137FA1254F3F11007F4F53 /* Authentication */,
+				AC3D574F2552D5D50013D470 /* Family */,
 				E2137F75254F311A007F4F53 /* Assets.xcassets */,
 				E2137F9F254F3E75007F4F53 /* Application */,
 				E2137F72254F3118007F4F53 /* Main.storyboard */,
@@ -553,18 +627,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC3D575B2552D75D0013D470 /* FamilyInteractor.swift in Sources */,
 				E2DD96DF2551A52200A89A04 /* RegisterProtocols.swift in Sources */,
 				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
 				E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */,
 				E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */,
 				E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */,
+				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
+				AC3D57552552D6470013D470 /* FamilyListViewController.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
 				E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */,
 				E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */,
 				E20211662550A0E100790DA9 /* RegisterView.swift in Sources */,
 				E20211832550B35900790DA9 /* ViewCodeProtocol.swift in Sources */,
+				AC3D574E2552D41D0013D470 /* Family.swift in Sources */,
+				AC3D575E2552D7B90013D470 /* FamilyTableViewCell.swift in Sources */,
+				AC3D57582552D7250013D470 /* FamilyPresenter.swift in Sources */,
 				E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */,
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
@@ -749,7 +829,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CaregiverProject/CaregiverProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KFC8C5H4A6;
+				DEVELOPMENT_TEAM = 7YWK9C69PH;
 				INFOPLIST_FILE = CaregiverProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -770,7 +850,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CaregiverProject/CaregiverProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KFC8C5H4A6;
+				DEVELOPMENT_TEAM = 7YWK9C69PH;
 				INFOPLIST_FILE = CaregiverProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
