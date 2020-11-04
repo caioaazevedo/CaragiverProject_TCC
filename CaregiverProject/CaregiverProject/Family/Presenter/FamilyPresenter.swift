@@ -7,3 +7,12 @@
 
 import Foundation
 
+protocol FamilyPresenterProtocol{}
+
+class FamilyPresenter: FamilyPresenterProtocol{
+    fileprivate var interactor: FamilyInteractorProtocol
+    
+    init(with interactor: FamilyInteractorProtocol){
+        self.interactor = interactor
+    }
+}

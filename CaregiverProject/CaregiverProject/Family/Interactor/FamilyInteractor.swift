@@ -7,10 +7,22 @@
 
 import Foundation
 
-protocol FamilyInteractorLogic{
-    
+protocol FamilyInteractorProtocol{
+    func addMember(_ member: Member, completion: (Bool) -> ())
+    func readMember(_ member: Member, completion: (Member) -> ())
+    func updateMember(_ member: Member, completion: (Member) -> ())
+    func removeMember(_ memberID: UUID, completion: (Bool) -> ())
 }
 
-class FamilyInteractor{
+class FamilyInteractor:  FamilyInteractorProtocol{
     
+    func addMember(_ member: Member, completion: (Bool) -> ()) {}
+    
+    func readMember(_ member: Member, completion: (Member) -> ()) {}
+    
+    func updateMember(_ member: Member, completion: (Member) -> ()) {}
+    
+    func removeMember(_ memberID: UUID, completion: (Bool) -> ()) {}
+    
+
 }

@@ -8,9 +8,16 @@
 import UIKit
 
 final class FamilyListViewController: UIViewController{
-    typealias Builder = (FamilyPresenter) -> FamilyListViewController
+    var presenter: FamilyPresenterProtocol
+    var familyListView: ViewCodeProtocol
     
-    init(familyPresenter: FamilyPresenter){
-        
+    init(view: ViewCodeProtocol,familyPresenter: FamilyPresenter){
+        self.presenter = familyPresenter
+        self.familyListView = view
+        super.init(nibName: nil, bundle: nil)        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

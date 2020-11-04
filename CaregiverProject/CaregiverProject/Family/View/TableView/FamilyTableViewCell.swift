@@ -7,9 +7,38 @@
 
 import UIKit
 
-final class FavoriteTableViewCell: UITableViewCell{
+final class FamilyTableViewCell: UITableViewCell{
     
-    override class var preferredHeight: CGFloat {
-        return Metrics.TableRow
+    private static let preferredHeight = Metrics.TableRow.default
+    
+    lazy var memberLabel: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.setUpView()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+}
+
+extension FamilyTableViewCell: ViewCodeProtocol{
+    func setUpViewHierarchy() {
+        self.addSubview(memberLabel)
+    }
+    
+    func setUpViewConstraints() {
+        NSLayoutConstraint.activate([])
+    }
+    
+    func setUpAditionalConficuration() {}
+    
+    
 }
