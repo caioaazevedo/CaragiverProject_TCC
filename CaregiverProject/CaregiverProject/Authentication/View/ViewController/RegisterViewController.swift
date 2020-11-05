@@ -37,6 +37,12 @@ class RegisterViewController: UIViewController {
 }
 
 extension RegisterViewController: PresenterToViewRegisterProtocol {
+    func registerSucceded(){
+        let viewController = StartFamilyViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
     func showError(errorMsg: String) {
         self.registerView.feedBackLabel.text = errorMsg
     }

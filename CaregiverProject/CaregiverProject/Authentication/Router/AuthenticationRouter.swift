@@ -28,10 +28,6 @@ class AuthenticationRouter: PresenterToRouterAuthenticationProtocol {
         
     }
     
-    func pushToCreateFamilyScreen() {
-//        Builder.buildFamilyModule()
-    }
-    
     func pushToRegisterScreen() {
         
     }

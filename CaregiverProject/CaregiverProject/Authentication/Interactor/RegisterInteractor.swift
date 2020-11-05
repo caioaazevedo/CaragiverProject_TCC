@@ -25,10 +25,11 @@ class RegisterInteractor: PresenterToInteractorRegisterProtocol {
                 let id = authResult?.user.uid
                 
                 self.ref.child("member").child(id!).setValue(["name": member.name, "isAdmin": member.isAdmin])
-                
+                UserSession.shared.username = member.name
                 self.presenter?.registerUserSucceded()
                 return
             }
+            print(error.localizedDescription)
             self.presenter?.failedToRegister(error: error)
         }
     }

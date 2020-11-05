@@ -50,6 +50,12 @@ class AuthenticationViewController: UIViewController {
 }
 
 extension AuthenticationViewController: PresenterToViewAuthenticationProtocol {
+    func performLogin(){
+        let viewController = StartFamilyViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
     func showError(errorMsg: String) {
         self.loginView.feedBackLabel.isHidden = false
         self.loginView.feedBackLabel.text = errorMsg

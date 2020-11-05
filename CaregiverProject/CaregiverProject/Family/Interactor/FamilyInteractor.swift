@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseDatabase
 import Foundation
 
 typealias FamilyInteractorProtocol = FamilyManagementLogic & MemberManagementLogic
@@ -14,7 +15,6 @@ protocol MemberManagementLogic{}
 
 protocol FamilyManagementLogic{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
-    
     func addValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
     func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping (Family) -> ())
     func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
@@ -39,6 +39,7 @@ class FamilyInteractor:  FamilyInteractorProtocol{
             let uid = casted.id
             let parameters: Dictionary<String,Any> = ["name": casted.name,"members":casted.members]
             db.child(entityType.rawValue).child(uid).setValue(parameters)
+            completion(true)
         case .Member:
             break
         }
@@ -55,8 +56,6 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         }) { (error) in
             print(error.localizedDescription)
         }
-        
-        
     }
     
     func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ()) {
@@ -66,8 +65,9 @@ class FamilyInteractor:  FamilyInteractorProtocol{
             let parameters = ["uid": casted.id,
                               "name": casted.name,
                               "members": casted.members] as [String : Any]
-            let db = ref?.child("family/\(casted.id)")
+            let db = ref?.child("Family/\(casted.id)")
             db?.updateChildValues(parameters)
+            completion(true)
         case .Member:
             break
         }

@@ -21,7 +21,7 @@ class RegisterPresenter: ViewToPresenterRegisterProtocol {
 
 extension RegisterPresenter: InteractorToPresenterRegisterProtocol {
     func registerUserSucceded() {
-        
+        view?.registerSucceded()
     }
     
     func failedToRegister(error: Error) {

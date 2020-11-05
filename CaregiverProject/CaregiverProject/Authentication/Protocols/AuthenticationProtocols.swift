@@ -15,6 +15,7 @@ protocol ViewToPresenterAuthenticationProtocol: class {
 }
 
 protocol PresenterToViewAuthenticationProtocol: class {
+    func performLogin()
     func showError(errorMsg: String)
 }
 
@@ -32,7 +33,6 @@ protocol InteractorToPresenterAuthenticationProtocol: class {
 
 protocol PresenterToRouterAuthenticationProtocol: class {
     static func createModule()-> AuthenticationViewController
-    func pushToStartFamilyScreen()
-    func pushToCreateFamilyScreen()
+    func pushToStartFamilyScreen()    
     func pushToRegisterScreen()
 }

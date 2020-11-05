@@ -15,6 +15,7 @@ protocol ViewToPresenterRegisterProtocol: class {
 }
 
 protocol PresenterToViewRegisterProtocol: class {
+    func registerSucceded()
     func showError(errorMsg: String)
 }
 

@@ -21,7 +21,8 @@ class AuthenticationPresenter: ViewToPresenterAuthenticationProtocol{
 
 extension AuthenticationPresenter: InteractorToPresenterAuthenticationProtocol {
     func loginSucceded() {
-        router?.pushToStartFamilyScreen()
+        view?.performLogin()
+//        router?.pushToStartFamilyScreen()
     }
     
     func failedToLogin(error: Error) {

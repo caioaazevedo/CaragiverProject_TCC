@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FamilyManageViewController: UIViewController{
     var manageState: ManageState
@@ -31,32 +32,37 @@ class FamilyManageViewController: UIViewController{
     func configureButton(){
         guard let view = view as? FamilyManageView else {return}
         switch manageState{
-        case .Login:
+        case .Join:
             view.primaryField.placeholder = "Family's Code"
             view.primaryButton.setTitle("Enter in family", for: .normal)
             view.primaryButton.addTarget(self, action: #selector(enterFamily), for: .touchUpInside)
-        case .Register:
+        case .Create:
             view.primaryField.placeholder = "Family's Name"
             view.primaryButton.setTitle("Create Family", for: .normal)
             view.primaryButton.addTarget(self, action: #selector(createFamily), for: .touchUpInside)
         }
         
     }
-    
-    
     @objc func enterFamily() {
         guard let view = view as? FamilyManageView else {return}
         let family = Family(id: view.primaryField.text ?? "default", name: view.primaryField.text ?? "Familia", members: [])
         self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Family.self, operation: .read) { (result) in
-            print(result as Any)
+            
+            self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in })
+            var interactor = FamilyInteractor(database: Database.database())
+            let module = Builder.buildFamilyListModule(with: &interactor)
+            self.present(module, animated: true, completion: nil)
         }
     }
-    
     @objc func createFamily() {
         guard let view = view as? FamilyManageView else {return}
         let family = Family(id: UUID().uuidString, name: view.primaryField.text ?? "Familia", members: [])
         self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .create) { (result) in
-            print(result as Any)
+            self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
+            var interactor = FamilyInteractor(database: Database.database())
+            let module = Builder.buildFamilyListModule(with: &interactor)
+            self.present(module, animated: true, completion: nil)
+            })
         }
     }
     

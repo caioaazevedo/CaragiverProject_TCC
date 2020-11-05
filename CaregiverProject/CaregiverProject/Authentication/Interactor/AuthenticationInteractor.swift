@@ -23,8 +23,8 @@ class AuthenticationInteractor: PresenterToInteractorAuthenticationProtocol {
     }
     
     func authenticateUser(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in            
+            UserSession.shared.id = authResult!.user.uid
             guard let error = error else {
                 self.presenter?.loginSucceded()
                 return

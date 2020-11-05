@@ -8,6 +8,6 @@
 import Foundation
 
 enum ManageState{
-    case Register
-    case Login
+    case Create
+    case Join
 }
