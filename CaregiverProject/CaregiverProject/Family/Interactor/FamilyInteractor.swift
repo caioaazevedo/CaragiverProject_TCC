@@ -75,9 +75,13 @@ class FamilyInteractor:  FamilyInteractorProtocol{
                               "name": casted.name,
                               "members": casted.members] as [String : Any]
             
-            let childUpdates = ["/family/\(key)": parameters,
-                                "/members/\(casted.id)/\(key)/": parameters]
-            ref?.updateChildValues(childUpdates)
+//            let childUpdates = ["/family/\(key)": parameters,
+//                                "/members/\(casted.id)/\(key)/": parameters]
+//            ref?.updateChildValues(childUpdates)
+        
+            let db = ref?.child("family/\(casted.id)")
+            print(db)
+            db?.updateChildValues(parameters)
         case .Member:
             break
         }
