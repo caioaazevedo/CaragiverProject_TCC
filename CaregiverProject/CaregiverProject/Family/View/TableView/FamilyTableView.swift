@@ -9,9 +9,7 @@ import UIKit
 
 class FamilyTableView: UITableView{
     lazy var memberCell: FamilyTableViewCell = {
-        let view = FamilyTableViewCell()
-        view.accessoryType = .disclosureIndicator
-        view.textLabel?.text = "Family Member"
+        let view = FamilyTableViewCell()        
         return view
     }()
     

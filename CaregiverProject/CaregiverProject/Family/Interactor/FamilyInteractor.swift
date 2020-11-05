@@ -35,10 +35,8 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         case .Family:
             guard let casted = entity as? Family else {return}
             let uid = casted.id
-            let parameters: [String:Any] = ["name": casted.name,"members":casted.members]
-            db.child(entityType.rawValue).child(uid).setValue(parameters) { result in
-                completion(result)
-            }
+            let parameters: Dictionary<String,Any> = ["name": casted.name,"members":casted.members]
+            db.child(entityType.rawValue).child(uid).setValue(parameters)
         case .Member:
             break
 //            guard let casted = entity as? Member else {return} // Need to assign Member

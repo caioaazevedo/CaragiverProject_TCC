@@ -8,7 +8,7 @@
 import UIKit
 
 final class FamilyListView: UIView{
-    
+        
     lazy var tableView: FamilyTableView = {
         let view = FamilyTableView(frame: .zero, style: .plain)
         view.register(FamilyTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -31,6 +31,15 @@ extension FamilyListView: ViewCodeProtocol{
         self.addSubview(tableView)
     }
     
-    func setUpViewConstraints() {}
+    func setUpViewConstraints() {
+        // Periodico, mudar assim que pegar a SuperView
+        tableView.frame.size.width = Metrics.Device.width
+        tableView.frame.size.height = Metrics.Device.height
+//
+//        tableView.topAnchor.constraint(equalTo: superview!.topAnchor).isActive = true
+//        tableView.leftAnchor.constraint(equalTo: superview!.leftAnchor).isActive = true
+//        tableView.bottomAnchor.constraint(equalTo: superview!.bottomAnchor).isActive = true
+//        tableView.rightAnchor.constraint(equalTo: superview!.rightAnchor).isActive = true
+    }
     func setUpAditionalConficuration() {}
 }

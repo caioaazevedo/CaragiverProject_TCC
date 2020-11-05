@@ -24,8 +24,12 @@ class AuthenticationRouter: PresenterToRouterAuthenticationProtocol {
         return view
     }
     
-    func pushToStartFamilyScreen() -> FamilyListViewController {
-        return Builder.buildFamilyModule()
+    func pushToStartFamilyScreen(){
+        
+    }
+    
+    func pushToCreateFamilyScreen() {
+//        Builder.buildFamilyModule()
     }
     
     func pushToRegisterScreen() {
