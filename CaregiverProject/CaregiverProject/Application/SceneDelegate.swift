@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
 
         let authentication = AuthenticationRouter.createModule()
-        window?.rootViewController = Builder.buildFamilyModule(state: .Login)
+        window?.rootViewController = authentication
         window?.makeKeyAndVisible()
     }
 

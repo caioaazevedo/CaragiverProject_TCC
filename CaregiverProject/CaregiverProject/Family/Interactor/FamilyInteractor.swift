@@ -11,6 +11,7 @@ import Foundation
 typealias FamilyInteractorProtocol = FamilyManagementLogic & MemberManagementLogic
 
 protocol MemberManagementLogic{}
+
 protocol FamilyManagementLogic{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
     
@@ -34,6 +35,7 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         switch entityType{
         case .Family:
             guard let casted = entity as? Family else {return}
+            guard casted.name != "" else {return}
             let uid = casted.id
             let parameters: Dictionary<String,Any> = ["name": casted.name,"members":casted.members]
             db.child(entityType.rawValue).child(uid).setValue(parameters)
@@ -43,23 +45,13 @@ class FamilyInteractor:  FamilyInteractorProtocol{
     }
     
     func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping (Family) -> ()) {
-        // Websocket type
-        //        _ = self.ref?.observe(DataEventType.value, with: { (snapshot) in
-        //            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-        //            completion(postDict)
-        //        })
-        
         ref?.child(entityType.rawValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
             // USE DECODER
             let value = snapshot.value as? NSDictionary
-            print(value)
-            guard let id = value?["uid"] as? String else {return}
-            guard let name = value!["name"] as? String else {return}
+            guard let id = value?["uid"] as? String, let name = value?["name"] as? String else {return}
             guard let members = value!["members"] as? [String] else {return}
             let family =  Family(id: id, name: name, members: members)
             completion(family)
-            // ...
         }) { (error) in
             print(error.localizedDescription)
         }

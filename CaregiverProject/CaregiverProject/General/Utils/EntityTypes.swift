@@ -8,6 +8,6 @@
 import Foundation
 
 enum EntityTypes: String{
-    case Family = "family"
-    case Member = "member"
+    case Family = "Family"
+    case Member = "Member"    
 }
