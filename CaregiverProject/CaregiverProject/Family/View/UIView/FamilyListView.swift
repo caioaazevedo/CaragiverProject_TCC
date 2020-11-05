@@ -12,6 +12,7 @@ final class FamilyListView: UIView{
     lazy var tableView: FamilyTableView = {
         let view = FamilyTableView(frame: .zero, style: .plain)
         view.register(FamilyTableViewCell.self, forCellReuseIdentifier: "Cell")
+        view.backgroundColor = .white
         return view
     }()
     

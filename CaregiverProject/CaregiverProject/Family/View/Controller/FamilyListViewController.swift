@@ -8,13 +8,12 @@
 import UIKit
 
 final class FamilyListViewController: UIViewController{
-    var presenter: FamilyPresenterProtocol
-    var familyListView: ViewCodeProtocol
+    var presenter: FamilyPresenterProtocol    
     
-    init(view: ViewCodeProtocol,familyPresenter: FamilyPresenter){
+    init(presentedView: ViewCodeProtocol,familyPresenter: FamilyPresenter){
         self.presenter = familyPresenter
-        self.familyListView = view
-        super.init(nibName: nil, bundle: nil)        
+        super.init(nibName: nil, bundle: nil)
+        self.view = presentedView as? UIView
     }
     
     required init?(coder: NSCoder) {

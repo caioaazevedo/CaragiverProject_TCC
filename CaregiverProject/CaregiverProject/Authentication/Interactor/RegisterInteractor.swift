@@ -13,7 +13,7 @@ class RegisterInteractor: PresenterToInteractorRegisterProtocol {
     var presenter: InteractorToPresenterRegisterProtocol?
     let ref: DatabaseReference
     
-    init() {
+    init() {        
         self.ref = Database.database().reference()
     }
     

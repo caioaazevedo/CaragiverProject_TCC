@@ -10,12 +10,14 @@ import Foundation
 typealias Families = [Family]
 
 protocol ModelProtocol{
-    var id: UUID {get}
+    // change to UUID
+    var id: String {get}
 }
 struct Family: ModelProtocol{
-    let id: UUID
+    let id: String
     let name: String
-    var members: [Member]
+    // Going to change to get reference
+    var members: [String]
 }
 
 

@@ -17,38 +17,27 @@ class FamilyPresenter: FamilyPresenterProtocol{
         self.interactor = interactor
     }
     
-    func manageEntity<T>(entity: ModelProtocol,intendedReturn: T.Type,operation: CRUDOperations,completion: (T?) -> ()){
+    func manageEntity<T>(entity: ModelProtocol,entityType: EntityTypes,intendedReturn: T.Type,operation: CRUDOperations,completion: (T?) -> ()){
         switch operation{
         case .create:
-            interactor.addValue(entity, completion: { (result) in
-                if result{
-                    completion(true as? T)
-                } else{
-                    completion(false as? T)
-                }
-                
+            interactor.addValue(entity,entityType, completion: { (result) in
+                guard let value = result as? T else {return}
+                completion(value)
             })
-            
         case .read:
             interactor.readValue(entity.id, completion: { result in
-                guard let value = result else {return completion(nil)}
-                completion(value as? T)
+                guard let value = result as? T else {return completion(nil)}
+                completion(value)
             })
         case .update:
             interactor.updateValue(entity, completion: { result in
-                if result{
-                    completion(true as? T)
-                } else{
-                    completion(false as? T)
-                }
+                guard let value = result as? T else {return}
+                completion(value)
             })
         case .delete:
             interactor.deleteValue(entity.id, completion: { result in
-                if result{
-                    completion(true as? T)
-                } else{
-                    completion(false as? T)
-                }
+                guard let value = result as? T else {return}
+                completion(value)
             })
         }
     }
