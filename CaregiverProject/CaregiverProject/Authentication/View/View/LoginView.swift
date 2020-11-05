@@ -35,7 +35,7 @@ class LoginView: UIView {
         var text = UITextField(frame: .zero)
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
-        let attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
+        let attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         text.attributedPlaceholder = attributedPlaceholder
         text.borderStyle = .roundedRect
         text.textAlignment = .center
@@ -63,7 +63,7 @@ class LoginView: UIView {
     
     var feedBackLabel: UILabel = {
         var label = UILabel(frame: .zero)
-        label.text = "Incorrect username or passowrd. Please try again."
+        label.text = "Incorrect username or passowrd. Please, try again."
         let font = UIFont.preferredFont(forTextStyle: .body)
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
@@ -85,7 +85,7 @@ class LoginView: UIView {
     
     var signInButton: UIButton = {
         var button = UIButton(frame: .zero)
-        button.setTitle("Sing In", for: .normal)
+        button.setTitle("Sign In", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 5

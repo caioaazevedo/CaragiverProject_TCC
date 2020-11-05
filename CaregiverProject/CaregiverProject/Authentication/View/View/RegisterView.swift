@@ -11,7 +11,7 @@ class RegisterView: UIView {
     
     var titleLabel: UILabel = {
         var label = UILabel(frame: .zero)
-        label.text = "Your family thanks You"
+        label.text = "Your family is grateful"
         let font = UIFont.preferredFont(forTextStyle: .title3)
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
@@ -22,7 +22,7 @@ class RegisterView: UIView {
     
     var subTitleLabel: UILabel = {
         var label = UILabel(frame: .zero)
-        label.text = "Please, Register"
+        label.text = "Please, register"
         let font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
@@ -48,7 +48,7 @@ class RegisterView: UIView {
         var text = UITextField(frame: .zero)
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
-        let attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
+        let attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         text.attributedPlaceholder = attributedPlaceholder
         text.borderStyle = .roundedRect
         text.textAlignment = .center

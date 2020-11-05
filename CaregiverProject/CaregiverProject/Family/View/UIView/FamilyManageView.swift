@@ -27,8 +27,9 @@ final class FamilyManageView: UIView{
     
     lazy var primaryButton: UIButton = {
         var button = UIButton(frame: .zero)        
-        button.backgroundColor = .green
-        button.layer.cornerRadius = 3
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5        
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
