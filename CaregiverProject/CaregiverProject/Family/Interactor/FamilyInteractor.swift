@@ -14,10 +14,10 @@ protocol MemberManagementLogic{}
 protocol FamilyManagementLogic{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
     
-    func addValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: (Bool) -> ())
-    func readValue(_ dataID: String,_ entityType: EntityTypes, completion: @escaping ([String:AnyObject]) -> ())
-    func updateValue(_ entity: ModelProtocol, completion: (Bool) -> ())
-    func deleteValue(_ dataID: String, completion: (Bool) -> ())
+    func addValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
+    func readValue(_ dataID: String,completion: @escaping ([String:AnyObject]) -> ())
+    func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
+    func deleteValue(_ dataID: String,completion: @escaping (Bool) -> ())
 }
 
 
@@ -29,37 +29,50 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         self.ref = database.reference()
     }
     
-    func addValue(_ entity: ModelProtocol,_ entityType: EntityTypes, completion: (Bool) -> ()) {
+    func addValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ()) {
         guard let db = ref else {return}
         switch entityType{
         case .Family:
             guard let casted = entity as? Family else {return}
             let uid = casted.id
             let parameters: [String:Any] = ["name": casted.name,"members":casted.members]
-            db.child("family").child(uid).setValue(parameters)
+            db.child(entityType.rawValue).child(uid).setValue(parameters) { result in
+                completion(result)
+            }
         case .Member:
-            guard let casted = entity as? Member else {return} // Need to assign Member
-            guard let uid = casted.id else {return}
-            let parameters: [String:Any] = ["name": casted.name,"isAdmin":casted.isAdmin]
-            db.child("member").child(uid).setValue(parameters)
+            break
+//            guard let casted = entity as? Member else {return} // Need to assign Member
+//            guard let uid = casted.id else {return}
+//            let parameters: [String:Any] = ["name": casted.name,"isAdmin":casted.isAdmin]
+//            db.child(entityType.rawValue).child(uid).setValue(parameters)
         }
     }
     
-    func readValue(_ dataID: String,_ entityType: EntityTypes, completion: @escaping ([String:AnyObject]) -> ()) {
+    func readValue(_ dataID: String,completion: @escaping ([String:AnyObject]) -> ()) {
+        _ = self.ref?.observe(DataEventType.value, with: { (snapshot) in
+            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+            completion(postDict)
+        })
+        
+    }
+    
+    func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ()) {
+        guard let key = ref?.child(entityType.rawValue).childByAutoId().key else {return}
         switch entityType{
         case .Family:
-            _ = self.ref?.observe(DataEventType.value, with: { (snapshot) in
-              let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-                completion(postDict)
-            })
+            guard let casted = entity as? Family else {return}
+            let parameters = ["uid": casted.id,
+                              "name": casted.name,
+                              "members": casted.members] as [String : Any]
+            
+            let childUpdates = ["/family/\(key)": parameters,
+                                "/members/\(casted.id)/\(key)/": parameters]
+            ref?.updateChildValues(childUpdates)
         case .Member:
-           print()
+            break
         }
-
     }
     
-    func updateValue(_ entity: ModelProtocol, completion: (Bool) -> ()) {}
-    
-    func deleteValue(_ dataID: String, completion: (Bool) -> ()) {}
+    func deleteValue(_ dataID: String, completion: @escaping (Bool) -> ()) {}
     
 }

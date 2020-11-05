@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum EntityTypes{
-    case Family
-    case Member
+enum EntityTypes: String{
+    case Family = "family"
+    case Member = "member"
 }

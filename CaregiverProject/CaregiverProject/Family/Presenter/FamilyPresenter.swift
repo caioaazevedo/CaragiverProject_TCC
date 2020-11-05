@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol FamilyPresenterProtocol{}
+protocol FamilyPresenterProtocol{
+    func manageEntity<T>(entity: ModelProtocol,entityType: EntityTypes,intendedReturn: T.Type,operation: CRUDOperations,completion: @escaping (T?) -> ())
+}
 
 class FamilyPresenter: FamilyPresenterProtocol{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
@@ -17,7 +19,7 @@ class FamilyPresenter: FamilyPresenterProtocol{
         self.interactor = interactor
     }
     
-    func manageEntity<T>(entity: ModelProtocol,entityType: EntityTypes,intendedReturn: T.Type,operation: CRUDOperations,completion: (T?) -> ()){
+    func manageEntity<T>(entity: ModelProtocol,entityType: EntityTypes,intendedReturn: T.Type,operation: CRUDOperations,completion: @escaping (T?) -> ()){
         switch operation{
         case .create:
             interactor.addValue(entity,entityType, completion: { (result) in
@@ -30,7 +32,7 @@ class FamilyPresenter: FamilyPresenterProtocol{
                 completion(value)
             })
         case .update:
-            interactor.updateValue(entity, completion: { result in
+            interactor.updateValue(entity,entityType,completion: { result in
                 guard let value = result as? T else {return}
                 completion(value)
             })
