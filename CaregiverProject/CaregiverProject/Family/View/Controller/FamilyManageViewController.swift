@@ -8,9 +8,11 @@
 import UIKit
 
 class FamilyManageViewController: UIViewController{
+    var manageState: ManageState
     var presenter: FamilyPresenterProtocol
     
-    init(familyManagePresenter: FamilyPresenterProtocol){
+    init(manageState: ManageState,familyManagePresenter: FamilyPresenterProtocol){
+        self.manageState = manageState
         self.presenter = familyManagePresenter
         super.init(nibName: nil, bundle: nil)
 //        self.view = presentedView as? UIView
@@ -19,24 +21,42 @@ class FamilyManageViewController: UIViewController{
     override func loadView(){
         super.loadView()
         view = FamilyManageView()
+        configureButton()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureButton()
     }
     
     func configureButton(){
         guard let view = view as? FamilyManageView else {return}
-        view.createFamilyBtn.addTarget(self, action: #selector(createFamily), for: .touchUpInside)
+        switch manageState{
+        case .Login:
+            view.primaryField.placeholder = "Family's Code"
+            view.primaryButton.setTitle("Enter in family", for: .normal)
+            view.primaryButton.addTarget(self, action: #selector(enterFamily), for: .touchUpInside)
+        case .Register:
+            view.primaryField.placeholder = "Family's Name"
+            view.primaryButton.setTitle("Create Family", for: .normal)
+            view.primaryButton.addTarget(self, action: #selector(createFamily), for: .touchUpInside)
+        }
+        
+    }
+    
+    
+    @objc func enterFamily() {
+        guard let view = view as? FamilyManageView else {return}
+        let family = Family(id: view.primaryField.text!, name: view.primaryField.text ?? "Familia", members: [])
+        self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .read) { (result) in
+            print(result)
+        }
     }
     
     @objc func createFamily() {
         guard let view = view as? FamilyManageView else {return}
-        let family = Family(id: UUID().uuidString, name: view.familyNameFld.text ?? "Familia", members: [])
+        let family = Family(id: UUID().uuidString, name: view.primaryField.text ?? "Familia", members: [])
         self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .create) { (result) in
             print(result)
         }
-                
     }
     
     required init?(coder: NSCoder) {

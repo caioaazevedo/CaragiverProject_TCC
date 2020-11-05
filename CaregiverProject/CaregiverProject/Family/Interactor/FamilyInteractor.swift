@@ -15,9 +15,9 @@ protocol FamilyManagementLogic{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
     
     func addValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
-    func readValue(_ dataID: String,completion: @escaping ([String:AnyObject]) -> ())
+    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping ([String:AnyObject]) -> ())
     func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
-    func deleteValue(_ dataID: String,completion: @escaping (Bool) -> ())
+    func deleteValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
 }
 
 
@@ -46,11 +46,23 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         }
     }
     
-    func readValue(_ dataID: String,completion: @escaping ([String:AnyObject]) -> ()) {
-        _ = self.ref?.observe(DataEventType.value, with: { (snapshot) in
-            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-            completion(postDict)
-        })
+    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping ([String:AnyObject]) -> ()) {
+        // Websocket type
+//        _ = self.ref?.observe(DataEventType.value, with: { (snapshot) in
+//            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+//            completion(postDict)
+//        })
+        
+        ref?.child(entityType.rawValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
+          // Get user value
+          let value = snapshot.value as? NSDictionary
+          print(value)
+
+          // ...
+          }) { (error) in
+            print(error.localizedDescription)
+        }
+        
         
     }
     
@@ -71,6 +83,6 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         }
     }
     
-    func deleteValue(_ dataID: String, completion: @escaping (Bool) -> ()) {}
+    func deleteValue(_ dataID: String,_ entityType: EntityTypes, completion: @escaping (Bool) -> ()) {}
     
 }

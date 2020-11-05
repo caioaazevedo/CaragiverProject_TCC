@@ -27,7 +27,7 @@ class FamilyPresenter: FamilyPresenterProtocol{
                 completion(value)
             })
         case .read:
-            interactor.readValue(entity.id, completion: { result in
+            interactor.readValue(entity.id, entityType, completion: { result in
                 guard let value = result as? T else {return completion(nil)}
                 completion(value)
             })
@@ -37,7 +37,7 @@ class FamilyPresenter: FamilyPresenterProtocol{
                 completion(value)
             })
         case .delete:
-            interactor.deleteValue(entity.id, completion: { result in
+            interactor.deleteValue(entity.id, entityType,completion: { result in
                 guard let value = result as? T else {return}
                 completion(value)
             })

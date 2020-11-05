@@ -12,24 +12,21 @@ final class FamilyManageView: UIView{
     var titleLabel: UILabel = {
         var label = UILabel(frame: .zero)
         let font = UIFont.preferredFont(forTextStyle: .title3)
-        label.text = "Criar Família"
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var familyNameFld: UITextField = {
+    var primaryField: UITextField = {
         var text = UITextField(frame: .zero)
-        text.placeholder = "Family's name"
         text.textAlignment = .center
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    lazy var createFamilyBtn: UIButton = {
-        var button = UIButton(frame: .zero)
-        button.setTitle("Criar Família", for: .normal)
+    lazy var primaryButton: UIButton = {
+        var button = UIButton(frame: .zero)        
         button.backgroundColor = .green
         button.layer.cornerRadius = 3
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -50,8 +47,8 @@ final class FamilyManageView: UIView{
 extension FamilyManageView: ViewCodeProtocol{
     func setUpViewHierarchy() {
         addSubview(titleLabel)
-        addSubview(familyNameFld)
-        addSubview(createFamilyBtn)
+        addSubview(primaryField)
+        addSubview(primaryButton)
     }
     
     func setUpViewConstraints() {
@@ -60,15 +57,15 @@ extension FamilyManageView: ViewCodeProtocol{
             titleLabel.topAnchor.constraint(equalTo: topAnchor,constant: 100),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            familyNameFld.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -50),
-            familyNameFld.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            familyNameFld.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            familyNameFld.heightAnchor.constraint(equalToConstant: 40),
+            primaryField.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -50),
+            primaryField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            primaryField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            primaryField.heightAnchor.constraint(equalToConstant: 40),
 
-            createFamilyBtn.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 50),
-            createFamilyBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            createFamilyBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            createFamilyBtn.heightAnchor.constraint(equalToConstant: 40),
+            primaryButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 50),
+            primaryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            primaryButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            primaryButton.heightAnchor.constraint(equalToConstant: 40),
         ])
     }
     
