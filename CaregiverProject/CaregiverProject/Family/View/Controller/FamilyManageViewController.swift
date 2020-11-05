@@ -25,7 +25,7 @@ class FamilyManageViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateFamily()
+        enterFamily()
     }
     
     func configureButton(){
@@ -46,8 +46,9 @@ class FamilyManageViewController: UIViewController{
     
     @objc func enterFamily() {
         guard let view = view as? FamilyManageView else {return}
-        let family = Family(id: "EAD9F58C-20F8-4CEA-A046-9439F8EE4C5A", name: view.primaryField.text ?? "Familia", members: [])
-        self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .read) { (result) in
+        let family = Family(id: "-MLOB4wLOZTXC7FM5V3L", name: view.primaryField.text ?? "Familia", members: [])
+        self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Family.self, operation: .read) { (result) in
+            print("Resultvvvvv")
             print(result)
         }
     }
@@ -63,6 +64,13 @@ class FamilyManageViewController: UIViewController{
     func updateFamily(){
         let family = Family(id: "EAD9F58C-20F8-4CEA-A046-9439F8EE4C5A", name: "Nova Familia", members: ["Guilherme"])
         self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update) { (result) in
+            print(result)
+        }
+    }
+    
+    func deleteFamily(){
+        let family = Family(id: "EAD9F58C-20F8-4CEA-A046-9439F8EE4C5A", name: "Nova Familia", members: ["Guilherme"])
+        self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .delete       ) { (result) in
             print(result)
         }
     }
