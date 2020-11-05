@@ -12,7 +12,7 @@ class StartFamilyViewController: UIViewController {
     var startFamilyView = StartFamilyView()
     
     override func loadView() {
-        view = startFamilyView        
+        view = startFamilyView
     }
 
     override func viewDidLoad() {

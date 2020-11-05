@@ -43,25 +43,37 @@ class FamilyManageViewController: UIViewController{
         }
         
     }
+    
     @objc func enterFamily() {
         guard let view = view as? FamilyManageView else {return}
-        let family = Family(id: view.primaryField.text ?? "default", name: view.primaryField.text ?? "Familia", members: [])
-        self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Family.self, operation: .read) { (result) in
+        var family = Family(id: view.primaryField.text ?? "default", name: view.primaryField.text ?? "Familia", members: [UserSession.shared.username!])
+        self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: [String].self, operation: .read) { members in
+            family.members = members ?? []
+            family.members.append(UserSession.shared.username!)
+            self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
+                self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: [String].self, operation: .read, completion: { new in
+                var interactor = FamilyInteractor(database: Database.database())
+                let module = Builder.buildFamilyListModule(with: &interactor)
+                module.members = new ?? []
+                self.present(module, animated: true, completion: nil)
+            })
+            })
             
-            self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in })
-            var interactor = FamilyInteractor(database: Database.database())
-            let module = Builder.buildFamilyListModule(with: &interactor)
-            self.present(module, animated: true, completion: nil)
         }
     }
+    
     @objc func createFamily() {
         guard let view = view as? FamilyManageView else {return}
-        let family = Family(id: UUID().uuidString, name: view.primaryField.text ?? "Familia", members: [])
+        let family = Family(id: UUID().uuidString, name: view.primaryField.text ?? "Familia", members: [UserSession.shared.username!])
         self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .create) { (result) in
             self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
+                self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: [String].self, operation: .read, completion: { members in
             var interactor = FamilyInteractor(database: Database.database())
+                
             let module = Builder.buildFamilyListModule(with: &interactor)
+            module.members = members ?? []                
             self.present(module, animated: true, completion: nil)
+                })
             })
         }
     }

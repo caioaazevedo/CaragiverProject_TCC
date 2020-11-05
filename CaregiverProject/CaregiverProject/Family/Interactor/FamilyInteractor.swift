@@ -16,7 +16,7 @@ protocol MemberManagementLogic{}
 protocol FamilyManagementLogic{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
     func addValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
-    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping (Family) -> ())
+    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping ([String]) -> ())
     func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
     func deleteValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
 }
@@ -45,14 +45,13 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         }
     }
     
-    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping (Family) -> ()) {
+    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping ([String]) -> ()) {
         ref?.child(entityType.rawValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
             // USE DECODER
             let value = snapshot.value as? NSDictionary
             guard let id = value?["uid"] as? String, let name = value?["name"] as? String else {return}
             guard let members = value!["members"] as? [String] else {return}
-            let family =  Family(id: id, name: name, members: members)
-            completion(family)
+            completion(members)
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -61,7 +60,7 @@ class FamilyInteractor:  FamilyInteractorProtocol{
     func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ()) {
         switch entityType{
         case .Family:
-            guard let casted = entity as? Family else {return}
+            guard var casted = entity as? Family else {return}
             let parameters = ["uid": casted.id,
                               "name": casted.name,
                               "members": casted.members] as [String : Any]

@@ -9,12 +9,16 @@ import UIKit
 
 final class FamilyListViewController: UIViewController{
     var presenter: FamilyPresenterProtocol?
+    var members: [String] = []
     var presentedView: ViewCodeProtocol?
     
-    init(presentedView: ViewCodeProtocol,familyPresenter: FamilyPresenter){
+    init(presentedView: FamilyListView,familyPresenter: FamilyPresenter){
         self.presenter = familyPresenter
         super.init(nibName: nil, bundle: nil)
-        self.view = presentedView as? UIView
+        presentedView.tableView.register(FamilyTableViewCell.self,forCellReuseIdentifier: "cell")
+        presentedView.tableView.delegate = self
+        presentedView.tableView.dataSource = self
+        self.view = presentedView
         
     }
     
@@ -22,6 +26,10 @@ final class FamilyListViewController: UIViewController{
         super.loadView()
         // periodic
         self.view = UIView()
+    }
+    
+    override func viewDidLoad() {
+        print(self.members)
     }
     
     required init?(coder: NSCoder) {
