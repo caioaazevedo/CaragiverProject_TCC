@@ -7,7 +7,7 @@
 
 import Firebase
 
-final class Builder{
+final class FamilyBuilder{
     
     class func buildFamilyModule(state: ManageState) -> FamilyManageViewController{
         let interactor = FamilyInteractor(database: Database.database())
@@ -19,4 +19,5 @@ final class Builder{
         let familyListController = FamilyListViewController(presentedView: FamilyListView(), familyPresenter: FamilyPresenter(with: interactor))       
         return familyListController
     }
+    
 }

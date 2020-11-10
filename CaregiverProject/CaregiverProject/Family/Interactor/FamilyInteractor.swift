@@ -15,6 +15,7 @@ protocol MemberManagementLogic{}
 
 protocol FamilyManagementLogic{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
+    var ref: DatabaseReference? {get}
     func addValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
     func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping ([String]) -> ())
     func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
@@ -24,7 +25,7 @@ protocol FamilyManagementLogic{
 
 class FamilyInteractor:  FamilyInteractorProtocol{
     
-    private let ref: DatabaseReference?
+    internal let ref: DatabaseReference?
     
     init(database: Database){
         self.ref = database.reference()
@@ -49,7 +50,6 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         ref?.child(entityType.rawValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
             // USE DECODER
             let value = snapshot.value as? NSDictionary
-            guard let id = value?["uid"] as? String, let name = value?["name"] as? String else {return}
             guard let members = value!["members"] as? [String] else {return}
             completion(members)
         }) { (error) in

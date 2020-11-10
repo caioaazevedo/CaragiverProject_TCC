@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ProfileEntity{
+struct ProfileEntity: ModelProtocol{
+    var id: String
     var name: String
     var age: Int
     var photo: Data
     var notes: String
     var kinship: Kinship
-    
 }

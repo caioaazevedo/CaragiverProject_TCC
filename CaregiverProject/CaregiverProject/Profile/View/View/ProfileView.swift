@@ -44,6 +44,15 @@ final class ProfileView: UIView{
         view.font = UIFont.systemFont(ofSize: 14)
         return view
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        setUpView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension ProfileView: ViewCodeProtocol{
