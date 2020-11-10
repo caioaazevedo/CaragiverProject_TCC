@@ -7,7 +7,8 @@
 
 import UIKit
 
-class StartFamilyViewController: UIViewController {
+
+class StartFamilyViewController: UIViewController, FamilyControllerLogic {
     
     var startFamilyView = StartFamilyView()
     
@@ -17,22 +18,22 @@ class StartFamilyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureButton()
+        configureButtons()
     }
     
-    func configureButton(){
+    func configureButtons(){
         startFamilyView.createFamilyButton.addTarget(self, action: #selector(createFamily), for: .touchUpInside)
         startFamilyView.joinFamilyButton.addTarget(self, action: #selector(joinFamily), for: .touchUpInside)
     }
     
     @objc func createFamily(){
-        let registerView = Builder.buildFamilyModule(state: .Create)
+        let registerView = FamilyBuilder.buildFamilyModule(state: .Create)
         self.present(registerView, animated: true, completion: nil)
         
     }
     
     @objc func joinFamily(){
-        let loginView = Builder.buildFamilyModule(state: .Join)
+        let loginView = FamilyBuilder.buildFamilyModule(state: .Join)
         self.present(loginView, animated: true, completion: nil)
     }
     

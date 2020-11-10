@@ -8,6 +8,7 @@
 import Foundation
 
 protocol FamilyPresenterProtocol{
+    var interactor: FamilyInteractorProtocol { get }
     func manageEntity<T>(entity: ModelProtocol,entityType: EntityTypes,intendedReturn: T.Type,operation: CRUDOperations,completion: @escaping (T?) -> ())
 }
 
