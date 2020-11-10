@@ -261,6 +261,45 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
+		AC9D41AF255AC82B00925819 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D41B0255AC84C00925819 /* View */,
+				AC9D41B1255AC85800925819 /* Interactor */,
+				AC9D41B2255AC85C00925819 /* Presenter */,
+				AC9D41B3255AC86400925819 /* Entity */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		AC9D41B0255AC84C00925819 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AC9D41B1255AC85800925819 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		AC9D41B2255AC85C00925819 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AC9D41B3255AC86400925819 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		AD862F4A5B54F4BB784192BA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +359,7 @@
 				E20211802550B33700790DA9 /* General */,
 				E2137FA1254F3F11007F4F53 /* Authentication */,
 				AC3D574F2552D5D50013D470 /* Family */,
+				AC9D41AF255AC82B00925819 /* Profile */,
 				E2137F75254F311A007F4F53 /* Assets.xcassets */,
 				E2137F9F254F3E75007F4F53 /* Application */,
 				E2137F72254F3118007F4F53 /* Main.storyboard */,
