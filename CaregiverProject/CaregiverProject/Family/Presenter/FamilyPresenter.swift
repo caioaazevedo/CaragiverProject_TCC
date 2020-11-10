@@ -13,7 +13,7 @@ protocol FamilyPresenterProtocol{
 
 class FamilyPresenter: FamilyPresenterProtocol{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
-    fileprivate var interactor: FamilyInteractorProtocol
+    var interactor: FamilyInteractorProtocol
     
     init(with interactor: FamilyInteractorProtocol){
         self.interactor = interactor

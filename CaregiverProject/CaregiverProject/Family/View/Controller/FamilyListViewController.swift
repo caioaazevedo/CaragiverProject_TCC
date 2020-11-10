@@ -12,7 +12,7 @@ final class FamilyListViewController: UIViewController{
     var members: [String] = []
     var presentedView: ViewCodeProtocol?
     
-    init(presentedView: FamilyListView,familyPresenter: FamilyPresenter){
+    init(presentedView: FamilyListView,familyPresenter: FamilyPresenterProtocol){
         self.presenter = familyPresenter
         super.init(nibName: nil, bundle: nil)
         presentedView.tableView.register(FamilyTableViewCell.self,forCellReuseIdentifier: "cell")
