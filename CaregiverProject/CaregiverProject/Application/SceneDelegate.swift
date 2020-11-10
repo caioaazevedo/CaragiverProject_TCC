@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,8 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
 
-        let authentication = AuthenticationRouter.createModule()
-        window?.rootViewController = authentication
+//        let authentication = AuthenticationRouter.createModule()
+//        window?.rootViewController = authentication
+        let familyTree = Builder.buildFamilyTreeModule()
+        window?.rootViewController = familyTree
         window?.makeKeyAndVisible()
     }
 

@@ -20,4 +20,16 @@ final class Builder{
         familyListController.presenter = FamilyPresenter(with: interactor)
         return familyListController
     }
+    
+    class func buildFamilyTreeModule() -> FamilyTreeViewController{
+        let familyTreeController = FamilyTreeViewController()
+        let interactor = FamilyInteractor(database: Database.database())
+        let presenter = FamilyPresenter(with: interactor)
+        let view = FamilyTreeView()
+        view.collectionView.delegate = familyTreeController
+        view.collectionView.dataSource = familyTreeController
+        familyTreeController.presenter = presenter
+        familyTreeController.presentedView = view
+        return familyTreeController
+    }
 }
