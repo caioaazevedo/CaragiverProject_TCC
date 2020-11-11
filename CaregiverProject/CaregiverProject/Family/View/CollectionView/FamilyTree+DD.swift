@@ -16,7 +16,10 @@ extension FamilyTreeViewController: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? FamilyTreeCollectionViewCell ?? FamilyTreeCollectionViewCell()
         cell.name.text = members[indexPath.row]
         cell.hierarchy.text = "Filho"
-        cell.image.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        cell.layer.cornerRadius = 25
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = #colorLiteral(red: 0.6979769468, green: 0.6980791688, blue: 0.6979545951, alpha: 1)
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.layer.cornerRadius).cgPath
         return cell
     }
     

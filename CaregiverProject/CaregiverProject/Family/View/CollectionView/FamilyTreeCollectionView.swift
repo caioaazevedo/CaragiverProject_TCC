@@ -15,7 +15,7 @@ class FamilyTreeCollectionView: UICollectionView{
     }()
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
+        super.init(frame: .zero, collectionViewLayout: layout)
         self.setUpView()
     }
     
@@ -25,9 +25,7 @@ class FamilyTreeCollectionView: UICollectionView{
 }
 
 extension FamilyTreeCollectionView: ViewCodeProtocol{
-    func setUpViewHierarchy() {
-        addSubview(familyTreeCell)
-    }
+    func setUpViewHierarchy() {}
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([])
