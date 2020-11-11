@@ -31,6 +31,28 @@ class RegisterView: UIView {
         return label
     }()
     
+    var imageSize: CGFloat {
+        return UIScreen.main.bounds.width*0.25
+    }
+    
+    var imageView: UIImageView = {
+        var image = UIImageView(frame: .zero)
+        image.image = UIImage(systemName: "camera")
+        image.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        image.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        image.contentMode = .scaleAspectFit
+        image.layer.cornerRadius = (UIScreen.main.bounds.width*0.25)/2
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    var imageButton: UIButton = {
+        var button = UIButton(frame: .zero)
+        button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     var realName: UITextField = {
         var text = UITextField(frame: .zero)
         let centeredParagraphStyle = NSMutableParagraphStyle()
@@ -74,6 +96,19 @@ class RegisterView: UIView {
         return text
     }()
     
+    var memberRelationship: UITextField = {
+        var text = UITextField(frame: .zero)
+        let centeredParagraphStyle = NSMutableParagraphStyle()
+        centeredParagraphStyle.alignment = .center
+        let attributedPlaceholder = NSAttributedString(string: "Relationship with the Elderly", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
+        text.attributedPlaceholder = attributedPlaceholder
+        text.borderStyle = .roundedRect
+        text.textAlignment = .center
+        text.autocapitalizationType = .none
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+    
     var feedBackLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.text = "Empty fields. Please try again."
@@ -112,36 +147,53 @@ extension RegisterView: ViewCodeProtocol {
     func setUpViewHierarchy() {
         addSubview(titleLabel)
         addSubview(subTitleLabel)
+        addSubview(imageView)
+        addSubview(imageButton)
         addSubview(realName)
         addSubview(username)
         addSubview(password)
+        addSubview(memberRelationship)
         addSubview(feedBackLabel)
         addSubview(registerButton)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             subTitleLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            username.centerYAnchor.constraint(equalTo: centerYAnchor),
-            username.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            username.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            imageView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 10),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: imageSize),
+            imageView.widthAnchor.constraint(equalToConstant: imageSize),
+
+            imageButton.topAnchor.constraint(equalTo: imageView.topAnchor),
+            imageButton.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            imageButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            imageButton.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
             
-            realName.bottomAnchor.constraint(equalTo: username.topAnchor, constant: -20),
+            realName.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 10),
             realName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             realName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-//
+
+            username.topAnchor.constraint(equalTo: realName.bottomAnchor, constant: 20),
+            username.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            username.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+
             password.topAnchor.constraint(equalTo: username.bottomAnchor, constant: 20),
             password.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             password.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            
-            feedBackLabel.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 20),
+
+            memberRelationship.topAnchor.constraint(equalTo: password.bottomAnchor, constant: 20),
+            memberRelationship.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            memberRelationship.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+
+            feedBackLabel.topAnchor.constraint(equalTo: memberRelationship.bottomAnchor, constant: 20),
             feedBackLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             feedBackLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             

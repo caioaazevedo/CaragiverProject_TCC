@@ -30,7 +30,7 @@ class RegisterViewController: UIViewController {
         let name = registerView.realName.text!
         let email = registerView.username.text!
         let password = registerView.password.text!
-        let member = Member(name: name, email: email, password: password)
+        let member = Member(name: name, email: email, password: password, type: MemberType.husband_wife)
         presenter?.registerUser(member: member)
     }
 
