@@ -11,6 +11,8 @@ struct UserSession{
     
     var id: String?
     var username: String?
+    var familyID: String?
+    var elderID: String?
     
     static var shared: UserSession = {
         let session = UserSession()
