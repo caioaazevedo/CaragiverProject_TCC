@@ -7,14 +7,6 @@
 
 import Foundation
 
-// Relationship
-enum MemberType: Int {
-    case husband_wife = 0
-    case son_daughter
-    case grandson_granddaughter
-    case others
-}
-
 struct Member {
     var id: String?
     var name: String
