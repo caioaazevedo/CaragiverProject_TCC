@@ -10,7 +10,7 @@ import UIKit
 class FamilyTreeCollectionView: UICollectionView{
     
     lazy var familyTreeCell: FamilyTreeCollectionViewCell = {
-        let cell = FamilyTreeCollectionViewCell(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let cell = FamilyTreeCollectionViewCell(frame: .zero)
         return cell
     }()
     
@@ -33,6 +33,8 @@ extension FamilyTreeCollectionView: ViewCodeProtocol{
         NSLayoutConstraint.activate([])
     }
     
-    func setUpAditionalConficuration() {}
+    func setUpAditionalConficuration() {
+        backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
     
 }

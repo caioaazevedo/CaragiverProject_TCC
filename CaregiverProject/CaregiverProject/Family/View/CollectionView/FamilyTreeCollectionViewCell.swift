@@ -9,15 +9,28 @@ import UIKit
 
 class FamilyTreeCollectionViewCell: UICollectionViewCell {
     
-    lazy var label: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+    lazy var image: UIImageView = {
+        let image = UIImage()
+        let imageView = UIImageView(image: image)
+        imageView.backgroundColor = .blue
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    lazy var name: UILabel = {
+        let label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "OLA"
+        return label
+    }()
+    
+    lazy var hierarchy: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: .zero)
         setUpView()
     }
     
@@ -28,13 +41,17 @@ class FamilyTreeCollectionViewCell: UICollectionViewCell {
 
 extension FamilyTreeCollectionViewCell: ViewCodeProtocol{
     func setUpViewHierarchy() {
-        addSubview(label)
+        addSubview(name)
+        addSubview(hierarchy)
+        addSubview(image)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([])
     }
     
-    func setUpAditionalConficuration() {}
+    func setUpAditionalConficuration() {
+        backgroundColor = .blue
+    }
     
 }

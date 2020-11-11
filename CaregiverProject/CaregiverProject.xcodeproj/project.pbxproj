@@ -14,6 +14,7 @@
 		7904B499255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */; };
 		7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */; };
 		7904B4A3255ADF2800D078F5 /* FamilyTree+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B4A2255ADF2800D078F5 /* FamilyTree+DD.swift */; };
+		79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FC8255C3ECD00A01D85 /* AppUtility.swift */; };
 		9C00F9FB1AF087749AF5A0FA /* Pods_CaregiverProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091EFD7CDA50175B4C06AC99 /* Pods_CaregiverProject.framework */; };
 		AC29293C25544E0600C26FE1 /* ManageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC29293B25544E0600C26FE1 /* ManageState.swift */; };
 		AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873262552E1CB0084590D /* FamilyManageViewController.swift */; };
@@ -83,6 +84,7 @@
 		7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewController.swift; sourceTree = "<group>"; };
 		7904B4A2255ADF2800D078F5 /* FamilyTree+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyTree+DD.swift"; sourceTree = "<group>"; };
+		79960FC8255C3ECD00A01D85 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		8AC5EFEDB0B5DA56F4B30531 /* Pods-CaregiverProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProject/Pods-CaregiverProject.debug.xcconfig"; sourceTree = "<group>"; };
 		A45221F7331BC0815E03654C /* Pods-CaregiverProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6BEA0585759BB828FE7E367 /* Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				ACEF1C13255425CF00346B67 /* EntityTypes.swift */,
 				AC29293B25544E0600C26FE1 /* ManageState.swift */,
 				AC7C029E2554AD71002FE9DD /* UserSession.swift */,
+				79960FC8255C3ECD00A01D85 /* AppUtility.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
 				AC3D57632552DBD90013D470 /* FamilyTableView.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
+				79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */,
 				AC4672682552DF15002AC45B /* Builder.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
