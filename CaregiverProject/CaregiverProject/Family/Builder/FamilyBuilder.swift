@@ -32,4 +32,20 @@ final class FamilyBuilder{
         return familyTreeController
     }
 
+    class func buildFamilyTabBarController() -> FamilyTabBarController{
+        let familyTabBarController = FamilyTabBarController()
+        
+        let familyTreeModule = FamilyBuilder.buildFamilyTreeModule()
+        let familyIcon = UITabBarItem(title: "Family", image: .actions, tag: 0)
+        familyTreeModule.tabBarItem = familyIcon
+        let profileModule = ProfileBuilder.buildProfileModule()
+        let profileIcon = UITabBarItem(title: "Profile", image: .checkmark, tag: 1)
+        profileModule.tabBarItem = profileIcon
+        
+        familyTabBarController.viewControllers = [
+            familyTreeModule,
+            profileModule
+        ]
+        return familyTabBarController
+    }
 }

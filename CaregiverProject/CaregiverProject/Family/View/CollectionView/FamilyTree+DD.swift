@@ -9,17 +9,20 @@ import UIKit
 
 extension FamilyTreeViewController: UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sections.count
+        return sectionDict.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].members.count
+        guard let sectionTuple = sectionDict[section] else {return 0}
+        return sectionTuple.members.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? FamilyTreeCollectionViewCell ?? FamilyTreeCollectionViewCell()
-        cell.name.text = sections[indexPath.section].members[indexPath.row]
-        cell.hierarchy.text = "Filho"
+        guard let member = sectionDict[indexPath.section]?.members[indexPath.row] else {return cell}
+        cell.name.text = member.name
+        cell.imageView.image = member.image
+        cell.hierarchy.text = member.memberType.title
         cell.layer.cornerRadius = 25
         cell.layer.borderWidth = 0.5
         cell.layer.borderColor = #colorLiteral(red: 0.6979769468, green: 0.6980791688, blue: 0.6979545951, alpha: 1)
@@ -29,7 +32,8 @@ extension FamilyTreeViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as? FamilyTreeCollectionReusableView ?? FamilyTreeCollectionReusableView()
-        header.headerLabel.text = sections[indexPath.section].header
+        guard let headerTitle = sectionDict[indexPath.section]?.header else {return header}
+        header.headerLabel.text = headerTitle
         return header
     }
     

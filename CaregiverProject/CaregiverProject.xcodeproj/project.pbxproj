@@ -16,6 +16,7 @@
 		7904B4A3255ADF2800D078F5 /* FamilyTree+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B4A2255ADF2800D078F5 /* FamilyTree+DD.swift */; };
 		79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FC8255C3ECD00A01D85 /* AppUtility.swift */; };
 		79960FCE255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */; };
+		79960FE8255D84ED00A01D85 /* FamilyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */; };
 		9C00F9FB1AF087749AF5A0FA /* Pods_CaregiverProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091EFD7CDA50175B4C06AC99 /* Pods_CaregiverProject.framework */; };
 		AC29293C25544E0600C26FE1 /* ManageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC29293B25544E0600C26FE1 /* ManageState.swift */; };
 		AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873262552E1CB0084590D /* FamilyManageViewController.swift */; };
@@ -99,6 +100,7 @@
 		7904B4A2255ADF2800D078F5 /* FamilyTree+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyTree+DD.swift"; sourceTree = "<group>"; };
 		79960FC8255C3ECD00A01D85 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionReusableView.swift; sourceTree = "<group>"; };
+		79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTabBarController.swift; sourceTree = "<group>"; };
 		8AC5EFEDB0B5DA56F4B30531 /* Pods-CaregiverProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProject/Pods-CaregiverProject.debug.xcconfig"; sourceTree = "<group>"; };
 		A45221F7331BC0815E03654C /* Pods-CaregiverProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6BEA0585759BB828FE7E367 /* Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				AC3873262552E1CB0084590D /* FamilyManageViewController.swift */,
 				AC3D57542552D6470013D470 /* FamilyListViewController.swift */,
 				7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */,
+				79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,11 +308,8 @@
 				ACEF1C13255425CF00346B67 /* EntityTypes.swift */,
 				AC29293B25544E0600C26FE1 /* ManageState.swift */,
 				AC7C029E2554AD71002FE9DD /* UserSession.swift */,
-
 				79960FC8255C3ECD00A01D85 /* AppUtility.swift */,
-
 				AC9D41CB255ACD5200925819 /* Kinship.swift */,
-
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -880,21 +880,19 @@
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
 				AC3D57632552DBD90013D470 /* FamilyTableView.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
-
 				79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */,
-				AC4672682552DF15002AC45B /* Builder.swift in Sources */,
+				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				7904B499255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift in Sources */,
-
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				AC9D41C2255AC91800925819 /* ProfilePresenter.swift in Sources */,
-
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,
+				79960FE8255D84ED00A01D85 /* FamilyTabBarController.swift in Sources */,
 				AC9D41BD255AC90400925819 /* ProfileInteractor.swift in Sources */,
 				AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */,
 			);
