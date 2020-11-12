@@ -8,17 +8,15 @@
 import UIKit
 
 final class FamilyListViewController: UIViewController{
+    
+    var presentedView: ViewCodeProtocol?
     var presenter: FamilyPresenterProtocol?
     var members: [String] = []
-    var presentedView: ViewCodeProtocol?
     
-    init(presentedView: FamilyListView,familyPresenter: FamilyPresenter){
+    init(presentedView: FamilyListView,familyPresenter: FamilyPresenterProtocol){
         self.presenter = familyPresenter
         super.init(nibName: nil, bundle: nil)
-        presentedView.tableView.register(FamilyTableViewCell.self,forCellReuseIdentifier: "cell")
-        presentedView.tableView.delegate = self
-        presentedView.tableView.dataSource = self
-        self.view = presentedView
+        setupView(presentedView)
         
     }
     
@@ -34,5 +32,12 @@ final class FamilyListViewController: UIViewController{
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupView(_ presentedView: FamilyListView){
+        presentedView.tableView.register(FamilyTableViewCell.self,forCellReuseIdentifier: "cell")
+        presentedView.tableView.delegate = self
+        presentedView.tableView.dataSource = self
+        self.view = presentedView
     }
 }

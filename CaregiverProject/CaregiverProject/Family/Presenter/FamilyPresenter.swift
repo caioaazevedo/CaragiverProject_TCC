@@ -8,12 +8,13 @@
 import Foundation
 
 protocol FamilyPresenterProtocol{
+    var interactor: FamilyInteractorProtocol { get }
     func manageEntity<T>(entity: ModelProtocol,entityType: EntityTypes,intendedReturn: T.Type,operation: CRUDOperations,completion: @escaping (T?) -> ())
 }
 
 class FamilyPresenter: FamilyPresenterProtocol{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
-    fileprivate var interactor: FamilyInteractorProtocol
+    var interactor: FamilyInteractorProtocol
     
     init(with interactor: FamilyInteractorProtocol){
         self.interactor = interactor

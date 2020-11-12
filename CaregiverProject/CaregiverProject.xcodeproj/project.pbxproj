@@ -30,8 +30,16 @@
 		AC3D57612552D8140013D470 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57602552D8140013D470 /* Metrics.swift */; };
 		AC3D57632552DBD90013D470 /* FamilyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57622552DBD90013D470 /* FamilyTableView.swift */; };
 		AC3D57652552DD9C0013D470 /* FamilyList+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57642552DD9C0013D470 /* FamilyList+DD.swift */; };
-		AC4672682552DF15002AC45B /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4672672552DF15002AC45B /* Builder.swift */; };
+		AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4672672552DF15002AC45B /* FamilyBuilder.swift */; };
 		AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C029E2554AD71002FE9DD /* UserSession.swift */; };
+		AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41B7255AC8EF00925819 /* ProfileView.swift */; };
+		AC9D41BD255AC90400925819 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41BC255AC90400925819 /* ProfileInteractor.swift */; };
+		AC9D41C2255AC91800925819 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41C1255AC91800925819 /* ProfilePresenter.swift */; };
+		AC9D41C7255AC92600925819 /* ElderEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41C6255AC92600925819 /* ElderEntity.swift */; };
+		AC9D41CC255ACD5200925819 /* Kinship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41CB255ACD5200925819 /* Kinship.swift */; };
+		AC9D41D3255ACE5A00925819 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */; };
+		AC9D41D8255AD04C00925819 /* FamilyControllerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41D7255AD04C00925819 /* FamilyControllerLogic.swift */; };
+		AC9D41E1255AD14400925819 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41E0255AD14400925819 /* ProfileBuilder.swift */; };
 		ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF1C13255425CF00346B67 /* EntityTypes.swift */; };
 		E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202115725509B7300790DA9 /* StartFamilyView.swift */; };
 		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
@@ -103,8 +111,16 @@
 		AC3D57602552D8140013D470 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		AC3D57622552DBD90013D470 /* FamilyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTableView.swift; sourceTree = "<group>"; };
 		AC3D57642552DD9C0013D470 /* FamilyList+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyList+DD.swift"; sourceTree = "<group>"; };
-		AC4672672552DF15002AC45B /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		AC4672672552DF15002AC45B /* FamilyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyBuilder.swift; sourceTree = "<group>"; };
 		AC7C029E2554AD71002FE9DD /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		AC9D41B7255AC8EF00925819 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AC9D41BC255AC90400925819 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		AC9D41C1255AC91800925819 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		AC9D41C6255AC92600925819 /* ElderEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElderEntity.swift; sourceTree = "<group>"; };
+		AC9D41CB255ACD5200925819 /* Kinship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kinship.swift; sourceTree = "<group>"; };
+		AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AC9D41D7255AD04C00925819 /* FamilyControllerLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyControllerLogic.swift; sourceTree = "<group>"; };
+		AC9D41E0255AD14400925819 /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
 		ACEF1C13255425CF00346B67 /* EntityTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTypes.swift; sourceTree = "<group>"; };
 		D069511B0B3B9ACB3B6130A1 /* Pods-CaregiverProject-CaregiverProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D5E89D9C51D1BB3FC9AF6353 /* Pods_CaregiverProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaregiverProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +210,7 @@
 		AC38732A2552E5340084590D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AC9D41D7255AD04C00925819 /* FamilyControllerLogic.swift */,
 				E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */,
 				AC3873262552E1CB0084590D /* FamilyManageViewController.swift */,
 				AC3D57542552D6470013D470 /* FamilyListViewController.swift */,
@@ -277,7 +294,11 @@
 				ACEF1C13255425CF00346B67 /* EntityTypes.swift */,
 				AC29293B25544E0600C26FE1 /* ManageState.swift */,
 				AC7C029E2554AD71002FE9DD /* UserSession.swift */,
+
 				79960FC8255C3ECD00A01D85 /* AppUtility.swift */,
+
+				AC9D41CB255ACD5200925819 /* Kinship.swift */,
+
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -285,7 +306,76 @@
 		AC4672662552DF0B002AC45B /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				AC4672672552DF15002AC45B /* Builder.swift */,
+				AC4672672552DF15002AC45B /* FamilyBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		AC9D41AF255AC82B00925819 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D41DF255AD13500925819 /* Builder */,
+				AC9D41B0255AC84C00925819 /* View */,
+				AC9D41B1255AC85800925819 /* Interactor */,
+				AC9D41B2255AC85C00925819 /* Presenter */,
+				AC9D41B3255AC86400925819 /* Entity */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		AC9D41B0255AC84C00925819 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D41D0255ACE3700925819 /* View */,
+				AC9D41D1255ACE3E00925819 /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AC9D41B1255AC85800925819 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D41BC255AC90400925819 /* ProfileInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		AC9D41B2255AC85C00925819 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D41C1255AC91800925819 /* ProfilePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AC9D41B3255AC86400925819 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D41C6255AC92600925819 /* ElderEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		AC9D41D0255ACE3700925819 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D41B7255AC8EF00925819 /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AC9D41D1255ACE3E00925819 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AC9D41DF255AD13500925819 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D41E0255AD14400925819 /* ProfileBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -349,6 +439,7 @@
 				E20211802550B33700790DA9 /* General */,
 				E2137FA1254F3F11007F4F53 /* Authentication */,
 				AC3D574F2552D5D50013D470 /* Family */,
+				AC9D41AF255AC82B00925819 /* Profile */,
 				E2137F75254F311A007F4F53 /* Assets.xcassets */,
 				E2137F9F254F3E75007F4F53 /* Application */,
 				E2137F72254F3118007F4F53 /* Main.storyboard */,
@@ -716,6 +807,7 @@
 				7904B48E255AB4C400D078F5 /* FamilyTreeView.swift in Sources */,
 				E2DD96DF2551A52200A89A04 /* RegisterProtocols.swift in Sources */,
 				AC3873292552E2330084590D /* FamilyListView.swift in Sources */,
+				AC9D41C7255AC92600925819 /* ElderEntity.swift in Sources */,
 				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
 				E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */,
@@ -725,17 +817,22 @@
 				79960FCE255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
 				AC3D57552552D6470013D470 /* FamilyListViewController.swift in Sources */,
+				AC9D41E1255AD14400925819 /* ProfileBuilder.swift in Sources */,
+				AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */,
 				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
+				AC9D41D8255AD04C00925819 /* FamilyControllerLogic.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
 				E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */,
 				E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */,
 				E20211662550A0E100790DA9 /* RegisterView.swift in Sources */,
 				E20211832550B35900790DA9 /* ViewCodeProtocol.swift in Sources */,
 				AC3D574E2552D41D0013D470 /* Family.swift in Sources */,
+				AC9D41D3255ACE5A00925819 /* ProfileViewController.swift in Sources */,
 				AC3D575E2552D7B90013D470 /* FamilyTableViewCell.swift in Sources */,
 				AC3D57582552D7250013D470 /* FamilyPresenter.swift in Sources */,
 				AC29293C25544E0600C26FE1 /* ManageState.swift in Sources */,
+				AC9D41CC255ACD5200925819 /* Kinship.swift in Sources */,
 				E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */,
 				7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */,
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
@@ -743,13 +840,22 @@
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
 				AC3D57632552DBD90013D470 /* FamilyTableView.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
+
 				79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */,
 				AC4672682552DF15002AC45B /* Builder.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				7904B499255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift in Sources */,
+
+				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
+				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
+				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
+				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
+				AC9D41C2255AC91800925819 /* ProfilePresenter.swift in Sources */,
+
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,
+				AC9D41BD255AC90400925819 /* ProfileInteractor.swift in Sources */,
 				AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
