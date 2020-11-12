@@ -16,8 +16,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
 
-        let authentication = AuthenticationRouter.createModule()
-        window?.rootViewController = authentication
+        if UserDefaults.userAlreadyLogged {
+            let authentication = AuthenticationRouter.createModule()
+            window?.rootViewController = authentication
+        } else {
+            let authentication = AuthenticationRouter.createModule()
+            window?.rootViewController = authentication
+        }
+        
+        
         window?.makeKeyAndVisible()
     }
 
