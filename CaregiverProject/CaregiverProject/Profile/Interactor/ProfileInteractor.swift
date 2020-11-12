@@ -39,7 +39,7 @@ class ProfileInteractor: ProfileInteractorLogic{
     func readValue(_ dataID: String,completion: @escaping (ProfileEntity) -> ()) {
         ref?.child("ElderProfile").child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            guard let profile = value!["ElderProfile"] as? ProfileEntity else {return}
+            guard let profile = value?["ElderProfile"] as? ProfileEntity else {return}
             completion(profile)
         }) { (error) in
             print(error.localizedDescription)

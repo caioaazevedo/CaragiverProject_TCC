@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController{
     override func loadView() {
         super.loadView()
         view = ProfileView()
-        self.setupData()
+      //  self.setupData()
     }
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController{
     }
     
     func setupData(){
-        self.presenter.assignEntity(entityID: UserSession.shared.elderID!) {
+        self.presenter.assignEntity(entityID: UserSession.shared.elderID ?? UUID().uuidString) {
             self.configureButtons()
         }
     }
