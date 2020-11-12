@@ -21,6 +21,7 @@ class AuthenticationPresenter: ViewToPresenterAuthenticationProtocol{
 
 extension AuthenticationPresenter: InteractorToPresenterAuthenticationProtocol {
     func loginSucceded() {
+        UserDefaults.userAlreadyLogged = true
         view?.performLogin()
 //        router?.pushToStartFamilyScreen()
     }
