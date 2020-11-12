@@ -55,6 +55,7 @@
 		E2194788255B587A0013E942 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2194787255B587A0013E942 /* ImagePickerManager.swift */; };
 		E219478D255B592B0013E942 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219478C255B592B0013E942 /* StringHelper.swift */; };
 		E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */; };
+		E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2AD1255CA8C8008468E5 /* UserDefaultsExtension.swift */; };
 		E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */; };
 		E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96D325519E6B00A89A04 /* AuthenticationRouter.swift */; };
 		E2DD96DF2551A52200A89A04 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96DE2551A52200A89A04 /* RegisterProtocols.swift */; };
@@ -140,6 +141,7 @@
 		E2194787255B587A0013E942 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		E219478C255B592B0013E942 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTypeEnum.swift; sourceTree = "<group>"; };
+		E2DC2AD1255CA8C8008468E5 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutheticationPresenter.swift; sourceTree = "<group>"; };
 		E2DD96D325519E6B00A89A04 /* AuthenticationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRouter.swift; sourceTree = "<group>"; };
 		E2DD96DE2551A52200A89A04 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 		AC3D575F2552D8040013D470 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E2DC2AD0255CA8AD008468E5 /* Extensions */,
 				E2DC2ACA255CA03F008468E5 /* Enums */,
 				E2194786255B58680013E942 /* ImagePicker */,
 				AC3D57602552D8140013D470 /* Metrics.swift */,
@@ -555,6 +558,14 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		E2DC2AD0255CA8AD008468E5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E2DC2AD1255CA8C8008468E5 /* UserDefaultsExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -808,6 +819,7 @@
 				E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
 				AC3D57552552D6470013D470 /* FamilyListViewController.swift in Sources */,
+				E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */,
 				AC9D41E1255AD14400925819 /* ProfileBuilder.swift in Sources */,
 				AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */,
 				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,
@@ -1017,7 +1029,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CaregiverProject/CaregiverProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7YWK9C69PH;
+				DEVELOPMENT_TEAM = KFC8C5H4A6;
 				INFOPLIST_FILE = CaregiverProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1038,7 +1050,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CaregiverProject/CaregiverProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7YWK9C69PH;
+				DEVELOPMENT_TEAM = KFC8C5H4A6;
 				INFOPLIST_FILE = CaregiverProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

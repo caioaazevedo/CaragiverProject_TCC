@@ -54,7 +54,7 @@ class ImagePickerManager: NSObject {
         if let action = self.sourceTypeAction(type: .camera, title: StringHelper.imagePickerOptions.camera.title) {
                 alertController.addAction(action)
             }
-        if let action = self.sourceTypeAction(type: .photoLibrary, title: StringHelper.imagePickerOptions.camera.title) {
+        if let action = self.sourceTypeAction(type: .photoLibrary, title: StringHelper.imagePickerOptions.library.title) {
                 alertController.addAction(action)
             }
 

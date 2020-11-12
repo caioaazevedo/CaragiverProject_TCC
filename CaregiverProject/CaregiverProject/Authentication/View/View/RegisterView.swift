@@ -42,6 +42,7 @@ class RegisterView: UIView {
         image.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = (UIScreen.main.bounds.width*0.25)/2
+        image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
