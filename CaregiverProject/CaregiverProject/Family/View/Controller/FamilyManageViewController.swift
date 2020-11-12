@@ -26,13 +26,13 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
         self.manageState = manageState
         self.presenter = familyManagePresenter
         super.init(nibName: nil, bundle: nil)
-        //        self.view = presentedView as? UIView
+//        self.view = presentedView as? UIView
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+       
     func configureButtons(){
         guard let view = view as? FamilyManageView else {return}
         switch manageState{
@@ -84,6 +84,7 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
             })
         }
     }
+ 
     
     
 }
