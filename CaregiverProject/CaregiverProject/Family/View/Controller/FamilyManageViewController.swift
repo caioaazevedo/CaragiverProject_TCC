@@ -49,19 +49,21 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
     }
     
     func setupData(completion: @escaping () -> ()){
-        self.presenter.assignEntity(entityID: UserSession.shared.familyID!) {}
+        self.presenter.assignEntity(entityID: UserSession.shared.familyID!) {
+            completion()
+        }
     }
     
     @objc func joinFamily() {
         guard let view = view as? FamilyManageView else {return}
         guard let presenter = presenter as? FamilyPresenter else {return}
+        UserSession.shared.familyID = view.primaryField.text
         let family = Family(id: view.primaryField.text ?? "default", name: view.primaryField.text ?? "Familia", members: [UserSession.shared.username!])
         self.setupData {
             self.presenter.entity?.append(UserSession.shared.username!)
             presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
                 self.setupData {
-                    let module = FamilyBuilder.buildFamilyListModule(with: &presenter.interactor)
-                    module.members = self.presenter.entity ?? []
+                    let module = FamilyBuilder.buildFamilyTabBarController()                    
                     self.present(module, animated: true, completion: nil)
                 }
             })
