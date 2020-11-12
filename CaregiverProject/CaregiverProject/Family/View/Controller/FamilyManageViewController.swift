@@ -75,13 +75,12 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
         guard let view = view as? FamilyManageView else {return}
         guard let presenter = presenter as? FamilyPresenter else {return}
         UserSession.shared.familyID = UUID().uuidString
-        let family = Family(id: UserSession.shared.familyID!, name: view.primaryField.text ?? "Familia", members: [UserSession.shared.username!])
+        let family = Family(id: UserSession.shared.familyID!, name: view.primaryField.text ?? "Familia", members: [UserSession.shared.id!])
         
         presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .create) { (result) in
             presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
                 self.setupData {
-                    let module = FamilyBuilder.buildFamilyListModule(with: &presenter.interactor)
-                    module.members = self.presenter.entity ?? []
+                    let module = FamilyBuilder.buildFamilyTabBarController()
                     self.present(module, animated: true, completion: nil)
                 }
             })

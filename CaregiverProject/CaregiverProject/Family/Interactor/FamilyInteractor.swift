@@ -17,7 +17,7 @@ protocol FamilyManagementLogic{
     typealias ResultClosure<T> = (Result<T?,Error>) -> Void
     var ref: DatabaseReference? {get}
     func addValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
-    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping ([String]) -> ())
+    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping (Any) -> ())
     func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
     func deleteValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping (Bool) -> ())
 }
@@ -46,12 +46,25 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         }
     }
     
-    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping ([String]) -> ()) {
+    func readValue(_ dataID: String,_ entityType: EntityTypes,completion: @escaping (Any) -> ()) {
         ref?.child(entityType.rawValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
             // USE DECODER
-            let value = snapshot.value as? NSDictionary
-            guard let members = value!["members"] as? [String] else {return}
-            completion(members)
+            guard let value = snapshot.value as? NSDictionary else {return}
+            switch entityType{
+            case .Family:
+                let name = value[""] as? String ?? ""
+                let membersId = value["members"] as? [String] ?? [String]()
+                let family = Family(id: dataID, name: name, members: membersId)
+                completion(family)
+            case .Member:
+                let name = value["name"] as? String ?? ""
+                let memberType = value["memberType"] as? Int ?? 0
+                let imageString = value["image"] as? String
+                let image = self.decodeImage(str64: imageString)
+                let isAdmin = value["isAdmin"] as? Bool ?? false
+                let member = Member(id: dataID, name: name, email: "", password: "", memberType: MemberType(rawValue: memberType) ?? .others, image: image, isAdmin: isAdmin)
+                completion(member)
+            }
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -80,6 +93,14 @@ class FamilyInteractor:  FamilyInteractorProtocol{
         case .Member:
             break
         }
+    }
+    
+    func decodeImage(str64: String?) -> UIImage? {
+        guard let str64 = str64 else { return nil }
+        
+        let dataDecoded : Data = Data(base64Encoded: str64, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        return decodedimage
     }
     
 }

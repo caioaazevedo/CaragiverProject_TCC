@@ -9,6 +9,7 @@ import UIKit
 
 class FamilyTreeViewController: UIViewController {
     var presenter: FamilyPresenter?
+    var familyId: String?
     
     lazy var sectionDict: [Int:(header: String, members: [Member])] = {
         var dict = [Int:(header: String, members: [Member])]()
@@ -25,6 +26,42 @@ class FamilyTreeViewController: UIViewController {
                 self.view = view
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        getFamily()
+        
+    }
+   
+    func getFamily(){
+        guard let presenter = presenter else {return}
+        guard let id = familyId else {return}
+        
+        let family = Family(id: id, name: "", members: [])
+        
+        presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Any.self, operation: .read) { [weak self] (result) in
+            guard let self = self else {return}
+            guard let familyEntity = result as? Family else {return}
+            
+            for id in familyEntity.members{
+                let member = Member(id: id, name: "", email: "", password: "", memberType: .grandson_granddaughter, image: nil, isAdmin: false)
+                
+                presenter.manageEntity(entity: member, entityType: .Member, intendedReturn: Any.self, operation: .read) { [weak self] (result) in
+                    guard let self = self else {return}
+                    guard let memberEntity = result as? Member else {return}
+                    guard self.sectionDict[memberEntity.memberType.type] != nil else {return}
+                    self.sectionDict[memberEntity.memberType.type]!.members.append(memberEntity)
+                    
+                    guard let view = self.presentedView as? FamilyTreeView else {return}
+                    view.collectionView.reloadData()
+                }
+            }
+            
+        }
+    }
+    
+    func getElder(){
+//        presenter?.manageEntity(entity: <#T##ModelProtocol#>, entityType: <#T##EntityTypes#>, intendedReturn: <#T##T.Type#>, operation: <#T##CRUDOperations#>, completion: <#T##(T?) -> ()#>)
     }
     
     override func viewWillAppear(_ animated: Bool) {

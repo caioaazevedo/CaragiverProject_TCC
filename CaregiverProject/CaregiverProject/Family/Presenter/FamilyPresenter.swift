@@ -25,7 +25,7 @@ class FamilyPresenter: FamilyPresenterProtocol{
     
     func assignEntity(entityID: String,completion: @escaping () -> ()){
         interactor.readValue(entityID,.Family) { (value) in
-            self.entity = value
+            self.entity = value as? [String] ?? [String]()
             completion()
         }
     }

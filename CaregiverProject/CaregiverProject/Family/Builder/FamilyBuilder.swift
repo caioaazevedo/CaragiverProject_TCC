@@ -36,6 +36,8 @@ final class FamilyBuilder{
         let familyTabBarController = FamilyTabBarController()
         
         let familyTreeModule = FamilyBuilder.buildFamilyTreeModule()
+        familyTreeModule.familyId = UserSession.shared.familyID
+        familyTreeModule.viewDidLoad()
         let familyIcon = UITabBarItem(title: "Family", image: .actions, tag: 0)
         familyTreeModule.tabBarItem = familyIcon
         let profileModule = ProfileBuilder.buildProfileModule()

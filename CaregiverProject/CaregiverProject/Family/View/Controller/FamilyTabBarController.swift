@@ -9,7 +9,7 @@ import UIKit
 
 class FamilyTabBarController: UITabBarController{
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
         delegate = self
     }
     

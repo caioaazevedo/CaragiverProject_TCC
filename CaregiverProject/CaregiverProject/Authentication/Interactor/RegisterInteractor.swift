@@ -26,6 +26,7 @@ class RegisterInteractor: PresenterToInteractorRegisterProtocol {
                 let image64 = self.encodeImage(image: member.image)
                 self.ref.child("member").child(id!).setValue(["name": member.name, "isAdmin": member.isAdmin, "memberType": member.memberType.type, "image": image64])
                 UserSession.shared.username = member.name
+                UserSession.shared.id = member.id
                 self.presenter?.registerUserSucceded()
                 return
             }

@@ -78,7 +78,7 @@ class RegisterViewController: UIViewController {
         let email = registerView.username.text!
         let password = registerView.password.text!
         let memberType = registerView.memberRelationship.text
-        let member = Member(name: name, email: email, password: password, memberType: getMemberType(typeString: memberType), image: registerView.imageView.image)
+        let member = Member(id: "", name: name, email: email, password: password, memberType: getMemberType(typeString: memberType), image: registerView.imageView.image)
         presenter?.registerUser(member: member)
     }
     

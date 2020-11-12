@@ -8,11 +8,11 @@
 import Foundation
 
 // Relationship
-enum MemberType {
-    case husband_wife
-    case son_daughter
-    case grandson_granddaughter
-    case others
+enum MemberType: Int{
+    case husband_wife = 0
+    case son_daughter = 1
+    case grandson_granddaughter = 2
+    case others = 3
     
     var type: Int {
         switch self {

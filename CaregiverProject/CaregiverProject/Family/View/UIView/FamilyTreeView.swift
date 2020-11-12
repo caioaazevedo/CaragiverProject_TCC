@@ -33,7 +33,7 @@ final class FamilyTreeView: UIView{
     lazy var breakLine: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = #colorLiteral(red: 0.9018817544, green: 0.9020115733, blue: 0.901853323, alpha: 1)
-        view.contentMode = .scaleAspectFit
+        view.layer.cornerRadius = 2
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

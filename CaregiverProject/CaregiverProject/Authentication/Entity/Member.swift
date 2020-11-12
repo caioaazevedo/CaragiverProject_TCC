@@ -6,9 +6,10 @@
 //
 
 import UIKit
+typealias Members = [Member]
 
-struct Member {
-    var id: String?
+struct Member: ModelProtocol{
+    var id: String
     var name: String
     var email: String
     var password: String

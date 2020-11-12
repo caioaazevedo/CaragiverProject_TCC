@@ -23,7 +23,7 @@ class FamilyTreeCollectionViewCell: UICollectionViewCell {
     lazy var name: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -64,12 +64,12 @@ extension FamilyTreeCollectionViewCell: ViewCodeProtocol{
             imageView.widthAnchor.constraint(equalToConstant: imageView.frame.width),
             
             name.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            name.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            name.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             name.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             name.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
             hierarchy.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            hierarchy.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 16),
+            hierarchy.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 8),
             hierarchy.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             hierarchy.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
         ])

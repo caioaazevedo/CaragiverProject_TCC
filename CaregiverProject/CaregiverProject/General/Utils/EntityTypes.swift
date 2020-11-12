@@ -9,5 +9,5 @@ import Foundation
 
 enum EntityTypes: String{
     case Family = "Family"
-    case Member = "Member"    
+    case Member = "member"    
 }
