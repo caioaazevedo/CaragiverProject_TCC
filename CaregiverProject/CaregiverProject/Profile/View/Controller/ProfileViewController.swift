@@ -9,15 +9,19 @@ import UIKit
 
 class ProfileViewController: UIViewController{
     var presenter: ProfilePresenterLogic
-    
+    var profileView: ProfileView?
     override func loadView() {
         super.loadView()
-        view = ProfileView()
-      //  self.setupData()
+        profileView = ProfileView()
+        profileView?.notesField.delegate = self
+        view = profileView
+        
+        self.setupData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.insertValues()
     }
     
     init(presenter: ProfilePresenterLogic){
@@ -45,7 +49,7 @@ class ProfileViewController: UIViewController{
     
     func insertValues(){
         guard let view = view as? ProfileView else {return}
-        let entity = ProfileEntity(id: view.nameLabel.text!, name: view.nameLabel.text!, age: Int(view.ageLabel.text!)!, photo: (view.profileImage.image?.pngData())!, notes: view.notesField.text!, kinship: .brother)
+        let entity = ProfileEntity(id: view.nameLabel.text!, name: view.nameLabel.text!, age: 8, photo: (view.profileImage.image?.pngData())!, notes: view.notesField.text!, kinship: .brother)
         self.presenter.manageEntity(entity: entity, intendedReturn: Bool.self, operation: .create) { result in
             guard let result = result else {return}
             if result { self.setupData() }
@@ -60,4 +64,8 @@ class ProfileViewController: UIViewController{
             if result { self.setupData() }
         }
     }
+}
+
+extension ProfileViewController: UITextViewDelegate{
+    
 }
