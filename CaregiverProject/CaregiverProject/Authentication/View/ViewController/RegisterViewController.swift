@@ -32,18 +32,11 @@ class RegisterViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         imageManager = ImagePickerManager(viewController: self, delegate: self)
+        registerView.imageButton.addTarget(self, action: #selector(presentPicker), for: .touchUpInside)
         registerView.registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
         
         createPickerView()
         dismissPickerView()
-    }
-    
-    @objc func register() {
-        let name = registerView.realName.text!
-        let email = registerView.username.text!
-        let password = registerView.password.text!
-        let member = Member(name: name, email: email, password: password, type: MemberType.husband_wife)
-        presenter?.registerUser(member: member)
     }
     
     func createPickerView() {
@@ -59,6 +52,34 @@ class RegisterViewController: UIViewController {
        toolBar.setItems([button], animated: true)
        toolBar.isUserInteractionEnabled = true
         registerView.memberRelationship.inputAccessoryView = toolBar
+    }
+    
+    func getMemberType(typeString: String?) -> MemberType {
+        switch typeString {
+        case MemberType.husband_wife.title:
+            return MemberType.husband_wife
+        case MemberType.son_daughter.title:
+            return MemberType.son_daughter
+        case MemberType.grandson_granddaughter.title:
+            return MemberType.grandson_granddaughter
+        case MemberType.others.title:
+            return MemberType.others
+        default:
+            return MemberType.others
+        }
+    }
+    
+    @objc func presentPicker() {
+        imageManager?.present()
+    }
+    
+    @objc func register() {
+        let name = registerView.realName.text!
+        let email = registerView.username.text!
+        let password = registerView.password.text!
+        let memberType = registerView.memberRelationship.text
+        let member = Member(name: name, email: email, password: password, memberType: getMemberType(typeString: memberType), image: registerView.imageView.image)
+        presenter?.registerUser(member: member)
     }
     
     @objc func action() {
