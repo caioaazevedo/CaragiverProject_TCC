@@ -9,11 +9,6 @@ import UIKit
 
 class FamilyTreeCollectionView: UICollectionView{
     
-    lazy var familyTreeCell: FamilyTreeCollectionViewCell = {
-        let cell = FamilyTreeCollectionViewCell(frame: .zero)
-        return cell
-    }()
-    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: layout)
         self.setUpView()

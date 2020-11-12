@@ -9,16 +9,12 @@ import UIKit
 
 class FamilyTreeViewController: UIViewController {
     var presenter: FamilyPresenter?
-    var members = [
-        "Braga",
-        "Caio",
-        "Fabio",
-        "Guilherme",
-        "Igor",
-        "Vitor",
-        "Gabriel",
-        "Yumi"
+    
+    var sections = [
+        (header: "Filhos", members: ["Braga"]),
+        (header: "Netos", members: ["Caio","Fabio","Gui"])
     ]
+
     var presentedView: ViewCodeProtocol?{
         willSet{
             if let view = newValue as? UIView{

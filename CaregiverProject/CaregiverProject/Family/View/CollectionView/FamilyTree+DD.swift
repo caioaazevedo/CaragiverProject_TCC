@@ -8,13 +8,17 @@
 import UIKit
 
 extension FamilyTreeViewController: UICollectionViewDataSource{
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sections.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return members.count
+        return sections[section].members.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? FamilyTreeCollectionViewCell ?? FamilyTreeCollectionViewCell()
-        cell.name.text = members[indexPath.row]
+        cell.name.text = sections[indexPath.section].members[indexPath.row]
         cell.hierarchy.text = "Filho"
         cell.layer.cornerRadius = 25
         cell.layer.borderWidth = 0.5
@@ -23,6 +27,11 @@ extension FamilyTreeViewController: UICollectionViewDataSource{
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as? FamilyTreeCollectionReusableView ?? FamilyTreeCollectionReusableView()
+        header.headerLabel.text = sections[indexPath.section].header
+        return header
+    }
     
 }
 

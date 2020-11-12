@@ -40,10 +40,12 @@ final class FamilyTreeView: UIView{
     
     lazy var collectionView: FamilyTreeCollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: 100, height: 170)
+        layout.headerReferenceSize = CGSize(width: Metrics.Device.width, height: 80)
         let collectionView = FamilyTreeCollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(FamilyTreeCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        collectionView.register(FamilyTreeCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
