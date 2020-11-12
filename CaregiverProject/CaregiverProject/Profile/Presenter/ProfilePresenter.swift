@@ -9,27 +9,46 @@ import Foundation
 
 protocol ProfilePresenterLogic{
     var interactor: ProfileInteractorLogic { get }
-    func manageEntity<T>(entity: ModelProtocol,operation: CRUDOperations,completion: @escaping (T?) -> ())
+    var entity: ProfileEntity? { get set }
+    func assignEntity(entityID: String,completion: @escaping () -> ())
+    func manageEntity<T>(entity: ModelProtocol,intendedReturn: T.Type,operation: CRUDOperations,completion: @escaping (T?) -> ())
 }
 
 class ProfilePresenter: ProfilePresenterLogic{
     
     var interactor: ProfileInteractorLogic
+    var entity: ProfileEntity?
     
     init(with interactor: ProfileInteractorLogic){
         self.interactor = interactor
     }
     
-    func manageEntity<T>(entity: ModelProtocol, operation: CRUDOperations, completion: @escaping (T?) -> ()) {
+    func assignEntity(entityID: String,completion: @escaping () -> ()) {
+        interactor.readValue(entityID) { (value) in
+            print(value)
+            self.entity = value
+            completion()
+        }
+    }
+    
+    func manageEntity<T>(entity: ModelProtocol,intendedReturn: T.Type,operation: CRUDOperations, completion: @escaping (T?) -> ()) {
         switch operation{
         case .create:
-            break
+            interactor.addValue(entity) { (result) in
+                completion(result as? T)
+            }
         case .read:
-            break
+            interactor.readValue(entity.id) { (result) in
+                completion(result as? T)
+            }
         case .update:
-            break
+            interactor.updateValue(entity) { (result) in
+                completion(result as? T)
+            }
         case .delete:
-            break
+            interactor.deleteValue(entity.id) { (result) in
+                completion(result as? T)
+            }
         }
     }
     

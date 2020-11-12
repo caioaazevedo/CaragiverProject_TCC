@@ -24,7 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let authentication = AuthenticationRouter.createModule()
             window?.rootViewController = authentication
         }
-        
         window?.makeKeyAndVisible()
     }
 

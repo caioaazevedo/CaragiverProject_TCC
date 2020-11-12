@@ -48,24 +48,26 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
         
     }
     
+    func setupData(completion: @escaping () -> ()){
+        self.presenter.assignEntity(entityID: UserSession.shared.familyID!) {}
+    }
+    
     @objc func joinFamily() {
         guard let view = view as? FamilyManageView else {return}
         guard let presenter = presenter as? FamilyPresenter else {return}
-        var family = Family(id: view.primaryField.text ?? "default", name: view.primaryField.text ?? "Familia", members: [UserSession.shared.username!])
-        presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: [String].self, operation: .read) { members in
-            family.members = members ?? []
-            family.members.append(UserSession.shared.username!)
+        let family = Family(id: view.primaryField.text ?? "default", name: view.primaryField.text ?? "Familia", members: [UserSession.shared.username!])
+        self.setupData {
+            self.presenter.entity?.append(UserSession.shared.username!)
             presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
-                presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: [String].self, operation: .read, completion: { familyMembers in
-                                                   
+                self.setupData {
                     let module = FamilyBuilder.buildFamilyListModule(with: &presenter.interactor)
-                module.members = familyMembers ?? []
-                self.present(module, animated: true, completion: nil)
+                    module.members = self.presenter.entity ?? []
+                    self.present(module, animated: true, completion: nil)
+                }
             })
-            })
-            
         }
     }
+    
     
     @objc func createFamily() {
         guard let view = view as? FamilyManageView else {return}
@@ -74,16 +76,15 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
         
         presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .create) { (result) in
             presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
-                presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: [String].self, operation: .read, completion: { familyMembers in
-                    
-                                                
+                self.setupData {
                     let module = FamilyBuilder.buildFamilyListModule(with: &presenter.interactor)
-            module.members = familyMembers ?? []                
-            self.present(module, animated: true, completion: nil)
-                })
+                    module.members = self.presenter.entity ?? []
+                    self.present(module, animated: true, completion: nil)
+                }
             })
         }
     }
  
+    
     
 }
