@@ -45,7 +45,9 @@ class AuthenticationViewController: UIViewController {
     }
     
     @objc func register() {
-        self.present(RegisterRouter.createModule(), animated: true, completion: nil)
+        let viewController = RegisterRouter.createModule()
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: true, completion: nil)
     }
 }
 
