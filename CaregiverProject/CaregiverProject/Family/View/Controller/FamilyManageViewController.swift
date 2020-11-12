@@ -74,7 +74,8 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
     @objc func createFamily() {
         guard let view = view as? FamilyManageView else {return}
         guard let presenter = presenter as? FamilyPresenter else {return}
-        let family = Family(id: UUID().uuidString, name: view.primaryField.text ?? "Familia", members: [UserSession.shared.username!])
+        UserSession.shared.familyID = UUID().uuidString
+        let family = Family(id: UserSession.shared.familyID!, name: view.primaryField.text ?? "Familia", members: [UserSession.shared.username!])
         
         presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .create) { (result) in
             presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
