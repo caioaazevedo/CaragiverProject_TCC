@@ -51,6 +51,15 @@ final class ProfileView: UIView{
         return view
     }()
     
+    lazy var mainButton: UIButton = {
+        var view = UIButton(frame: .zero)
+        view.setTitle("Edit", for: .normal)
+        view.setTitleColor(.systemBlue, for: .normal)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setUpView()
@@ -67,6 +76,7 @@ extension ProfileView: ViewCodeProtocol{
         self.addSubview(nameLabel)
         self.addSubview(ageLabel)
         self.addSubview(notesField)
+        self.addSubview(mainButton)
     }
     
     func setUpViewConstraints() {
@@ -82,6 +92,9 @@ extension ProfileView: ViewCodeProtocol{
             
             notesField.centerXAnchor.constraint(equalTo: centerXAnchor),
             notesField.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -10),
+            
+            mainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            mainButton.centerYAnchor.constraint(equalTo: centerYAnchor,constant: 20),
         ])
     }
     

@@ -25,6 +25,7 @@ class ProfilePresenter: ProfilePresenterLogic{
     
     func assignEntity(entityID: String,completion: @escaping () -> ()) {
         interactor.readValue(entityID) { (value) in
+            print(value)
             self.entity = value
             completion()
         }

@@ -30,7 +30,8 @@ class ProfileInteractor: ProfileInteractorLogic{
         guard casted.name != "" else {return}
         
         let uid = casted.id
-        let parameters: Dictionary<String,Any> = ["name": casted.name,"age":casted.age,"photo":casted.photo,"notes":casted.notes,"kinship":casted.kinship]
+        let image64 = self.encodeImage(image: casted.photo)
+        let parameters: Dictionary<String,Any> = ["name": casted.name,"age":casted.age,"photo":image64,"notes":casted.notes,"kinship":casted.memberType.type]
         db.child("ElderProfile").child(uid).setValue(parameters)
         completion(true)
     }
@@ -39,7 +40,12 @@ class ProfileInteractor: ProfileInteractorLogic{
     func readValue(_ dataID: String,completion: @escaping (ProfileEntity) -> ()) {
         ref?.child("ElderProfile").child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            guard let profile = value?["ElderProfile"] as? ProfileEntity else {return}
+            let stringPhoto = value!["photo"] as! String
+            let photo = self.decodeImage(str64: stringPhoto)
+            let profile = ProfileEntity(id:  "",name: (value!["name"] as? String)!, age: (value!["age"] as? Int)!,photo: photo!, notes: (value!["notes"] as? String)!, memberType: value!["kinship"] as? MemberType ?? MemberType.husband_wife)
+                        
+            
+            
             completion(profile)
         }) { (error) in
             print(error.localizedDescription)
@@ -53,7 +59,7 @@ class ProfileInteractor: ProfileInteractorLogic{
                           "age": casted.age,
                           "photo": casted.photo,
                           "notes": casted.notes,
-                          "kinship": casted.kinship] as [String : Any]
+                          "kinship": casted.memberType.type] as [String : Any]
         let db = ref?.child("ElderProfile/\(casted.id)")
         db?.updateChildValues(parameters)
         completion(true)
@@ -65,4 +71,22 @@ class ProfileInteractor: ProfileInteractorLogic{
         completion(true)
         
     }
+    
+    func encodeImage(image: UIImage?) -> String {
+        //Now use image to create into NSData format
+        guard let image = image else { return "" }
+        let imageData = image.jpegData(compressionQuality: 0.5)
+        let str64 = imageData?.base64EncodedString(options: .lineLength64Characters)
+        
+        return str64 ?? ""
+    }
+    
+    func decodeImage(str64: String?) -> UIImage? {
+        guard let str64 = str64 else { return nil }
+        
+        let dataDecoded : Data = Data(base64Encoded: str64, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        return decodedimage
+    }
+    
 }
