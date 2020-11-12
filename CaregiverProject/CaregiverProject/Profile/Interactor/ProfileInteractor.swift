@@ -44,8 +44,6 @@ class ProfileInteractor: ProfileInteractorLogic{
             let photo = self.decodeImage(str64: stringPhoto)
             let profile = ProfileEntity(id:  "",name: (value!["name"] as? String)!, age: (value!["age"] as? Int)!,photo: photo!, notes: (value!["notes"] as? String)!, memberType: value!["kinship"] as? MemberType ?? MemberType.husband_wife)
                         
-            
-            
             completion(profile)
         }) { (error) in
             print(error.localizedDescription)
