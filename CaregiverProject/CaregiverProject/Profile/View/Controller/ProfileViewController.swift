@@ -46,6 +46,7 @@ class ProfileViewController: UIViewController{
     func setupData(){
         self.presenter.assignEntity(entityID: UserSession.shared.elderID ?? UUID().uuidString) {
             self.configureViews()
+            NotificationCenter.default.post(name: .elderData, object: nil, userInfo: ["elderData":self.presenter.entity!])
         }
     }
     

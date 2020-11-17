@@ -14,6 +14,8 @@
 		7904B499255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */; };
 		7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */; };
 		7904B4A3255ADF2800D078F5 /* FamilyTree+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B4A2255ADF2800D078F5 /* FamilyTree+DD.swift */; };
+		7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933236B255DEA060011FC03 /* Notification+CustomName.swift */; };
+		79332371255DEA6C0011FC03 /* ElderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79332370255DEA6C0011FC03 /* ElderManager.swift */; };
 		79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FC8255C3ECD00A01D85 /* AppUtility.swift */; };
 		79960FCE255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */; };
 		79960FE8255D84ED00A01D85 /* FamilyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */; };
@@ -98,6 +100,8 @@
 		7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewController.swift; sourceTree = "<group>"; };
 		7904B4A2255ADF2800D078F5 /* FamilyTree+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyTree+DD.swift"; sourceTree = "<group>"; };
+		7933236B255DEA060011FC03 /* Notification+CustomName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+CustomName.swift"; sourceTree = "<group>"; };
+		79332370255DEA6C0011FC03 /* ElderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElderManager.swift; sourceTree = "<group>"; };
 		79960FC8255C3ECD00A01D85 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionReusableView.swift; sourceTree = "<group>"; };
 		79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTabBarController.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 				AC7C029E2554AD71002FE9DD /* UserSession.swift */,
 				79960FC8255C3ECD00A01D85 /* AppUtility.swift */,
 				AC9D41CB255ACD5200925819 /* Kinship.swift */,
+				79332370255DEA6C0011FC03 /* ElderManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -594,6 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				E2DC2AD1255CA8C8008468E5 /* UserDefaultsExtension.swift */,
+				7933236B255DEA060011FC03 /* Notification+CustomName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -857,6 +863,7 @@
 				E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */,
 				AC9D41E1255AD14400925819 /* ProfileBuilder.swift in Sources */,
 				AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */,
+				79332371255DEA6C0011FC03 /* ElderManager.swift in Sources */,
 				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */,
@@ -893,6 +900,7 @@
 				AC9D41C2255AC91800925819 /* ProfilePresenter.swift in Sources */,
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,
 				79960FE8255D84ED00A01D85 /* FamilyTabBarController.swift in Sources */,
+				7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */,
 				AC9D41BD255AC90400925819 /* ProfileInteractor.swift in Sources */,
 				AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */,
 			);

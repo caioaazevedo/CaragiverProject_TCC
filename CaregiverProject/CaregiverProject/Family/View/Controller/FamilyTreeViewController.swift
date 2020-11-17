@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import SwiftUI
 
 class FamilyTreeViewController: UIViewController {
+    @ObservedObject var elderManager = ElderManager()
     var presenter: FamilyPresenter?
     var familyId: String?
     
     lazy var sectionDict: [Int:(header: String, members: [Member])] = {
         var dict = [Int:(header: String, members: [Member])]()
-        dict[MemberType.husband_wife.type] = (header: "Husband/Wife", members: [Member]())
+        dict[MemberType.husband_wife.type] = (header: "Husband/2Wife", members: [Member]())
         dict[MemberType.son_daughter.type] = (header: "Son/Daugther", members: [Member]())
         dict[MemberType.grandson_granddaughter.type] = (header: "Grandson/Granddaughter", members: [Member]())
         dict[MemberType.others.type] = (header: "Others", members: [Member]())
@@ -30,7 +32,6 @@ class FamilyTreeViewController: UIViewController {
     
     override func viewDidLoad() {
         getFamily()
-        
     }
    
     func getFamily(){
@@ -61,11 +62,21 @@ class FamilyTreeViewController: UIViewController {
     }
     
     func getElder(){
-//        presenter?.manageEntity(entity: <#T##ModelProtocol#>, entityType: <#T##EntityTypes#>, intendedReturn: <#T##T.Type#>, operation: <#T##CRUDOperations#>, completion: <#T##(T?) -> ()#>)
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            let elder = self.elderManager.elderData
+            guard let view = self.presentedView as? FamilyTreeView else {return}
+            
+            view.elderName.text = elder?.name
+            view.elderImage.image = elder?.photo
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         AppUtility.lockOrientation(.portrait)
+        getElder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
