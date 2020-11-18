@@ -24,7 +24,7 @@ final class FamilyTreeView: UIView{
     lazy var elderName: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont.boldSystemFont(ofSize: 22)
-        label.text = "Drauzio"
+        label.text = "Elder"
         label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false

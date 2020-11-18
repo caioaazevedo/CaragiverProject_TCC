@@ -11,7 +11,7 @@ final class ProfileView: UIView{
     
     var titleLabel: UILabel = {
         var label = UILabel(frame: .zero)
-        label.text = "Perfil do Idoso"
+        label.text = "Elder's Profile"
         let font = UIFont.preferredFont(forTextStyle: .title1)
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
@@ -34,7 +34,7 @@ final class ProfileView: UIView{
     
     lazy var nameHintLabel: UILabel = {
         let view = UILabel()
-        view.text = "Nome do Idoso"
+        view.text = "Elder's Name"
         view.textColor  = UIColor.black
         view.adjustsFontForContentSizeCategory = true
         let font = UIFont.boldSystemFont(ofSize: 22)
@@ -76,7 +76,7 @@ final class ProfileView: UIView{
     
     lazy var ageHintLabel: UILabel = {
         let view = UILabel()
-        view.text = "Idade do Idoso"
+        view.text = "Elder's Age"
         view.textColor  = UIColor.black
         view.adjustsFontForContentSizeCategory = true
         let font = UIFont.boldSystemFont(ofSize: 22)

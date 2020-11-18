@@ -41,7 +41,7 @@ final class FamilyBuilder{
         let familyIcon = UITabBarItem(title: "Family", image: .actions, tag: 0)
         familyTreeModule.tabBarItem = familyIcon
         let profileModule = ProfileBuilder.buildProfileModule()
-        let profileIcon = UITabBarItem(title: "Profile", image: .checkmark, tag: 1)
+        let profileIcon = UITabBarItem(title: "Elder", image: .checkmark, tag: 1)
         profileModule.tabBarItem = profileIcon
         
         familyTabBarController.viewControllers = [
