@@ -40,9 +40,9 @@ class ProfileInteractor: ProfileInteractorLogic{
     func readValue(_ dataID: String,completion: @escaping (ProfileEntity) -> ()) {
         ref?.child("ElderProfile").child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            let stringPhoto = value!["photo"] as! String
+            let stringPhoto = value?["photo"] as? String
             let photo = self.decodeImage(str64: stringPhoto)
-            let profile = ProfileEntity(id:  "",name: (value!["name"] as? String)!, age: (value!["age"] as? Int)!,photo: photo!, notes: (value!["notes"] as? String)!, memberType: value!["kinship"] as? MemberType ?? MemberType.husband_wife)
+            let profile = ProfileEntity(id:  "",name: (value?["name"] as? String) ?? "Undefined", age: (value?["age"] as? Int) ?? 0,photo: photo, notes: (value?["notes"] as? String) ?? "", memberType: value?["kinship"] as? MemberType ?? MemberType.husband_wife)
                         
             completion(profile)
         }) { (error) in
@@ -55,7 +55,7 @@ class ProfileInteractor: ProfileInteractorLogic{
         let parameters = ["uid": casted.id,
                           "name": casted.name,
                           "age": casted.age,
-                          "photo": casted.photo,
+                          "photo": casted.photo ?? UIImage(named: "profileIcon")!,
                           "notes": casted.notes,
                           "kinship": casted.memberType.type] as [String : Any]
         let db = ref?.child("ElderProfile/\(casted.id)")

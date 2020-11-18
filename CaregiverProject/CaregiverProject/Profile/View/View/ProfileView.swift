@@ -20,17 +20,16 @@ final class ProfileView: UIView{
         return label
     }()
     
-    lazy var profileImage: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "profileIcon")
-        view.layer.borderWidth = 1
-        view.contentMode = .scaleAspectFit        
-        view.layer.borderColor = CGColor.init(red: 1, green: 1, blue: 1, alpha: 1)
-        view.layer.cornerRadius = (UIScreen.main.bounds.width*0.50)/2
-        view.clipsToBounds = true
-        view.layer.masksToBounds = false
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    var profileImage: UIImageView = {
+        var image = UIImageView(frame: .zero)
+        image.image = UIImage(named: "profileIcon")
+        image.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        image.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        image.contentMode = .scaleAspectFit
+        image.layer.cornerRadius = (UIScreen.main.bounds.width*0.50)/2
+        image.clipsToBounds = true
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     lazy var nameHintLabel: UILabel = {
@@ -156,8 +155,8 @@ extension ProfileView: ViewCodeProtocol{
             titleLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
             profileImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            profileImage.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -100),
-            profileImage.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.50),
+            profileImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            profileImage.heightAnchor.constraint(equalToConstant: Metrics.Device.width*0.50),
             profileImage.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.50),
             
             imageButton.topAnchor.constraint(equalTo: profileImage.topAnchor),
@@ -166,30 +165,32 @@ extension ProfileView: ViewCodeProtocol{
             imageButton.bottomAnchor.constraint(equalTo: profileImage.bottomAnchor),
          
             nameHintLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameHintLabel.centerYAnchor.constraint(equalTo: centerYAnchor,constant: 0),
+            nameHintLabel.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 30),
             
             nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor,constant: 30),
+            nameLabel.topAnchor.constraint(equalTo: nameHintLabel.bottomAnchor, constant: 30),
             
             mainTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            mainTextField.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
+            mainTextField.topAnchor.constraint(equalTo: nameLabel.topAnchor),
+            mainTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor),
             mainTextField.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.5),
                         
             ageHintLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            ageHintLabel.centerYAnchor.constraint(equalTo: centerYAnchor,constant:90),
+            ageHintLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
             
             ageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            ageLabel.centerYAnchor.constraint(equalTo: centerYAnchor,constant: 120),
+            ageLabel.topAnchor.constraint(equalTo: ageHintLabel.bottomAnchor, constant: 30),
             
             secTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            secTextField.centerYAnchor.constraint(equalTo: ageLabel.centerYAnchor),
+            secTextField.topAnchor.constraint(equalTo: ageLabel.topAnchor),
+            secTextField.bottomAnchor.constraint(equalTo: ageLabel.bottomAnchor),
             secTextField.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.5),
             
             notesField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            notesField.centerYAnchor.constraint(equalTo: centerYAnchor,constant: -10),
+            notesField.topAnchor.constraint(equalTo: ageLabel.bottomAnchor,constant: 30),
             
             mainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            mainButton.centerYAnchor.constraint(equalTo: centerYAnchor,constant: 180),
+            mainButton.topAnchor.constraint(equalTo: notesField.bottomAnchor, constant: 30),
             mainButton.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.5)
         ])
     }

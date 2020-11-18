@@ -14,6 +14,7 @@ final class FamilyTreeView: UIView{
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
         imageView.image = image
         imageView.layer.cornerRadius = imageView.frame.height/2
+        imageView.clipsToBounds = true
         imageView.backgroundColor = #colorLiteral(red: 0.9018817544, green: 0.9020115733, blue: 0.901853323, alpha: 1)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
