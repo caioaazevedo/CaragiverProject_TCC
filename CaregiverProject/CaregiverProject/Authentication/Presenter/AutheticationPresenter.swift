@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AuthenticationPresenter: ViewToPresenterAuthenticationProtocol{
     var view: PresenterToViewAuthenticationProtocol?
@@ -27,6 +28,6 @@ extension AuthenticationPresenter: InteractorToPresenterAuthenticationProtocol {
     }
     
     func failedToLogin(error: Error) {
-        view?.showError(errorMsg: "Error to Sign In. Please, verify password and username fields.")
+        view?.showError(errorMsg: ErrorHandler().handler(error))
     }
 }

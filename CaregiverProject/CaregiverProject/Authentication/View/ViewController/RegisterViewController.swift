@@ -69,6 +69,15 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    func verifyIfIsEmpty(name: String, relationship: String) -> String? {
+        if name.trimmingCharacters(in: .whitespaces).isEmpty {
+            return ErrorMessages.NameIsEmptyError.description
+        } else if relationship.trimmingCharacters(in: .whitespaces).isEmpty {
+            return ErrorMessages.RelatinshipIsEmptyError.description
+        }
+        return nil
+    }
+    
     @objc func presentPicker() {
         imageManager?.present()
     }
@@ -77,9 +86,15 @@ class RegisterViewController: UIViewController {
         let name = registerView.realName.text!
         let email = registerView.username.text!
         let password = registerView.password.text!
-        let memberType = registerView.memberRelationship.text
-        let member = Member(id: "", name: name, email: email, password: password, memberType: getMemberType(typeString: memberType), image: registerView.imageView.image)
-        presenter?.registerUser(member: member)
+        let memberType = registerView.memberRelationship.text!
+        
+        if let errorMsg = verifyIfIsEmpty(name: name, relationship: memberType) {
+            self.registerView.feedBackLabel.isHidden = false
+            self.registerView.feedBackLabel.text = errorMsg
+        } else {
+            let member = Member(id: "", name: name, email: email, password: password, memberType: getMemberType(typeString: memberType), image: registerView.imageView.image)
+            presenter?.registerUser(member: member)
+        }
     }
     
     @objc func action() {
@@ -102,6 +117,7 @@ extension RegisterViewController: PresenterToViewRegisterProtocol {
     }
     
     func showError(errorMsg: String) {
+        self.registerView.feedBackLabel.isHidden = false
         self.registerView.feedBackLabel.text = errorMsg
     }
 }

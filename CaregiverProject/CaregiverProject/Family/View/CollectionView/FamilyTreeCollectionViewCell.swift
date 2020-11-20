@@ -10,13 +10,13 @@ import UIKit
 class FamilyTreeCollectionViewCell: UICollectionViewCell {
     
     lazy var imageView: UIImageView = {
-        let image = UIImage()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        imageView.image = image
+        imageView.image = UIImage(systemName: "camera")
+        imageView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        imageView.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = imageView.frame.height/2
         imageView.clipsToBounds = true
-        imageView.backgroundColor = #colorLiteral(red: 0.9018817544, green: 0.9020115733, blue: 0.901853323, alpha: 1)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
