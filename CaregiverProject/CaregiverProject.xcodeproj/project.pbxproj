@@ -64,6 +64,8 @@
 		E2137FD5255092E1007F4F53 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */; };
 		E2194788255B587A0013E942 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2194787255B587A0013E942 /* ImagePickerManager.swift */; };
 		E219478D255B592B0013E942 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219478C255B592B0013E942 /* StringHelper.swift */; };
+		E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */; };
+		E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108C32568036300CDB7FA /* ErrorHandler.swift */; };
 		E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */; };
 		E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2AD1255CA8C8008468E5 /* UserDefaultsExtension.swift */; };
 		E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */; };
@@ -160,6 +162,8 @@
 		E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E2194787255B587A0013E942 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		E219478C255B592B0013E942 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
+		E2C108C32568036300CDB7FA /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTypeEnum.swift; sourceTree = "<group>"; };
 		E2DC2AD1255CA8C8008468E5 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		E2DD96CE25519D3500A89A04 /* AutheticationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutheticationPresenter.swift; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 				79960FC8255C3ECD00A01D85 /* AppUtility.swift */,
 				AC9D41CB255ACD5200925819 /* Kinship.swift */,
 				79332370255DEA6C0011FC03 /* ElderManager.swift */,
+				E2C108C32568036300CDB7FA /* ErrorHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -591,6 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */,
+				E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -874,6 +880,7 @@
 				E20211662550A0E100790DA9 /* RegisterView.swift in Sources */,
 				E20211832550B35900790DA9 /* ViewCodeProtocol.swift in Sources */,
 				E219478D255B592B0013E942 /* StringHelper.swift in Sources */,
+				E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */,
 				AC3D574E2552D41D0013D470 /* Family.swift in Sources */,
 				AC9D41D3255ACE5A00925819 /* ProfileViewController.swift in Sources */,
 				AC3D575E2552D7B90013D470 /* FamilyTableViewCell.swift in Sources */,
@@ -901,6 +908,7 @@
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,
 				79960FE8255D84ED00A01D85 /* FamilyTabBarController.swift in Sources */,
 				7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */,
+				E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */,
 				AC9D41BD255AC90400925819 /* ProfileInteractor.swift in Sources */,
 				AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */,
 			);

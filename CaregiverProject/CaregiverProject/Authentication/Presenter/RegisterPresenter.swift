@@ -5,7 +5,7 @@
 //  Created by Caio Azevedo on 03/11/20.
 //
 
-import Foundation
+import Firebase
 
 class RegisterPresenter: ViewToPresenterRegisterProtocol {
     var view: PresenterToViewRegisterProtocol?
@@ -25,8 +25,6 @@ extension RegisterPresenter: InteractorToPresenterRegisterProtocol {
     }
     
     func failedToRegister(error: Error) {
-        view?.showError(errorMsg: "Error to Register the user. Please, verify all fields")
+        view?.showError(errorMsg: ErrorHandler().handler(error))
     }
-    
-    
 }

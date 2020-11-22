@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController{
     
     func configureViews(){
         guard let view = view as? ProfileView else {return}
-        view.profileImage.image = presenter.entity?.photo
+        view.profileImage.image = presenter.entity?.photo ?? UIImage(named: "profileIcon")
         view.nameLabel.text = "\(presenter.entity?.name ?? "")"
         view.ageLabel.text = "\(presenter.entity?.age ?? 0)"
         view.notesField.text = presenter.entity?.notes

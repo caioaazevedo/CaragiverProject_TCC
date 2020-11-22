@@ -15,7 +15,7 @@ class FamilyTreeViewController: UIViewController {
     
     lazy var sectionDict: [Int:(header: String, members: [Member])] = {
         var dict = [Int:(header: String, members: [Member])]()
-        dict[MemberType.husband_wife.type] = (header: "Husband/2Wife", members: [Member]())
+        dict[MemberType.husband_wife.type] = (header: "Husband/Wife", members: [Member]())
         dict[MemberType.son_daughter.type] = (header: "Son/Daugther", members: [Member]())
         dict[MemberType.grandson_granddaughter.type] = (header: "Grandson/Granddaughter", members: [Member]())
         dict[MemberType.others.type] = (header: "Others", members: [Member]())
