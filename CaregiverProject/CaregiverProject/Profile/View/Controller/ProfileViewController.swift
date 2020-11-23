@@ -98,7 +98,7 @@ class ProfileViewController: UIViewController{
     func insertValues(){
         guard let view = view as? ProfileView else {return}
         guard let age = Int(view.ageLabel.text ?? "0") else {return}
-        let entity = ProfileEntity(id: UserSession.shared.elderID!, name: view.nameLabel.text ?? "Undefined", age: age, photo: (view.profileImage.image ?? UIImage(named: "profileIcon"))!)
+        let entity = ProfileEntity(id: UserSession.shared.elderID!, name: view.nameLabel.text ?? "Nome do Idoso", age: age, photo: (view.profileImage.image ?? UIImage(named: "profileIcon"))!)
         self.presenter.manageEntity(entity: entity, intendedReturn: Bool.self, operation: .create) { result in
             guard let result = result else {return}
             if result { self.setupData() }

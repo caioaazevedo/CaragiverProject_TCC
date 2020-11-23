@@ -42,7 +42,7 @@ class ProfileInteractor: ProfileInteractorLogic{
             let value = snapshot.value as? NSDictionary
             let stringPhoto = value?["photo"] as? String
             let photo = self.decodeImage(str64: stringPhoto)
-            let profile = ProfileEntity(id:  "",name: (value?["name"] as? String) ?? "Undefined", age: (value?["age"] as? Int) ?? 0,photo: photo)
+            let profile = ProfileEntity(id:  "",name: (value?["name"] as? String) ?? "Nome do Idoso", age: (value?["age"] as? Int) ?? 80,photo: photo)
                         
             completion(profile)
         }) { (error) in
