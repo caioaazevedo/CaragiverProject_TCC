@@ -9,6 +9,7 @@ import Firebase
 import Combine
 
 final class FamilyBuilder{
+    
     class func buildFamilyModule(state: ManageState) -> FamilyManageViewController{
         let interactor = FamilyInteractor(database: Database.database())
         let familyViewController = FamilyManageViewController(manageState: state, familyManagePresenter: FamilyPresenter(with: interactor))
@@ -25,13 +26,20 @@ final class FamilyBuilder{
         let interactor = FamilyInteractor(database: Database.database())
         let presenter = FamilyPresenter(with: interactor)
         let view = FamilyTreeView()
+        view.completion = {
+            let textToShare = [UserSession.shared.familyID]
+            let activityViewController = UIActivityViewController(activityItems: textToShare as [Any], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = familyTreeController.view
+            activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook]
+            familyTreeController.present(activityViewController, animated: true, completion: nil)
+        }
         view.collectionView.delegate = familyTreeController
         view.collectionView.dataSource = familyTreeController
         familyTreeController.presenter = presenter
         familyTreeController.presentedView = view
         return familyTreeController
     }
-
+    
     class func buildProfileModule() -> ProfileViewController{
         let interactor = ProfileInteractor(database: Database.database())
         let familyViewController = ProfileViewController(presenter: ProfilePresenter(with: interactor))

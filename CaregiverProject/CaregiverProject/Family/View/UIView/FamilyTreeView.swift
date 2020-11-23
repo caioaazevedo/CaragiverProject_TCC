@@ -9,6 +9,8 @@ import UIKit
 
 final class FamilyTreeView: UIView{
     
+    var completion: (() -> ())?
+    
     lazy var elderImage: UIImageView = {
         let image = UIImage()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
@@ -29,6 +31,15 @@ final class FamilyTreeView: UIView{
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    lazy var groupInviteLabel: UIButton = {
+        var button = UIButton(frame: .zero)
+        button.setTitle("Convidar alguém pro grupo", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(callCompletion), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     lazy var breakLine: UIView = {
@@ -60,6 +71,9 @@ final class FamilyTreeView: UIView{
         super.init(coder: coder)
     }
     
+    @objc func callCompletion(){
+        completion?()
+    }
 }
 
 extension FamilyTreeView: ViewCodeProtocol{
@@ -68,6 +82,7 @@ extension FamilyTreeView: ViewCodeProtocol{
         addSubview(elderName)
         addSubview(elderImage)
         addSubview(breakLine)
+        addSubview(groupInviteLabel)
     }
     
     func setUpViewConstraints() {
@@ -82,8 +97,12 @@ extension FamilyTreeView: ViewCodeProtocol{
             elderName.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
             elderName.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
             
+            groupInviteLabel.topAnchor.constraint(equalTo: elderName.bottomAnchor,constant: 10),
+            groupInviteLabel.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
+            groupInviteLabel.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
+            
             breakLine.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            breakLine.topAnchor.constraint(equalTo: elderName.bottomAnchor, constant: 32),
+            breakLine.topAnchor.constraint(equalTo: groupInviteLabel.bottomAnchor, constant: 12),
             breakLine.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
             breakLine.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
             breakLine.heightAnchor.constraint(equalToConstant: 5),
