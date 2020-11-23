@@ -11,6 +11,8 @@ protocol ViewToPresenterAuthenticationProtocol: class {
     var view: PresenterToViewAuthenticationProtocol? {get set}
     var interactor: PresenterToInteractorAuthenticationProtocol? {get set}
     var router: PresenterToRouterAuthenticationProtocol? {get set}
+    func presentRegister(vc: UIViewController)
+    func presentLogin(vc: UIViewController)
     func loginUser(email: String, password: String)
 }
 
@@ -33,6 +35,6 @@ protocol InteractorToPresenterAuthenticationProtocol: class {
 
 protocol PresenterToRouterAuthenticationProtocol: class {
     static func createModule()-> AuthenticationViewController
-    func pushToStartFamilyScreen()    
-    func pushToRegisterScreen()
+    func pushToStartFamilyScreen(vc: UIViewController)    
+    func pushToRegisterScreen(vc: UIViewController)
 }

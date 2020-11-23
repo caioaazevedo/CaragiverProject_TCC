@@ -12,6 +12,7 @@ protocol ViewToPresenterRegisterProtocol: class {
     var interactor: PresenterToInteractorRegisterProtocol? {get set}
     var router: PresenterToRouterRegisterProtocol? {get set}
     func registerUser(member: Member)
+    func presentFamily(vc: UIViewController)
 }
 
 protocol PresenterToViewRegisterProtocol: class {
@@ -31,5 +32,5 @@ protocol InteractorToPresenterRegisterProtocol: class {
 
 protocol PresenterToRouterRegisterProtocol: class {
     static func createModule()-> RegisterViewController
-    func pushToStartFamilyScreen()
+    func pushToStartFamilyScreen(vc: UIViewController)
 }

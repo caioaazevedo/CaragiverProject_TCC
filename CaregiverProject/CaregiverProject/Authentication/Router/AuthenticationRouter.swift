@@ -24,11 +24,15 @@ class AuthenticationRouter: PresenterToRouterAuthenticationProtocol {
         return view
     }
     
-    func pushToStartFamilyScreen(){
-        
+    func pushToStartFamilyScreen(vc: UIViewController){
+        let viewController = StartFamilyViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        vc.present(viewController, animated: true, completion: nil)
     }
     
-    func pushToRegisterScreen() {
-        
+    func pushToRegisterScreen(vc: UIViewController) {
+        let viewController = RegisterRouter.createModule()
+        viewController.modalPresentationStyle = .fullScreen
+        vc.present(viewController, animated: true, completion: nil)
     }
 }

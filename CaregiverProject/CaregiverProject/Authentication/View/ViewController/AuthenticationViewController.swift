@@ -45,17 +45,13 @@ class AuthenticationViewController: UIViewController {
     }
     
     @objc func register() {
-        let viewController = RegisterRouter.createModule()
-        viewController.modalPresentationStyle = .fullScreen
-        self.present(viewController, animated: true, completion: nil)
+        self.presenter?.presentRegister(vc: self)
     }
 }
 
 extension AuthenticationViewController: PresenterToViewAuthenticationProtocol {
     func performLogin(){
-        let viewController = StartFamilyViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        self.present(viewController, animated: true, completion: nil)
+        self.presenter?.presentLogin(vc: self)     
     }
     
     func showError(errorMsg: String) {

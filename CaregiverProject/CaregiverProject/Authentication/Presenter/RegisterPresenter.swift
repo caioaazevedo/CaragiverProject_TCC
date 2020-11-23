@@ -14,6 +14,10 @@ class RegisterPresenter: ViewToPresenterRegisterProtocol {
     
     var router: PresenterToRouterRegisterProtocol?
     
+    func presentFamily(vc: UIViewController) {
+        self.router?.pushToStartFamilyScreen(vc: vc)
+    }
+    
     func registerUser(member: Member) {
         interactor?.createUser(member: member)
     }

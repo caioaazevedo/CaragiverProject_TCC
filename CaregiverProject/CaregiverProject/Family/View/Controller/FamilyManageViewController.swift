@@ -66,8 +66,7 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
                 presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
                     self.setupData {
                         UserDefaults.loginState = .enteredFamily
-                        let module = FamilyBuilder.buildFamilyTabBarController()
-                        self.present(module, animated: true, completion: nil)
+                        self.presenter.presentTabController(vc: self)
                     }
                 })
             }
@@ -85,8 +84,7 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
             presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
                 self.setupData {
                     UserDefaults.loginState = .enteredFamily
-                    let module = FamilyBuilder.buildFamilyTabBarController()
-                    self.present(module, animated: true, completion: nil)
+                    self.presenter.presentTabController(vc: self)
                 }
             })
         }

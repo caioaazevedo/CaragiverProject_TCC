@@ -111,9 +111,7 @@ extension RegisterViewController: ImagePickerDelegate {
 
 extension RegisterViewController: PresenterToViewRegisterProtocol {
     func registerSucceded(){
-        let viewController = StartFamilyViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        self.present(viewController, animated: true, completion: nil)
+        self.presenter?.presentFamily(vc: self)        
     }
     
     func showError(errorMsg: String) {
