@@ -190,7 +190,7 @@ extension ProfileView: ViewCodeProtocol{
             notesField.topAnchor.constraint(equalTo: ageLabel.bottomAnchor,constant: 30),
             
             mainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            mainButton.topAnchor.constraint(equalTo: notesField.bottomAnchor, constant: 30),
+            mainButton.topAnchor.constraint(equalTo: secTextField.bottomAnchor, constant: 20),
             mainButton.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.5)
         ])
     }

@@ -27,9 +27,12 @@ final class FamilyBuilder{
         let presenter = FamilyPresenter(with: interactor)
         let view = FamilyTreeView()
         view.completion = {
-            let textToShare = [UserSession.shared.familyID]
-            let activityViewController = UIActivityViewController(activityItems: textToShare as [Any], applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = familyTreeController.view            
+            let url = URL(string: "login://" + "\(UserSession.shared.familyID!)")
+            let fullText = ["\(UserSession.shared.username!) está te convidando para entrar no grupo. Token: \(url!)."]
+            
+            let activityViewController = UIActivityViewController(activityItems: fullText as [Any], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = familyTreeController.view
+            activityViewController.excludedActivityTypes = [.print]
             familyTreeController.present(activityViewController, animated: true, completion: nil)
         }
         view.collectionView.delegate = familyTreeController
