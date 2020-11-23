@@ -29,8 +29,7 @@ final class FamilyBuilder{
         view.completion = {
             let textToShare = [UserSession.shared.familyID]
             let activityViewController = UIActivityViewController(activityItems: textToShare as [Any], applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = familyTreeController.view
-            activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook]
+            activityViewController.popoverPresentationController?.sourceView = familyTreeController.view            
             familyTreeController.present(activityViewController, animated: true, completion: nil)
         }
         view.collectionView.delegate = familyTreeController
