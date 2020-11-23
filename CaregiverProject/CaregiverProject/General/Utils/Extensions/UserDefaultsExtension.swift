@@ -10,10 +10,34 @@ import Foundation
 extension UserDefaults {
     static var userAlreadyLogged: Bool {
         get {
-            UserDefaults.standard.value(forKey: "alreadyLogged") as? Bool ?? false
+            let result = standard.value(forKey: "alreadyLogged") as? Bool ?? false
+            if result{
+                if let user = userSession{
+                    UserSession.shared = user
+                }
+            }
+            return result
         }
         set {
-            UserDefaults.standard.setValue(newValue, forKey: "alreadyLogged")
+            standard.setValue(newValue, forKey: "alreadyLogged")
+            if newValue{
+                userSession = UserSession.shared
+            }
+        }
+    }
+    
+    static var userSession: UserSession?{
+        get {
+            if let data = standard.value(forKey: "user") as? Data{
+                let userSession = try? PropertyListDecoder().decode(UserSession.self, from: data)
+                return userSession
+            }
+            return nil
+        }
+        set {
+            if let value = newValue{
+                standard.setValue(try? PropertyListEncoder().encode(value), forKey: "user")
+            }
         }
     }
 }

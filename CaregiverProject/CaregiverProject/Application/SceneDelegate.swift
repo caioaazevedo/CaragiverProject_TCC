@@ -19,10 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
         if UserDefaults.userAlreadyLogged {
-            let authentication = AuthenticationRouter.createModule()
-            window?.rootViewController = authentication
-//            let familyTree = FamilyTreeViewController()
-//            window?.rootViewController = familyTree
+            let familyTabBar = FamilyBuilder.buildFamilyTabBarController()
+            window?.rootViewController = familyTabBar
         } else {
             let authentication = AuthenticationRouter.createModule()
             window?.rootViewController = authentication

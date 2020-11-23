@@ -7,13 +7,16 @@
 
 import Foundation
 
-struct UserSession{
+struct UserSession: Codable{
     
     var id: String?
     var username: String?
     var familyID: String?
     var elderID: String?
     
+}
+
+extension UserSession{
     static var shared: UserSession = {
         let session = UserSession()
         return session
