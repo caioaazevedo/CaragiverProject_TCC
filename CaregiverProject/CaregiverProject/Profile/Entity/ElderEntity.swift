@@ -11,7 +11,5 @@ struct ProfileEntity: ModelProtocol{
     var id: String
     var name: String
     var age: Int
-    var photo: UIImage? = UIImage(named: "profileIcon")
-    var notes: String
-    var memberType: MemberType
+    var photo: UIImage? = UIImage(named: "profileIcon")        
 }

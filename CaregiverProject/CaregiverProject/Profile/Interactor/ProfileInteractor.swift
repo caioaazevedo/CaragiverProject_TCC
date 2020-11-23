@@ -31,7 +31,7 @@ class ProfileInteractor: ProfileInteractorLogic{
         
         let uid = casted.id
         let image64 = self.encodeImage(image: casted.photo)
-        let parameters: Dictionary<String,Any> = ["name": casted.name,"age":casted.age,"photo":image64,"notes":casted.notes,"kinship":casted.memberType.type]
+        let parameters: Dictionary<String,Any> = ["name": casted.name,"age":casted.age,"photo":image64]
         db.child("ElderProfile").child(uid).setValue(parameters)
         completion(true)
     }
@@ -42,7 +42,7 @@ class ProfileInteractor: ProfileInteractorLogic{
             let value = snapshot.value as? NSDictionary
             let stringPhoto = value?["photo"] as? String
             let photo = self.decodeImage(str64: stringPhoto)
-            let profile = ProfileEntity(id:  "",name: (value?["name"] as? String) ?? "Undefined", age: (value?["age"] as? Int) ?? 0,photo: photo, notes: (value?["notes"] as? String) ?? "", memberType: value?["kinship"] as? MemberType ?? MemberType.husband_wife)
+            let profile = ProfileEntity(id:  "",name: (value?["name"] as? String) ?? "Undefined", age: (value?["age"] as? Int) ?? 0,photo: photo)
                         
             completion(profile)
         }) { (error) in
@@ -55,9 +55,7 @@ class ProfileInteractor: ProfileInteractorLogic{
         let parameters = ["uid": casted.id,
                           "name": casted.name,
                           "age": casted.age,
-                          "photo": casted.photo ?? UIImage(named: "profileIcon")!,
-                          "notes": casted.notes,
-                          "kinship": casted.memberType.type] as [String : Any]
+                          "photo": casted.photo ?? UIImage(named: "profileIcon")!] as [String : Any]
         let db = ref?.child("ElderProfile/\(casted.id)")
         db?.updateChildValues(parameters)
         completion(true)

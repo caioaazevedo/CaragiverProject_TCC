@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ProfileViewController: UIViewController{
     var presenter: ProfilePresenterLogic
@@ -13,6 +14,19 @@ class ProfileViewController: UIViewController{
     var profileView: ProfileView = .init()
     var buttonState = true
     
+    lazy var publisher: AnyPublisher<ProfileEntity, Never> = {
+        return self.subject!.eraseToAnyPublisher()
+    }()
+    
+    private(set) var subject: PassthroughSubject<ProfileEntity, Never>? = PassthroughSubject<ProfileEntity, Never>()
+        
+    private(set) var updated: Bool = false {
+        didSet{
+            guard let view = view as? ProfileView else {return}
+            let elder = ProfileEntity(id: "", name: view.nameLabel.text ?? "Idoso", age: Int(view.ageLabel.text ?? "70") ?? 70,photo: view.profileImage.image)
+            self.subject?.send(elder)
+        }
+    }
     
     override func loadView() {
         super.loadView()
@@ -24,19 +38,17 @@ class ProfileViewController: UIViewController{
         profileView.mainTextField.isHidden = true
         profileView.secTextField.isHidden = true
         view = profileView
-        self.setupData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageManager = ImagePickerManager(viewController: self, delegate: self)
-      
-        
     }
     
     init(presenter: ProfilePresenterLogic){
         self.presenter = presenter
-        super.init(nibName: nil, bundle: nil)    
+        super.init(nibName: nil, bundle: nil)
+        self.setupData()
     }
     
     required init?(coder: NSCoder) {
@@ -46,7 +58,7 @@ class ProfileViewController: UIViewController{
     func setupData(){
         self.presenter.assignEntity(entityID: UserSession.shared.elderID ?? UUID().uuidString) {
             self.configureViews()
-            NotificationCenter.default.post(name: .elderData, object: nil, userInfo: ["elderData":self.presenter.entity!])
+            self.updated.toggle()
         }
     }
     
@@ -56,7 +68,6 @@ class ProfileViewController: UIViewController{
         view.profileImage.image = presenter.entity?.photo ?? UIImage(named: "profileIcon")
         view.nameLabel.text = "\(presenter.entity?.name ?? "")"
         view.ageLabel.text = "\(presenter.entity?.age ?? 0)"
-        view.notesField.text = presenter.entity?.notes
         
     }
     
@@ -65,6 +76,7 @@ class ProfileViewController: UIViewController{
         if !buttonState{
             view.nameLabel.text = view.mainTextField.text
             view.ageLabel.text = view.secTextField.text
+            updated.toggle()
             setdownViewEditing()
             self.insertValues()
             view.mainButton.setTitle("Edit", for: .normal)
@@ -76,7 +88,9 @@ class ProfileViewController: UIViewController{
     }
     
     @objc func presentPicker() {
+        if !buttonState{
         imageManager?.present()
+        }
     }
     
     
@@ -84,7 +98,7 @@ class ProfileViewController: UIViewController{
     func insertValues(){
         guard let view = view as? ProfileView else {return}
         guard let age = Int(view.ageLabel.text ?? "0") else {return}
-        let entity = ProfileEntity(id: UserSession.shared.elderID!, name: view.nameLabel.text ?? "Undefined", age: age, photo: (view.profileImage.image ?? UIImage(named: "profileIcon"))!, notes: view.notesField.text ?? "Undefined", memberType: .son_daughter)
+        let entity = ProfileEntity(id: UserSession.shared.elderID!, name: view.nameLabel.text ?? "Undefined", age: age, photo: (view.profileImage.image ?? UIImage(named: "profileIcon"))!)
         self.presenter.manageEntity(entity: entity, intendedReturn: Bool.self, operation: .create) { result in
             guard let result = result else {return}
             if result { self.setupData() }
@@ -93,7 +107,7 @@ class ProfileViewController: UIViewController{
     
     func updateValues(){
         guard let view = view as? ProfileView else {return}
-        let entity = ProfileEntity(id: view.nameLabel.text!, name: view.nameLabel.text!, age: Int(view.ageLabel.text!)!, photo: view.profileImage.image!, notes: view.notesField.text!, memberType: .son_daughter)
+        let entity = ProfileEntity(id: view.nameLabel.text!, name: view.nameLabel.text!, age: Int(view.ageLabel.text!)!, photo: view.profileImage.image!)
         self.presenter.manageEntity(entity: entity, intendedReturn: Bool.self, operation: .update) { result in
             guard let result = result else {return}
             if result { self.setupData() }
@@ -105,6 +119,9 @@ class ProfileViewController: UIViewController{
         profileView.ageLabel.isHidden = true
         profileView.mainTextField.isHidden = false
         profileView.secTextField.isHidden = false
+        
+        profileView.mainTextField.text = profileView.nameLabel.text
+        profileView.secTextField.text = profileView.ageLabel.text
     }
     
     func setdownViewEditing(){
@@ -121,6 +138,7 @@ extension ProfileViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         guard let view = view as? ProfileView else {return}
         view.profileImage.image = image
+        self.updated.toggle()
     }
 }
 

@@ -6,12 +6,12 @@
 //
 
 import UIKit
-import SwiftUI
+import Combine
 
 class FamilyTreeViewController: UIViewController {
-    @ObservedObject var elderManager = ElderManager()
     var presenter: FamilyPresenter?
     var familyId: String?
+    var subscriber: AnyCancellable?
     
     lazy var sectionDict: [Int:(header: String, members: [Member])] = {
         var dict = [Int:(header: String, members: [Member])]()
@@ -29,7 +29,7 @@ class FamilyTreeViewController: UIViewController {
             }
         }
     }
-    
+
     override func viewDidLoad() {
         getFamily()
     }
@@ -61,22 +61,20 @@ class FamilyTreeViewController: UIViewController {
         }
     }
     
-    func getElder(){
-        
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else {return}
-            let elder = self.elderManager.elderData
-            guard let view = self.presentedView as? FamilyTreeView else {return}
-            
-            view.elderName.text = elder?.name
-            view.elderImage.image = elder?.photo
-        }
-        
+    
+    func assignSubscriber(publisher: AnyPublisher<ProfileEntity,Never>){        
+        self.subscriber = publisher
+            .receive(on: DispatchQueue.main)
+            .sink{ [weak self] profile in
+                guard let `self` = self,let view = self.view as? FamilyTreeView else {return}                
+                view.elderName.text = profile.name
+                view.elderImage.image = profile.photo
+            }
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         AppUtility.lockOrientation(.portrait)
-        getElder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -6,9 +6,9 @@
 //
 
 import Firebase
+import Combine
 
 final class FamilyBuilder{
-    
     class func buildFamilyModule(state: ManageState) -> FamilyManageViewController{
         let interactor = FamilyInteractor(database: Database.database())
         let familyViewController = FamilyManageViewController(manageState: state, familyManagePresenter: FamilyPresenter(with: interactor))
@@ -32,10 +32,17 @@ final class FamilyBuilder{
         return familyTreeController
     }
 
+    class func buildProfileModule() -> ProfileViewController{
+        let interactor = ProfileInteractor(database: Database.database())
+        let familyViewController = ProfileViewController(presenter: ProfilePresenter(with: interactor))
+        return familyViewController
+    }
+    
     class func buildFamilyTabBarController() -> FamilyTabBarController{
         let familyTabBarController = FamilyTabBarController()
         familyTabBarController.modalPresentationStyle = .fullScreen
         let familyTreeModule = FamilyBuilder.buildFamilyTreeModule()
+        
         familyTreeModule.familyId = UserSession.shared.familyID
         familyTreeModule.viewDidLoad()
         let familyIcon = UITabBarItem(title: "Family", image: .actions, tag: 0)
@@ -43,7 +50,8 @@ final class FamilyBuilder{
         let profileModule = ProfileBuilder.buildProfileModule()
         let profileIcon = UITabBarItem(title: "Elder", image: .checkmark, tag: 1)
         profileModule.tabBarItem = profileIcon
-        
+        familyTreeModule.assignSubscriber(publisher: profileModule.publisher)
+        profileModule.setupData()
         familyTabBarController.viewControllers = [
             familyTreeModule,
             profileModule
