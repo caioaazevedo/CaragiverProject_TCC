@@ -21,6 +21,7 @@ class RegisterPresenter: ViewToPresenterRegisterProtocol {
 
 extension RegisterPresenter: InteractorToPresenterRegisterProtocol {
     func registerUserSucceded() {
+        UserDefaults.loginState = .alreadyLogged
         view?.registerSucceded()
     }
     

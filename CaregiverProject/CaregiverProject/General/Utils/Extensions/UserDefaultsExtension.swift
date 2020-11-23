@@ -7,22 +7,26 @@
 
 import Foundation
 
+enum LoginState: Int{
+    case firstTimer = 0
+    case alreadyLogged = 1
+    case enteredFamily = 2
+}
+
 extension UserDefaults {
-    static var userAlreadyLogged: Bool {
+    static var loginState: LoginState {
         get {
-            let result = standard.value(forKey: "alreadyLogged") as? Bool ?? false
-            if result{
-                if let user = userSession{
-                    UserSession.shared = user
-                }
+            if let user = userSession { UserSession.shared = user }
+            let stateValue = standard.value(forKey: "loginState") as? Int ?? 0
+            if let loginState = LoginState(rawValue: stateValue){
+                return loginState
             }
-            return result
+            return LoginState.firstTimer
         }
         set {
-            standard.setValue(newValue, forKey: "alreadyLogged")
-            if newValue{
-                userSession = UserSession.shared
-            }
+            userSession = UserSession.shared
+            let value = newValue.rawValue
+            standard.setValue(value, forKey: "loginState")
         }
     }
     

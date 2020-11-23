@@ -65,7 +65,7 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
                 family.members.append(UserSession.shared.id!)
                 presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
                     self.setupData {
-                        UserDefaults.userSession = UserSession.shared
+                        UserDefaults.loginState = .enteredFamily
                         let module = FamilyBuilder.buildFamilyTabBarController()
                         self.present(module, animated: true, completion: nil)
                     }
@@ -84,7 +84,7 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
         presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .create) { (result) in
             presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
                 self.setupData {
-                    UserDefaults.userSession = UserSession.shared
+                    UserDefaults.loginState = .enteredFamily
                     let module = FamilyBuilder.buildFamilyTabBarController()
                     self.present(module, animated: true, completion: nil)
                 }

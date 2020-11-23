@@ -31,9 +31,6 @@ class FamilyTreeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        if let user = UserDefaults.userSession{
-            UserSession.shared = user
-        }
         getFamily()
     }
    
