@@ -61,6 +61,9 @@ final class FamilyBuilder{
         let profileIcon = UITabBarItem(title: "Elder", image: .checkmark, tag: 1)
         profileModule.tabBarItem = profileIcon
         familyTreeModule.assignSubscriber(publisher: profileModule.publisher)
+        familyTreeModule.callRefresh  = {
+            profileModule.setupData()
+        }
         profileModule.setupData()
         familyTabBarController.viewControllers = [
             familyTreeModule,

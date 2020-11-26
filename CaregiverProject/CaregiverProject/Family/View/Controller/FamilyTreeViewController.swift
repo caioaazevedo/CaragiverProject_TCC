@@ -12,6 +12,7 @@ class FamilyTreeViewController: UIViewController {
     var presenter: FamilyPresenter?
     var familyId: String?
     var subscriber: AnyCancellable?
+    var callRefresh: (() ->())?
     
     lazy var sectionDict: [Int:(header: String, members: [Member])] = {
         var dict = [Int:(header: String, members: [Member])]()
@@ -75,6 +76,7 @@ class FamilyTreeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         AppUtility.lockOrientation(.portrait)
+        self.callRefresh?()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

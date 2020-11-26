@@ -54,6 +54,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
         self.setupData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.setupData()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
