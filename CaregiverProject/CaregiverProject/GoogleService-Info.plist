@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>90895503301-arjl0adavlin6bl0k50gcn0ucadcrhbq.apps.googleusercontent.com</string>
+	<string>867887359598-3vik4fd8akkvu2il67kq24d0vjlblc5v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.90895503301-arjl0adavlin6bl0k50gcn0ucadcrhbq</string>
+	<string>com.googleusercontent.apps.867887359598-3vik4fd8akkvu2il67kq24d0vjlblc5v</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDmLrFu-KCQCe9mV2G48CIELneTQBDj0CY</string>
+	<string>AIzaSyDIXAvX0YzFjujvOPGBM_1aNjFBQ57boHQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>90895503301</string>
+	<string>867887359598</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.UCB.TCC.CaregiverProject</string>
 	<key>PROJECT_ID</key>
-	<string>cuidadores-auth</string>
+	<string>cuidadores-db</string>
 	<key>STORAGE_BUCKET</key>
-	<string>cuidadores-auth.appspot.com</string>
+	<string>cuidadores-db.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:90895503301:ios:4f85974886d099666a45ac</string>
+	<string>1:867887359598:ios:73a878d5a026847d6b287f</string>
 	<key>DATABASE_URL</key>
-	<string>https://cuidadores-auth.firebaseio.com</string>
+	<string>https://cuidadores-db.firebaseio.com</string>
 </dict>
 </plist>
