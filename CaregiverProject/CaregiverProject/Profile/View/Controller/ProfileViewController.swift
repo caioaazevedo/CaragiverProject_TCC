@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class ProfileViewController: UIViewController{
+class ProfileViewController: UIViewController, UITextFieldDelegate{
     var presenter: ProfilePresenterLogic
     var imageManager: ImagePickerManager?
     var profileView: ProfileView = .init()
@@ -43,6 +43,10 @@ class ProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         imageManager = ImagePickerManager(viewController: self, delegate: self)
+        
+        profileView.mainTextField.delegate = self
+        profileView.notesField.delegate = self
+        profileView.secTextField.delegate = self
     }
     
     init(presenter: ProfilePresenterLogic){
@@ -129,6 +133,11 @@ class ProfileViewController: UIViewController{
         profileView.ageLabel.isHidden = false
         profileView.mainTextField.isHidden = true
         profileView.secTextField.isHidden = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

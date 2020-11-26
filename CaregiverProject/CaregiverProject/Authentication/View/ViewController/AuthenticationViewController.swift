@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class AuthenticationViewController: UIViewController {
+class AuthenticationViewController: UIViewController{
     
     var loginView = LoginView()
     var handler: AuthStateDidChangeListenerHandle?
@@ -25,6 +25,9 @@ class AuthenticationViewController: UIViewController {
         
         loginView.signInButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
         loginView.registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
+        
+        loginView.password.delegate = self
+        loginView.username.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,3 +63,10 @@ extension AuthenticationViewController: PresenterToViewAuthenticationProtocol {
     }
 }
 
+
+extension AuthenticationViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

@@ -37,6 +37,9 @@ class RegisterViewController: UIViewController {
         
         createPickerView()
         dismissPickerView()
+        
+        registerView.password.delegate = self
+        registerView.realName.delegate = self
     }
     
     func createPickerView() {
@@ -121,7 +124,10 @@ extension RegisterViewController: PresenterToViewRegisterProtocol {
 }
 
 extension RegisterViewController: UITextFieldDelegate {
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension RegisterViewController: UIPickerViewDelegate {
