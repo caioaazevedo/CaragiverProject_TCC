@@ -14,15 +14,23 @@ class FamilyTreeViewController: UIViewController {
     var subscriber: AnyCancellable?
     var callRefresh: (() ->())?
     
-    lazy var sectionDict: [Int:(header: String, members: [Member])] = {
-        var dict = [Int:(header: String, members: [Member])]()
-        dict[MemberType.husband_wife.type] = (header: "Husband/Wife", members: [Member]())
-        dict[MemberType.son_daughter.type] = (header: "Son/Daugther", members: [Member]())
-        dict[MemberType.grandson_granddaughter.type] = (header: "Grandson/Granddaughter", members: [Member]())
-        dict[MemberType.others.type] = (header: "Others", members: [Member]())
-        return dict
-    }()
-
+    var _sectionDict: [Int:(header: String, members: [Member])]?
+    
+    var sectionDict: [Int:(header: String, members: [Member])] {
+        get{
+            if let dict = self._sectionDict{
+                return dict
+            }
+            var dict = [Int:(header: String, members: [Member])]()
+            dict[MemberType.husband_wife.type] = (header: "Husband/Wife", members: [Member]())
+            dict[MemberType.son_daughter.type] = (header: "Son/Daugther", members: [Member]())
+            dict[MemberType.grandson_granddaughter.type] = (header: "Grandson/Granddaughter", members: [Member]())
+            dict[MemberType.others.type] = (header: "Others", members: [Member]())
+            return dict
+        }
+        set{_sectionDict = newValue}
+    }
+    
     var presentedView: ViewCodeProtocol?{
         willSet{
             if let view = newValue as? UIView{
@@ -30,14 +38,11 @@ class FamilyTreeViewController: UIViewController {
             }
         }
     }
-
-    override func viewDidLoad() {
-        getFamily()
-    }
    
     func getFamily(){
         guard let presenter = presenter else {return}
         guard let id = familyId else {return}
+        _sectionDict = nil
         
         let family = Family(id: id, name: "", members: [])
         
