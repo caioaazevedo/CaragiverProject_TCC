@@ -38,7 +38,9 @@ class FamilyInteractor:  FamilyInteractorProtocol{
             guard let casted = entity as? Family else {return}
             guard casted.name != "" else {return}
             let uid = casted.id
-            let parameters: Dictionary<String,Any> = ["name": casted.name,"members":casted.members]
+            let elderID = UUID().uuidString
+            let parameters: Dictionary<String,Any> = ["name": casted.name,"members":casted.members,"elderID":elderID]
+            UserSession.shared.elderID = elderID
             db.child(entityType.rawValue).child(uid).setValue(parameters)
             completion(true)
         case .Member:
@@ -55,6 +57,7 @@ class FamilyInteractor:  FamilyInteractorProtocol{
                 let name = value[""] as? String ?? ""
                 let membersId = value["members"] as? [String] ?? [String]()
                 let family = Family(id: dataID, name: name, members: membersId)
+                UserSession.shared.elderID = value["elderID"] as? String
                 completion(family)
             case .Member:
                 let name = value["name"] as? String ?? ""

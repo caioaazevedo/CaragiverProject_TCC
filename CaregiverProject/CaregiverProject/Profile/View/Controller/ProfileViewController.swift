@@ -30,7 +30,6 @@ class ProfileViewController: UIViewController{
     
     override func loadView() {
         super.loadView()
-        UserSession.shared.elderID = "BB741AB9-F187-4EAC-AE6A-31D193712F89"
         profileView = ProfileView()
         profileView.notesField.delegate = self
         profileView.imageButton.addTarget(self, action: #selector(presentPicker), for: .touchUpInside)
