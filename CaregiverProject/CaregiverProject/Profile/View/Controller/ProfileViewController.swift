@@ -30,7 +30,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
     
     override func loadView() {
         super.loadView()
-        UserSession.shared.elderID = "BB741AB9-F187-4EAC-AE6A-31D193712F89"
         profileView = ProfileView()
         profileView.notesField.delegate = self
         profileView.imageButton.addTarget(self, action: #selector(presentPicker), for: .touchUpInside)
@@ -102,7 +101,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
     func insertValues(){
         guard let view = view as? ProfileView else {return}
         guard let age = Int(view.ageLabel.text ?? "0") else {return}
-        let entity = ProfileEntity(id: UserSession.shared.elderID!, name: view.nameLabel.text ?? "Nome do Idoso", age: age, photo: (view.profileImage.image ?? UIImage(named: "profileIcon"))!)
+        let entity = ProfileEntity(id: UserSession.shared.elderID ?? UUID().uuidString, name: view.nameLabel.text ?? "Nome do Idoso", age: age, photo: (view.profileImage.image ?? UIImage(named: "profileIcon"))!)
         self.presenter.manageEntity(entity: entity, intendedReturn: Bool.self, operation: .create) { result in
             guard let result = result else {return}
             if result { self.setupData() }
