@@ -42,7 +42,7 @@ class FamilyTreeViewController: UIViewController {
     func getFamily(){
         guard let presenter = presenter else {return}
         guard let id = familyId else {return}
-        
+        self._sectionDict = nil
         let family = Family(id: id, name: "", members: [])
         
         presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Any.self, operation: .read) { [weak self] (result) in
@@ -54,7 +54,6 @@ class FamilyTreeViewController: UIViewController {
                 
                 presenter.manageEntity(entity: member, entityType: .Member, intendedReturn: Any.self, operation: .read) { [weak self] (result) in
                     guard let self = self else {return}
-                    self._sectionDict = nil
                     guard let memberEntity = result as? Member else {return}
                     guard self.sectionDict[memberEntity.memberType.type] != nil else {return}
                     self.sectionDict[memberEntity.memberType.type]!.members.append(memberEntity)
