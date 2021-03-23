@@ -24,13 +24,11 @@
 		AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732C2552E5580084590D /* FamilyManageView.swift */; };
 		AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732E2552E8190084590D /* CRUDOperations.swift */; };
 		AC3D574E2552D41D0013D470 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D574D2552D41D0013D470 /* Family.swift */; };
-		AC3D57552552D6470013D470 /* FamilyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57542552D6470013D470 /* FamilyListViewController.swift */; };
 		AC3D57582552D7250013D470 /* FamilyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57572552D7250013D470 /* FamilyPresenter.swift */; };
 		AC3D575B2552D75D0013D470 /* FamilyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D575A2552D75D0013D470 /* FamilyInteractor.swift */; };
 		AC3D575E2552D7B90013D470 /* FamilyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */; };
 		AC3D57612552D8140013D470 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57602552D8140013D470 /* Metrics.swift */; };
 		AC3D57632552DBD90013D470 /* FamilyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57622552DBD90013D470 /* FamilyTableView.swift */; };
-		AC3D57652552DD9C0013D470 /* FamilyList+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57642552DD9C0013D470 /* FamilyList+DD.swift */; };
 		AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4672672552DF15002AC45B /* FamilyBuilder.swift */; };
 		AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C029E2554AD71002FE9DD /* UserSession.swift */; };
 		AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41B7255AC8EF00925819 /* ProfileView.swift */; };
@@ -115,13 +113,11 @@
 		AC38732C2552E5580084590D /* FamilyManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageView.swift; sourceTree = "<group>"; };
 		AC38732E2552E8190084590D /* CRUDOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDOperations.swift; sourceTree = "<group>"; };
 		AC3D574D2552D41D0013D470 /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
-		AC3D57542552D6470013D470 /* FamilyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyListViewController.swift; sourceTree = "<group>"; };
 		AC3D57572552D7250013D470 /* FamilyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyPresenter.swift; sourceTree = "<group>"; };
 		AC3D575A2552D75D0013D470 /* FamilyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyInteractor.swift; sourceTree = "<group>"; };
 		AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTableViewCell.swift; sourceTree = "<group>"; };
 		AC3D57602552D8140013D470 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		AC3D57622552DBD90013D470 /* FamilyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTableView.swift; sourceTree = "<group>"; };
-		AC3D57642552DD9C0013D470 /* FamilyList+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyList+DD.swift"; sourceTree = "<group>"; };
 		AC4672672552DF15002AC45B /* FamilyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyBuilder.swift; sourceTree = "<group>"; };
 		AC7C029E2554AD71002FE9DD /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		AC9D41B7255AC8EF00925819 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -229,7 +225,6 @@
 				AC9D41D7255AD04C00925819 /* FamilyControllerLogic.swift */,
 				E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */,
 				AC3873262552E1CB0084590D /* FamilyManageViewController.swift */,
-				AC3D57542552D6470013D470 /* FamilyListViewController.swift */,
 				7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */,
 				79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */,
 			);
@@ -298,7 +293,6 @@
 			children = (
 				AC3D57622552DBD90013D470 /* FamilyTableView.swift */,
 				AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */,
-				AC3D57642552DD9C0013D470 /* FamilyList+DD.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -846,7 +840,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC3D57652552DD9C0013D470 /* FamilyList+DD.swift in Sources */,
 				AC3D575B2552D75D0013D470 /* FamilyInteractor.swift in Sources */,
 				AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */,
 				7904B48E255AB4C400D078F5 /* FamilyTreeView.swift in Sources */,
@@ -862,7 +855,6 @@
 				E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */,
 				79960FCE255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
-				AC3D57552552D6470013D470 /* FamilyListViewController.swift in Sources */,
 				E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */,
 				AC9D41E1255AD14400925819 /* ProfileBuilder.swift in Sources */,
 				AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */,
@@ -1085,7 +1077,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CaregiverProject/CaregiverProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BY575KUK4V;
+				DEVELOPMENT_TEAM = KFC8C5H4A6;
 				INFOPLIST_FILE = CaregiverProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1106,7 +1098,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CaregiverProject/CaregiverProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BY575KUK4V;
+				DEVELOPMENT_TEAM = KFC8C5H4A6;
 				INFOPLIST_FILE = CaregiverProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
