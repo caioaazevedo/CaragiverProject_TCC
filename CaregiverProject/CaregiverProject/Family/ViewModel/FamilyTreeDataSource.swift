@@ -33,7 +33,7 @@ extension FamilyTreeDataSource: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? FamilyTreeCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FamilyTreeCell.identifier, for: indexPath) as? FamilyTreeCell else {
             fatalError("Family Cell not registered!")
         }
         let memberType = memberTypes[indexPath.section]
@@ -50,7 +50,7 @@ extension FamilyTreeDataSource: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as? FamilyTreeCollectionReusableView else {
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FamilyTreeHeaderView.identifier, for: indexPath) as? FamilyTreeHeaderView else {
             fatalError("Header not registered!")
         }
         header.headerLabel.text = memberTypes[indexPath.section]

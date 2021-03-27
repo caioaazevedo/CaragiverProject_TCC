@@ -7,7 +7,9 @@
 
 import UIKit
 
-class FamilyTreeCollectionReusableView: UICollectionReusableView {
+class FamilyTreeHeaderView: UICollectionReusableView {
+    
+    static let identifier = "FamilyTreeHeaderView"
     
     lazy var headerLabel: UILabel = {
         let label = UILabel(frame: .zero)
@@ -29,7 +31,7 @@ class FamilyTreeCollectionReusableView: UICollectionReusableView {
     }
 }
 
-extension FamilyTreeCollectionReusableView: ViewCodeProtocol{
+extension FamilyTreeHeaderView: ViewCodeProtocol{
     func setUpViewHierarchy() {
         addSubview(headerLabel)
     }

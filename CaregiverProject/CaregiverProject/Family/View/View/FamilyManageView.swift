@@ -54,7 +54,6 @@ extension FamilyManageView: ViewCodeProtocol{
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-//            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -100),
             titleLabel.topAnchor.constraint(equalTo: topAnchor,constant: 100),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
 

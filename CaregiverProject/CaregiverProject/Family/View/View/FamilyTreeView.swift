@@ -37,7 +37,12 @@ final class FamilyTreeView: UIView{
         var button = UIButton(frame: .zero)
         button.setTitle("Convidar alguém pro grupo", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(callCompletion), for: .touchUpInside)
+        button.addAction(
+            UIAction { [completion] _ in
+                completion?()
+            },
+            for: .touchUpInside
+        )
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -50,14 +55,14 @@ final class FamilyTreeView: UIView{
         return view
     }()
     
-    lazy var collectionView: FamilyTreeCollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: 100, height: 170)
         layout.headerReferenceSize = CGSize(width: Metrics.Device.width, height: 80)
-        let collectionView = FamilyTreeCollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(FamilyTreeCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-        collectionView.register(FamilyTreeCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(FamilyTreeCell.self, forCellWithReuseIdentifier: FamilyTreeCell.identifier)
+        collectionView.register(FamilyTreeHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FamilyTreeHeaderView.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -69,10 +74,6 @@ final class FamilyTreeView: UIView{
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    @objc func callCompletion(){
-        completion?()
     }
 }
 

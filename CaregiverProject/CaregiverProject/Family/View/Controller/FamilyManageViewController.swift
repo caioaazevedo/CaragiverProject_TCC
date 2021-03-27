@@ -26,7 +26,6 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
         self.manageState = manageState
         self.presenter = familyManagePresenter
         super.init(nibName: nil, bundle: nil)
-//        self.view = presentedView as? UIView
     }
     
     required init?(coder: NSCoder) {

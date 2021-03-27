@@ -7,7 +7,9 @@
 
 import UIKit
 
-class FamilyTreeCollectionViewCell: UICollectionViewCell {
+class FamilyTreeCell: UICollectionViewCell {
+    
+    static let identifier = "FamilyTreeCell"
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
@@ -50,7 +52,7 @@ class FamilyTreeCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension FamilyTreeCollectionViewCell: ViewCodeProtocol{
+extension FamilyTreeCell: ViewCodeProtocol{
     func setUpViewHierarchy() {
         addSubview(name)
         addSubview(hierarchy)
