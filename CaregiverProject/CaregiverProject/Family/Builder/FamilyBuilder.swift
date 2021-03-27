@@ -18,10 +18,10 @@ final class FamilyBuilder{
     
     class func buildFamilyTreeModule() -> FamilyTreeViewController{
         let interactor = FamilyInteractor(database: Database.database())
-        let presenter = FamilyPresenter(with: interactor)
+        let viewModel = FamilyTreeViewModel(interactor: interactor)
         let view = FamilyTreeView()
         let familyTreeController = FamilyTreeViewController(
-            presenter: presenter,
+            viewModel: viewModel,
             familyTreeView: view
         )
         view.completion = {
@@ -47,7 +47,6 @@ final class FamilyBuilder{
         familyTabBarController.modalPresentationStyle = .fullScreen
         let familyTreeModule = FamilyBuilder.buildFamilyTreeModule()
         
-        familyTreeModule.familyId = UserSession.shared.familyID
         familyTreeModule.viewDidLoad()
         let familyIcon = UITabBarItem(title: "Family", image: .actions, tag: 0)
         familyTreeModule.tabBarItem = familyIcon

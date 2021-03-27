@@ -76,7 +76,7 @@ class FamilyInteractor: FamilyInteractorProtocol{
     func updateValue(_ entity: ModelProtocol,_ entityType: EntityTypes,completion: @escaping (Bool) -> ()) {
         switch entityType{
         case .Family:
-            guard var casted = entity as? Family else {return}
+            guard let casted = entity as? Family else {return}
             let parameters = ["uid": casted.id,
                               "name": casted.name,
                               "members": casted.members] as [String : Any]

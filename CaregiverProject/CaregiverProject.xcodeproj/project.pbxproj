@@ -15,6 +15,7 @@
 		7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */; };
 		7904B4A3255ADF2800D078F5 /* FamilyTreeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B4A2255ADF2800D078F5 /* FamilyTreeDataSource.swift */; };
 		7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933236B255DEA060011FC03 /* Notification+CustomName.swift */; };
+		7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */; };
 		79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FC8255C3ECD00A01D85 /* AppUtility.swift */; };
 		79960FCE255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */; };
 		79960FE8255D84ED00A01D85 /* FamilyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */; };
@@ -102,6 +103,7 @@
 		7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewController.swift; sourceTree = "<group>"; };
 		7904B4A2255ADF2800D078F5 /* FamilyTreeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeDataSource.swift; sourceTree = "<group>"; };
 		7933236B255DEA060011FC03 /* Notification+CustomName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+CustomName.swift"; sourceTree = "<group>"; };
+		7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewModel.swift; sourceTree = "<group>"; };
 		79960FC8255C3ECD00A01D85 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionReusableView.swift; sourceTree = "<group>"; };
 		79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTabBarController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,14 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		7947621B260F30D60044F1D0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		AC38732A2552E5340084590D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +254,7 @@
 		AC3D574F2552D5D50013D470 /* Family */ = {
 			isa = PBXGroup;
 			children = (
+				7947621B260F30D60044F1D0 /* ViewModel */,
 				AC4672662552DF0B002AC45B /* Builder */,
 				AC3D57532552D60A0013D470 /* View */,
 				AC3D57592552D74E0013D470 /* Interactor */,
@@ -850,6 +861,7 @@
 				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
 				E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */,
+				7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */,
 				E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */,
 				7904B494255AB96300D078F5 /* FamilyTreeCollectionView.swift in Sources */,
 				E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */,
