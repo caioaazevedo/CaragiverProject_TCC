@@ -8,7 +8,7 @@
 import Foundation
 
 // Relationship
-enum MemberType: Int{
+enum MemberType: Int, CaseIterable {
     case husband_wife = 0
     case son_daughter = 1
     case grandson_granddaughter = 2

@@ -13,7 +13,7 @@
 		7904B494255AB96300D078F5 /* FamilyTreeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B493255AB96300D078F5 /* FamilyTreeCollectionView.swift */; };
 		7904B499255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */; };
 		7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */; };
-		7904B4A3255ADF2800D078F5 /* FamilyTree+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B4A2255ADF2800D078F5 /* FamilyTree+DD.swift */; };
+		7904B4A3255ADF2800D078F5 /* FamilyTreeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B4A2255ADF2800D078F5 /* FamilyTreeDataSource.swift */; };
 		7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933236B255DEA060011FC03 /* Notification+CustomName.swift */; };
 		79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FC8255C3ECD00A01D85 /* AppUtility.swift */; };
 		79960FCE255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */; };
@@ -100,7 +100,7 @@
 		7904B493255AB96300D078F5 /* FamilyTreeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionView.swift; sourceTree = "<group>"; };
 		7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewController.swift; sourceTree = "<group>"; };
-		7904B4A2255ADF2800D078F5 /* FamilyTree+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FamilyTree+DD.swift"; sourceTree = "<group>"; };
+		7904B4A2255ADF2800D078F5 /* FamilyTreeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeDataSource.swift; sourceTree = "<group>"; };
 		7933236B255DEA060011FC03 /* Notification+CustomName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+CustomName.swift"; sourceTree = "<group>"; };
 		79960FC8255C3ECD00A01D85 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			children = (
 				7904B493255AB96300D078F5 /* FamilyTreeCollectionView.swift */,
 				7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */,
-				7904B4A2255ADF2800D078F5 /* FamilyTree+DD.swift */,
+				7904B4A2255ADF2800D078F5 /* FamilyTreeDataSource.swift */,
 				79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */,
 			);
 			path = CollectionView;
@@ -231,14 +231,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		AC38732B2552E5410084590D /* UIView */ = {
+		AC38732B2552E5410084590D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				AC3873282552E2330084590D /* FamilyListView.swift */,
 				AC38732C2552E5580084590D /* FamilyManageView.swift */,
 				7904B48D255AB4C400D078F5 /* FamilyTreeView.swift */,
 			);
-			path = UIView;
+			path = View;
 			sourceTree = "<group>";
 		};
 		AC3D574F2552D5D50013D470 /* Family */ = {
@@ -265,7 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				7904B492255AB6D400D078F5 /* CollectionView */,
-				AC38732B2552E5410084590D /* UIView */,
+				AC38732B2552E5410084590D /* View */,
 				AC38732A2552E5340084590D /* Controller */,
 				AC3D575C2552D7AC0013D470 /* TableView */,
 			);
@@ -878,7 +878,7 @@
 				E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */,
 				7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */,
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
-				7904B4A3255ADF2800D078F5 /* FamilyTree+DD.swift in Sources */,
+				7904B4A3255ADF2800D078F5 /* FamilyTreeDataSource.swift in Sources */,
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
 				AC3D57632552DBD90013D470 /* FamilyTableView.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,

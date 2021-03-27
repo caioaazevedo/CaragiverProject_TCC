@@ -17,10 +17,13 @@ final class FamilyBuilder{
     }
     
     class func buildFamilyTreeModule() -> FamilyTreeViewController{
-        let familyTreeController = FamilyTreeViewController()
         let interactor = FamilyInteractor(database: Database.database())
         let presenter = FamilyPresenter(with: interactor)
         let view = FamilyTreeView()
+        let familyTreeController = FamilyTreeViewController(
+            presenter: presenter,
+            familyTreeView: view
+        )
         view.completion = {
             let url = URL(string: "login://" + "\(UserSession.shared.familyID!)")
             let fullText = ["\(UserSession.shared.username!) está te convidando para entrar no grupo. Token: \(url!)."]
@@ -30,10 +33,6 @@ final class FamilyBuilder{
             activityViewController.excludedActivityTypes = [.print]
             familyTreeController.present(activityViewController, animated: true, completion: nil)
         }
-        view.collectionView.delegate = familyTreeController
-        view.collectionView.dataSource = familyTreeController
-        familyTreeController.presenter = presenter
-        familyTreeController.presentedView = view
         return familyTreeController
     }
     

@@ -23,7 +23,7 @@ protocol FamilyManagementLogic{
 }
 
 
-class FamilyInteractor:  FamilyInteractorProtocol{
+class FamilyInteractor: FamilyInteractorProtocol{
     
     internal let ref: DatabaseReference?
     
