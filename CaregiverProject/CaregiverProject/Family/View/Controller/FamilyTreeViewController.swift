@@ -35,6 +35,8 @@ class FamilyTreeViewController: UIViewController {
         AppUtility.lockOrientation(.portrait)
         self.callRefresh?()
         viewModel.queryMembers()
+        hideActivityIndicator()
+        showActivityIndicator()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,9 +45,11 @@ class FamilyTreeViewController: UIViewController {
     
     private func bindViewModel() {
         viewModel.$members
-            .sink { [familyTreeView] members in
+            .receive(on: DispatchQueue.main)
+            .sink { [familyTreeView, hideActivityIndicator] members in
                 let dataSource = FamilyTreeDataSource(members: members)
                 familyTreeView.collectionView.dataSource = dataSource
+                hideActivityIndicator()
             }
             .store(in: &subscribers)
     }

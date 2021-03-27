@@ -8,7 +8,7 @@
 import UIKit
 typealias Members = [Member]
 
-struct Member: ModelProtocol{
+struct Member: ModelProtocol {
     var id: String
     var name: String
     var email: String
@@ -16,4 +16,16 @@ struct Member: ModelProtocol{
     var memberType: MemberType
     var image: UIImage?
     var isAdmin: Bool = false
+}
+
+extension Member: Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
+    }
+    
+    static func == (lhs: Member, rhs: Member) -> Bool {
+        lhs.id == rhs.id
+    }
+    
 }

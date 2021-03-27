@@ -10,6 +10,9 @@ import Combine
 
 class FamilyTreeViewModel {
     @Published var members = Members()
+    private var uniqueMembers = Set<Member>() {
+        didSet { members = uniqueMembers.map { $0 } }
+    }
     private let interactor: FamilyInteractor
     private var familyID: String? {
         UserSession.shared.familyID
@@ -20,7 +23,7 @@ class FamilyTreeViewModel {
     }
     
     func queryMembers() {
-        members.removeAll()
+        uniqueMembers.removeAll()
         queryFamily()
     }
 }
@@ -37,7 +40,7 @@ private extension FamilyTreeViewModel {
     private func queryMember(by id: String) {
         interactor.readValue(id, .Member) { [weak self] result in
             guard let member = result as? Member else { return }
-            self?.members.append(member)
+            self?.uniqueMembers.insert(member)
         }
     }
 }
