@@ -26,6 +26,7 @@ protocol FamilyManagementLogic{
 class FamilyInteractor:  FamilyInteractorProtocol{
     
     internal let ref: DatabaseReference?
+    let imgConverter = ImageConverter()
     
     init(database: Database){
         self.ref = database.reference()
@@ -63,7 +64,7 @@ class FamilyInteractor:  FamilyInteractorProtocol{
                 let name = value["name"] as? String ?? ""
                 let memberType = value["memberType"] as? Int ?? 0
                 let imageString = value["image"] as? String
-                let image = self.decodeImage(str64: imageString)
+                let image = self.imgConverter.decodeImage(str64: imageString)
                 let isAdmin = value["isAdmin"] as? Bool ?? false
                 let member = Member(id: dataID, name: name, email: "", password: "", memberType: MemberType(rawValue: memberType) ?? .others, image: image, isAdmin: isAdmin)
                 completion(member)
@@ -97,13 +98,4 @@ class FamilyInteractor:  FamilyInteractorProtocol{
             break
         }
     }
-    
-    func decodeImage(str64: String?) -> UIImage? {
-        guard let str64 = str64 else { return nil }
-        
-        let dataDecoded : Data = Data(base64Encoded: str64, options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        return decodedimage
-    }
-    
 }
