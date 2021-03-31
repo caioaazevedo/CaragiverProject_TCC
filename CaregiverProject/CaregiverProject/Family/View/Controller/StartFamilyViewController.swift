@@ -23,20 +23,20 @@ class StartFamilyViewController: UIViewController {
     
     private func configureButtons(){
         startFamilyView.createFamilyButton.addAction(
-            UIAction { [goToFamilyModule] _ in
-                goToFamilyModule(.Create)
+            UIAction { [goToFamilyManage] _ in
+                goToFamilyManage(.Create)
             },
             for: .touchUpInside
         )
         startFamilyView.joinFamilyButton.addAction(
-            UIAction { [goToFamilyModule] _ in
-                goToFamilyModule(.Join)
+            UIAction { [goToFamilyManage] _ in
+                goToFamilyManage(.Join)
             },
             for: .touchUpInside
         )
     }
     
-    private func goToFamilyModule(state: ManageState) {
+    private func goToFamilyManage(state: ManageState) {
         let viewController = FamilyBuilder.buildFamilyModule(state: state)
         self.present(viewController, animated: true, completion: nil)
     }

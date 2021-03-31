@@ -7,15 +7,7 @@
 
 import UIKit
 
-class FamilyTabBarController: UITabBarController{
-    
-    override func viewDidLoad() {
-        delegate = self
-    }
-    
-}
-
-extension FamilyTabBarController: UITabBarControllerDelegate{
+class FamilyTabBarControllerDelegate: NSObject, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         return true;
     }

@@ -47,8 +47,8 @@ final class FamilyBuilder{
         return familyViewController
     }
     
-    class func buildFamilyTabBarController() -> FamilyTabBarController{
-        let familyTabBarController = FamilyTabBarController()
+    class func buildFamilyTabBarController() -> UITabBarController{
+        let familyTabBarController = UITabBarController()
         familyTabBarController.modalPresentationStyle = .fullScreen
         let familyTreeModule = FamilyBuilder.buildFamilyTreeModule()
         
