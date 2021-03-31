@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ProfileEntity: ModelProtocol{
+struct ProfileEntity: ModelProtocol {
     var id: String
     var name: String
     var age: Int

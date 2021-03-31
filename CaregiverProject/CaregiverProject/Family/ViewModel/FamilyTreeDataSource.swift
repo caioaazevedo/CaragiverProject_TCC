@@ -8,12 +8,12 @@
 import UIKit
 
 class FamilyTreeDataSource: NSObject {
-    private let sections: [String: Members]
+    private var sections = [String: Members]()
     private var memberTypes: [String] {
         MemberType.allCases.map { $0.title }
     }
     
-    init(members: Members) {
+    func update(members: Members) {
         sections = Dictionary(
             grouping: members,
             by: { member in member.memberType.title }
@@ -24,7 +24,7 @@ class FamilyTreeDataSource: NSObject {
 extension FamilyTreeDataSource: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        sections.count
+        memberTypes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,10 +41,6 @@ extension FamilyTreeDataSource: UICollectionViewDataSource {
             cell.name.text = member.name
             cell.imageView.image = member.image
             cell.hierarchy.text = member.memberType.title
-            cell.layer.cornerRadius = 25
-            cell.layer.borderWidth = 0.5
-            cell.layer.borderColor = #colorLiteral(red: 0.6979769468, green: 0.6980791688, blue: 0.6979545951, alpha: 1)
-            cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.layer.cornerRadius).cgPath
         }
         return cell
     }

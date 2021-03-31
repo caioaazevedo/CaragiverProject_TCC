@@ -28,7 +28,8 @@ struct FamilyTreeControllerPreviews: PreviewProvider {
         UIViewControllerPreview {
             return FamilyTreeViewController(
                 viewModel: FamilyTreeViewModel(interactor: FamilyInteractor(database: Database.database())),
-                familyTreeView: FamilyTreeView()
+                familyTreeView: FamilyTreeView(),
+                dataSource: FamilyTreeDataSource()
             )
         }
     }

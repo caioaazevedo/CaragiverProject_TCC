@@ -10,14 +10,17 @@ import Combine
 
 class FamilyTreeViewController: UIViewController {
     private let viewModel: FamilyTreeViewModel
+    private let dataSource: FamilyTreeDataSource
     private let familyTreeView: FamilyTreeView
     var callRefresh: (() ->())?
     private var subscribers = Set<AnyCancellable>()
     
     init(viewModel: FamilyTreeViewModel,
-         familyTreeView: FamilyTreeView) {
+         familyTreeView: FamilyTreeView,
+         dataSource: FamilyTreeDataSource) {
         self.viewModel = viewModel
         self.familyTreeView = familyTreeView
+        self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
         bindViewModel()
     }
@@ -43,24 +46,23 @@ class FamilyTreeViewController: UIViewController {
         AppUtility.lockOrientation(.all)
     }
     
-    private func bindViewModel() {
+    func bindViewModel() {
         viewModel.$members
             .receive(on: DispatchQueue.main)
-            .sink { [familyTreeView, hideActivityIndicator] members in
-                let dataSource = FamilyTreeDataSource(members: members)
-                familyTreeView.collectionView.dataSource = dataSource
+            .sink { [familyTreeView, hideActivityIndicator, dataSource] members in
+                dataSource.update(members: members)
+                familyTreeView.collectionView.reloadData()
                 hideActivityIndicator()
             }
             .store(in: &subscribers)
     }
     
-    func assignSubscriber(publisher: AnyPublisher<ProfileEntity,Never>){        
+    func assignSubscriber(publisher: AnyPublisher<ProfileEntity,Never>) {
         publisher
             .receive(on: DispatchQueue.main)
-            .sink{ [weak self] profile in
-                guard let `self` = self,let view = self.view as? FamilyTreeView else {return}                
-                view.elderName.text = profile.name
-                view.elderImage.image = profile.photo
+            .sink{ [familyTreeView] profile in
+                familyTreeView.elderName.text = profile.name
+                familyTreeView.elderImage.image = profile.photo
             }
             .store(in: &subscribers)
     }

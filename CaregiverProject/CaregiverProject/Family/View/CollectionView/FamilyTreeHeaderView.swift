@@ -31,7 +31,7 @@ class FamilyTreeHeaderView: UICollectionReusableView {
     }
 }
 
-extension FamilyTreeHeaderView: ViewCodeProtocol{
+extension FamilyTreeHeaderView: ViewCodeProtocol {
     func setUpViewHierarchy() {
         addSubview(headerLabel)
     }

@@ -10,7 +10,7 @@
 		1BFCFACFDCC1DF898A4BBEAE /* Pods_CaregiverProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 313ADE18372FCB029E4D7D5D /* Pods_CaregiverProject.framework */; };
 		2D6F3A3126BEC3E77F70008F /* Pods_CaregiverProject_CaregiverProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8127C265ABC15FE38B9E554E /* Pods_CaregiverProject_CaregiverProjectUITests.framework */; };
 		7904B48E255AB4C400D078F5 /* FamilyTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B48D255AB4C400D078F5 /* FamilyTreeView.swift */; };
-		7904B499255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */; };
+		7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B498255ABC9D00D078F5 /* FamilyTreeCell.swift */; };
 		7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */; };
 		7904B4A3255ADF2800D078F5 /* FamilyTreeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B4A2255ADF2800D078F5 /* FamilyTreeDataSource.swift */; };
 		7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933236B255DEA060011FC03 /* Notification+CustomName.swift */; };
@@ -18,19 +18,16 @@
 		79476233260F6C840044F1D0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476232260F6C840044F1D0 /* UIViewController.swift */; };
 		79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476237260F6EDB0044F1D0 /* UIViewControllerPreview.swift */; };
 		79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FC8255C3ECD00A01D85 /* AppUtility.swift */; };
-		79960FCE255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */; };
+		79960FCE255CB71900A01D85 /* FamilyTreeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FCD255CB71900A01D85 /* FamilyTreeHeaderView.swift */; };
 		79960FE8255D84ED00A01D85 /* FamilyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */; };
 		AC29293C25544E0600C26FE1 /* ManageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC29293B25544E0600C26FE1 /* ManageState.swift */; };
 		AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873262552E1CB0084590D /* FamilyManageViewController.swift */; };
-		AC3873292552E2330084590D /* FamilyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873282552E2330084590D /* FamilyListView.swift */; };
 		AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732C2552E5580084590D /* FamilyManageView.swift */; };
 		AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732E2552E8190084590D /* CRUDOperations.swift */; };
 		AC3D574E2552D41D0013D470 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D574D2552D41D0013D470 /* Family.swift */; };
 		AC3D57582552D7250013D470 /* FamilyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57572552D7250013D470 /* FamilyPresenter.swift */; };
 		AC3D575B2552D75D0013D470 /* FamilyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D575A2552D75D0013D470 /* FamilyInteractor.swift */; };
-		AC3D575E2552D7B90013D470 /* FamilyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */; };
 		AC3D57612552D8140013D470 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57602552D8140013D470 /* Metrics.swift */; };
-		AC3D57632552DBD90013D470 /* FamilyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57622552DBD90013D470 /* FamilyTableView.swift */; };
 		AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4672672552DF15002AC45B /* FamilyBuilder.swift */; };
 		AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C029E2554AD71002FE9DD /* UserSession.swift */; };
 		AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41B7255AC8EF00925819 /* ProfileView.swift */; };
@@ -99,7 +96,7 @@
 		47C80A20382529E371843CE0 /* Pods-CaregiverProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProject/Pods-CaregiverProject.debug.xcconfig"; sourceTree = "<group>"; };
 		4FB3CD3D193C60F1CB5A1687 /* Pods-CaregiverProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject/Pods-CaregiverProject.release.xcconfig"; sourceTree = "<group>"; };
 		7904B48D255AB4C400D078F5 /* FamilyTreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeView.swift; sourceTree = "<group>"; };
-		7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7904B498255ABC9D00D078F5 /* FamilyTreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCell.swift; sourceTree = "<group>"; };
 		7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewController.swift; sourceTree = "<group>"; };
 		7904B4A2255ADF2800D078F5 /* FamilyTreeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeDataSource.swift; sourceTree = "<group>"; };
 		7933236B255DEA060011FC03 /* Notification+CustomName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+CustomName.swift"; sourceTree = "<group>"; };
@@ -107,21 +104,18 @@
 		79476232260F6C840044F1D0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		79476237260F6EDB0044F1D0 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
 		79960FC8255C3ECD00A01D85 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
-		79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeCollectionReusableView.swift; sourceTree = "<group>"; };
+		79960FCD255CB71900A01D85 /* FamilyTreeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeHeaderView.swift; sourceTree = "<group>"; };
 		79960FE7255D84ED00A01D85 /* FamilyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTabBarController.swift; sourceTree = "<group>"; };
 		8127C265ABC15FE38B9E554E /* Pods_CaregiverProject_CaregiverProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaregiverProject_CaregiverProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DE9F1CE1A3782774C72496 /* Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AC29293B25544E0600C26FE1 /* ManageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageState.swift; sourceTree = "<group>"; };
 		AC3873262552E1CB0084590D /* FamilyManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageViewController.swift; sourceTree = "<group>"; };
-		AC3873282552E2330084590D /* FamilyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyListView.swift; sourceTree = "<group>"; };
 		AC38732C2552E5580084590D /* FamilyManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageView.swift; sourceTree = "<group>"; };
 		AC38732E2552E8190084590D /* CRUDOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDOperations.swift; sourceTree = "<group>"; };
 		AC3D574D2552D41D0013D470 /* Family.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
 		AC3D57572552D7250013D470 /* FamilyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyPresenter.swift; sourceTree = "<group>"; };
 		AC3D575A2552D75D0013D470 /* FamilyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyInteractor.swift; sourceTree = "<group>"; };
-		AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTableViewCell.swift; sourceTree = "<group>"; };
 		AC3D57602552D8140013D470 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
-		AC3D57622552DBD90013D470 /* FamilyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTableView.swift; sourceTree = "<group>"; };
 		AC4672672552DF15002AC45B /* FamilyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyBuilder.swift; sourceTree = "<group>"; };
 		AC7C029E2554AD71002FE9DD /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		AC9D41B7255AC8EF00925819 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -215,8 +209,8 @@
 		7904B492255AB6D400D078F5 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				7904B498255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift */,
-				79960FCD255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift */,
+				7904B498255ABC9D00D078F5 /* FamilyTreeCell.swift */,
+				79960FCD255CB71900A01D85 /* FamilyTreeHeaderView.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -245,7 +239,6 @@
 		AC38732B2552E5410084590D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AC3873282552E2330084590D /* FamilyListView.swift */,
 				AC38732C2552E5580084590D /* FamilyManageView.swift */,
 				7904B48D255AB4C400D078F5 /* FamilyTreeView.swift */,
 			);
@@ -279,7 +272,6 @@
 				7904B492255AB6D400D078F5 /* CollectionView */,
 				AC38732B2552E5410084590D /* View */,
 				AC38732A2552E5340084590D /* Controller */,
-				AC3D575C2552D7AC0013D470 /* TableView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,15 +290,6 @@
 				AC3D575A2552D75D0013D470 /* FamilyInteractor.swift */,
 			);
 			path = Interactor;
-			sourceTree = "<group>";
-		};
-		AC3D575C2552D7AC0013D470 /* TableView */ = {
-			isa = PBXGroup;
-			children = (
-				AC3D57622552DBD90013D470 /* FamilyTableView.swift */,
-				AC3D575D2552D7B90013D470 /* FamilyTableViewCell.swift */,
-			);
-			path = TableView;
 			sourceTree = "<group>";
 		};
 		AC3D575F2552D8040013D470 /* Utils */ = {
@@ -859,7 +842,6 @@
 				7904B48E255AB4C400D078F5 /* FamilyTreeView.swift in Sources */,
 				E2DD96DF2551A52200A89A04 /* RegisterProtocols.swift in Sources */,
 				E2194788255B587A0013E942 /* ImagePickerManager.swift in Sources */,
-				AC3873292552E2330084590D /* FamilyListView.swift in Sources */,
 				AC9D41C7255AC92600925819 /* ElderEntity.swift in Sources */,
 				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
@@ -867,7 +849,7 @@
 				7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */,
 				E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */,
 				E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */,
-				79960FCE255CB71900A01D85 /* FamilyTreeCollectionReusableView.swift in Sources */,
+				79960FCE255CB71900A01D85 /* FamilyTreeHeaderView.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
 				E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */,
 				AC9D41E1255AD14400925819 /* ProfileBuilder.swift in Sources */,
@@ -885,7 +867,6 @@
 				E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */,
 				AC3D574E2552D41D0013D470 /* Family.swift in Sources */,
 				AC9D41D3255ACE5A00925819 /* ProfileViewController.swift in Sources */,
-				AC3D575E2552D7B90013D470 /* FamilyTableViewCell.swift in Sources */,
 				79476233260F6C840044F1D0 /* UIViewController.swift in Sources */,
 				AC3D57582552D7250013D470 /* FamilyPresenter.swift in Sources */,
 				AC29293C25544E0600C26FE1 /* ManageState.swift in Sources */,
@@ -895,7 +876,6 @@
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
 				7904B4A3255ADF2800D078F5 /* FamilyTreeDataSource.swift in Sources */,
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
-				AC3D57632552DBD90013D470 /* FamilyTableView.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
 				79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
@@ -903,7 +883,7 @@
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */,
-				7904B499255ABC9D00D078F5 /* FamilyTreeCollectionViewCell.swift in Sources */,
+				7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,

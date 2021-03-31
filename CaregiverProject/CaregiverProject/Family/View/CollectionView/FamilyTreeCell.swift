@@ -80,6 +80,13 @@ extension FamilyTreeCell: ViewCodeProtocol{
     
     func setUpAditionalConficuration() {
         backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        layer.cornerRadius = 25
+        layer.borderWidth = 0.5
+        layer.borderColor = #colorLiteral(red: 0.6979769468, green: 0.6980791688, blue: 0.6979545951, alpha: 1)
+        layer.shadowPath = UIBezierPath(
+            roundedRect: bounds,
+            cornerRadius: layer.cornerRadius
+        ).cgPath
     }
     
 }

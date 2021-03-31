@@ -62,7 +62,12 @@ final class FamilyTreeView: UIView{
         layout.headerReferenceSize = CGSize(width: Metrics.Device.width, height: 80)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(FamilyTreeCell.self, forCellWithReuseIdentifier: FamilyTreeCell.identifier)
-        collectionView.register(FamilyTreeHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FamilyTreeHeaderView.identifier)
+        collectionView.register(
+            FamilyTreeHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: FamilyTreeHeaderView.identifier
+        )
+        collectionView.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()

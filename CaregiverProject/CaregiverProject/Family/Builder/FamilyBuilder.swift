@@ -20,10 +20,14 @@ final class FamilyBuilder{
         let interactor = FamilyInteractor(database: Database.database())
         let viewModel = FamilyTreeViewModel(interactor: interactor)
         let view = FamilyTreeView()
+        let dataSource = FamilyTreeDataSource()
+        view.collectionView.dataSource = dataSource
         let familyTreeController = FamilyTreeViewController(
             viewModel: viewModel,
-            familyTreeView: view
+            familyTreeView: view,
+            dataSource: dataSource
         )
+        familyTreeController.bindViewModel()
         view.completion = {
             let url = URL(string: "login://" + "\(UserSession.shared.familyID!)")
             let fullText = ["\(UserSession.shared.username!) está te convidando para entrar no grupo. Token: \(url!)."]
