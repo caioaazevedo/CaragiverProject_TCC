@@ -12,6 +12,7 @@ class RegisterInteractor: PresenterToInteractorRegisterProtocol {
 
     var presenter: InteractorToPresenterRegisterProtocol?
     let ref: DatabaseReference
+    private let imgConverter = ImageConverter()
     
     init() {        
         self.ref = Database.database().reference()
@@ -23,7 +24,7 @@ class RegisterInteractor: PresenterToInteractorRegisterProtocol {
             guard let error = error else {
                 
                 let id = authResult?.user.uid
-                let image64 = self.encodeImage(image: member.image)
+                let image64 = self.imgConverter.encodeImage(image: member.image)
                 self.ref.child("member").child(id!).setValue(["name": member.name, "isAdmin": member.isAdmin, "memberType": member.memberType.type, "image": image64])
                 UserSession.shared.username = member.name
                 UserSession.shared.id = id
@@ -33,22 +34,5 @@ class RegisterInteractor: PresenterToInteractorRegisterProtocol {
             print(error.localizedDescription)
             self.presenter?.failedToRegister(error: error)
         }
-    }
-    
-    func encodeImage(image: UIImage?) -> String {
-        //Now use image to create into NSData format
-        guard let image = image else { return "" }
-        let imageData = image.jpegData(compressionQuality: 0.5)
-        let str64 = imageData?.base64EncodedString(options: .lineLength64Characters)
-        
-        return str64 ?? ""
-    }
-    
-    func decodeImage(str64: String?) -> UIImage? {
-        guard let str64 = str64 else { return nil }
-        
-        let dataDecoded : Data = Data(base64Encoded: str64, options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        return decodedimage
     }
 }

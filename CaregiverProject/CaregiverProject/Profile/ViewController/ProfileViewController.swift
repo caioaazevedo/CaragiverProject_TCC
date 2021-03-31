@@ -9,21 +9,21 @@ import UIKit
 import Combine
 
 class ProfileViewController: UIViewController, UITextFieldDelegate{
-    var presenter: ProfilePresenterLogic
+    var viewModel: ProfileViewModel
     var imageManager: ImagePickerManager?
     var profileView: ProfileView = .init()
     var buttonState = true
     
-    lazy var publisher: AnyPublisher<ProfileEntity, Never> = {
+    lazy var publisher: AnyPublisher<ProfileModel, Never> = {
         return self.subject!.eraseToAnyPublisher()
     }()
     
-    private(set) var subject: PassthroughSubject<ProfileEntity, Never>? = PassthroughSubject<ProfileEntity, Never>()
+    private(set) var subject: PassthroughSubject<ProfileModel, Never>? = PassthroughSubject<ProfileModel, Never>()
         
     private(set) var updated: Bool = false {
         didSet{
             guard let view = view as? ProfileView else {return}
-            let elder = ProfileEntity(id: "", name: view.nameLabel.text ?? "Idoso", age: Int(view.ageLabel.text ?? "70") ?? 70,photo: view.profileImage.image)
+            let elder = ProfileModel(id: "", name: view.nameLabel.text ?? "Idoso", age: Int(view.ageLabel.text ?? "70") ?? 70,photo: view.profileImage.image)
             self.subject?.send(elder)
         }
     }
@@ -48,8 +48,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
         profileView.secTextField.delegate = self
     }
     
-    init(presenter: ProfilePresenterLogic){
-        self.presenter = presenter
+    init(viewModel: ProfileViewModel){
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.setupData()
     }
@@ -63,7 +63,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
     }
     
     func setupData(){
-        self.presenter.assignEntity(entityID: UserSession.shared.elderID ?? UUID().uuidString) {
+        self.viewModel.assignEntity(entityID: UserSession.shared.elderID ?? UUID().uuidString) {
             self.configureViews()
             self.updated.toggle()
         }
@@ -72,9 +72,9 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
     
     func configureViews(){
         guard let view = view as? ProfileView else {return}
-        view.profileImage.image = presenter.entity?.photo ?? UIImage(named: "profileIcon")
-        view.nameLabel.text = "\(presenter.entity?.name ?? "")"
-        view.ageLabel.text = "\(presenter.entity?.age ?? 0)"
+        view.profileImage.image = viewModel.entity?.photo ?? UIImage(named: "profileIcon")
+        view.nameLabel.text = "\(viewModel.entity?.name ?? "")"
+        view.ageLabel.text = "\(viewModel.entity?.age ?? 0)"
         
     }
     
@@ -105,8 +105,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
     func insertValues(){
         guard let view = view as? ProfileView else {return}
         guard let age = Int(view.ageLabel.text ?? "0") else {return}
-        let entity = ProfileEntity(id: UserSession.shared.elderID ?? UUID().uuidString, name: view.nameLabel.text ?? "Nome do Idoso", age: age, photo: (view.profileImage.image ?? UIImage(named: "profileIcon"))!)
-        self.presenter.manageEntity(entity: entity, intendedReturn: Bool.self, operation: .create) { result in
+        let entity = ProfileModel(id: UserSession.shared.elderID ?? UUID().uuidString, name: view.nameLabel.text ?? "Nome do Idoso", age: age, photo: (view.profileImage.image ?? UIImage(named: "profileIcon"))!)
+        self.viewModel.manageEntity(entity: entity, intendedReturn: Bool.self, operation: .create) { result in
             guard let result = result else {return}
             if result { self.setupData() }
         }
@@ -114,8 +114,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
     
     func updateValues(){
         guard let view = view as? ProfileView else {return}
-        let entity = ProfileEntity(id: view.nameLabel.text!, name: view.nameLabel.text!, age: Int(view.ageLabel.text!)!, photo: view.profileImage.image!)
-        self.presenter.manageEntity(entity: entity, intendedReturn: Bool.self, operation: .update) { result in
+        let entity = ProfileModel(id: view.nameLabel.text!, name: view.nameLabel.text!, age: Int(view.ageLabel.text!)!, photo: view.profileImage.image!)
+        self.viewModel.manageEntity(entity: entity, intendedReturn: Bool.self, operation: .update) { result in
             guard let result = result else {return}
             if result { self.setupData() }
         }
