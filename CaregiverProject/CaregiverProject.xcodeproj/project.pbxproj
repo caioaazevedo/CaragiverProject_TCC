@@ -17,6 +17,7 @@
 		7914614A26145A1C00EA9AB5 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914614926145A1C00EA9AB5 /* Storable.swift */; };
 		7914614F26145B0C00EA9AB5 /* ImageDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914614E26145B0C00EA9AB5 /* ImageDecoder.swift */; };
 		7914615726146EDD00EA9AB5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914615626146EDD00EA9AB5 /* DataManager.swift */; };
+		79146162261476E700EA9AB5 /* FamilyManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79146161261476E700EA9AB5 /* FamilyManageViewModel.swift */; };
 		7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933236B255DEA060011FC03 /* Notification+CustomName.swift */; };
 		7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */; };
 		79476233260F6C840044F1D0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476232260F6C840044F1D0 /* UIViewController.swift */; };
@@ -40,7 +41,6 @@
 		AC9D41C7255AC92600925819 /* ElderEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41C6255AC92600925819 /* ElderEntity.swift */; };
 		AC9D41CC255ACD5200925819 /* Kinship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41CB255ACD5200925819 /* Kinship.swift */; };
 		AC9D41D3255ACE5A00925819 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */; };
-		AC9D41D8255AD04C00925819 /* FamilyControllerLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41D7255AD04C00925819 /* FamilyControllerLogic.swift */; };
 		AC9D41E1255AD14400925819 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41E0255AD14400925819 /* ProfileBuilder.swift */; };
 		ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF1C13255425CF00346B67 /* EntityTypes.swift */; };
 		B47535054A304F47969D70C3 /* Pods_CaregiverProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430E0E079F774E9BBCDA5F9 /* Pods_CaregiverProjectTests.framework */; };
@@ -107,6 +107,7 @@
 		7914614926145A1C00EA9AB5 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		7914614E26145B0C00EA9AB5 /* ImageDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDecoder.swift; sourceTree = "<group>"; };
 		7914615626146EDD00EA9AB5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		79146161261476E700EA9AB5 /* FamilyManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageViewModel.swift; sourceTree = "<group>"; };
 		7933236B255DEA060011FC03 /* Notification+CustomName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+CustomName.swift"; sourceTree = "<group>"; };
 		7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewModel.swift; sourceTree = "<group>"; };
 		79476232260F6C840044F1D0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +133,6 @@
 		AC9D41C6255AC92600925819 /* ElderEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElderEntity.swift; sourceTree = "<group>"; };
 		AC9D41CB255ACD5200925819 /* Kinship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kinship.swift; sourceTree = "<group>"; };
 		AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		AC9D41D7255AD04C00925819 /* FamilyControllerLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyControllerLogic.swift; sourceTree = "<group>"; };
 		AC9D41E0255AD14400925819 /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
 		ACEF1C13255425CF00346B67 /* EntityTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTypes.swift; sourceTree = "<group>"; };
 		D1B145D0DA6BFC2D85279B9D /* Pods-CaregiverProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +236,7 @@
 			children = (
 				7904B4A2255ADF2800D078F5 /* FamilyTreeDataSource.swift */,
 				7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */,
+				79146161261476E700EA9AB5 /* FamilyManageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -243,7 +244,6 @@
 		AC38732A2552E5340084590D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AC9D41D7255AD04C00925819 /* FamilyControllerLogic.swift */,
 				E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */,
 				AC3873262552E1CB0084590D /* FamilyManageViewController.swift */,
 				7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */,
@@ -872,6 +872,7 @@
 				E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */,
 				79960FCE255CB71900A01D85 /* FamilyTreeHeaderView.swift in Sources */,
 				7914614F26145B0C00EA9AB5 /* ImageDecoder.swift in Sources */,
+				79146162261476E700EA9AB5 /* FamilyManageViewModel.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
 				E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */,
 				7914615726146EDD00EA9AB5 /* DataManager.swift in Sources */,
@@ -880,7 +881,6 @@
 				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */,
-				AC9D41D8255AD04C00925819 /* FamilyControllerLogic.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
 				E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */,
 				E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */,

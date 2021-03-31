@@ -8,11 +8,12 @@
 import UIKit
 import Firebase
 
-class FamilyManageViewController: UIViewController, FamilyControllerLogic{
+class FamilyManageViewController: UIViewController {
     var manageState: ManageState
-    var presenter: FamilyPresenterProtocol
+    var viewModel: FamilyManageViewModel
+    let familyManageView: FamilyManageView
     
-    override func loadView(){
+    override func loadView() {
         super.loadView()
         view = FamilyManageView()
         configureButtons()
@@ -22,9 +23,10 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
         super.viewDidLoad()
     }
     
-    init(manageState: ManageState,familyManagePresenter: FamilyPresenterProtocol){
+    init(manageState: ManageState, viewModel: FamilyManageViewModel) {
         self.manageState = manageState
-        self.presenter = familyManagePresenter
+        self.viewModel = viewModel
+        self.familyManageView = FamilyManageView()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,63 +34,48 @@ class FamilyManageViewController: UIViewController, FamilyControllerLogic{
         fatalError("init(coder:) has not been implemented")
     }
        
-    func configureButtons(){
+    private func configureButtons(){
         guard let view = view as? FamilyManageView else {return}
         switch manageState{
         case .Join:
             view.primaryField.placeholder = "Family's Code"
             view.primaryButton.setTitle("Enter in family", for: .normal)
-            view.primaryButton.addTarget(self, action: #selector(joinFamily), for: .touchUpInside)
+            view.primaryButton.addAction(
+                UIAction { [joinFamily] _ in
+                    joinFamily()
+                },
+                for: .touchUpInside
+            )
         case .Create:
             view.primaryField.placeholder = "Family's Name"
             view.primaryButton.setTitle("Create Family", for: .normal)
-            view.primaryButton.addTarget(self, action: #selector(createFamily), for: .touchUpInside)
-        }
-        
-    }
-    
-    func setupData(completion: @escaping () -> ()){
-        self.presenter.assignEntity(entityID: UserSession.shared.familyID!) {
-            completion()
+            view.primaryButton.addAction(
+                UIAction { [createFamily] _ in
+                    createFamily()
+                },
+                for: .touchUpInside
+            )
         }
     }
     
-    @objc func joinFamily() {
-        guard let view = view as? FamilyManageView else {return}
-        guard let presenter = presenter as? FamilyPresenter else {return}
-        UserSession.shared.familyID = view.primaryField.text
-        var family = Family(id: view.primaryField.text ?? "default", name: view.primaryField.text ?? "Familia", members: [UserSession.shared.id!])
-        self.setupData {
-            self.presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Family.self, operation: .read) { (result) in
-                family.members = result?.members ?? []
-                family.members.append(UserSession.shared.id!)
-                presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
-                    self.setupData {
-                        UserDefaults.loginState = .enteredFamily
-                        self.presenter.presentTabController(vc: self)
-                    }
-                })
-            }
+    private func joinFamily() {
+        let familyID = familyManageView.primaryField.text ?? "Default"
+        viewModel.joinFamily(familyID: familyID) { [goToFamilyModule] in
+            goToFamilyModule()
         }
     }
     
-    
-    @objc func createFamily() {
-        guard let view = view as? FamilyManageView else {return}
-        guard let presenter = presenter as? FamilyPresenter else {return}
-        UserSession.shared.familyID = UUID().uuidString
-        let family = Family(id: UserSession.shared.familyID!, name: view.primaryField.text ?? "Familia", members: [UserSession.shared.id!])
-        
-        presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .create) { (result) in
-            presenter.manageEntity(entity: family, entityType: .Family, intendedReturn: Bool.self, operation: .update, completion: { _ in
-                self.setupData {
-                    UserDefaults.loginState = .enteredFamily
-                    self.presenter.presentTabController(vc: self)
-                }
-            })
+    private func createFamily() {
+        let familyName = familyManageView.primaryField.text ?? "Familia"
+        viewModel.createFamily(familyName: familyName) { [goToFamilyModule] in
+            goToFamilyModule()
         }
     }
- 
     
-    
+    private func goToFamilyModule() {
+        UserDefaults.loginState = .enteredFamily
+        let module = FamilyBuilder.buildFamilyTabBarController()
+        present(module, animated: true, completion: nil)
+    }
+
 }

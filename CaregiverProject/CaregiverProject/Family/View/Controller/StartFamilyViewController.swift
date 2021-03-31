@@ -8,35 +8,36 @@
 import UIKit
 
 
-class StartFamilyViewController: UIViewController, FamilyControllerLogic {
+class StartFamilyViewController: UIViewController {
     
     var startFamilyView = StartFamilyView()
     
     override func loadView() {
         view = startFamilyView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureButtons()
     }
     
-    func configureButtons(){
-        startFamilyView.createFamilyButton.addTarget(self, action: #selector(createFamily), for: .touchUpInside)
-        startFamilyView.joinFamilyButton.addTarget(self, action: #selector(joinFamily), for: .touchUpInside)
+    private func configureButtons(){
+        startFamilyView.createFamilyButton.addAction(
+            UIAction { [goToFamilyModule] _ in
+                goToFamilyModule(.Create)
+            },
+            for: .touchUpInside
+        )
+        startFamilyView.joinFamilyButton.addAction(
+            UIAction { [goToFamilyModule] _ in
+                goToFamilyModule(.Join)
+            },
+            for: .touchUpInside
+        )
     }
     
-    @objc func createFamily(){
-        let registerView = FamilyBuilder.buildFamilyModule(state: .Create)
-        self.present(registerView, animated: true, completion: nil)
-        
+    private func goToFamilyModule(state: ManageState) {
+        let viewController = FamilyBuilder.buildFamilyModule(state: state)
+        self.present(viewController, animated: true, completion: nil)
     }
-    
-    @objc func joinFamily(){
-        let loginView = FamilyBuilder.buildFamilyModule(state: .Join)
-        self.present(loginView, animated: true, completion: nil)
-    }
-    
-    
-    
 }

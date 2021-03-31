@@ -11,8 +11,9 @@ import Combine
 final class FamilyBuilder{
     
     class func buildFamilyModule(state: ManageState) -> FamilyManageViewController{
-        let interactor = FamilyInteractor(database: Database.database())
-        let familyViewController = FamilyManageViewController(manageState: state, familyManagePresenter: FamilyPresenter(with: interactor))
+        let dataManager = FamilyDataManager(database: Database.database())
+        let viewModel = FamilyManageViewModel(dataManager: dataManager)
+        let familyViewController = FamilyManageViewController(manageState: state, viewModel: viewModel)
         return familyViewController
     }
     

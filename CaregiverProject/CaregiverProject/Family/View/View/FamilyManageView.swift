@@ -73,5 +73,4 @@ extension FamilyManageView: ViewCodeProtocol{
         backgroundColor = .white
     }
     
-    
 }
