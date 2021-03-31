@@ -9,6 +9,6 @@ import Foundation
 
 protocol Storable {
     var id: String { get set }
-    init(id: String, dictionary: [String: Any])
+    init(id: String, dictionary: NSDictionary)
     func convertToDictionary() -> [String: Any]
 }

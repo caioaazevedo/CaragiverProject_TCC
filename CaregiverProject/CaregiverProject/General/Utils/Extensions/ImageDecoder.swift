@@ -15,3 +15,11 @@ extension String {
         return UIImage(data: data)
     }
 }
+
+extension UIImage {
+    func encode() -> String {
+        let imageData = jpegData(compressionQuality: 0.5)
+        let str64 = imageData?.base64EncodedString(options: .lineLength64Characters)
+        return str64 ?? ""
+    }
+}

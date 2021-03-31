@@ -17,8 +17,8 @@ final class FamilyBuilder{
     }
     
     class func buildFamilyTreeModule() -> FamilyTreeViewController{
-        let interactor = FamilyInteractor(database: Database.database())
-        let viewModel = FamilyTreeViewModel(interactor: interactor)
+        let dataManager = FamilyDataManager(database: Database.database())
+        let viewModel = FamilyTreeViewModel(dataManager: dataManager)
         let view = FamilyTreeView()
         let dataSource = FamilyTreeDataSource()
         view.collectionView.dataSource = dataSource

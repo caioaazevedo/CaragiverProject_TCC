@@ -16,6 +16,7 @@
 		79146142261458DB00EA9AB5 /* FamilyDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79146141261458DB00EA9AB5 /* FamilyDataManager.swift */; };
 		7914614A26145A1C00EA9AB5 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914614926145A1C00EA9AB5 /* Storable.swift */; };
 		7914614F26145B0C00EA9AB5 /* ImageDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914614E26145B0C00EA9AB5 /* ImageDecoder.swift */; };
+		7914615726146EDD00EA9AB5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914615626146EDD00EA9AB5 /* DataManager.swift */; };
 		7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933236B255DEA060011FC03 /* Notification+CustomName.swift */; };
 		7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */; };
 		79476233260F6C840044F1D0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476232260F6C840044F1D0 /* UIViewController.swift */; };
@@ -105,6 +106,7 @@
 		79146141261458DB00EA9AB5 /* FamilyDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyDataManager.swift; sourceTree = "<group>"; };
 		7914614926145A1C00EA9AB5 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		7914614E26145B0C00EA9AB5 /* ImageDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDecoder.swift; sourceTree = "<group>"; };
+		7914615626146EDD00EA9AB5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		7933236B255DEA060011FC03 /* Notification+CustomName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+CustomName.swift"; sourceTree = "<group>"; };
 		7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewModel.swift; sourceTree = "<group>"; };
 		79476232260F6C840044F1D0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -268,17 +270,17 @@
 				AC3D57532552D60A0013D470 /* View */,
 				AC3D57592552D74E0013D470 /* Interactor */,
 				AC3D57562552D7120013D470 /* Presenter */,
-				AC3D57522552D6040013D470 /* Entity */,
+				AC3D57522552D6040013D470 /* Model */,
 			);
 			path = Family;
 			sourceTree = "<group>";
 		};
-		AC3D57522552D6040013D470 /* Entity */ = {
+		AC3D57522552D6040013D470 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				AC3D574D2552D41D0013D470 /* Family.swift */,
 			);
-			path = Entity;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AC3D57532552D60A0013D470 /* View */ = {
@@ -429,6 +431,7 @@
 			children = (
 				E20211822550B35900790DA9 /* ViewCodeProtocol.swift */,
 				7914614926145A1C00EA9AB5 /* Storable.swift */,
+				7914615626146EDD00EA9AB5 /* DataManager.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				7914614F26145B0C00EA9AB5 /* ImageDecoder.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
 				E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */,
+				7914615726146EDD00EA9AB5 /* DataManager.swift in Sources */,
 				AC9D41E1255AD14400925819 /* ProfileBuilder.swift in Sources */,
 				AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */,
 				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,

@@ -19,7 +19,7 @@ struct Member: ModelProtocol {
 }
 
 extension Member: Storable {
-    init(id: String, dictionary: [String: Any]) {
+    init(id: String, dictionary: NSDictionary) {
         let memberTypeValue = dictionary["memberType"] as? Int ?? 0
         let imageString =     dictionary["image"] as? String
         self.id =             id
@@ -32,9 +32,10 @@ extension Member: Storable {
     }
     
     func convertToDictionary() -> [String: Any] {
+        let imageString = image?.encode() ?? ""
         return [
             "name": name,
-            "image": "",
+            "image": imageString,
             "memberType": memberType,
             "isAdmin": isAdmin,
             "uid": id

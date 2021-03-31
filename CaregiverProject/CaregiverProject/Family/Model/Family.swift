@@ -21,13 +21,13 @@ struct Family: ModelProtocol {
 }
 
 extension Family: Storable {
-    init(id: String, dictionary: [String : Any]) {
+    init(id: String, dictionary: NSDictionary) {
         self.id = id
         self.name = dictionary["name"] as? String ?? ""
         self.members = dictionary["members"] as? [String] ?? []
         UserSession.shared.elderID = dictionary["elderID"] as? String
     }
-    func convertToDictionary() -> [String : Any] {
+    func convertToDictionary() -> [String: Any] {
         return [
             "name": name,
             "members": members,
