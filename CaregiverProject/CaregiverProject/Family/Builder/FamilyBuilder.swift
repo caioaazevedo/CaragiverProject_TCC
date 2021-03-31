@@ -47,6 +47,7 @@ final class FamilyBuilder{
         
         let familyTreeModule = setUpFamilyTreeModule()
         let profileModule = setUpProfileModule()
+        let calendarModule = setUpCalendarModule()
         
         familyTreeModule.assignSubscriber(publisher: profileModule.publisher)
         familyTreeModule.callRefresh  = {
@@ -55,6 +56,7 @@ final class FamilyBuilder{
         
         familyTabBarController.viewControllers = [
             familyTreeModule,
+            calendarModule,
             profileModule
         ]
         return familyTabBarController
@@ -69,10 +71,18 @@ final class FamilyBuilder{
         return familyTreeModule
     }
     
+    class func setUpCalendarModule() -> CalendarViewController {
+        let calendarModule = CalendarViewController()
+        let calendarIcon = UITabBarItem(title: "Calendar", image: .strokedCheckmark, tag: 1)
+        calendarModule.tabBarItem = calendarIcon
+        
+        return calendarModule
+    }
+
     class func setUpProfileModule() -> ProfileViewController {
         let viewModel = ProfileViewModel(database: Database.database())
         let profileModule = ProfileViewController(viewModel: viewModel)
-        let profileIcon = UITabBarItem(title: "Elder", image: .checkmark, tag: 1)
+        let profileIcon = UITabBarItem(title: "Elder", image: .checkmark, tag: 2)
         profileModule.tabBarItem = profileIcon
         profileModule.setupData()
         
