@@ -57,7 +57,7 @@ class FamilyTreeViewController: UIViewController {
             .store(in: &subscribers)
     }
     
-    func assignSubscriber(publisher: AnyPublisher<ProfileEntity,Never>) {
+    func assignSubscriber(publisher: AnyPublisher<ProfileModel,Never>) {
         publisher
             .receive(on: DispatchQueue.main)
             .sink{ [familyTreeView] profile in

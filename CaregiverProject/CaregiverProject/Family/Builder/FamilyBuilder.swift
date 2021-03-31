@@ -40,33 +40,42 @@ final class FamilyBuilder{
         }
         return familyTreeController
     }
-    
-    class func buildProfileModule() -> ProfileViewController{
-        let interactor = ProfileInteractor(database: Database.database())
-        let familyViewController = ProfileViewController(presenter: ProfilePresenter(with: interactor))
-        return familyViewController
-    }
-    
+       
     class func buildFamilyTabBarController() -> UITabBarController{
         let familyTabBarController = UITabBarController()
         familyTabBarController.modalPresentationStyle = .fullScreen
-        let familyTreeModule = FamilyBuilder.buildFamilyTreeModule()
         
-        familyTreeModule.viewDidLoad()
-        let familyIcon = UITabBarItem(title: "Family", image: .actions, tag: 0)
-        familyTreeModule.tabBarItem = familyIcon
-        let profileModule = ProfileBuilder.buildProfileModule()
-        let profileIcon = UITabBarItem(title: "Elder", image: .checkmark, tag: 1)
-        profileModule.tabBarItem = profileIcon
+        let familyTreeModule = setUpFamilyTreeModule()
+        let profileModule = setUpProfileModule()
+        
         familyTreeModule.assignSubscriber(publisher: profileModule.publisher)
         familyTreeModule.callRefresh  = {
             profileModule.setupData()
         }
-        profileModule.setupData()
+        
         familyTabBarController.viewControllers = [
             familyTreeModule,
             profileModule
         ]
         return familyTabBarController
+    }
+    
+    class func setUpFamilyTreeModule() -> FamilyTreeViewController{
+        let familyTreeModule = FamilyBuilder.buildFamilyTreeModule()
+        familyTreeModule.viewDidLoad()
+        let familyIcon = UITabBarItem(title: "Family", image: .actions, tag: 0)
+        familyTreeModule.tabBarItem = familyIcon
+        
+        return familyTreeModule
+    }
+    
+    class func setUpProfileModule() -> ProfileViewController {
+        let viewModel = ProfileViewModel(database: Database.database())
+        let profileModule = ProfileViewController(viewModel: viewModel)
+        let profileIcon = UITabBarItem(title: "Elder", image: .checkmark, tag: 1)
+        profileModule.tabBarItem = profileIcon
+        profileModule.setupData()
+        
+        return profileModule
     }
 }
