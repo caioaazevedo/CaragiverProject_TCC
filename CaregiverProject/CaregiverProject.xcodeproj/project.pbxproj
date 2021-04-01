@@ -38,11 +38,6 @@
 		AC9D41C7255AC92600925819 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41C6255AC92600925819 /* ProfileModel.swift */; };
 		AC9D41CC255ACD5200925819 /* Kinship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41CB255ACD5200925819 /* Kinship.swift */; };
 		AC9D41D3255ACE5A00925819 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */; };
-
-
-
-
-
 		ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF1C13255425CF00346B67 /* EntityTypes.swift */; };
 		B47535054A304F47969D70C3 /* Pods_CaregiverProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430E0E079F774E9BBCDA5F9 /* Pods_CaregiverProjectTests.framework */; };
 		E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202115725509B7300790DA9 /* StartFamilyView.swift */; };
@@ -66,6 +61,10 @@
 		E2194788255B587A0013E942 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2194787255B587A0013E942 /* ImagePickerManager.swift */; };
 		E219478D255B592B0013E942 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219478C255B592B0013E942 /* StringHelper.swift */; };
 		E21DF8F0261350200061AE3A /* ImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF8EF261350200061AE3A /* ImageConverter.swift */; };
+		E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF90C26152F730061AE3A /* CalendarView.swift */; };
+		E21DF91226152F840061AE3A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF91126152F840061AE3A /* CalendarViewController.swift */; };
+		E21DF91826152FFA0061AE3A /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF91726152FFA0061AE3A /* CustomViewController.swift */; };
+		E21DF9692615445B0061AE3A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF9682615445B0061AE3A /* UIView+Extension.swift */; };
 		E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */; };
 		E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108C32568036300CDB7FA /* ErrorHandler.swift */; };
 		E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */; };
@@ -132,11 +131,6 @@
 		AC9D41C6255AC92600925819 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		AC9D41CB255ACD5200925819 /* Kinship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kinship.swift; sourceTree = "<group>"; };
 		AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-
-
-
-	
-
 		ACEF1C13255425CF00346B67 /* EntityTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTypes.swift; sourceTree = "<group>"; };
 		D1B145D0DA6BFC2D85279B9D /* Pods-CaregiverProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		D2D0AC7856CD11223D8A9F5A /* Pods-CaregiverProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +161,10 @@
 		E2194787255B587A0013E942 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		E219478C255B592B0013E942 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		E21DF8EF261350200061AE3A /* ImageConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConverter.swift; sourceTree = "<group>"; };
+		E21DF90C26152F730061AE3A /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		E21DF91126152F840061AE3A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		E21DF91726152FFA0061AE3A /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		E21DF9682615445B0061AE3A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		E2C108C32568036300CDB7FA /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTypeEnum.swift; sourceTree = "<group>"; };
@@ -298,6 +296,7 @@
 		AC3D575F2552D8040013D470 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E21DF91626152FB70061AE3A /* ViewController */,
 				E21DF8EE261350090061AE3A /* ImageConverter */,
 				E2DC2AD0255CA8AD008468E5 /* Extensions */,
 				E2DC2ACA255CA03F008468E5 /* Enums */,
@@ -417,6 +416,7 @@
 				E2DD97792552168400A89A04 /* CaregiverProject.entitlements */,
 				E20211802550B33700790DA9 /* General */,
 				E2137FA1254F3F11007F4F53 /* Authentication */,
+				E21DF90926152F3F0061AE3A /* Calendar */,
 				AC3D574F2552D5D50013D470 /* Family */,
 				AC9D41AF255AC82B00925819 /* Profile */,
 				E2137F75254F311A007F4F53 /* Assets.xcassets */,
@@ -566,6 +566,39 @@
 			path = ImageConverter;
 			sourceTree = "<group>";
 		};
+		E21DF90926152F3F0061AE3A /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				E21DF90A26152F580061AE3A /* View */,
+				E21DF90B26152F5E0061AE3A /* ViewController */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		E21DF90A26152F580061AE3A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E21DF90C26152F730061AE3A /* CalendarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E21DF90B26152F5E0061AE3A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E21DF91126152F840061AE3A /* CalendarViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E21DF91626152FB70061AE3A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E21DF91726152FFA0061AE3A /* CustomViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		E2DC2ACA255CA03F008468E5 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +616,7 @@
 				79476232260F6C840044F1D0 /* UIViewController.swift */,
 				79476237260F6EDB0044F1D0 /* UIViewControllerPreview.swift */,
 				7914614E26145B0C00EA9AB5 /* ImageDecoder.swift */,
+				E21DF9682615445B0061AE3A /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -831,14 +865,10 @@
 				7904B48E255AB4C400D078F5 /* FamilyTreeView.swift in Sources */,
 				E2DD96DF2551A52200A89A04 /* RegisterProtocols.swift in Sources */,
 				E2194788255B587A0013E942 /* ImagePickerManager.swift in Sources */,
-
-
-
-
 				AC9D41C7255AC92600925819 /* ProfileModel.swift in Sources */,
-
 				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
+				E21DF91226152F840061AE3A /* CalendarViewController.swift in Sources */,
 				E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */,
 				7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */,
 				E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */,
@@ -848,11 +878,7 @@
 				79146162261476E700EA9AB5 /* FamilyManageViewModel.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
 				E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */,
-
 				7914615726146EDD00EA9AB5 /* DataManager.swift in Sources */,
-
-
-
 				AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */,
 				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
@@ -872,12 +898,8 @@
 				E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */,
 				7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */,
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
-
 				7904B4A3255ADF2800D078F5 /* FamilyTreeDataSource.swift in Sources */,
-
-
 				E21DF8F0261350200061AE3A /* ImageConverter.swift in Sources */,
-
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
 				79146142261458DB00EA9AB5 /* FamilyDataManager.swift in Sources */,
@@ -889,11 +911,14 @@
 				79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */,
 				7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
+				E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,
 				79960FE8255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift in Sources */,
+				E21DF9692615445B0061AE3A /* UIView+Extension.swift in Sources */,
+				E21DF91826152FFA0061AE3A /* CustomViewController.swift in Sources */,
 				7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */,
 				E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */,
 				AC9D41BD255AC90400925819 /* ProfileViewModel.swift in Sources */,
