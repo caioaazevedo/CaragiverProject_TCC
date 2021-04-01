@@ -64,6 +64,7 @@
 		E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF90C26152F730061AE3A /* CalendarView.swift */; };
 		E21DF91226152F840061AE3A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF91126152F840061AE3A /* CalendarViewController.swift */; };
 		E21DF91826152FFA0061AE3A /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF91726152FFA0061AE3A /* CustomViewController.swift */; };
+		E21DF9692615445B0061AE3A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF9682615445B0061AE3A /* UIView+Extension.swift */; };
 		E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */; };
 		E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108C32568036300CDB7FA /* ErrorHandler.swift */; };
 		E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */; };
@@ -163,6 +164,7 @@
 		E21DF90C26152F730061AE3A /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		E21DF91126152F840061AE3A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E21DF91726152FFA0061AE3A /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		E21DF9682615445B0061AE3A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		E2C108C32568036300CDB7FA /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTypeEnum.swift; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 				79476232260F6C840044F1D0 /* UIViewController.swift */,
 				79476237260F6EDB0044F1D0 /* UIViewControllerPreview.swift */,
 				7914614E26145B0C00EA9AB5 /* ImageDecoder.swift */,
+				E21DF9682615445B0061AE3A /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -914,6 +917,7 @@
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,
 				79960FE8255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift in Sources */,
+				E21DF9692615445B0061AE3A /* UIView+Extension.swift in Sources */,
 				E21DF91826152FFA0061AE3A /* CustomViewController.swift in Sources */,
 				7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */,
 				E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */,

@@ -46,16 +46,7 @@ extension CalendarView: ViewCodeProtocol {
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
-        applyShaddow(view: calendarBackground)
-    }
-    
-    func applyShaddow(view: UIView) {
-        view.layer.shadowColor = .init(gray: 0.0, alpha: 0.5)
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowRadius = 20.0
-        view.layer.masksToBounds = false
-        view.layer.cornerRadius = 20.0
+        calendarBackground.applyShaddow()
     }
 }
 
