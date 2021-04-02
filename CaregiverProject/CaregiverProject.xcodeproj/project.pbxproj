@@ -18,6 +18,8 @@
 		7914614F26145B0C00EA9AB5 /* ImageDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914614E26145B0C00EA9AB5 /* ImageDecoder.swift */; };
 		7914615726146EDD00EA9AB5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914615626146EDD00EA9AB5 /* DataManager.swift */; };
 		79146162261476E700EA9AB5 /* FamilyManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79146161261476E700EA9AB5 /* FamilyManageViewModel.swift */; };
+		7914619F2617100100EA9AB5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914619E2617100100EA9AB5 /* Coordinator.swift */; };
+		791461A42617163A00EA9AB5 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791461A32617163A00EA9AB5 /* MainCoordinator.swift */; };
 		7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933236B255DEA060011FC03 /* Notification+CustomName.swift */; };
 		7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */; };
 		79476233260F6C840044F1D0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476232260F6C840044F1D0 /* UIViewController.swift */; };
@@ -109,6 +111,8 @@
 		7914614E26145B0C00EA9AB5 /* ImageDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDecoder.swift; sourceTree = "<group>"; };
 		7914615626146EDD00EA9AB5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		79146161261476E700EA9AB5 /* FamilyManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageViewModel.swift; sourceTree = "<group>"; };
+		7914619E2617100100EA9AB5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		791461A32617163A00EA9AB5 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		7933236B255DEA060011FC03 /* Notification+CustomName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+CustomName.swift"; sourceTree = "<group>"; };
 		7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewModel.swift; sourceTree = "<group>"; };
 		79476232260F6C840044F1D0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				79960FC8255C3ECD00A01D85 /* AppUtility.swift */,
 				AC9D41CB255ACD5200925819 /* Kinship.swift */,
 				E2C108C32568036300CDB7FA /* ErrorHandler.swift */,
+				791461A32617163A00EA9AB5 /* MainCoordinator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				E20211822550B35900790DA9 /* ViewCodeProtocol.swift */,
 				7914614926145A1C00EA9AB5 /* Storable.swift */,
 				7914615626146EDD00EA9AB5 /* DataManager.swift */,
+				7914619E2617100100EA9AB5 /* Coordinator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -883,6 +889,7 @@
 				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */,
+				791461A42617163A00EA9AB5 /* MainCoordinator.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
 				E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */,
 				E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */,
@@ -908,6 +915,7 @@
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
+				7914619F2617100100EA9AB5 /* Coordinator.swift in Sources */,
 				79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */,
 				7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
