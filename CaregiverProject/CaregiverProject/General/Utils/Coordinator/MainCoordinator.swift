@@ -22,13 +22,13 @@ class MainCoordinator: Coordinator {
         case .enteredFamily:
             showFamilyTabBarView()
         case .firstTimer:
-            showFamilyTabBarView()
+            showAuthenticationView()
         }
     }
     
     private func showAuthenticationView() {
-        let authentication = AuthenticationRouter.createModule()
-        navigationController.pushViewController(authentication, animated: true)
+        let coordinator = AuthenticationCoordinator(navigationController: navigationController)
+        coordinator.start()
     }
     
     private func showGroupManagementView() {
