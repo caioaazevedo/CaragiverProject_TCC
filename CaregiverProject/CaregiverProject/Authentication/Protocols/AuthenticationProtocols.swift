@@ -34,6 +34,6 @@ protocol InteractorToPresenterAuthenticationProtocol: class {
 }
 
 protocol PresenterToRouterAuthenticationProtocol: class {
-    func pushToStartFamilyScreen()
-    func pushToRegisterScreen()
+    func showStartFamilyScreen()
+    func presentRegisterScreen()
 }

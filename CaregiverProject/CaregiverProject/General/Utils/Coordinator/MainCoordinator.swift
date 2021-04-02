@@ -32,8 +32,8 @@ class MainCoordinator: Coordinator {
     }
     
     private func showGroupManagementView() {
-        let startFamily = StartFamilyViewController()
-        navigationController.pushViewController(startFamily, animated: true)
+        let coordinator = GroupManagementCoordinator(navigationController: navigationController)
+        coordinator.start()
     }
     
     private func showFamilyTabBarView() {

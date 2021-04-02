@@ -8,10 +8,15 @@
 import UIKit
 import Firebase
 
+protocol FamilyManageCoordinator {
+    func pushToFamilyModule()
+}
+
 class FamilyManageViewController: UIViewController {
     var manageState: ManageState
     var viewModel: FamilyManageViewModel
     let familyManageView: FamilyManageView
+    var coordinator: FamilyManageCoordinator?
     
     override func loadView() {
         super.loadView()
@@ -74,8 +79,7 @@ class FamilyManageViewController: UIViewController {
     
     private func goToFamilyModule() {
         UserDefaults.loginState = .enteredFamily
-        let module = FamilyBuilder.buildFamilyTabBarController()
-        present(module, animated: true, completion: nil)
+        coordinator?.pushToFamilyModule()
     }
 
 }
