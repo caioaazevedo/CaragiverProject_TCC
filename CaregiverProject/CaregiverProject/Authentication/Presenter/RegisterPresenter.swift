@@ -12,7 +12,7 @@ class RegisterPresenter: ViewToPresenterRegisterProtocol {
     
     var interactor: PresenterToInteractorRegisterProtocol?
     
-    var router: PresenterToRouterRegisterProtocol?
+    weak var router: PresenterToRouterRegisterProtocol?
     
     func presentFamily(vc: UIViewController) {
         self.router?.showStartFamilyScreen()

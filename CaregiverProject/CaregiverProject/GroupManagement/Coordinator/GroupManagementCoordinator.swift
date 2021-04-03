@@ -21,7 +21,7 @@ class GroupManagementCoordinator: Coordinator {
     func start() {
         let viewController = StartFamilyViewController()
         viewController.coordinator = self
-        navigationController.show(viewController, sender: nil)
+        navigationController.setViewControllers([viewController], animated: true)
     }
 }
 
@@ -35,7 +35,8 @@ extension GroupManagementCoordinator: StartFamilyCoordinator {
 
 extension GroupManagementCoordinator: FamilyManageCoordinator {
     func pushToFamilyModule() {
-        let module = FamilyBuilder.buildFamilyTabBarController()
-        navigationController.present(module, animated: true, completion: nil)
+        let module = MainTabBarController()
+        navigationController.navigationBar.isHidden = true
+        navigationController.setViewControllers([module], animated: true)
     }
 }

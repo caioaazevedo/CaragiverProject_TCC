@@ -28,16 +28,19 @@ class MainCoordinator: Coordinator {
     
     private func showAuthenticationView() {
         let coordinator = AuthenticationCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
     
     private func showGroupManagementView() {
         let coordinator = GroupManagementCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
     
     private func showFamilyTabBarView() {
-        let familyTabBar = FamilyBuilder.buildFamilyTabBarController()
-        navigationController.pushViewController(familyTabBar, animated: true)
+        let tabBarController = MainTabBarController()
+        navigationController.navigationBar.isHidden = true
+        navigationController.setViewControllers([tabBarController], animated: true)
     }
 }

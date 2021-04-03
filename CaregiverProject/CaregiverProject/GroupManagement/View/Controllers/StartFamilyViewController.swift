@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol StartFamilyCoordinator {
+protocol StartFamilyCoordinator: class {
     func pushToFamilyManage(state: ManageState)
 }
 
@@ -15,7 +15,7 @@ class StartFamilyViewController: UIViewController {
     
     var startFamilyView = StartFamilyView()
     
-    var coordinator: StartFamilyCoordinator?
+    weak var coordinator: StartFamilyCoordinator?
     
     override func loadView() {
         view = startFamilyView

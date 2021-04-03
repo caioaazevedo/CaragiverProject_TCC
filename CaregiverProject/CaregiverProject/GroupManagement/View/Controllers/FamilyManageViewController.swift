@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-protocol FamilyManageCoordinator {
+protocol FamilyManageCoordinator: class {
     func pushToFamilyModule()
 }
 
@@ -16,7 +16,7 @@ class FamilyManageViewController: UIViewController {
     var manageState: ManageState
     var viewModel: FamilyManageViewModel
     let familyManageView: FamilyManageView
-    var coordinator: FamilyManageCoordinator?
+    weak var coordinator: FamilyManageCoordinator?
     
     override func loadView() {
         super.loadView()

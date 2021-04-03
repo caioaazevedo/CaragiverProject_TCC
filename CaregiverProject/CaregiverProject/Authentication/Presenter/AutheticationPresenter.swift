@@ -13,7 +13,7 @@ class AuthenticationPresenter: ViewToPresenterAuthenticationProtocol{
     
     var interactor: PresenterToInteractorAuthenticationProtocol?
     
-    var router: PresenterToRouterAuthenticationProtocol?
+    weak var router: PresenterToRouterAuthenticationProtocol?
     
     func presentRegister(vc: UIViewController) {
         router?.presentRegisterScreen()

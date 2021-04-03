@@ -12,3 +12,9 @@ protocol Coordinator: class {
     var childCoordinators: [Coordinator] { get set }
     func start()
 }
+
+extension Coordinator {
+    func removeCoordinator(_ coordinator: Coordinator) {
+        childCoordinators.removeAll(where: { $0 === coordinator })
+    }
+}

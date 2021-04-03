@@ -20,7 +20,7 @@ class AuthenticationCoordinator: Coordinator {
     func start() {
         let authenticationViewController = builder.createAuthenticationModule()
         authenticationViewController.presenter?.router = self
-        navigationController.show(authenticationViewController, sender: nil)
+        navigationController.setViewControllers([authenticationViewController], animated: true)
     }
 }
 
@@ -28,6 +28,7 @@ extension AuthenticationCoordinator: PresenterToRouterRegisterProtocol {
     func showStartFamilyScreen(){
         navigationController.dismiss(animated: true)
         let coordinator = GroupManagementCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
 }
