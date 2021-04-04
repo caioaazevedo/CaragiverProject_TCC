@@ -7,37 +7,41 @@
 
 import UIKit
 
+protocol StartFamilyCoordinator: class {
+    func pushToFamilyManage(state: ManageState)
+}
 
 class StartFamilyViewController: UIViewController {
     
     var startFamilyView = StartFamilyView()
     
+    weak var coordinator: StartFamilyCoordinator?
+    
     override func loadView() {
         view = startFamilyView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init() {
+        super.init(nibName: nil, bundle: nil)
         configureButtons()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func configureButtons(){
         startFamilyView.createFamilyButton.addAction(
-            UIAction { [goToFamilyManage] _ in
-                goToFamilyManage(.Create)
+            UIAction { [weak self] _ in
+                self?.coordinator?.pushToFamilyManage(state: .Create)
             },
             for: .touchUpInside
         )
         startFamilyView.joinFamilyButton.addAction(
-            UIAction { [goToFamilyManage] _ in
-                goToFamilyManage(.Join)
+            UIAction { [weak self] _ in
+                self?.coordinator?.pushToFamilyManage(state: .Join)
             },
             for: .touchUpInside
         )
-    }
-    
-    private func goToFamilyManage(state: ManageState) {
-        let viewController = FamilyBuilder.buildFamilyModule(state: state)
-        self.present(viewController, animated: true, completion: nil)
     }
 }

@@ -28,10 +28,12 @@ extension Family: Storable {
         UserSession.shared.elderID = dictionary["elderID"] as? String
     }
     func convertToDictionary() -> [String: Any] {
+        let elderID = UserSession.shared.elderID ?? ""
         return [
             "name": name,
             "members": members,
             "uid": id,
+            "elderID": elderID
         ]
     }
 }

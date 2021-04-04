@@ -12,7 +12,6 @@ class FamilyTreeViewController: UIViewController {
     private let viewModel: FamilyTreeViewModel
     private let dataSource: FamilyTreeDataSource
     private let familyTreeView: FamilyTreeView
-    var callRefresh: (() ->())?
     private var subscribers = Set<AnyCancellable>()
     
     init(viewModel: FamilyTreeViewModel,
@@ -23,6 +22,7 @@ class FamilyTreeViewController: UIViewController {
         self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
         bindViewModel()
+        setupButton()
     }
     
     required init?(coder: NSCoder) {
@@ -36,8 +36,7 @@ class FamilyTreeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         AppUtility.lockOrientation(.portrait)
-        self.callRefresh?()
-        viewModel.queryMembers()
+        viewModel.fetchData()
         hideActivityIndicator()
         showActivityIndicator()
     }
@@ -46,7 +45,15 @@ class FamilyTreeViewController: UIViewController {
         AppUtility.lockOrientation(.all)
     }
     
-    func bindViewModel() {
+    private func setupButton() {
+        familyTreeView.groupInviteLabel
+            .addAction(UIAction { [inviteMember] _ in
+                inviteMember()
+            },
+            for: .touchUpInside)
+    }
+    
+    private func bindViewModel() {
         viewModel.$members
             .receive(on: DispatchQueue.main)
             .sink { [familyTreeView, hideActivityIndicator, dataSource] members in
@@ -55,15 +62,29 @@ class FamilyTreeViewController: UIViewController {
                 hideActivityIndicator()
             }
             .store(in: &subscribers)
-    }
-    
-    func assignSubscriber(publisher: AnyPublisher<ProfileModel,Never>) {
-        publisher
+        
+        viewModel.$elder
             .receive(on: DispatchQueue.main)
-            .sink{ [familyTreeView] profile in
-                familyTreeView.elderName.text = profile.name
-                familyTreeView.elderImage.image = profile.photo
+            .sink { [familyTreeView] profile in
+                familyTreeView.elderName.text = profile?.name ?? "Elder"
+                familyTreeView.elderImage.image = profile?.photo
             }
             .store(in: &subscribers)
+    }
+    
+    private func inviteMember() {
+        if let familyID = UserSession.shared.familyID,
+           let url = URL(string: "login://" + "\(familyID)") {
+            
+            let fullText = ["\(familyID) está te convidando para entrar no grupo. Token: \(url)."]
+            let activityViewController = UIActivityViewController(
+                activityItems: fullText as [Any],
+                applicationActivities: nil
+            )
+            
+            activityViewController.popoverPresentationController?.sourceView = view
+            activityViewController.excludedActivityTypes = [.print]
+            present(activityViewController, animated: true, completion: nil)
+        }
     }
 }

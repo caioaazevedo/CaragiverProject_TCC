@@ -9,7 +9,8 @@ import Foundation
 import Combine
 
 class FamilyTreeViewModel {
-    @Published var members = Members()
+    @Published private(set) var members = Members()
+    @Published private(set) var elder: ProfileModel?
     private var uniqueMembers = Set<Member>() {
         didSet { members = uniqueMembers.map { $0 } }
     }
@@ -17,33 +18,37 @@ class FamilyTreeViewModel {
     private var familyID: String? {
         UserSession.shared.familyID
     }
+    private var elderID: String? {
+        UserSession.shared.elderID
+    }
     
     init(dataManager: DataManager) {
         self.dataManager = dataManager
     }
     
-    func queryMembers() {
+    func fetchData() {
         uniqueMembers.removeAll()
-        queryFamily()
+        fetchFamily()
+        fetchElder()
     }
 }
 
 private extension FamilyTreeViewModel {
-    private func queryFamily() {
+    private func fetchFamily() {
         guard let id = familyID else { return }
         dataManager.readValue(
             from: id,
             queryValue: .Family,
-            resutlType: Family.self) { [queryMember] result in
+            resutlType: Family.self) { [fetchMember] result in
             switch result {
             case .success(let family):
-                family.members.forEach { queryMember($0) }
+                family.members.forEach { fetchMember($0) }
             case .failure(_): break
             }
         }
     }
     
-    private func queryMember(by id: String) {
+    private func fetchMember(by id: String) {
         dataManager.readValue(
             from: id,
             queryValue: .Member,
@@ -51,6 +56,20 @@ private extension FamilyTreeViewModel {
             switch result {
             case .success(let member):
                 self?.uniqueMembers.insert(member)
+            case .failure(_): break
+            }
+        }
+    }
+    
+    private func fetchElder() {
+        guard let id = elderID else { return }
+        dataManager.readValue(
+            from: id,
+            queryValue: .Elder,
+            resutlType: ProfileModel.self) { [weak self] result in
+            switch result {
+            case .success(let elder):
+                self?.elder = elder
             case .failure(_): break
             }
         }

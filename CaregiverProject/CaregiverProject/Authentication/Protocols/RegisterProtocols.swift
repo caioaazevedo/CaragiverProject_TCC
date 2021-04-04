@@ -31,6 +31,5 @@ protocol InteractorToPresenterRegisterProtocol: class {
 }
 
 protocol PresenterToRouterRegisterProtocol: class {
-    static func createModule()-> RegisterViewController
-    func pushToStartFamilyScreen(vc: UIViewController)
+    func showStartFamilyScreen()
 }
