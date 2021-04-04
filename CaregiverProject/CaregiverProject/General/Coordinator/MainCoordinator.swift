@@ -39,8 +39,8 @@ class MainCoordinator: Coordinator {
     }
     
     private func showFamilyTabBarView() {
-        let tabBarController = MainTabBarController()
-        navigationController.navigationBar.isHidden = true
-        navigationController.setViewControllers([tabBarController], animated: true)
+        let coordinator = AppCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }

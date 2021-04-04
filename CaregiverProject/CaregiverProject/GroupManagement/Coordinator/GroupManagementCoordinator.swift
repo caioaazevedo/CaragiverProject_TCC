@@ -34,9 +34,9 @@ extension GroupManagementCoordinator: StartFamilyCoordinator {
 }
 
 extension GroupManagementCoordinator: FamilyManageCoordinator {
-    func pushToFamilyModule() {
-        let module = MainTabBarController()
-        navigationController.navigationBar.isHidden = true
-        navigationController.setViewControllers([module], animated: true)
+    func showFamilyModule() {
+        let coordinator = AppCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 protocol FamilyManageCoordinator: class {
-    func pushToFamilyModule()
+    func showFamilyModule()
 }
 
 class FamilyManageViewController: UIViewController {
@@ -79,7 +79,7 @@ class FamilyManageViewController: UIViewController {
     
     private func goToFamilyModule() {
         UserDefaults.loginState = .enteredFamily
-        coordinator?.pushToFamilyModule()
+        coordinator?.showFamilyModule()
     }
 
 }

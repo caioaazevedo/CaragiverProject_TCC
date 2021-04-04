@@ -21,16 +21,6 @@ final class FamilyBuilder{
             familyTreeView: view,
             dataSource: dataSource
         )
-        familyTreeController.bindViewModel()
-        view.completion = {
-            let url = URL(string: "login://" + "\(UserSession.shared.familyID!)")
-            let fullText = ["\(UserSession.shared.username!) está te convidando para entrar no grupo. Token: \(url!)."]
-            
-            let activityViewController = UIActivityViewController(activityItems: fullText as [Any], applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = familyTreeController.view
-            activityViewController.excludedActivityTypes = [.print]
-            familyTreeController.present(activityViewController, animated: true, completion: nil)
-        }
         let familyIcon = UITabBarItem(title: "Family", image: .actions, tag: 0)
         familyTreeController.tabBarItem = familyIcon
         return familyTreeController
