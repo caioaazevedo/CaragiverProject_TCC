@@ -39,6 +39,7 @@
 		AC9D41CC255ACD5200925819 /* Kinship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41CB255ACD5200925819 /* Kinship.swift */; };
 		AC9D41D3255ACE5A00925819 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */; };
 		ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF1C13255425CF00346B67 /* EntityTypes.swift */; };
+		ACF654B1261B469D00A5FAC3 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF654B0261B469D00A5FAC3 /* ActivityView.swift */; };
 		B47535054A304F47969D70C3 /* Pods_CaregiverProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430E0E079F774E9BBCDA5F9 /* Pods_CaregiverProjectTests.framework */; };
 		E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202115725509B7300790DA9 /* StartFamilyView.swift */; };
 		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
@@ -132,6 +133,7 @@
 		AC9D41CB255ACD5200925819 /* Kinship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kinship.swift; sourceTree = "<group>"; };
 		AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ACEF1C13255425CF00346B67 /* EntityTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTypes.swift; sourceTree = "<group>"; };
+		ACF654B0261B469D00A5FAC3 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		D1B145D0DA6BFC2D85279B9D /* Pods-CaregiverProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		D2D0AC7856CD11223D8A9F5A /* Pods-CaregiverProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E202115725509B7300790DA9 /* StartFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFamilyView.swift; sourceTree = "<group>"; };
@@ -356,6 +358,38 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		ACF654AC261B43E700A5FAC3 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				ACF654AD261B459700A5FAC3 /* View */,
+				ACF654AF261B45CA00A5FAC3 /* ViewModel */,
+				ACF654AE261B459D00A5FAC3 /* New Group */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		ACF654AD261B459700A5FAC3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACF654B0261B469D00A5FAC3 /* ActivityView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ACF654AE261B459D00A5FAC3 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		ACF654AF261B45CA00A5FAC3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		AD862F4A5B54F4BB784192BA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +453,7 @@
 				E21DF90926152F3F0061AE3A /* Calendar */,
 				AC3D574F2552D5D50013D470 /* Family */,
 				AC9D41AF255AC82B00925819 /* Profile */,
+				ACF654AC261B43E700A5FAC3 /* Activity */,
 				E2137F75254F311A007F4F53 /* Assets.xcassets */,
 				E2137F9F254F3E75007F4F53 /* Application */,
 				E2137F72254F3118007F4F53 /* Main.storyboard */,
@@ -881,6 +916,7 @@
 				7914615726146EDD00EA9AB5 /* DataManager.swift in Sources */,
 				AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */,
 				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,
+				ACF654B1261B469D00A5FAC3 /* ActivityView.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
