@@ -45,12 +45,22 @@ class CalendarView: UIView {
         return view
     }()
     
+    private let label: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "Events"
+        let font = UIFont.preferredFont(forTextStyle: .title2)
+        label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
+        label.adjustsFontForContentSizeCategory = true
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     var tableView: UITableView = {
         let table = UITableView(frame: .zero)
         table.separatorStyle = .none
         table.backgroundColor = .clear
         table.register(EventCell.self, forCellReuseIdentifier: EventCell.identifier)
-        table.register(EventSectionHeader.self, forHeaderFooterViewReuseIdentifier: EventSectionHeader.identifier)
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -69,6 +79,7 @@ extension CalendarView: ViewCodeProtocol {
     func setUpViewHierarchy() {
         addSubview(titleLabel)
         addSubview(calendarBackground)
+        addSubview(label)
         addSubview(tableView)
         calendarBackground.addSubview(calendar)
     }
@@ -82,14 +93,18 @@ extension CalendarView: ViewCodeProtocol {
             calendarBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             calendarBackground.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             calendarBackground.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            calendarBackground.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.4),
+            calendarBackground.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.35),
             
             calendar.topAnchor.constraint(equalTo: calendarBackground.topAnchor, constant: 5),
             calendar.leadingAnchor.constraint(equalTo: calendarBackground.leadingAnchor, constant: 5),
             calendar.trailingAnchor.constraint(equalTo: calendarBackground.trailingAnchor, constant: -5),
             calendar.bottomAnchor.constraint(equalTo: calendarBackground.topAnchor, constant: -5),
             
-            tableView.topAnchor.constraint(equalTo: calendarBackground.bottomAnchor, constant: 30),
+            label.topAnchor.constraint(equalTo: calendarBackground.bottomAnchor, constant: 30),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            
+            tableView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)

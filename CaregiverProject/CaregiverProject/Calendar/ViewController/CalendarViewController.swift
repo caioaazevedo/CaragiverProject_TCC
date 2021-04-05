@@ -16,24 +16,15 @@ class CalendarViewController: CustomViewController<CalendarView> {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setUpCalendar()
+        setUp()
     }
     
-    func setUpCalendar() {
-        contentView.calendar.scrollDirection = .horizontal
-        contentView.calendar.scope = .month
-        contentView.calendar.locale = Locale(identifier: "en")
-        
-        contentView.calendar.appearance.titleFont = UIFont.systemFont(ofSize: 20.0)
-        contentView.calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 22.0)
-        contentView.calendar.appearance.weekdayFont = UIFont.systemFont(ofSize: 18.0)
-        contentView.calendar.appearance.weekdayTextColor = #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
-        
-        contentView.calendar.appearance.todayColor = .orange
-        contentView.calendar.appearance.separators = .interRows
-        
+    func setUp() {
         contentView.calendar.delegate = self
         contentView.calendar.dataSource = self
+        
+        contentView.tableView.delegate = self
+        contentView.tableView.dataSource = self
     }
 
 }
@@ -57,5 +48,30 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
         }
         
         return 0
+    }
+}
+
+extension CalendarViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier, for: indexPath) as! EventCell
+        cell.setUp()
+        cell.title.text = "Levar para o Destista"
+        cell.personName.text = "Ricardo"
+        cell.scheduleTime.text = "13:00"
+        return cell
+    }
+}
+
+extension CalendarViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: .zero)
     }
 }
