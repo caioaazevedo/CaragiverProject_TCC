@@ -150,9 +150,9 @@ extension ProfileView: ViewCodeProtocol{
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
             profileImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             profileImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
