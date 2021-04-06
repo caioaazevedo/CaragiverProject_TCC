@@ -77,6 +77,7 @@
 		E21DF91226152F840061AE3A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF91126152F840061AE3A /* CalendarViewController.swift */; };
 		E21DF91826152FFA0061AE3A /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF91726152FFA0061AE3A /* CustomViewController.swift */; };
 		E21DF9692615445B0061AE3A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF9682615445B0061AE3A /* UIView+Extension.swift */; };
+		E21DF9B0261BC2DB0061AE3A /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF9AF261BC2DB0061AE3A /* EventCell.swift */; };
 		E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */; };
 		E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108C32568036300CDB7FA /* ErrorHandler.swift */; };
 		E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */; };
@@ -187,6 +188,7 @@
 		E21DF91126152F840061AE3A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E21DF91726152FFA0061AE3A /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		E21DF9682615445B0061AE3A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E21DF9AF261BC2DB0061AE3A /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		E2C108C32568036300CDB7FA /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTypeEnum.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 		E21DF90926152F3F0061AE3A /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				E21DF9B7261BC7350061AE3A /* Manager */,
 				7914620C26187D2D00EA9AB5 /* Coordinator */,
 				E21DF90A26152F580061AE3A /* View */,
 				E21DF90B26152F5E0061AE3A /* ViewController */,
@@ -680,6 +683,7 @@
 		E21DF90A26152F580061AE3A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E21DF9AE261BC2C10061AE3A /* Cells */,
 				E21DF90C26152F730061AE3A /* CalendarView.swift */,
 			);
 			path = View;
@@ -699,6 +703,21 @@
 				E21DF91726152FFA0061AE3A /* CustomViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E21DF9AE261BC2C10061AE3A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E21DF9AF261BC2DB0061AE3A /* EventCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E21DF9B7261BC7350061AE3A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		E2DC2ACA255CA03F008468E5 /* Enums */ = {
@@ -1020,6 +1039,7 @@
 				7914619F2617100100EA9AB5 /* Coordinator.swift in Sources */,
 				79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */,
 				7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */,
+				E21DF9B0261BC2DB0061AE3A /* EventCell.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				7914620526187BF200EA9AB5 /* FamilyCoordinator.swift in Sources */,
 				E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */,
