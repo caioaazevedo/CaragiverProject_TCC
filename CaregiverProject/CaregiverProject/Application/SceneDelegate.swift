@@ -16,18 +16,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
-
-        switch UserDefaults.loginState {
-        case .alreadyLogged:
-            let startFamily = StartFamilyViewController()
-            window?.rootViewController = startFamily
-        case .enteredFamily:
-            let familyTabBar = FamilyBuilder.buildFamilyTabBarController()
-            window?.rootViewController = familyTabBar
-        case .firstTimer:
-            let authentication = AuthenticationRouter.createModule()
-            window?.rootViewController = authentication
-        }
+        
+        let controller = ActivityViewController()
+        window?.rootViewController = controller
+//        switch UserDefaults.loginState {
+//        case .alreadyLogged:
+//            let startFamily = StartFamilyViewController()
+//            window?.rootViewController = startFamily
+//        case .enteredFamily:
+//            let familyTabBar = FamilyBuilder.buildFamilyTabBarController()
+//            window?.rootViewController = familyTabBar
+//        case .firstTimer:
+//            let authentication = AuthenticationRouter.createModule()
+//            window?.rootViewController = authentication
+//        }
         
         window?.makeKeyAndVisible()
     }
