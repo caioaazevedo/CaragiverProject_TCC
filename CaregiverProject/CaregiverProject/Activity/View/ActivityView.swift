@@ -15,7 +15,7 @@ final class ActivityView: UIView{
         .init(name: "Colocar para ver TV", date: Date().getFormattedDate(), icon: UIImage(named: "clock")!, isCompleted: false),
         .init(name: "Almoço", date: Date().getFormattedDate(), icon: UIImage(named: "food")!, isCompleted: false),
         .init(name: "Soneca", date: Date().getFormattedDate(), icon: UIImage(named: "sleep")!, isCompleted: false)]
-    
+            
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.register(TaskCell.self, forCellReuseIdentifier: "TaskCell")
@@ -32,7 +32,15 @@ final class ActivityView: UIView{
         view.layer.cornerRadius = 5
         view.layer.borderWidth = 2
         view.layer.borderColor = .init(red: 0, green: 0, blue: 1, alpha: 1)
+        view.addTarget(self, action: #selector(presentCreateTask), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var createTaskView: TaskCreateView = {
+        let view = TaskCreateView()
+        view.backgroundColor = .red
+//        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -47,6 +55,16 @@ final class ActivityView: UIView{
     
     func callReload(){
         self.tableView.reloadData()
+    }
+    
+    @objc func presentCreateTask(){
+        addSubview(createTaskView)
+        createTaskView.layer.position.x = Metrics.Device.width*0.5
+        createTaskView.layer.position.y = Metrics.Device.height
+
+        UIView.animate(withDuration: 0.5, animations: { [self] in
+            createTaskView.layer.position.y -= Metrics.Device.height*0.3
+        })
     }
 }
 
@@ -67,6 +85,7 @@ extension ActivityView: ViewCodeProtocol{
             
             addButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             addButton.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -60),
+                        
         ])
     }
     
