@@ -99,7 +99,6 @@ extension TaskCell: ViewCodeProtocol{
         layer.borderWidth = 2
         layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 0.4)
         layer.cornerRadius = 20
-        isUserInteractionEnabled = true
-        
+        isUserInteractionEnabled = true        
     }
 }

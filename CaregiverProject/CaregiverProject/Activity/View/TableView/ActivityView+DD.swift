@@ -13,7 +13,7 @@ extension ActivityView: UITableViewDelegate, UITableViewDataSource{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tasks.count;
+        return viewModel.tasks.count;
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -30,18 +30,18 @@ extension ActivityView: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
         
         cell.contentView.isUserInteractionEnabled = false
-        if tasks[indexPath.section].isCompleted{
+        if viewModel.tasks[indexPath.section].isCompleted{
             cell.check.setImage(UIImage(named: "checked"), for: .normal)
         } else{
             cell.check.setImage(UIImage(named: "unchecked"), for: .normal)
         }
         cell.tapCallback = { [self] in
-            tasks[indexPath.section].isCompleted.toggle()
+            viewModel.tasks[indexPath.section].isCompleted.toggle()
             tableView.reloadData()
         }
-        cell.title.text = tasks[indexPath.section].name
-        cell.icon.image = tasks[indexPath.section].icon
-        cell.date.text = "\(tasks[indexPath.section].date)"
+        cell.title.text = viewModel.tasks[indexPath.section].name
+        cell.icon.image = viewModel.tasks[indexPath.section].icon
+        cell.date.text = "\(viewModel.tasks[indexPath.section].date)"
         return cell
     }
     

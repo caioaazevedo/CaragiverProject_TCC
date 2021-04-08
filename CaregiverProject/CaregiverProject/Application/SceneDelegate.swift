@@ -17,18 +17,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
         
-//        switch UserDefaults.loginState {
-//        case .alreadyLogged:
-//            let startFamily = StartFamilyViewController()
-//            window?.rootViewController = startFamily
-//        case .enteredFamily:
-//            let familyTabBar = FamilyBuilder.buildFamilyTabBarController()
-//            window?.rootViewController = familyTabBar
-//        case .firstTimer:
-//            let authentication = AuthenticationRouter.createModule()
-//            window?.rootViewController = authentication
-//        }
-        window?.rootViewController = ActivityViewController()
+        switch UserDefaults.loginState {
+        case .alreadyLogged:
+            let startFamily = StartFamilyViewController()
+            window?.rootViewController = startFamily
+        case .enteredFamily:
+            let familyTabBar = FamilyBuilder.buildFamilyTabBarController()
+            window?.rootViewController = familyTabBar
+        case .firstTimer:
+            let authentication = AuthenticationRouter.createModule()
+            window?.rootViewController = authentication
+        }
+        
         window?.makeKeyAndVisible()
     }
 

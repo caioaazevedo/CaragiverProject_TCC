@@ -48,21 +48,13 @@ extension CreateTaskCell: ViewCodeProtocol{
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            title.leadingAnchor.constraint(equalTo: trailingAnchor,constant: 5),
+            title.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 5),
             title.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             icon.trailingAnchor.constraint(equalTo: trailingAnchor),
-            icon.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor,constant: 10),
-            icon.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            icon.centerYAnchor.constraint(equalTo: centerYAnchor),
+            icon.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
         ])
-    }
-    
-    func setUpAditionalConficuration() {
-        layer.borderWidth = 2
-        layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 0.4)
-        layer.cornerRadius = 20
-        isUserInteractionEnabled = true
-        
     }
 }
 

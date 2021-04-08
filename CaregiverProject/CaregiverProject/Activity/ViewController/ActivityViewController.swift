@@ -12,8 +12,7 @@ class ActivityViewController: UIViewController{
     
     override func loadView() {
         super.loadView()
-        view = activityView
-        activityView.callReload()
+        view = activityView        
     }
     
 }

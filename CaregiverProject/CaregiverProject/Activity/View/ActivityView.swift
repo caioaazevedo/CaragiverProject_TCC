@@ -9,20 +9,28 @@ import UIKit
 
 final class ActivityView: UIView{
     
-    var tasks: Tasks = [
-        .init(name: "Banho", date: Date().getFormattedDate(), icon: UIImage(named: "hygiene")!, isCompleted: false),
-        .init(name: "Café da manhã", date: Date().getFormattedDate(), icon: UIImage(named: "break")!, isCompleted: false),
-        .init(name: "Colocar para ver TV", date: Date().getFormattedDate(), icon: UIImage(named: "clock")!, isCompleted: false),
-        .init(name: "Almoço", date: Date().getFormattedDate(), icon: UIImage(named: "food")!, isCompleted: false),
-        .init(name: "Soneca", date: Date().getFormattedDate(), icon: UIImage(named: "sleep")!, isCompleted: false)]
-            
+    var viewModel: ActivityViewModel = .init()
+    var layoutConstraint : NSLayoutConstraint?
+                  
+    
+    lazy var mainLabel: UILabel = {
+        let view = UILabel()
+        view.text = "Tarefas do Idoso"
+        let font = UIFont.preferredFont(forTextStyle: .title1)
+        view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
+        view.adjustsFontForContentSizeCategory = true
+        view.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.register(TaskCell.self, forCellReuseIdentifier: "TaskCell")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+        
     lazy var addButton: UIButton = {
         let view = UIButton(frame: .zero)
         view.setTitle("Adicionar Tarefa", for: .normal)
@@ -39,8 +47,13 @@ final class ActivityView: UIView{
     
     lazy var createTaskView: TaskCreateView = {
         let view = TaskCreateView()
-        view.backgroundColor = .red
-//        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.layer.borderWidth = 4
+        view.layer.cornerRadius = 10
+        view.layer.borderColor = .init(red: 1, green: 131/255, blue: 0, alpha: 1)
+        view.addCallback = addTask
+        view.cancelCallback = dismissView
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -53,47 +66,67 @@ final class ActivityView: UIView{
         fatalError("init(coder:) has not been implemented")
     }
     
-    func callReload(){
-        self.tableView.reloadData()
+    @objc func presentCreateTask(){
+        layoutConstraint?.constant = Metrics.Device.height*0.3
+        
+        UIView.animate(withDuration: 1, animations: { [self] in
+            updateConstraints()
+            layoutIfNeeded()
+        })
     }
     
-    @objc func presentCreateTask(){
-        addSubview(createTaskView)
-        createTaskView.layer.position.x = Metrics.Device.width*0.5
-        createTaskView.layer.position.y = Metrics.Device.height
-
-        UIView.animate(withDuration: 0.5, animations: { [self] in
-            createTaskView.layer.position.y -= Metrics.Device.height*0.3
+    func addTask(task: Task){
+        viewModel.addTask(task: task)
+        createTaskView.reset()
+        tableView.reloadData()
+        dismissView()
+    }
+    
+    func dismissView(){
+        layoutConstraint?.constant = Metrics.Device.height
+        UIView.animate(withDuration: 1, animations: { [self] in
+            layoutIfNeeded()
         })
     }
 }
 
 extension ActivityView: ViewCodeProtocol{
     func setUpViewHierarchy() {
+        addSubview(mainLabel)
         addSubview(tableView)
         addSubview(addButton)
-        tableView.reloadData()
-        
+        addSubview(createTaskView)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
+            mainLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor,constant: 20),
+            mainLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            
             tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor,constant: 20),
             tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor,constant: -20),
-            tableView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor,constant: 20),
+            tableView.topAnchor.constraint(equalTo: mainLabel.bottomAnchor,constant: 10),
             tableView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.8),
             
             addButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             addButton.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -60),
+            
+            createTaskView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            createTaskView.widthAnchor.constraint(equalToConstant: Metrics.Device.width),
+            createTaskView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.45)
                         
         ])
+        
+        layoutConstraint = createTaskView.centerYAnchor.constraint(equalTo: centerYAnchor,constant: Metrics.Device.height)
+        layoutConstraint?.isActive = true
+        
     }
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.allowsSelection = false        
-        
+        tableView.allowsSelection = false                
     }
 }

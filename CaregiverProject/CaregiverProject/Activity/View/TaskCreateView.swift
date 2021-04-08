@@ -9,14 +9,12 @@ import UIKit
 
 final class TaskCreateView: UIView{
     
-    let taskTypes: [String] = ["Higiene,Folga,Tempo,Comida,Cama"]
-    let taskIcons: [String] = ["hygiene","break","clock","food","sleep"]
+    var cancelCallback: () -> () = {}
+    var addCallback: (Task) -> () = { _ in }
+    var selectedCategory = 0
     
-    lazy var background: UIView = {
-        let view = UIView(frame: CGRect(x: -Metrics.Device.width*0.5, y: 0, width: Metrics.Device.width, height: Metrics.Device.height*0.3))
-        view.backgroundColor = .white
-        return view
-    }()
+    let taskTypes: [String] = ["Higiene","Folga","Tempo","Comida","Cama"]
+    let taskIcons: [String] = ["hygiene","break","clock","food","sleep"]
     
     lazy var title: UILabel = {
         let view = UILabel()
@@ -42,8 +40,17 @@ final class TaskCreateView: UIView{
         return view
     }()
     
+    lazy var datePicker: UIDatePicker = {
+        let view = UIDatePicker()
+        view.datePickerMode = .time
+        view.preferredDatePickerStyle = .inline
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero,style: .plain)
+        view.register(CreateTaskCell.self, forCellReuseIdentifier: "cell")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -58,6 +65,7 @@ final class TaskCreateView: UIView{
         view.layer.borderWidth = 2
         view.layer.borderColor = .init(red: 1, green: 0, blue: 0, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(cancelTap), for: .touchUpInside)
         return view
     }()
     
@@ -71,6 +79,7 @@ final class TaskCreateView: UIView{
         view.layer.borderWidth = 2
         view.layer.borderColor = .init(red: 0, green: 0, blue: 1, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(addTap), for: .touchUpInside)
         return view
     }()
     
@@ -83,38 +92,75 @@ final class TaskCreateView: UIView{
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func cancelTap(){
+        cancelCallback()
+    }
+    
+    @objc func addTap(){
+        var iconName = "hygiene"
+        switch selectedCategory{
+        case 1:
+            iconName = "break"
+        case 2:
+            iconName = "clock"
+        case 3:
+            iconName = "food"
+        case 4:
+            iconName = "sleep"
+        default:
+            iconName = "hygiene"
+        }
+        let task = Task(name: text.text ?? "Tarefa", date: datePicker.date.getFormattedDate(), icon: UIImage(named: iconName)!, isCompleted: false)
+        addCallback(task)
+    }
+    
+    func reset(){
+        text.text = ""
+        datePicker.date = Date()
+        selectedCategory = 0
+    }
 }
 
 extension TaskCreateView: ViewCodeProtocol{
     func setUpViewHierarchy() {
-        addSubview(background)
-        background.addSubview(title)
-        background.addSubview(text)
-        background.addSubview(tableView)
-        background.addSubview(cancelButton)
-        background.addSubview(addButton)
+        addSubview(title)
+        addSubview(text)
+        addSubview(datePicker)
+        addSubview(tableView)
+        addSubview(cancelButton)
+        addSubview(addButton)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            
-            title.centerXAnchor.constraint(equalTo: background.centerXAnchor),
-            title.topAnchor.constraint(equalTo: background.topAnchor,constant: 20),
-            
-            text.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            title.centerXAnchor.constraint(equalTo: centerXAnchor),
+            title.topAnchor.constraint(equalTo: topAnchor,constant: 20),
+
+            text.centerXAnchor.constraint(equalTo: centerXAnchor),
             text.topAnchor.constraint(equalTo: title.bottomAnchor,constant: 20),
+            text.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
             
-            tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: text.bottomAnchor,constant: 20),
+            datePicker.centerXAnchor.constraint(equalTo: centerXAnchor),
+            datePicker.topAnchor.constraint(equalTo: text.bottomAnchor,constant: 20),
+            datePicker.widthAnchor.constraint(equalTo: widthAnchor,multiplier: 0.6),
             
-            cancelButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor,constant: -20),
-            cancelButton.bottomAnchor.constraint(equalTo: background.bottomAnchor,constant: -30),
-            
-            addButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            addButton.bottomAnchor.constraint(equalTo: background.bottomAnchor,constant: -30)
-            
+            tableView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            tableView.topAnchor.constraint(equalTo: datePicker.bottomAnchor,constant: 5),
+            tableView.heightAnchor.constraint(equalToConstant: 100),
+            tableView.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.8),
+
+            cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
+            cancelButton.topAnchor.constraint(equalTo: tableView.bottomAnchor,constant: 15),
+
+            addButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
+            addButton.topAnchor.constraint(equalTo: tableView.bottomAnchor,constant: 15)
+//
         ])
     }
     
+    func setUpAditionalConficuration() {
+        tableView.delegate = self
+        tableView.dataSource = self        
+    }
     
 }

@@ -28,6 +28,7 @@
 		AC0F44D8261E3AA100710BC0 /* TaskCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F44D7261E3AA100710BC0 /* TaskCreateView.swift */; };
 		AC0F44E0261E451700710BC0 /* TaskCreateView+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F44DF261E451700710BC0 /* TaskCreateView+DD.swift */; };
 		AC0F44E5261E45EC00710BC0 /* CreateTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F44E4261E45EC00710BC0 /* CreateTaskCell.swift */; };
+		AC0F44ED261F81E900710BC0 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F44EC261F81E900710BC0 /* ActivityViewModel.swift */; };
 		AC29293C25544E0600C26FE1 /* ManageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC29293B25544E0600C26FE1 /* ManageState.swift */; };
 		AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873262552E1CB0084590D /* FamilyManageViewController.swift */; };
 		AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732C2552E5580084590D /* FamilyManageView.swift */; };
@@ -130,6 +131,7 @@
 		AC0F44D7261E3AA100710BC0 /* TaskCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreateView.swift; sourceTree = "<group>"; };
 		AC0F44DF261E451700710BC0 /* TaskCreateView+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreateView+DD.swift"; sourceTree = "<group>"; };
 		AC0F44E4261E45EC00710BC0 /* CreateTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskCell.swift; sourceTree = "<group>"; };
+		AC0F44EC261F81E900710BC0 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		AC29293B25544E0600C26FE1 /* ManageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageState.swift; sourceTree = "<group>"; };
 		AC3873262552E1CB0084590D /* FamilyManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageViewController.swift; sourceTree = "<group>"; };
 		AC38732C2552E5580084590D /* FamilyManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageView.swift; sourceTree = "<group>"; };
@@ -405,8 +407,8 @@
 			isa = PBXGroup;
 			children = (
 				ACF654B0261B469D00A5FAC3 /* ActivityView.swift */,
-				ACF654C8261B494F00A5FAC3 /* TableView */,
 				AC0F44D7261E3AA100710BC0 /* TaskCreateView.swift */,
+				ACF654C8261B494F00A5FAC3 /* TableView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -422,6 +424,7 @@
 		ACF654AF261B45CA00A5FAC3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AC0F44EC261F81E900710BC0 /* ActivityViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 				E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */,
 				7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */,
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
+				AC0F44ED261F81E900710BC0 /* ActivityViewModel.swift in Sources */,
 				7904B4A3255ADF2800D078F5 /* FamilyTreeDataSource.swift in Sources */,
 				E21DF8F0261350200061AE3A /* ImageConverter.swift in Sources */,
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
