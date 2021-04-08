@@ -9,6 +9,8 @@ import UIKit
 
 final class ProfileView: UIView{
     
+    var presentCallback: () -> () = {}
+    
     var titleLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.text = "Elder's Profile"
@@ -18,6 +20,14 @@ final class ProfileView: UIView{
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    lazy var taskButton: UIButton = {
+        var button = UIButton(frame: .zero)
+        button.setImage(UIImage(named: "taskIcon"), for: .normal)
+        button.addTarget(self, action: #selector(presentTaskView), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     var profileImage: UIImageView = {
@@ -130,11 +140,16 @@ final class ProfileView: UIView{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func presentTaskView(){
+        presentCallback()
+    }
 }
 
 extension ProfileView: ViewCodeProtocol{
     func setUpViewHierarchy() {
         addSubview(titleLabel)
+        addSubview(taskButton)
         self.addSubview(profileImage)
         self.addSubview(nameLabel)
         self.addSubview(ageLabel)
@@ -152,7 +167,9 @@ extension ProfileView: ViewCodeProtocol{
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            
+            taskButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            taskButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
             
             profileImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             profileImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),

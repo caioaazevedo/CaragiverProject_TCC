@@ -25,6 +25,10 @@
 		79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FC8255C3ECD00A01D85 /* AppUtility.swift */; };
 		79960FCE255CB71900A01D85 /* FamilyTreeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FCD255CB71900A01D85 /* FamilyTreeHeaderView.swift */; };
 		79960FE8255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FE7255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift */; };
+		AC0F44D8261E3AA100710BC0 /* TaskCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F44D7261E3AA100710BC0 /* TaskCreateView.swift */; };
+		AC0F44E0261E451700710BC0 /* TaskCreateView+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F44DF261E451700710BC0 /* TaskCreateView+DD.swift */; };
+		AC0F44E5261E45EC00710BC0 /* CreateTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F44E4261E45EC00710BC0 /* CreateTaskCell.swift */; };
+		AC0F44ED261F81E900710BC0 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F44EC261F81E900710BC0 /* ActivityViewModel.swift */; };
 		AC29293C25544E0600C26FE1 /* ManageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC29293B25544E0600C26FE1 /* ManageState.swift */; };
 		AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3873262552E1CB0084590D /* FamilyManageViewController.swift */; };
 		AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732C2552E5580084590D /* FamilyManageView.swift */; };
@@ -38,7 +42,13 @@
 		AC9D41C7255AC92600925819 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41C6255AC92600925819 /* ProfileModel.swift */; };
 		AC9D41CC255ACD5200925819 /* Kinship.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41CB255ACD5200925819 /* Kinship.swift */; };
 		AC9D41D3255ACE5A00925819 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */; };
+		AC9D6243261D1EB600EE730B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D6242261D1EB600EE730B /* Date.swift */; };
+		ACC22E66261B4EEE002A9722 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC22E65261B4EEE002A9722 /* ActivityViewController.swift */; };
+		ACC22E6B261B5505002A9722 /* ActivityView+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC22E6A261B5505002A9722 /* ActivityView+DD.swift */; };
 		ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEF1C13255425CF00346B67 /* EntityTypes.swift */; };
+		ACF654B1261B469D00A5FAC3 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF654B0261B469D00A5FAC3 /* ActivityView.swift */; };
+		ACF654C1261B48CA00A5FAC3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF654C0261B48CA00A5FAC3 /* Task.swift */; };
+		ACF654CA261B497900A5FAC3 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF654C9261B497900A5FAC3 /* TaskCell.swift */; };
 		B47535054A304F47969D70C3 /* Pods_CaregiverProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430E0E079F774E9BBCDA5F9 /* Pods_CaregiverProjectTests.framework */; };
 		E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202115725509B7300790DA9 /* StartFamilyView.swift */; };
 		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
@@ -118,6 +128,10 @@
 		79960FE7255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTabBarControllerDelegate.swift; sourceTree = "<group>"; };
 		8127C265ABC15FE38B9E554E /* Pods_CaregiverProject_CaregiverProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaregiverProject_CaregiverProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DE9F1CE1A3782774C72496 /* Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProject-CaregiverProjectUITests/Pods-CaregiverProject-CaregiverProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AC0F44D7261E3AA100710BC0 /* TaskCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreateView.swift; sourceTree = "<group>"; };
+		AC0F44DF261E451700710BC0 /* TaskCreateView+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreateView+DD.swift"; sourceTree = "<group>"; };
+		AC0F44E4261E45EC00710BC0 /* CreateTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskCell.swift; sourceTree = "<group>"; };
+		AC0F44EC261F81E900710BC0 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		AC29293B25544E0600C26FE1 /* ManageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageState.swift; sourceTree = "<group>"; };
 		AC3873262552E1CB0084590D /* FamilyManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageViewController.swift; sourceTree = "<group>"; };
 		AC38732C2552E5580084590D /* FamilyManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyManageView.swift; sourceTree = "<group>"; };
@@ -131,7 +145,13 @@
 		AC9D41C6255AC92600925819 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		AC9D41CB255ACD5200925819 /* Kinship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kinship.swift; sourceTree = "<group>"; };
 		AC9D41D2255ACE5A00925819 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AC9D6242261D1EB600EE730B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		ACC22E65261B4EEE002A9722 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		ACC22E6A261B5505002A9722 /* ActivityView+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityView+DD.swift"; sourceTree = "<group>"; };
 		ACEF1C13255425CF00346B67 /* EntityTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTypes.swift; sourceTree = "<group>"; };
+		ACF654B0261B469D00A5FAC3 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		ACF654C0261B48CA00A5FAC3 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		ACF654C9261B497900A5FAC3 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		D1B145D0DA6BFC2D85279B9D /* Pods-CaregiverProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		D2D0AC7856CD11223D8A9F5A /* Pods-CaregiverProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E202115725509B7300790DA9 /* StartFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFamilyView.swift; sourceTree = "<group>"; };
@@ -356,6 +376,70 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AC9D6241261D1EAB00EE730B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AC9D6242261D1EB600EE730B /* Date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ACC22E64261B4EDA002A9722 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ACC22E65261B4EEE002A9722 /* ActivityViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ACF654AC261B43E700A5FAC3 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				ACF654AD261B459700A5FAC3 /* View */,
+				ACC22E64261B4EDA002A9722 /* ViewController */,
+				ACF654AF261B45CA00A5FAC3 /* ViewModel */,
+				ACF654AE261B459D00A5FAC3 /* Model */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		ACF654AD261B459700A5FAC3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACF654B0261B469D00A5FAC3 /* ActivityView.swift */,
+				AC0F44D7261E3AA100710BC0 /* TaskCreateView.swift */,
+				ACF654C8261B494F00A5FAC3 /* TableView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ACF654AE261B459D00A5FAC3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACF654C0261B48CA00A5FAC3 /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ACF654AF261B45CA00A5FAC3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC0F44EC261F81E900710BC0 /* ActivityViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ACF654C8261B494F00A5FAC3 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				ACF654C9261B497900A5FAC3 /* TaskCell.swift */,
+				ACC22E6A261B5505002A9722 /* ActivityView+DD.swift */,
+				AC0F44DF261E451700710BC0 /* TaskCreateView+DD.swift */,
+				AC0F44E4261E45EC00710BC0 /* CreateTaskCell.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		AD862F4A5B54F4BB784192BA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,6 +456,7 @@
 		E20211802550B33700790DA9 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				AC9D6241261D1EAB00EE730B /* Extensions */,
 				AC3D575F2552D8040013D470 /* Utils */,
 				E20211812550B34000790DA9 /* Protocols */,
 			);
@@ -419,6 +504,7 @@
 				E21DF90926152F3F0061AE3A /* Calendar */,
 				AC3D574F2552D5D50013D470 /* Family */,
 				AC9D41AF255AC82B00925819 /* Profile */,
+				ACF654AC261B43E700A5FAC3 /* Activity */,
 				E2137F75254F311A007F4F53 /* Assets.xcassets */,
 				E2137F9F254F3E75007F4F53 /* Application */,
 				E2137F72254F3118007F4F53 /* Main.storyboard */,
@@ -864,12 +950,14 @@
 				AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */,
 				7904B48E255AB4C400D078F5 /* FamilyTreeView.swift in Sources */,
 				E2DD96DF2551A52200A89A04 /* RegisterProtocols.swift in Sources */,
+				ACF654C1261B48CA00A5FAC3 /* Task.swift in Sources */,
 				E2194788255B587A0013E942 /* ImagePickerManager.swift in Sources */,
 				AC9D41C7255AC92600925819 /* ProfileModel.swift in Sources */,
 				E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */,
 				E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */,
 				E21DF91226152F840061AE3A /* CalendarViewController.swift in Sources */,
 				E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */,
+				AC0F44E0261E451700710BC0 /* TaskCreateView+DD.swift in Sources */,
 				7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */,
 				E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */,
 				E2DD96EE2551AA5F00A89A04 /* RegisterRouter.swift in Sources */,
@@ -877,10 +965,12 @@
 				7914614F26145B0C00EA9AB5 /* ImageDecoder.swift in Sources */,
 				79146162261476E700EA9AB5 /* FamilyManageViewModel.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
+				ACF654CA261B497900A5FAC3 /* TaskCell.swift in Sources */,
 				E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */,
 				7914615726146EDD00EA9AB5 /* DataManager.swift in Sources */,
 				AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */,
 				AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */,
+				ACF654B1261B469D00A5FAC3 /* ActivityView.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
@@ -898,24 +988,30 @@
 				E2DD96D425519E6B00A89A04 /* AuthenticationRouter.swift in Sources */,
 				7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */,
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
+				AC0F44ED261F81E900710BC0 /* ActivityViewModel.swift in Sources */,
 				7904B4A3255ADF2800D078F5 /* FamilyTreeDataSource.swift in Sources */,
 				E21DF8F0261350200061AE3A /* ImageConverter.swift in Sources */,
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
+				AC0F44E5261E45EC00710BC0 /* CreateTaskCell.swift in Sources */,
 				79146142261458DB00EA9AB5 /* FamilyDataManager.swift in Sources */,
+				AC9D6243261D1EB600EE730B /* Date.swift in Sources */,
 				79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */,
+				AC0F44D8261E3AA100710BC0 /* TaskCreateView.swift in Sources */,
 				7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */,
+				ACC22E66261B4EEE002A9722 /* ActivityViewController.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,
+				ACC22E6B261B5505002A9722 /* ActivityView+DD.swift in Sources */,
 				79960FE8255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift in Sources */,
 				E21DF9692615445B0061AE3A /* UIView+Extension.swift in Sources */,
 				E21DF91826152FFA0061AE3A /* CustomViewController.swift in Sources */,
@@ -1101,7 +1197,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CaregiverProject/CaregiverProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KFC8C5H4A6;
+				DEVELOPMENT_TEAM = 7YWK9C69PH;
 				INFOPLIST_FILE = CaregiverProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1122,7 +1218,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CaregiverProject/CaregiverProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KFC8C5H4A6;
+				DEVELOPMENT_TEAM = 7YWK9C69PH;
 				INFOPLIST_FILE = CaregiverProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
