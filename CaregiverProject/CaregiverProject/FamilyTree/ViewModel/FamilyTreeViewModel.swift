@@ -34,41 +34,35 @@ class FamilyTreeViewModel {
 }
 
 private extension FamilyTreeViewModel {
-    private func fetchFamily() {
+    func fetchFamily() {
         guard let id = familyID else { return }
-        dataManager.readValue(
-            from: id,
-            resutlType: Family.self) { [fetchMember] result in
-            switch result {
-            case .success(let family):
-                family.members.forEach { fetchMember($0) }
-            case .failure(_): break
-            }
-        }
+        dataManager.readValue(from: id, resutlType: Family.self)
+            .subscribe(Subscribers.Sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [fetchMember] family in
+                    family.members.forEach { fetchMember($0) }
+                }
+            ))
     }
     
-    private func fetchMember(by id: String) {
-        dataManager.readValue(
-            from: id,
-            resutlType: Member.self) { [weak self] result in
-            switch result {
-            case .success(let member):
-                self?.uniqueMembers.insert(member)
-            case .failure(_): break
-            }
-        }
+    func fetchMember(by id: String) {
+        dataManager.readValue(from: id, resutlType: Member.self)
+            .subscribe(Subscribers.Sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [weak self] member in
+                    self?.uniqueMembers.insert(member)
+                }
+            ))
     }
     
-    private func fetchElder() {
+    func fetchElder() {
         guard let id = elderID else { return }
-        dataManager.readValue(
-            from: id,
-            resutlType: ProfileModel.self) { [weak self] result in
-            switch result {
-            case .success(let elder):
-                self?.elder = elder
-            case .failure(_): break
-            }
-        }
+        dataManager.readValue(from: id, resutlType: ProfileModel.self)
+            .subscribe(Subscribers.Sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [weak self] elder in
+                    self?.elder = elder
+                }
+            ))
     }
 }

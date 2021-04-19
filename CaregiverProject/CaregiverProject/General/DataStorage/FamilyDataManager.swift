@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import Firebase
 import FirebaseDatabase
 
@@ -30,18 +31,16 @@ extension FamilyDataManager: DataManager {
         db?.removeValue()
     }
     
-    func readValue<ModelType: Storable>(
-        from dataID: String,
-        resutlType: ModelType.Type,
-        completion: @escaping (Result<ModelType, Error>) -> Void) {
-        
-        ref?.child(ModelType.queryValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionary = snapshot.value as? NSDictionary else { return }
-            let model = ModelType(id: dataID, dictionary: dictionary)
-            completion(.success(model))
-        }) { (error) in
-            completion(.failure(error))
-        }
+    func readValue<ModelType: Storable>(from dataID: String, resutlType: ModelType.Type) -> AnyPublisher<ModelType, Error> {
+        return Future<ModelType, Error> { [ref] promise in
+            ref?.child(ModelType.queryValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let dictionary = snapshot.value as? NSDictionary else { return }
+                let model = ModelType(id: dataID, dictionary: dictionary)
+                promise(.success(model))
+            }) { (error) in
+                promise(.failure(error))
+            }
+        }.eraseToAnyPublisher()
     }
     
     func update<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler) {

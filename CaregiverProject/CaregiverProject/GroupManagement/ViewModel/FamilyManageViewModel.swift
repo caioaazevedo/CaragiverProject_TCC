@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class FamilyManageViewModel {
     private let dataManager: DataManager
@@ -32,18 +33,15 @@ class FamilyManageViewModel {
     }
     
     func joinFamily(familyID: String, completion: @escaping () -> Void) {
-        dataManager.readValue(
-            from: familyID,
-            resutlType: Family.self) { [dataManager] result in
-            
-            switch result {
-            case .success(let family):
-                dataManager.update(value: family) { _ in
-                    UserSession.shared.familyID = familyID
-                    completion()
+        dataManager.readValue(from: familyID, resutlType: Family.self)
+            .subscribe(Subscribers.Sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [dataManager] family in
+                    dataManager.update(value: family) { _ in
+                        UserSession.shared.familyID = familyID
+                        completion()
+                    }
                 }
-            case .failure(_): break
-            }
-        }
+            ))
     }
 }
