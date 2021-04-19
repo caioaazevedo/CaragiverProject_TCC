@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
     var imageManager: ImagePickerManager?
     var profileView: ProfileView = .init()
     var buttonState = true
+    weak var coordinator: ProfileCoodinator?
     
     lazy var publisher: AnyPublisher<ProfileModel, Never> = {
         return self.subject!.eraseToAnyPublisher()
@@ -31,6 +32,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
     override func loadView() {
         super.loadView()
         profileView = ProfileView()
+        profileView.presentCallback = presentTaskView
         profileView.notesField.delegate = self
         profileView.imageButton.addTarget(self, action: #selector(presentPicker), for: .touchUpInside)
         profileView.mainButton.addTarget(self, action: #selector(mainButtonClick), for: .touchUpInside)
@@ -141,6 +143,10 @@ class ProfileViewController: UIViewController, UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func presentTaskView(){
+        coordinator?.presentTaskView()
     }
 }
 
