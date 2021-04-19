@@ -25,7 +25,7 @@ class FamilyManageViewModel {
             name: familyName,
             members: [id]
         )
-        dataManager.add(value: family, entityType: .Family) { _ in
+        dataManager.add(value: family) { _ in
             UserSession.shared.familyID = familyId
             completion()
         }
@@ -34,12 +34,11 @@ class FamilyManageViewModel {
     func joinFamily(familyID: String, completion: @escaping () -> Void) {
         dataManager.readValue(
             from: familyID,
-            queryValue: .Family,
             resutlType: Family.self) { [dataManager] result in
             
             switch result {
             case .success(let family):
-                dataManager.update(value: family, entityType: .Family) { _ in
+                dataManager.update(value: family) { _ in
                     UserSession.shared.familyID = familyID
                     completion()
                 }

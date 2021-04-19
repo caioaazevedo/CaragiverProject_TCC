@@ -9,13 +9,12 @@ import Foundation
 
 protocol DataManager {
     typealias ValidationHandler = (Bool) -> Void
-    func add(value: Storable, entityType: EntityTypes, completion: @escaping ValidationHandler)
+    func add<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler)
     func readValue<ModelType: Storable>(
         from dataID: String,
-        queryValue: EntityTypes,
         resutlType: ModelType.Type,
         completion: @escaping (Result<ModelType, Error>) -> Void
     )
-    func update(value: Storable, entityType: EntityTypes, completion: @escaping ValidationHandler)
+    func update<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler)
     func deleteValue(by dataID: String, entityType: EntityTypes, completion: @escaping ValidationHandler)
 }

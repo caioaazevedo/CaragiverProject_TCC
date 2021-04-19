@@ -38,7 +38,6 @@ private extension FamilyTreeViewModel {
         guard let id = familyID else { return }
         dataManager.readValue(
             from: id,
-            queryValue: .Family,
             resutlType: Family.self) { [fetchMember] result in
             switch result {
             case .success(let family):
@@ -51,7 +50,6 @@ private extension FamilyTreeViewModel {
     private func fetchMember(by id: String) {
         dataManager.readValue(
             from: id,
-            queryValue: .Member,
             resutlType: Member.self) { [weak self] result in
             switch result {
             case .success(let member):
@@ -65,7 +63,6 @@ private extension FamilyTreeViewModel {
         guard let id = elderID else { return }
         dataManager.readValue(
             from: id,
-            queryValue: .Elder,
             resutlType: ProfileModel.self) { [weak self] result in
             switch result {
             case .success(let elder):

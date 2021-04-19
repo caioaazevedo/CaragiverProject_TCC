@@ -18,10 +18,10 @@ class FamilyDataManager {
 }
 
 extension FamilyDataManager: DataManager {
-    func add(value: Storable, entityType: EntityTypes, completion: @escaping ValidationHandler) {
+    func add<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler) {
         guard let db = ref else {return}
         let parameter = value.convertToDictionary()
-        db.child(entityType.rawValue).child(value.id).setValue(parameter)
+        db.child(ModelType.queryValue).child(value.id).setValue(parameter)
         completion(true)
     }
     
@@ -32,11 +32,10 @@ extension FamilyDataManager: DataManager {
     
     func readValue<ModelType: Storable>(
         from dataID: String,
-        queryValue: EntityTypes,
         resutlType: ModelType.Type,
         completion: @escaping (Result<ModelType, Error>) -> Void) {
         
-        ref?.child(queryValue.rawValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref?.child(ModelType.queryValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let dictionary = snapshot.value as? NSDictionary else { return }
             let model = ModelType(id: dataID, dictionary: dictionary)
             completion(.success(model))
@@ -45,9 +44,9 @@ extension FamilyDataManager: DataManager {
         }
     }
     
-    func update(value: Storable, entityType: EntityTypes, completion: @escaping ValidationHandler) {
+    func update<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler) {
         let parameters = value.convertToDictionary()
-        let db = ref?.child("\(entityType.rawValue)/\(value.id)")
+        let db = ref?.child("\(ModelType.queryValue)/\(value.id)")
         db?.updateChildValues(parameters)
         completion(true)
     }
