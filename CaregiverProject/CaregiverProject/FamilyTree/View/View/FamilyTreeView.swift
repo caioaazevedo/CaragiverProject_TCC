@@ -133,10 +133,10 @@ extension FamilyTreeView: ViewCodeProtocol{
             breakLine.heightAnchor.constraint(equalToConstant: 5),
             
             collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            collectionView.topAnchor.constraint(equalTo: breakLine.bottomAnchor, constant: 16),
+            collectionView.topAnchor.constraint(equalTo: breakLine.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

@@ -25,6 +25,7 @@ class MainTabBarController: UITabBarController {
     }
     
     private func setBorder() {
+        tabBar.isTranslucent = false
         tabBar.backgroundColor = .white
         tabBar.layer.borderWidth = 2
         tabBar.layer.borderColor = #colorLiteral(red: 0.7881655693, green: 0.7882800698, blue: 0.7881404757, alpha: 1)
