@@ -11,13 +11,26 @@ class FamilyTreeCell: UICollectionViewCell {
     
     static let identifier = "FamilyTreeCell"
     
+    var imageSize: CGFloat {
+        80
+    }
+    
+    lazy var backView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .white
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = #colorLiteral(red: 0.6979769468, green: 0.6980791688, blue: 0.6979545951, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var imageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        imageView.image = UIImage(systemName: "camera")
+        let imageView = UIImageView(frame: .zero)
+        imageView.image = UIImage(named: "profileIcon")
         imageView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         imageView.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = imageView.frame.height/2
+        imageView.layer.cornerRadius = imageSize/2
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -54,19 +67,25 @@ class FamilyTreeCell: UICollectionViewCell {
 
 extension FamilyTreeCell: ViewCodeProtocol{
     func setUpViewHierarchy() {
-        addSubview(name)
-        addSubview(hierarchy)
-        addSubview(imageView)
+        contentView.addSubview(backView)
+        backView.addSubview(name)
+        backView.addSubview(hierarchy)
+        backView.addSubview(imageView)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: imageView.frame.height),
-            imageView.widthAnchor.constraint(equalToConstant: imageView.frame.width),
+            backView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            name.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: imageSize),
+            imageView.widthAnchor.constraint(equalToConstant: imageSize),
+            
+            name.centerXAnchor.constraint(equalTo: centerXAnchor),
             name.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             name.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             name.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
@@ -79,14 +98,8 @@ extension FamilyTreeCell: ViewCodeProtocol{
     }
     
     func setUpAditionalConficuration() {
-        backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        layer.cornerRadius = 25
-        layer.borderWidth = 0.5
-        layer.borderColor = #colorLiteral(red: 0.6979769468, green: 0.6980791688, blue: 0.6979545951, alpha: 1)
-        layer.shadowPath = UIBezierPath(
-            roundedRect: bounds,
-            cornerRadius: layer.cornerRadius
-        ).cgPath
+        backgroundColor = .white
+        backView.applyShaddow(cornerRadius: 25, opacity: 0.3)
     }
     
 }

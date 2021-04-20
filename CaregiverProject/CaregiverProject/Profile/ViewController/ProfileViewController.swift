@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
         self.profileView = profileView
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        bindViewModel()
         setUpButtons()
     }
     
@@ -27,6 +28,10 @@ class ProfileViewController: UIViewController {
     
     override func loadView() {
         view = profileView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchProfile()
     }
     
     private func setUpButtons() {
@@ -49,4 +54,3 @@ class ProfileViewController: UIViewController {
         //TO-DO: after the profile view is done
     }
 }
-

@@ -8,9 +8,7 @@
 import UIKit
 
 final class ProfileView: UIView{
-    
-    var presentCallback: () -> () = {}
-    
+        
     var titleLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.text = "Elder's Profile"
@@ -25,7 +23,6 @@ final class ProfileView: UIView{
     lazy var taskButton: UIButton = {
         var button = UIButton(frame: .zero)
         button.setImage(UIImage(named: "taskIcon"), for: .normal)
-        button.addTarget(self, action: #selector(presentTaskView), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -140,10 +137,6 @@ final class ProfileView: UIView{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    @objc func presentTaskView(){
-        presentCallback()
-    }
 }
 
 extension ProfileView: ViewCodeProtocol{
@@ -215,6 +208,4 @@ extension ProfileView: ViewCodeProtocol{
     func setUpAditionalConficuration() {
         self.backgroundColor = .white
     }
-    
-    
 }

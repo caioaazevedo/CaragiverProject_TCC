@@ -73,8 +73,9 @@ class FamilyTreeViewController: UIViewController {
     }
     
     private func updateProfile(_ profile: ProfileModel?) {
-        familyTreeView.elderName.text = profile?.name ?? "Elder"
-        familyTreeView.elderImage.image = profile?.photo
+        guard let elder = profile else { return }
+        familyTreeView.elderName.text = elder.name
+        familyTreeView.elderImage.image = elder.photo ?? UIImage(named: "profileIcon")
     }
     
     private func inviteMember() {

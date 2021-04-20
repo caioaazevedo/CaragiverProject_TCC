@@ -8,16 +8,27 @@
 import UIKit
 
 final class FamilyTreeView: UIView{
+    
+    var imageSize: CGFloat { 150 }
+    
+    var cellSpacing: CGFloat { 16 }
+    
+    lazy var imageBackground: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
         
     lazy var elderImage: UIImageView = {
-        let image = UIImage()
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+        let image = UIImage(named: "profileIcon")
+        let imageView = UIImageView(frame: .zero)
         imageView.image = image
-        imageView.layer.cornerRadius = imageView.frame.height/2
+        imageView.layer.cornerRadius = imageSize/2
         imageView.clipsToBounds = true
         imageView.backgroundColor = #colorLiteral(red: 0.9018817544, green: 0.9020115733, blue: 0.901853323, alpha: 1)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -48,7 +59,15 @@ final class FamilyTreeView: UIView{
     }()
     
     lazy var collectionView: UICollectionView = {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(
+            top: layoutMargins.top,
+            left: layoutMargins.left,
+            bottom: layoutMargins.bottom,
+            right: layoutMargins.left
+        )
+        layout.minimumLineSpacing = cellSpacing
+        layout.minimumInteritemSpacing = cellSpacing
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: 100, height: 170)
         layout.headerReferenceSize = CGSize(width: Metrics.Device.width, height: 80)
@@ -66,6 +85,8 @@ final class FamilyTreeView: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        layoutMargins.left = 20
+        layoutMargins.right = 20
         setUpView()
     }
     
@@ -76,44 +97,51 @@ final class FamilyTreeView: UIView{
 
 extension FamilyTreeView: ViewCodeProtocol{
     func setUpViewHierarchy() {
+        imageBackground.addSubview(elderImage)
+        addSubview(imageBackground)
         addSubview(collectionView)
         addSubview(elderName)
-        addSubview(elderImage)
         addSubview(breakLine)
         addSubview(groupInviteLabel)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            elderImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            elderImage.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 25),
-            elderImage.heightAnchor.constraint(equalToConstant: elderImage.frame.height),
-            elderImage.widthAnchor.constraint(equalToConstant: elderImage.frame.width),
+            imageBackground.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageBackground.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 25),
+            imageBackground.heightAnchor.constraint(equalToConstant: imageSize),
+            imageBackground.widthAnchor.constraint(equalToConstant: imageSize),
             
-            elderName.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            elderName.topAnchor.constraint(equalTo: elderImage.bottomAnchor, constant: 16),
-            elderName.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-            elderName.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
+            elderImage.centerXAnchor.constraint(equalTo: imageBackground.centerXAnchor),
+            elderImage.centerYAnchor.constraint(equalTo: imageBackground.centerYAnchor),
+            elderImage.heightAnchor.constraint(equalToConstant: imageSize),
+            elderImage.widthAnchor.constraint(equalToConstant: imageSize),
+            
+            elderName.centerXAnchor.constraint(equalTo: centerXAnchor),
+            elderName.topAnchor.constraint(equalTo: imageBackground.bottomAnchor, constant: 16),
+            elderName.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            elderName.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
             groupInviteLabel.topAnchor.constraint(equalTo: elderName.bottomAnchor,constant: 10),
-            groupInviteLabel.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-            groupInviteLabel.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
+            groupInviteLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            groupInviteLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
-            breakLine.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            breakLine.centerXAnchor.constraint(equalTo: centerXAnchor),
             breakLine.topAnchor.constraint(equalTo: groupInviteLabel.bottomAnchor, constant: 12),
-            breakLine.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-            breakLine.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
+            breakLine.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            breakLine.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             breakLine.heightAnchor.constraint(equalToConstant: 5),
             
-            collectionView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
             collectionView.topAnchor.constraint(equalTo: breakLine.bottomAnchor, constant: 16),
-            collectionView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor)
         ])
     }
     
     func setUpAditionalConficuration() {
         self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        imageBackground.applyShaddow(cornerRadius: imageSize/2, opacity: 0.3)
     }
 }

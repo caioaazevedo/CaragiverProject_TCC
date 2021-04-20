@@ -556,12 +556,9 @@
 		E20211802550B33700790DA9 /* General */ = {
 			isa = PBXGroup;
 			children = (
-
 				79146140261458AF00EA9AB5 /* DataStorage */,
 				791461AD26171C2B00EA9AB5 /* Coordinator */,
-
 				AC9D6241261D1EAB00EE730B /* Extensions */,
-
 				AC3D575F2552D8040013D470 /* Utils */,
 				E20211812550B34000790DA9 /* Protocols */,
 			);
@@ -761,7 +758,6 @@
 		E21DF90926152F3F0061AE3A /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				E21DF9B7261BC7350061AE3A /* Manager */,
 				7914620C26187D2D00EA9AB5 /* Coordinator */,
 				E21DF90A26152F580061AE3A /* View */,
 				E21DF90B26152F5E0061AE3A /* ViewController */,
@@ -800,13 +796,6 @@
 				E21DF9AF261BC2DB0061AE3A /* EventCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		E21DF9B7261BC7350061AE3A /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		E2DC2ACA255CA03F008468E5 /* Enums */ = {
@@ -1145,11 +1134,8 @@
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,
-
 				791461E526173F5400EA9AB5 /* GroupManagementBuilder.swift in Sources */,
-
 				ACC22E6B261B5505002A9722 /* ActivityView+DD.swift in Sources */,
-
 				79960FE8255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift in Sources */,
 				E21DF9692615445B0061AE3A /* UIView+Extension.swift in Sources */,
 				E21DF91826152FFA0061AE3A /* CustomViewController.swift in Sources */,

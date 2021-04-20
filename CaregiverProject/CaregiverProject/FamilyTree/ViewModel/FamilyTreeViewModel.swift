@@ -30,6 +30,12 @@ class FamilyTreeViewModel {
         uniqueMembers.removeAll()
         fetchFamily()
         fetchElder()
+        uniqueMembers.insert(Member(id: "1", name: "Drauzio", email: "", password: "", memberType: .husband_wife))
+        uniqueMembers.insert(Member(id: "2", name: "Vilson", email: "", password: "", memberType: .husband_wife))
+        uniqueMembers.insert(Member(id: "3", name: "Vilson", email: "", password: "", memberType: .husband_wife))
+        uniqueMembers.insert(Member(id: "4", name: "Vilson", email: "", password: "", memberType: .husband_wife))
+        uniqueMembers.insert(Member(id: "5", name: "Vilson", email: "", password: "", memberType: .husband_wife))
+
     }
 }
 

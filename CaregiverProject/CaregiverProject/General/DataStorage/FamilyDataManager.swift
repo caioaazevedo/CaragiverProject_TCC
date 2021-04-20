@@ -13,7 +13,7 @@ import FirebaseDatabase
 class FamilyDataManager {
     private let ref: DatabaseReference?
     
-    init(database: Database){
+    init(database: Database = Database.database()){
         self.ref = database.reference()
     }
 }
