@@ -17,7 +17,7 @@ struct ProfileBuilder {
             profileView: view,
             viewModel: viewModel
         )
-        let profileIcon = UITabBarItem(title: "Elder", image: .checkmark, tag: 2)
+        let profileIcon = UITabBarItem(title: "Elder", image: #imageLiteral(resourceName: "Task"), tag: 2)
         profileModule.tabBarItem = profileIcon
         return profileModule
     }

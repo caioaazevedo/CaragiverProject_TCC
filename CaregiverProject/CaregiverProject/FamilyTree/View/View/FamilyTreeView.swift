@@ -10,8 +10,8 @@ import UIKit
 final class FamilyTreeView: UIView{
     
     var imageSize: CGFloat { 150 }
-    
-    var cellSpacing: CGFloat { 16 }
+    var cellSpacing: CGFloat { Metrics.Device.width/4 - cellSize.width/2 }
+    var cellSize: CGSize { CGSize(width: 125, height: 170) }
     
     lazy var imageBackground: UIView = {
         let view = UIView(frame: .zero)
@@ -62,14 +62,14 @@ final class FamilyTreeView: UIView{
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(
             top: layoutMargins.top,
-            left: layoutMargins.left,
+            left: cellSpacing,
             bottom: layoutMargins.bottom,
-            right: layoutMargins.left
+            right: cellSpacing
         )
-        layout.minimumLineSpacing = cellSpacing
+        layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = cellSpacing
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 100, height: 170)
+        layout.itemSize = cellSize
         layout.headerReferenceSize = CGSize(width: Metrics.Device.width, height: 80)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(FamilyTreeCell.self, forCellWithReuseIdentifier: FamilyTreeCell.identifier)
