@@ -9,6 +9,13 @@ import UIKit
 
 final class ProfileView: UIView{
         
+    lazy var backView: UIView = {
+        let rect = CGRect(origin: .zero, size: CGSize(width: Metrics.Device.width, height: Metrics.Device.height*0.5))
+        let view = UIView(frame: rect)
+        view.backgroundColor = .white
+        return view
+    }()
+    
     var titleLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.text = "Elder's Profile"
@@ -141,19 +148,19 @@ final class ProfileView: UIView{
 
 extension ProfileView: ViewCodeProtocol{
     func setUpViewHierarchy() {
+        addSubview(backView)
         addSubview(titleLabel)
         addSubview(taskButton)
-        self.addSubview(profileImage)
-        self.addSubview(nameLabel)
-        self.addSubview(ageLabel)
-        self.addSubview(notesField)
-        self.addSubview(mainButton)
-        self.addSubview(imageButton)
-        self.addSubview(mainTextField)
-        self.addSubview(secTextField)
-        self.addSubview(nameHintLabel)
-        self.addSubview(ageHintLabel)
-        
+        addSubview(profileImage)
+        addSubview(nameLabel)
+        addSubview(ageLabel)
+        addSubview(notesField)
+        addSubview(mainButton)
+        addSubview(imageButton)
+        addSubview(mainTextField)
+        addSubview(secTextField)
+        addSubview(nameHintLabel)
+        addSubview(ageHintLabel)
     }
     
     func setUpViewConstraints() {
@@ -206,6 +213,7 @@ extension ProfileView: ViewCodeProtocol{
     }
     
     func setUpAditionalConficuration() {
-        self.backgroundColor = .white
+        backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        backView.applyShaddow(opacity: 1)
     }
 }

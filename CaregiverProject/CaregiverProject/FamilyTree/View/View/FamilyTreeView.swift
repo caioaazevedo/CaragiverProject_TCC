@@ -15,11 +15,17 @@ final class FamilyTreeView: UIView{
     
     lazy var imageBackground: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
+        view.clipsToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
+        view.layer.shadowRadius = 6
+        view.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: imageSize, height: imageSize), cornerRadius: imageSize/2).cgPath
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-        
+    
     lazy var elderImage: UIImageView = {
         let image = UIImage(named: "profileIcon")
         let imageView = UIImageView(frame: .zero)
@@ -142,6 +148,5 @@ extension FamilyTreeView: ViewCodeProtocol{
     
     func setUpAditionalConficuration() {
         self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        imageBackground.applyShaddow(cornerRadius: imageSize/2, opacity: 0.3)
     }
 }
