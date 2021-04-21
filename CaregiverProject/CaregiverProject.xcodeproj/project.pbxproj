@@ -35,6 +35,10 @@
 		7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */; };
 		79476233260F6C840044F1D0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476232260F6C840044F1D0 /* UIViewController.swift */; };
 		79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476237260F6EDB0044F1D0 /* UIViewControllerPreview.swift */; };
+		79848EF92630657F00D996B0 /* ProfileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79848EF82630657F00D996B0 /* ProfileInfoCell.swift */; };
+		79848EFE2630950600D996B0 /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79848EFD2630950600D996B0 /* ProfileDataSource.swift */; };
+		79848F0326309A6500D996B0 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79848F0226309A6500D996B0 /* TextFieldDelegate.swift */; };
+		79848F082630A38A00D996B0 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79848F072630A38A00D996B0 /* TableViewDelegate.swift */; };
 		79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FC8255C3ECD00A01D85 /* AppUtility.swift */; };
 		79960FCE255CB71900A01D85 /* FamilyTreeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FCD255CB71900A01D85 /* FamilyTreeHeaderView.swift */; };
 		79960FE8255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79960FE7255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift */; };
@@ -148,6 +152,10 @@
 		7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewModel.swift; sourceTree = "<group>"; };
 		79476232260F6C840044F1D0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		79476237260F6EDB0044F1D0 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
+		79848EF82630657F00D996B0 /* ProfileInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoCell.swift; sourceTree = "<group>"; };
+		79848EFD2630950600D996B0 /* ProfileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataSource.swift; sourceTree = "<group>"; };
+		79848F0226309A6500D996B0 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
+		79848F072630A38A00D996B0 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 		79960FC8255C3ECD00A01D85 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		79960FCD255CB71900A01D85 /* FamilyTreeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeHeaderView.swift; sourceTree = "<group>"; };
 		79960FE7255D84ED00A01D85 /* FamilyTabBarControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTabBarControllerDelegate.swift; sourceTree = "<group>"; };
@@ -439,6 +447,8 @@
 				AC9D41CB255ACD5200925819 /* Kinship.swift */,
 				E2C108C32568036300CDB7FA /* ErrorHandler.swift */,
 				793E7394262EF2E400941ED7 /* MainTabBarController.swift */,
+				79848F0226309A6500D996B0 /* TextFieldDelegate.swift */,
+				79848F072630A38A00D996B0 /* TableViewDelegate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -459,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				AC9D41B7255AC8EF00925819 /* ProfileView.swift */,
+				79848EF82630657F00D996B0 /* ProfileInfoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -467,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				AC9D41BC255AC90400925819 /* ProfileViewModel.swift */,
+				79848EFD2630950600D996B0 /* ProfileDataSource.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1095,6 +1107,7 @@
 				791462292619BBDD00EA9AB5 /* AppCoordinator.swift in Sources */,
 				791461A42617163A00EA9AB5 /* MainCoordinator.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,
+				79848EF92630657F00D996B0 /* ProfileInfoCell.swift in Sources */,
 				E2DD96CF25519D3500A89A04 /* AutheticationPresenter.swift in Sources */,
 				E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */,
 				E20211662550A0E100790DA9 /* RegisterView.swift in Sources */,
@@ -1128,8 +1141,11 @@
 				79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */,
 				AC0F44D8261E3AA100710BC0 /* TaskCreateView.swift in Sources */,
 				7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */,
+				79848EFE2630950600D996B0 /* ProfileDataSource.swift in Sources */,
 				E21DF9B0261BC2DB0061AE3A /* EventCell.swift in Sources */,
 				793E7395262EF2E400941ED7 /* MainTabBarController.swift in Sources */,
+				79848F082630A38A00D996B0 /* TableViewDelegate.swift in Sources */,
+				79848F0326309A6500D996B0 /* TextFieldDelegate.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				7914620526187BF200EA9AB5 /* FamilyCoordinator.swift in Sources */,
 				E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */,

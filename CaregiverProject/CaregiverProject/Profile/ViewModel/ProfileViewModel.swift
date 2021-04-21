@@ -31,4 +31,8 @@ extension ProfileViewModel {
                 }
             ))
     }
+    
+    func update(profile: ProfileModel) {
+        dataManager.update(value: profile) { _ in }
+    }
 }

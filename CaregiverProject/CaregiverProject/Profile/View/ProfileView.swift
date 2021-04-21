@@ -8,6 +8,10 @@
 import UIKit
 
 final class ProfileView: UIView{
+    
+    private let tableViewDelegate = TableViewDelegate()
+    private let textFieldDelegate = TextFieldDelegate()
+    var profileImageSize: CGFloat { Metrics.Device.width*0.5 }
         
     lazy var backView: UIView = {
         let rect = CGRect(origin: .zero, size: CGSize(width: Metrics.Device.width, height: Metrics.Device.height*0.5))
@@ -34,81 +38,41 @@ final class ProfileView: UIView{
         return button
     }()
     
-    var profileImage: UIImageView = {
+    lazy var profileImageBackground: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .clear
+        view.clipsToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
+        view.layer.shadowRadius = 6
+        view.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: profileImageSize, height: profileImageSize), cornerRadius: profileImageSize/2).cgPath
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var profileImage: UIImageView = {
         var image = UIImageView(frame: .zero)
         image.image = UIImage(named: "profileIcon")
         image.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         image.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         image.contentMode = .scaleAspectFit
-        image.layer.cornerRadius = (UIScreen.main.bounds.width*0.50)/2
+        image.layer.cornerRadius = profileImageSize/2
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
-    lazy var nameHintLabel: UILabel = {
-        let view = UILabel()
-        view.text = "Elder's Name"
-        view.textColor  = UIColor.black
-        view.adjustsFontForContentSizeCategory = true
-        let font = UIFont.boldSystemFont(ofSize: 22)
-        view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var nameLabel: UILabel = {
-        let view = UILabel()
-        view.text = ""
-        view.textColor  = UIColor.black
-        view.adjustsFontForContentSizeCategory = true        
-        let font = UIFont.preferredFont(forTextStyle: .title3)
-        view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var mainTextField: UITextField = {
-        var text = UITextField(frame: .zero)
+    lazy var nameTextField: UITextField = {
+        let text = UITextField(frame: .zero)
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
         text.textAlignment = .center
         text.borderStyle = .roundedRect
+        text.placeholder = "Elder's name"
+        text.delegate = textFieldDelegate
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
-    }()
-    
-    lazy var secTextField: UITextField = {
-        var text = UITextField(frame: .zero)
-        let centeredParagraphStyle = NSMutableParagraphStyle()
-        centeredParagraphStyle.alignment = .center
-        text.textAlignment = .center
-        text.borderStyle = .roundedRect
-        text.translatesAutoresizingMaskIntoConstraints = false
-        return text
-    }()
-    
-    lazy var ageHintLabel: UILabel = {
-        let view = UILabel()
-        view.text = "Elder's Age"
-        view.textColor  = UIColor.black
-        view.adjustsFontForContentSizeCategory = true
-        let font = UIFont.boldSystemFont(ofSize: 22)
-        view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var ageLabel: UILabel = {
-        let view = UILabel()
-        view.text = ""
-        view.textColor  = UIColor.black
-        view.adjustsFontForContentSizeCategory = true
-        let font = UIFont.preferredFont(forTextStyle: .title3)
-        view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-        
     }()
     
     lazy var imageButton: UIButton = {
@@ -118,22 +82,15 @@ final class ProfileView: UIView{
         return button
     }()
     
-    lazy var notesField: UITextView  = {
-        let view = UITextView(frame: .zero)
-        view.text = "Elder's notes"
-        view.font = UIFont.systemFont(ofSize: 14)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    lazy var mainButton: UIButton = {
-        var view = UIButton(frame: .zero)
-        view.setTitle("Edit", for: .normal)
-        view.setTitleColor(.white, for: .normal)
-        view.backgroundColor = .systemBlue
-        view.layer.cornerRadius = 5
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    lazy var infoTableView: UITableView = {
+        var tableView = UITableView(frame: .zero)
+        tableView.register(ProfileInfoCell.self, forCellReuseIdentifier: ProfileInfoCell.identifier)
+        tableView.tableFooterView = UIView()
+        tableView.delegate = tableViewDelegate
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
     
     override init(frame: CGRect) {
@@ -149,71 +106,54 @@ final class ProfileView: UIView{
 extension ProfileView: ViewCodeProtocol{
     func setUpViewHierarchy() {
         addSubview(backView)
+        profileImageBackground.addSubview(profileImage)
+        addSubview(profileImageBackground)
         addSubview(titleLabel)
         addSubview(taskButton)
-        addSubview(profileImage)
-        addSubview(nameLabel)
-        addSubview(ageLabel)
-        addSubview(notesField)
-        addSubview(mainButton)
         addSubview(imageButton)
-        addSubview(mainTextField)
-        addSubview(secTextField)
-        addSubview(nameHintLabel)
-        addSubview(ageHintLabel)
+        addSubview(nameTextField)
+        addSubview(infoTableView)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 35),
+            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             
-            taskButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
-            taskButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+            taskButton.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 50),
+            taskButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
-            profileImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            profileImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            profileImage.heightAnchor.constraint(equalToConstant: Metrics.Device.width*0.50),
-            profileImage.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.50),
+            profileImageBackground.centerXAnchor.constraint(equalTo: centerXAnchor),
+            profileImageBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            profileImageBackground.heightAnchor.constraint(equalToConstant: profileImageSize),
+            profileImageBackground.widthAnchor.constraint(equalToConstant: profileImageSize),
+
+            profileImage.centerXAnchor.constraint(equalTo: profileImageBackground.centerXAnchor),
+            profileImage.centerYAnchor.constraint(equalTo: profileImageBackground.centerYAnchor),
+            profileImage.heightAnchor.constraint(equalToConstant: profileImageSize),
+            profileImage.widthAnchor.constraint(equalToConstant: profileImageSize),
             
             imageButton.topAnchor.constraint(equalTo: profileImage.topAnchor),
             imageButton.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor),
             imageButton.trailingAnchor.constraint(equalTo: profileImage.trailingAnchor),
             imageButton.bottomAnchor.constraint(equalTo: profileImage.bottomAnchor),
-         
-            nameHintLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameHintLabel.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 30),
             
-            nameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameLabel.topAnchor.constraint(equalTo: nameHintLabel.bottomAnchor, constant: 30),
+            nameTextField.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 32),
+            nameTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            nameTextField.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 32),
+            nameTextField.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -32),
             
-            mainTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            mainTextField.topAnchor.constraint(equalTo: nameLabel.topAnchor),
-            mainTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor),
-            mainTextField.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.5),
-                        
-            ageHintLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            ageHintLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
-            
-            ageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            ageLabel.topAnchor.constraint(equalTo: ageHintLabel.bottomAnchor, constant: 30),
-            
-            secTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            secTextField.topAnchor.constraint(equalTo: ageLabel.topAnchor),
-            secTextField.bottomAnchor.constraint(equalTo: ageLabel.bottomAnchor),
-            secTextField.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.5),
-            
-            notesField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            notesField.topAnchor.constraint(equalTo: ageLabel.bottomAnchor,constant: 30),
-            
-            mainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            mainButton.topAnchor.constraint(equalTo: secTextField.bottomAnchor, constant: 20),
-            mainButton.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.5)
+            infoTableView.topAnchor.constraint(equalTo: backView.bottomAnchor),
+            infoTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            infoTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            infoTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
     
     func setUpAditionalConficuration() {
-        backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        backView.applyShaddow(opacity: 1)
+        layoutMargins.left = 20
+        layoutMargins.right = 20
+        backgroundColor = #colorLiteral(red: 0.9097241759, green: 0.9098550677, blue: 0.9096955061, alpha: 1)
+        backView.applyShaddow(opacity: 0.3)
     }
 }

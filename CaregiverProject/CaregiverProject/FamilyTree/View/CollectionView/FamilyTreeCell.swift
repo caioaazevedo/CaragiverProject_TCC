@@ -99,7 +99,7 @@ extension FamilyTreeCell: ViewCodeProtocol{
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
-        backView.applyShaddow(cornerRadius: 25, opacity: 0.3)
+        backView.applyShaddow(cornerRadius: 10)
     }
     
 }
