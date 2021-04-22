@@ -8,9 +8,9 @@
 import UIKit
 
 class TaskCell: UITableViewCell{
-    //    lazy var checkbox:
-    
+        
     var tapCallback: () -> () = { }
+    var deleteTaskCallback: (String) -> () = { _ in }
     
     lazy var check: UIButton = {
         let view = UIButton(frame: .zero)
@@ -53,6 +53,15 @@ class TaskCell: UITableViewCell{
         return view
     }()
     
+    lazy var deleteButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("ⓧ", for: .normal)
+        view.setTitleColor(.gray, for: .normal)
+        view.addTarget(self, action: #selector(deleteTask), for: .touchUpInside)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpView()
@@ -67,6 +76,10 @@ class TaskCell: UITableViewCell{
         tapCallback()
     }
     
+    @objc func deleteTask(){
+        deleteTaskCallback(title.text ?? "")
+    }
+    
     
 }
 
@@ -76,6 +89,7 @@ extension TaskCell: ViewCodeProtocol{
         addSubview(title)
         addSubview(icon)
         addSubview(date)
+        addSubview(deleteButton)
     }
     
     func setUpViewConstraints() {
@@ -85,6 +99,9 @@ extension TaskCell: ViewCodeProtocol{
             
             title.leadingAnchor.constraint(equalTo: check.trailingAnchor,constant: 5),
             title.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            deleteButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -5),
+            deleteButton.topAnchor.constraint(equalTo: topAnchor),
             
             icon.trailingAnchor.constraint(equalTo: trailingAnchor),
             icon.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor,constant: 10),

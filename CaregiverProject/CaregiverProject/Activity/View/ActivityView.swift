@@ -67,7 +67,7 @@ final class ActivityView: UIView{
     }
     
     @objc func presentCreateTask(){
-        layoutConstraint?.constant = Metrics.Device.height*0.35
+        layoutConstraint?.constant = Metrics.Device.height*0.25
         
         UIView.animate(withDuration: 1, animations: { [self] in
             updateConstraints()

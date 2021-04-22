@@ -39,6 +39,12 @@ extension ActivityView: UITableViewDelegate, UITableViewDataSource{
             viewModel.tasks[indexPath.section].isCompleted.toggle()
             tableView.reloadData()
         }
+        
+        cell.deleteTaskCallback = { [self] name in
+            viewModel.tasks.removeAll(where: {$0.name == name})
+            tableView.reloadData()
+        }
+        
         cell.title.text = viewModel.tasks[indexPath.section].name
         cell.icon.image = UIImage(named: viewModel.tasks[indexPath.section].icon)!
         cell.date.text = "\(viewModel.tasks[indexPath.section].date)"
