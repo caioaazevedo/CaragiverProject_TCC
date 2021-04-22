@@ -67,7 +67,7 @@ final class ActivityView: UIView{
     }
     
     @objc func presentCreateTask(){
-        layoutConstraint?.constant = Metrics.Device.height*0.3
+        layoutConstraint?.constant = Metrics.Device.height*0.35
         
         UIView.animate(withDuration: 1, animations: { [self] in
             updateConstraints()
@@ -106,10 +106,11 @@ extension ActivityView: ViewCodeProtocol{
             tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor,constant: 20),
             tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor,constant: -20),
             tableView.topAnchor.constraint(equalTo: mainLabel.bottomAnchor,constant: 10),
-            tableView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.8),
+            tableView.bottomAnchor.constraint(equalTo: addButton.topAnchor,constant: -15),
+//            tableView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.8),
             
             addButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            addButton.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -60),
+            addButton.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor,constant: -10),
             
             createTaskView.centerXAnchor.constraint(equalTo: centerXAnchor),
             

@@ -40,7 +40,7 @@ extension ActivityView: UITableViewDelegate, UITableViewDataSource{
             tableView.reloadData()
         }
         cell.title.text = viewModel.tasks[indexPath.section].name
-        cell.icon.image = viewModel.tasks[indexPath.section].icon
+        cell.icon.image = UIImage(named: viewModel.tasks[indexPath.section].icon)!
         cell.date.text = "\(viewModel.tasks[indexPath.section].date)"
         return cell
     }

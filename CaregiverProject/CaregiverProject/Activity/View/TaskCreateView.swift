@@ -110,7 +110,7 @@ final class TaskCreateView: UIView{
         default:
             iconName = "hygiene"
         }
-        let task = Task(name: text.text ?? "Tarefa", date: datePicker.date.getFormattedDate(), icon: UIImage(named: iconName)!, isCompleted: false)
+        let task = Task(name: text.text ?? "Tarefa", date: datePicker.date.getFormattedDate(), icon: iconName, isCompleted: false)
         addCallback(task)
     }
     
