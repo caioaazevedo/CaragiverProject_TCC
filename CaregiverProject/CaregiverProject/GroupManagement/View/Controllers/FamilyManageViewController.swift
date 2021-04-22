@@ -44,6 +44,7 @@ class FamilyManageViewController: UIViewController {
         switch manageState{
         case .Join:
             view.primaryField.placeholder = "Family's Code"
+            
             view.primaryButton.setTitle("Enter in family", for: .normal)
             view.primaryButton.addAction(
                 UIAction { [joinFamily] _ in
@@ -64,7 +65,8 @@ class FamilyManageViewController: UIViewController {
     }
     
     private func joinFamily() {
-        let familyID = familyManageView.primaryField.text ?? "Default"
+        guard let view = view as? FamilyManageView else {return}
+        let familyID = view.primaryField.text ?? "Default"
         viewModel.joinFamily(familyID: familyID) { [goToFamilyModule] in
             goToFamilyModule()
         }
