@@ -11,9 +11,7 @@ class FamilyTreeCell: UICollectionViewCell {
     
     static let identifier = "FamilyTreeCell"
     
-    var imageSize: CGFloat {
-        80
-    }
+    var imageSize: CGFloat { 80 }
     
     lazy var backView: UIView = {
         let view = UIView(frame: .zero)
@@ -99,7 +97,7 @@ extension FamilyTreeCell: ViewCodeProtocol{
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
-        backView.applyShaddow(cornerRadius: 10)
+        backView.applyShaddow(cornerRadius: 25)
     }
     
 }
