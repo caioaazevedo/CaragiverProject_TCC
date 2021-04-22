@@ -11,24 +11,17 @@ import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    private var coordinator: Coordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
+
+        let navigationController = UINavigationController()
+        coordinator = MainCoordinator(navigationController: navigationController)
+        coordinator?.start()
         
-        switch UserDefaults.loginState {
-        case .alreadyLogged:
-            let startFamily = StartFamilyViewController()
-            window?.rootViewController = startFamily
-        case .enteredFamily:
-            let familyTabBar = FamilyBuilder.buildFamilyTabBarController()
-            window?.rootViewController = familyTabBar
-        case .firstTimer:
-            let authentication = AuthenticationRouter.createModule()
-            window?.rootViewController = authentication
-        }
-        
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

@@ -20,17 +20,9 @@ class FamilyDataManager {
 extension FamilyDataManager: DataManager {
     func add(value: Storable, entityType: EntityTypes, completion: @escaping ValidationHandler) {
         guard let db = ref else {return}
-        switch entityType{
-        case .Family:
-            let elderID = UUID().uuidString
-            UserSession.shared.elderID = elderID
-            var familyDict = value.convertToDictionary()
-            familyDict["elderID"] = elderID
-            db.child(entityType.rawValue).child(value.id).setValue(familyDict)
-            completion(true)
-        case .Member:
-            break
-        }
+        let parameter = value.convertToDictionary()
+        db.child(entityType.rawValue).child(value.id).setValue(parameter)
+        completion(true)
     }
     
     func deleteValue(by dataID: String, entityType: EntityTypes, completion: @escaping ValidationHandler) {

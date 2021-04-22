@@ -16,6 +16,9 @@ class FamilyManageViewModel {
     
     func createFamily(familyName: String, completion: @escaping () -> Void) {
         guard let id = UserSession.shared.id else { return }
+        let elderID = UUID().uuidString
+        UserSession.shared.elderID = elderID
+        
         let familyId = UUID().uuidString
         let family = Family(
             id: familyId,

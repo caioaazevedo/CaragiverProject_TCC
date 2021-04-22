@@ -13,14 +13,14 @@ class AuthenticationPresenter: ViewToPresenterAuthenticationProtocol{
     
     var interactor: PresenterToInteractorAuthenticationProtocol?
     
-    var router: PresenterToRouterAuthenticationProtocol?
+    weak var router: PresenterToRouterAuthenticationProtocol?
     
     func presentRegister(vc: UIViewController) {
-        router?.pushToRegisterScreen(vc: vc)
+        router?.presentRegisterScreen()
     }
     
     func presentLogin(vc: UIViewController) {
-        router?.pushToStartFamilyScreen(vc: vc)
+        router?.showStartFamilyScreen()
     }
     
     func loginUser(email: String, password: String) {

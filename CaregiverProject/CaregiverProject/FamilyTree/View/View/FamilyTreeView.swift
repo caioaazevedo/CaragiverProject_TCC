@@ -8,9 +8,7 @@
 import UIKit
 
 final class FamilyTreeView: UIView{
-    
-    var completion: (() -> ())?
-    
+        
     lazy var elderImage: UIImageView = {
         let image = UIImage()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
@@ -37,12 +35,6 @@ final class FamilyTreeView: UIView{
         var button = UIButton(frame: .zero)
         button.setTitle("Convidar alguém pro grupo", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
-        button.addAction(
-            UIAction { [completion] _ in
-                completion?()
-            },
-            for: .touchUpInside
-        )
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
