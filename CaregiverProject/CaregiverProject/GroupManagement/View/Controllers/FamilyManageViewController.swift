@@ -20,7 +20,7 @@ class FamilyManageViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        view = FamilyManageView()
+        view = familyManageView
         configureButtons()
     }
     
@@ -40,21 +40,20 @@ class FamilyManageViewController: UIViewController {
     }
        
     private func configureButtons(){
-        guard let view = view as? FamilyManageView else {return}
         switch manageState{
         case .Join:
-            view.primaryField.placeholder = "Family's Code"
-            view.primaryButton.setTitle("Enter in family", for: .normal)
-            view.primaryButton.addAction(
+            familyManageView.primaryField.placeholder = "Family's Code"
+            familyManageView.primaryButton.setTitle("Enter in family", for: .normal)
+            familyManageView.primaryButton.addAction(
                 UIAction { [joinFamily] _ in
                     joinFamily()
                 },
                 for: .touchUpInside
             )
         case .Create:
-            view.primaryField.placeholder = "Family's Name"
-            view.primaryButton.setTitle("Create Family", for: .normal)
-            view.primaryButton.addAction(
+            familyManageView.primaryField.placeholder = "Family's Name"
+            familyManageView.primaryButton.setTitle("Create Family", for: .normal)
+            familyManageView.primaryButton.addAction(
                 UIAction { [createFamily] _ in
                     createFamily()
                 },

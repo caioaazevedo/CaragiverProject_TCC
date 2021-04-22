@@ -33,11 +33,14 @@ class FamilyManageViewModel {
     }
     
     func joinFamily(familyID: String, completion: @escaping () -> Void) {
+        guard let memberId = UserSession.shared.id else { return }
         dataManager.readValue(from: familyID, resutlType: Family.self)
             .subscribe(Subscribers.Sink(
                 receiveCompletion: { _ in },
                 receiveValue: { [dataManager] family in
-                    dataManager.update(value: family) { _ in
+                    var addedFamily = family
+                    addedFamily.members.append(memberId)
+                    dataManager.update(value: addedFamily) { _ in
                         UserSession.shared.familyID = familyID
                         completion()
                     }
