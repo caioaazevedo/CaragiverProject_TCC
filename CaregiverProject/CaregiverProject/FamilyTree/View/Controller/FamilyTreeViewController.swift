@@ -13,6 +13,7 @@ class FamilyTreeViewController: UIViewController {
     private let dataSource: FamilyTreeDataSource
     private let familyTreeView: FamilyTreeView
     private var subscribers = Set<AnyCancellable>()
+    weak var coordinator: FamilyCoordinator?
     
     init(viewModel: FamilyTreeViewModel,
          familyTreeView: FamilyTreeView,
@@ -56,35 +57,28 @@ class FamilyTreeViewController: UIViewController {
     private func bindViewModel() {
         viewModel.$members
             .receive(on: DispatchQueue.main)
-            .sink { [familyTreeView, hideActivityIndicator, dataSource] members in
-                dataSource.update(members: members)
-                familyTreeView.collectionView.reloadData()
-                hideActivityIndicator()
-            }
+            .sink(receiveValue: updateMembers)
             .store(in: &subscribers)
         
         viewModel.$elder
             .receive(on: DispatchQueue.main)
-            .sink { [familyTreeView] profile in
-                familyTreeView.elderName.text = profile?.name ?? "Elder"
-                familyTreeView.elderImage.image = profile?.photo
-            }
+            .sink(receiveValue: updateProfile)
             .store(in: &subscribers)
     }
     
+    private func updateMembers(_ members: Members) {
+        dataSource.update(members: members)
+        familyTreeView.collectionView.reloadData()
+        hideActivityIndicator()
+    }
+    
+    private func updateProfile(_ profile: ProfileModel?) {
+        guard let elder = profile else { return }
+        familyTreeView.elderName.text = elder.name
+        familyTreeView.elderImage.image = elder.photo ?? UIImage(named: "profileIcon")
+    }
+    
     private func inviteMember() {
-        if let familyID = UserSession.shared.familyID,
-           let url = URL(string: "login://" + "\(familyID)") {
-            
-            let fullText = ["\(familyID) está te convidando para entrar no grupo. Token: \(url)."]
-            let activityViewController = UIActivityViewController(
-                activityItems: fullText as [Any],
-                applicationActivities: nil
-            )
-            
-            activityViewController.popoverPresentationController?.sourceView = view
-            activityViewController.excludedActivityTypes = [.print]
-            present(activityViewController, animated: true, completion: nil)
-        }
+        coordinator?.presentInvitationView(id: UserSession.shared.familyID)
     }
 }

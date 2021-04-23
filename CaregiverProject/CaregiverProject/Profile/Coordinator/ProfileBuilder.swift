@@ -10,12 +10,15 @@ import Firebase
 
 struct ProfileBuilder {
     func setUpProfileModule() -> ProfileViewController {
-        let viewModel = ProfileViewModel(database: Database.database())
-        let profileModule = ProfileViewController(viewModel: viewModel)
-        let profileIcon = UITabBarItem(title: "Elder", image: .checkmark, tag: 2)
+        let familyDataManager = FamilyDataManager(database: Database.database())
+        let viewModel = ProfileViewModel(dataManager: familyDataManager)
+        let view = ProfileView()
+        let profileModule = ProfileViewController(
+            profileView: view,
+            viewModel: viewModel
+        )
+        let profileIcon = UITabBarItem(title: "Elder", image: #imageLiteral(resourceName: "Task"), tag: 2)
         profileModule.tabBarItem = profileIcon
-        profileModule.setupData()
-        
         return profileModule
     }
 }
