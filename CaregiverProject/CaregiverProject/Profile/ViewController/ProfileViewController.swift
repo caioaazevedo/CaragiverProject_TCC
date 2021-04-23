@@ -73,6 +73,7 @@ class ProfileViewController: UIViewController {
     private func updateView(_ elder: ProfileModel?) {
         profileView.nameTextField.text = elder?.name ?? ""
         profileView.ageTextField.text = elder == nil ? "" : "\(elder?.age ?? 0)"
+        profileView.profileImage.image = elder?.photo ?? #imageLiteral(resourceName: "profileIcon")
     }
     
     private func storeData() {

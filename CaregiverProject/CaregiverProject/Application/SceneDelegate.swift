@@ -24,6 +24,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard
+            let id = URLContexts.first?.url.absoluteString.familyId,
+            UserSession.shared.familyID == nil else {
+            return
+        }
+        UserSession.shared.familyID = id
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
