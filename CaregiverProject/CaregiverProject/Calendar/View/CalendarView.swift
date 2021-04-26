@@ -8,8 +8,14 @@
 import UIKit
 import FSCalendar
 
+protocol CalendarViewDelegate: class {
+    func createNewEvent()
+}
+
 class CalendarView: UIView {
     
+    weak var delegate: CalendarViewDelegate?
+
     var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Calendar"
@@ -19,6 +25,15 @@ class CalendarView: UIView {
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+
+    var addEventButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let imageIcoin: UIImage? = UIImage(systemName: "plus.circle.fill")
+        button.setImage(imageIcoin, for: .normal)
+        button.addTarget(self, action: #selector(createEvent), for: .touchUpInside)
+        return button
     }()
 
     var calendar: FSCalendar = {
@@ -75,9 +90,18 @@ class CalendarView: UIView {
     }
 }
 
+// MARK:- Actions
+
+extension CalendarView {
+    @objc func createEvent() {
+        delegate?.createNewEvent()
+    }
+}
+
 extension CalendarView: ViewCodeProtocol {
     func setUpViewHierarchy() {
         addSubview(titleLabel)
+        addSubview(addEventButton)
         addSubview(calendarBackground)
         addSubview(label)
         addSubview(tableView)
@@ -88,7 +112,12 @@ extension CalendarView: ViewCodeProtocol {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -20),
+            
+            addEventButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            addEventButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            addEventButton.widthAnchor.constraint(equalToConstant: 40),
+            addEventButton.heightAnchor.constraint(equalToConstant: 40),
             
             calendarBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             calendarBackground.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),

@@ -11,6 +11,7 @@ import FSCalendar
 class CalendarViewController: CustomViewController<CalendarView> {
 
     var formatter = DateFormatter()
+    weak var coordinator: CalendarCoodinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class CalendarViewController: CustomViewController<CalendarView> {
     }
     
     func setUp() {
+        contentView.delegate = self
         contentView.calendar.delegate = self
         contentView.calendar.dataSource = self
         
@@ -27,6 +29,12 @@ class CalendarViewController: CustomViewController<CalendarView> {
         contentView.tableView.dataSource = self
     }
 
+}
+
+extension CalendarViewController: CalendarViewDelegate {
+    func createNewEvent() {
+        coordinator?.createNewEvent()
+    }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {

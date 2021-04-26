@@ -88,6 +88,10 @@
 		E21DF91826152FFA0061AE3A /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF91726152FFA0061AE3A /* CustomViewController.swift */; };
 		E21DF9692615445B0061AE3A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF9682615445B0061AE3A /* UIView+Extension.swift */; };
 		E21DF9B0261BC2DB0061AE3A /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21DF9AF261BC2DB0061AE3A /* EventCell.swift */; };
+		E29E878E2636D3DB00401029 /* NewEventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E878D2636D3DB00401029 /* NewEventCoordinator.swift */; };
+		E29E87932636D42700401029 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87922636D42700401029 /* NewEventViewController.swift */; };
+		E29E879B2636D4D100401029 /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E879A2636D4D100401029 /* NewEventView.swift */; };
+		E29E87A42636D7F700401029 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87A32636D7F700401029 /* CategoryTableViewCell.swift */; };
 		E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */; };
 		E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108C32568036300CDB7FA /* ErrorHandler.swift */; };
 		E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */; };
@@ -209,6 +213,10 @@
 		E21DF91726152FFA0061AE3A /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		E21DF9682615445B0061AE3A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E21DF9AF261BC2DB0061AE3A /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		E29E878D2636D3DB00401029 /* NewEventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventCoordinator.swift; sourceTree = "<group>"; };
+		E29E87922636D42700401029 /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
+		E29E879A2636D4D100401029 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
+		E29E87A32636D7F700401029 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		E2C108C32568036300CDB7FA /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTypeEnum.swift; sourceTree = "<group>"; };
@@ -607,6 +615,7 @@
 				791461D22617345400EA9AB5 /* GroupManagement */,
 				AC3D574F2552D5D50013D470 /* FamilyTree */,
 				E21DF90926152F3F0061AE3A /* Calendar */,
+				E29E87892636D00600401029 /* Event */,
 				AC9D41AF255AC82B00925819 /* Profile */,
 				ACF654AC261B43E700A5FAC3 /* Activity */,
 				E2137F75254F311A007F4F53 /* Assets.xcassets */,
@@ -804,6 +813,49 @@
 			children = (
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		E29E87892636D00600401029 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				E29E87992636D4B600401029 /* Coordinator */,
+				E29E87982636D4AC00401029 /* ViewController */,
+				E29E87972636D4A300401029 /* View */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		E29E87972636D4A300401029 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E29E87A22636D7DB00401029 /* Cells */,
+				E29E879A2636D4D100401029 /* NewEventView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E29E87982636D4AC00401029 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E29E87922636D42700401029 /* NewEventViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E29E87992636D4B600401029 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E29E878D2636D3DB00401029 /* NewEventCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E29E87A22636D7DB00401029 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E29E87A32636D7F700401029 /* CategoryTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E2DC2ACA255CA03F008468E5 /* Enums */ = {
@@ -1068,6 +1120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7914614A26145A1C00EA9AB5 /* Storable.swift in Sources */,
+				E29E878E2636D3DB00401029 /* NewEventCoordinator.swift in Sources */,
 				7914622426187DE700EA9AB5 /* ProfileBuilder.swift in Sources */,
 				AC3873272552E1CB0084590D /* FamilyManageViewController.swift in Sources */,
 				7904B48E255AB4C400D078F5 /* FamilyTreeView.swift in Sources */,
@@ -1105,6 +1158,7 @@
 				E20211662550A0E100790DA9 /* RegisterView.swift in Sources */,
 				791461C8261720BA00EA9AB5 /* AuthenticationBuilder.swift in Sources */,
 				E20211832550B35900790DA9 /* ViewCodeProtocol.swift in Sources */,
+				E29E87A42636D7F700401029 /* CategoryTableViewCell.swift in Sources */,
 				E219478D255B592B0013E942 /* StringHelper.swift in Sources */,
 				E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */,
 				AC3D574E2552D41D0013D470 /* Family.swift in Sources */,
@@ -1116,6 +1170,7 @@
 				E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */,
 				AC0F44ED261F81E900710BC0 /* ActivityViewModel.swift in Sources */,
 				7904B4A3255ADF2800D078F5 /* FamilyTreeDataSource.swift in Sources */,
+				E29E87932636D42700401029 /* NewEventViewController.swift in Sources */,
 				E21DF8F0261350200061AE3A /* ImageConverter.swift in Sources */,
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
 				791461DC2617367800EA9AB5 /* GroupManagementCoordinator.swift in Sources */,
@@ -1132,6 +1187,7 @@
 				7914619F2617100100EA9AB5 /* Coordinator.swift in Sources */,
 				79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */,
 				AC0F44D8261E3AA100710BC0 /* TaskCreateView.swift in Sources */,
+				E29E879B2636D4D100401029 /* NewEventView.swift in Sources */,
 				7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */,
 				E21DF9B0261BC2DB0061AE3A /* EventCell.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,

@@ -19,6 +19,13 @@ class CalendarCoodinator: Coordinator {
     
     func start() {
         let viewController = builder.setUpCalendarModule()
+        viewController.coordinator = self
         navigationController.setViewControllers([viewController], animated: true)
+    }
+
+    func createNewEvent() {
+        let coordinator = NewEventCoodinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }
