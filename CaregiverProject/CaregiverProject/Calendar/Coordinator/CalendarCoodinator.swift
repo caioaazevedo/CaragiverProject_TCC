@@ -20,7 +20,7 @@ class CalendarCoodinator: Coordinator {
     func start() {
         let viewController = builder.setUpCalendarModule()
         viewController.coordinator = self
-        navigationController.setViewControllers([viewController], animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func createNewEvent() {

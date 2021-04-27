@@ -19,6 +19,6 @@ class FamilyCoordinator: Coordinator {
     
     func start() {
         let viewController = builder.buildFamilyTreeModule()
-        navigationController.setViewControllers([viewController], animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

@@ -95,6 +95,8 @@
 		E29E87AC263859F900401029 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87AB263859F900401029 /* TimeTableViewCell.swift */; };
 		E29E87B126385C8C00401029 /* ResponsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87B026385C8C00401029 /* ResponsibleTableViewCell.swift */; };
 		E29E87B626385D9500401029 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87B526385D9500401029 /* NotesTableViewCell.swift */; };
+		E29E87BB26388FC500401029 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87BA26388FC500401029 /* TitleTableViewCell.swift */; };
+		E29E87C0263891A300401029 /* LocalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87BF263891A300401029 /* LocalTableViewCell.swift */; };
 		E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */; };
 		E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108C32568036300CDB7FA /* ErrorHandler.swift */; };
 		E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */; };
@@ -223,6 +225,8 @@
 		E29E87AB263859F900401029 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
 		E29E87B026385C8C00401029 /* ResponsibleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsibleTableViewCell.swift; sourceTree = "<group>"; };
 		E29E87B526385D9500401029 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
+		E29E87BA26388FC500401029 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		E29E87BF263891A300401029 /* LocalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTableViewCell.swift; sourceTree = "<group>"; };
 		E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		E2C108C32568036300CDB7FA /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTypeEnum.swift; sourceTree = "<group>"; };
@@ -863,6 +867,8 @@
 				E29E87AB263859F900401029 /* TimeTableViewCell.swift */,
 				E29E87B026385C8C00401029 /* ResponsibleTableViewCell.swift */,
 				E29E87B526385D9500401029 /* NotesTableViewCell.swift */,
+				E29E87BA26388FC500401029 /* TitleTableViewCell.swift */,
+				E29E87BF263891A300401029 /* LocalTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1148,6 +1154,7 @@
 				E29E87AC263859F900401029 /* TimeTableViewCell.swift in Sources */,
 				79960FCE255CB71900A01D85 /* FamilyTreeHeaderView.swift in Sources */,
 				7914614F26145B0C00EA9AB5 /* ImageDecoder.swift in Sources */,
+				E29E87BB26388FC500401029 /* TitleTableViewCell.swift in Sources */,
 				79146162261476E700EA9AB5 /* FamilyManageViewModel.swift in Sources */,
 				AC3D57612552D8140013D470 /* Metrics.swift in Sources */,
 				ACF654CA261B497900A5FAC3 /* TaskCell.swift in Sources */,
@@ -1186,6 +1193,7 @@
 				E21DF8F0261350200061AE3A /* ImageConverter.swift in Sources */,
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
 				791461DC2617367800EA9AB5 /* GroupManagementCoordinator.swift in Sources */,
+				E29E87C0263891A300401029 /* LocalTableViewCell.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
 				AC0F44E5261E45EC00710BC0 /* CreateTaskCell.swift in Sources */,
 				79146142261458DB00EA9AB5 /* FamilyDataManager.swift in Sources */,

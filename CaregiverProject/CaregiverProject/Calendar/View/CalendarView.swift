@@ -129,7 +129,7 @@ extension CalendarView: ViewCodeProtocol {
             calendar.trailingAnchor.constraint(equalTo: calendarBackground.trailingAnchor, constant: -5),
             calendar.bottomAnchor.constraint(equalTo: calendarBackground.topAnchor, constant: -5),
             
-            addEventButton.topAnchor.constraint(equalTo: calendarBackground.bottomAnchor, constant: 20),
+            addEventButton.topAnchor.constraint(equalTo: calendarBackground.bottomAnchor, constant: 30),
             addEventButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             dateLabel.topAnchor.constraint(equalTo: addEventButton.bottomAnchor, constant: 20),

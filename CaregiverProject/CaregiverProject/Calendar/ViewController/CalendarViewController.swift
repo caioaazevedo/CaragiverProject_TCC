@@ -21,6 +21,10 @@ class CalendarViewController: CustomViewController<CalendarView> {
     }
     
     func setUp() {
+        setUpContentView()
+    }
+    
+    func setUpContentView() {
         contentView.delegate = self
         contentView.calendar.delegate = self
         contentView.calendar.dataSource = self
@@ -28,7 +32,6 @@ class CalendarViewController: CustomViewController<CalendarView> {
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
     }
-
 }
 
 extension CalendarViewController: CalendarViewDelegate {

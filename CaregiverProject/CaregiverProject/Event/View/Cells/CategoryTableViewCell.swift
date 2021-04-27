@@ -57,7 +57,6 @@ class CategoryTableViewCell: UITableViewCell {
 extension CategoryTableViewCell: ViewCodeProtocol {
     func setUpViewHierarchy() {
         contentView.addSubview(icon)
-//        contentView.addSubview(categoryColor)
         contentView.addSubview(titleLabel)
         contentView.addSubview(categoryName)
     }
@@ -68,14 +67,9 @@ extension CategoryTableViewCell: ViewCodeProtocol {
             icon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             icon.heightAnchor.constraint(equalToConstant: 30),
             icon.widthAnchor.constraint(equalToConstant: 30),
-            
-//            categoryColor.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-//            categoryColor.centerYAnchor.constraint(equalTo: centerYAnchor),
-//            categoryColor.heightAnchor.constraint(equalToConstant: 30),
-//            categoryColor.widthAnchor.constraint(equalToConstant: 30),
 
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 5),
+            titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
             titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
 
             categoryName.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -85,6 +79,5 @@ extension CategoryTableViewCell: ViewCodeProtocol {
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
-//        categoryColor.layer.cornerRadius = 2
     }
 }

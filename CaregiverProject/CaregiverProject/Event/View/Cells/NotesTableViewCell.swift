@@ -62,7 +62,7 @@ extension NotesTableViewCell: ViewCodeProtocol {
             icon.widthAnchor.constraint(equalToConstant: 30),
 
             titleLabel.centerYAnchor.constraint(equalTo: icon.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 5),
+            titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
             titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
 
             notes.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 5),

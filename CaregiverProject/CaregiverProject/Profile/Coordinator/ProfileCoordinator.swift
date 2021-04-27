@@ -19,6 +19,6 @@ class ProfileCoodinator: Coordinator {
     
     func start() {
         let viewController = builder.setUpProfileModule()
-        navigationController.setViewControllers([viewController], animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
