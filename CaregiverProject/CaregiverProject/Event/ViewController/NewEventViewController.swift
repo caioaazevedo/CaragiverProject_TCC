@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum NewEventCells: Int {
+    case category
+    case time
+    case responsible
+    case notes
+}
+
 class NewEventViewController: CustomViewController<NewEventView> {
     
     override func viewDidLoad() {
@@ -20,6 +27,10 @@ class NewEventViewController: CustomViewController<NewEventView> {
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
     }
+    
+    func setUpNavigation() {
+        navigationController
+    }
 }
 
 extension NewEventViewController: UITableViewDataSource {
@@ -28,24 +39,51 @@ extension NewEventViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 4
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
-        cell.setUp()
-        cell.categoryName.text = "Saúde"
-        cell.categoryColor.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-        return cell
+        switch indexPath.row {
+        case NewEventCells.category.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
+            cell.setUp()
+            cell.categoryName.text = "Saúde"
+            
+            return cell
+        case NewEventCells.time.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.identifier, for: indexPath) as! TimeTableViewCell
+            cell.setUp()
+            
+            return cell
+        case NewEventCells.responsible.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ResponsibleTableViewCell.identifier, for: indexPath) as! ResponsibleTableViewCell
+            cell.setUp()
+            
+            return cell
+        case NewEventCells.notes.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: NotesTableViewCell.identifier, for: indexPath) as! NotesTableViewCell
+            cell.setUp(delegate: self)
+            
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
 }
 
 extension NewEventViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        if indexPath.row == NewEventCells.notes.rawValue {
+            return 150
+        }
+        return 50
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView(frame: .zero)
     }
+}
+
+extension NewEventViewController: UITextViewDelegate {
+    
 }

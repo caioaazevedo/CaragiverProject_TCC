@@ -1,19 +1,19 @@
 //
-//  CategoryTableViewCell.swift
+//  TimeTableViewCell.swift
 //  CaregiverProject
 //
-//  Created by Caio Azevedo on 26/04/21.
+//  Created by Caio Azevedo on 27/04/21.
 //
 
 import UIKit
 
-class CategoryTableViewCell: UITableViewCell {
+class TimeTableViewCell: UITableViewCell {
 
-    static let identifier = "CategoryCellID"
+    static let identifier = "TimeCellID"
     
     private let icon: UIImageView = {
         var imageView = UIImageView(frame: .zero)
-        let image = UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(systemName: "clock.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?.withRenderingMode(.alwaysTemplate)
         imageView.image = image
         imageView.tintColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +22,7 @@ class CategoryTableViewCell: UITableViewCell {
     
     private var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Category"
+        label.text = "Time"
         let font = UIFont.preferredFont(forTextStyle: .body)
         label.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
@@ -31,9 +31,9 @@ class CategoryTableViewCell: UITableViewCell {
         return label
     }()
     
-    var categoryName: UILabel = {
+    var timeLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Name"
+        label.text = "15:00"
         let font = UIFont.preferredFont(forTextStyle: .body)
         label.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
@@ -42,24 +42,16 @@ class CategoryTableViewCell: UITableViewCell {
         return label
     }()
     
-    var categoryColor: UIView {
-        let view = UIView(frame: .zero)
-        view.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }
-    
     func setUp() {
         setUpView()
     }
 }
 
-extension CategoryTableViewCell: ViewCodeProtocol {
+extension TimeTableViewCell: ViewCodeProtocol {
     func setUpViewHierarchy() {
         contentView.addSubview(icon)
-//        contentView.addSubview(categoryColor)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(categoryName)
+        contentView.addSubview(timeLabel)
     }
 
     func setUpViewConstraints() {
@@ -68,23 +60,18 @@ extension CategoryTableViewCell: ViewCodeProtocol {
             icon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             icon.heightAnchor.constraint(equalToConstant: 30),
             icon.widthAnchor.constraint(equalToConstant: 30),
-            
-//            categoryColor.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-//            categoryColor.centerYAnchor.constraint(equalTo: centerYAnchor),
-//            categoryColor.heightAnchor.constraint(equalToConstant: 30),
-//            categoryColor.widthAnchor.constraint(equalToConstant: 30),
 
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 5),
             titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
 
-            categoryName.centerYAnchor.constraint(equalTo: centerYAnchor),
-            categoryName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            timeLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         ])
     }
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
-//        categoryColor.layer.cornerRadius = 2
     }
 }
+

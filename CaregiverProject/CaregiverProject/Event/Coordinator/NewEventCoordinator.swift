@@ -20,6 +20,7 @@ class NewEventCoodinator: Coordinator {
     
     func start() {
         let viewController = NewEventViewController()
-        navigationController.setViewControllers([viewController], animated: true)
+        navigationController.modalPresentationStyle = .automatic
+        navigationController.present(viewController, animated: true)
     }
 }

@@ -92,6 +92,9 @@
 		E29E87932636D42700401029 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87922636D42700401029 /* NewEventViewController.swift */; };
 		E29E879B2636D4D100401029 /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E879A2636D4D100401029 /* NewEventView.swift */; };
 		E29E87A42636D7F700401029 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87A32636D7F700401029 /* CategoryTableViewCell.swift */; };
+		E29E87AC263859F900401029 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87AB263859F900401029 /* TimeTableViewCell.swift */; };
+		E29E87B126385C8C00401029 /* ResponsibleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87B026385C8C00401029 /* ResponsibleTableViewCell.swift */; };
+		E29E87B626385D9500401029 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87B526385D9500401029 /* NotesTableViewCell.swift */; };
 		E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */; };
 		E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108C32568036300CDB7FA /* ErrorHandler.swift */; };
 		E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */; };
@@ -217,6 +220,9 @@
 		E29E87922636D42700401029 /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		E29E879A2636D4D100401029 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
 		E29E87A32636D7F700401029 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		E29E87AB263859F900401029 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
+		E29E87B026385C8C00401029 /* ResponsibleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsibleTableViewCell.swift; sourceTree = "<group>"; };
+		E29E87B526385D9500401029 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		E2C108C32568036300CDB7FA /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTypeEnum.swift; sourceTree = "<group>"; };
@@ -854,6 +860,9 @@
 			isa = PBXGroup;
 			children = (
 				E29E87A32636D7F700401029 /* CategoryTableViewCell.swift */,
+				E29E87AB263859F900401029 /* TimeTableViewCell.swift */,
+				E29E87B026385C8C00401029 /* ResponsibleTableViewCell.swift */,
+				E29E87B526385D9500401029 /* NotesTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1136,6 +1145,7 @@
 				AC0F44E0261E451700710BC0 /* TaskCreateView+DD.swift in Sources */,
 				7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */,
 				E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */,
+				E29E87AC263859F900401029 /* TimeTableViewCell.swift in Sources */,
 				79960FCE255CB71900A01D85 /* FamilyTreeHeaderView.swift in Sources */,
 				7914614F26145B0C00EA9AB5 /* ImageDecoder.swift in Sources */,
 				79146162261476E700EA9AB5 /* FamilyManageViewModel.swift in Sources */,
@@ -1150,6 +1160,8 @@
 				ACF654B1261B469D00A5FAC3 /* ActivityView.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */,
+				E29E87B126385C8C00401029 /* ResponsibleTableViewCell.swift in Sources */,
+				E29E87B626385D9500401029 /* NotesTableViewCell.swift in Sources */,
 				791462292619BBDD00EA9AB5 /* AppCoordinator.swift in Sources */,
 				791461A42617163A00EA9AB5 /* MainCoordinator.swift in Sources */,
 				E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */,

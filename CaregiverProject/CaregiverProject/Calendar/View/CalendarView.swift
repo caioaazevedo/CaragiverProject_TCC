@@ -27,15 +27,6 @@ class CalendarView: UIView {
         return label
     }()
 
-    var addEventButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        let imageIcoin: UIImage? = UIImage(systemName: "plus.circle.fill")
-        button.setImage(imageIcoin, for: .normal)
-        button.addTarget(self, action: #selector(createEvent), for: .touchUpInside)
-        return button
-    }()
-
     var calendar: FSCalendar = {
         let calendar = FSCalendar(frame: .zero)
         calendar.scrollDirection = .horizontal
@@ -60,13 +51,27 @@ class CalendarView: UIView {
         return view
     }()
     
-    private let label: UILabel = {
+    private lazy var addEventButton: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("Create Event", for: .normal)
+        view.setTitleColor(#colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), for: .normal)
+        view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 5
+        view.layer.borderWidth = 2
+        view.layer.borderColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1).cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: #selector(createEvent), for: .touchUpInside)
+        return view
+    }()
+    
+    private let dateLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "Events"
-        let font = UIFont.preferredFont(forTextStyle: .title2)
+        label.text = ""
+        let font = UIFont.preferredFont(forTextStyle: .subheadline)
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -101,9 +106,9 @@ extension CalendarView {
 extension CalendarView: ViewCodeProtocol {
     func setUpViewHierarchy() {
         addSubview(titleLabel)
-        addSubview(addEventButton)
         addSubview(calendarBackground)
-        addSubview(label)
+        addSubview(addEventButton)
+        addSubview(dateLabel)
         addSubview(tableView)
         calendarBackground.addSubview(calendar)
     }
@@ -114,34 +119,40 @@ extension CalendarView: ViewCodeProtocol {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -20),
             
-            addEventButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            addEventButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            addEventButton.widthAnchor.constraint(equalToConstant: 40),
-            addEventButton.heightAnchor.constraint(equalToConstant: 40),
-            
             calendarBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             calendarBackground.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             calendarBackground.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            calendarBackground.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.35),
+            calendarBackground.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.3),
             
             calendar.topAnchor.constraint(equalTo: calendarBackground.topAnchor, constant: 5),
             calendar.leadingAnchor.constraint(equalTo: calendarBackground.leadingAnchor, constant: 5),
             calendar.trailingAnchor.constraint(equalTo: calendarBackground.trailingAnchor, constant: -5),
             calendar.bottomAnchor.constraint(equalTo: calendarBackground.topAnchor, constant: -5),
             
-            label.topAnchor.constraint(equalTo: calendarBackground.bottomAnchor, constant: 30),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            addEventButton.topAnchor.constraint(equalTo: calendarBackground.bottomAnchor, constant: 20),
+            addEventButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            tableView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
+            dateLabel.topAnchor.constraint(equalTo: addEventButton.bottomAnchor, constant: 20),
+            dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            
+            tableView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
         ])
     }
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
         calendarBackground.applyShaddow(cornerRadius: 10)
+        setCurrentDate()
+    }
+    
+    func setCurrentDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        
+        dateLabel.text = dateFormatter.string(from: Date()).uppercased()
     }
 }
