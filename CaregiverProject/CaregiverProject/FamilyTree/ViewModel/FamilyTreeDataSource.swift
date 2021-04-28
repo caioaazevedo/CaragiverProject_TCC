@@ -39,7 +39,7 @@ extension FamilyTreeDataSource: UICollectionViewDataSource {
         let memberType = memberTypes[indexPath.section]
         if let member = sections[memberType]?[indexPath.row] {
             cell.name.text = member.name
-            cell.imageView.image = member.image
+            cell.imageView.image = member.image ?? UIImage(named: "profileIcon")
             cell.hierarchy.text = member.memberType.title
         }
         return cell

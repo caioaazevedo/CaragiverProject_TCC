@@ -6,22 +6,23 @@
 //
 
 import Foundation
+import Combine
 import Firebase
 import FirebaseDatabase
 
 class FamilyDataManager {
     private let ref: DatabaseReference?
     
-    init(database: Database){
+    init(database: Database = Database.database()){
         self.ref = database.reference()
     }
 }
 
 extension FamilyDataManager: DataManager {
-    func add(value: Storable, entityType: EntityTypes, completion: @escaping ValidationHandler) {
+    func add<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler) {
         guard let db = ref else {return}
         let parameter = value.convertToDictionary()
-        db.child(entityType.rawValue).child(value.id).setValue(parameter)
+        db.child(ModelType.queryValue).child(value.id).setValue(parameter)
         completion(true)
     }
     
@@ -30,24 +31,21 @@ extension FamilyDataManager: DataManager {
         db?.removeValue()
     }
     
-    func readValue<ModelType: Storable>(
-        from dataID: String,
-        queryValue: EntityTypes,
-        resutlType: ModelType.Type,
-        completion: @escaping (Result<ModelType, Error>) -> Void) {
-        
-        ref?.child(queryValue.rawValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictionary = snapshot.value as? NSDictionary else { return }
-            let model = ModelType(id: dataID, dictionary: dictionary)
-            completion(.success(model))
-        }) { (error) in
-            completion(.failure(error))
-        }
+    func readValue<ModelType: Storable>(from dataID: String, resutlType: ModelType.Type) -> AnyPublisher<ModelType, Error> {
+        return Future<ModelType, Error> { [ref] promise in
+            ref?.child(ModelType.queryValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let dictionary = snapshot.value as? NSDictionary else { return }
+                let model = ModelType(id: dataID, dictionary: dictionary)
+                promise(.success(model))
+            }) { (error) in
+                promise(.failure(error))
+            }
+        }.eraseToAnyPublisher()
     }
     
-    func update(value: Storable, entityType: EntityTypes, completion: @escaping ValidationHandler) {
+    func update<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler) {
         let parameters = value.convertToDictionary()
-        let db = ref?.child("\(entityType.rawValue)/\(value.id)")
+        let db = ref?.child("\(ModelType.queryValue)/\(value.id)")
         db?.updateChildValues(parameters)
         completion(true)
     }

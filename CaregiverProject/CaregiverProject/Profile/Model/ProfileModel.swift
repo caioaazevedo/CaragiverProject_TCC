@@ -16,6 +16,10 @@ struct ProfileModel: ModelProtocol {
 }
 
 extension ProfileModel: Storable {
+    static var queryValue: String {
+        EntityTypes.Elder.rawValue
+    }
+    
     init(id: String, dictionary: NSDictionary) {
         self.id = id
         self.name = dictionary["name"] as? String ?? "Elder"

@@ -24,6 +24,8 @@ class FamilyTreeHeaderView: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setUpView()
+        layoutMargins.right = 20
+        layoutMargins.left = 20
     }
     
     required init?(coder: NSCoder) {
@@ -38,15 +40,15 @@ extension FamilyTreeHeaderView: ViewCodeProtocol {
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            headerLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            headerLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            headerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            headerLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             headerLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             headerLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor)
         ])
     }
     
     func setUpAditionalConficuration() {
-        backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        backgroundColor = .clear
     }
     
     
