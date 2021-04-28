@@ -22,7 +22,7 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let tabBarController = UITabBarController()
+        let tabBarController = MainTabBarController()
         tabBarController.viewControllers = childCoordinators.map { coordinator in
             coordinator.start()
             return coordinator.navigationController

@@ -19,6 +19,23 @@ class FamilyCoordinator: Coordinator {
     
     func start() {
         let viewController = builder.buildFamilyTreeModule()
+        viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func presentInvitationView(id: String?) {
+        if let familyID = id,
+           let url = URL(string: "login://" + "\(familyID)") {
+            
+            let fullText = ["\(familyID) está te convidando para entrar no grupo. Token: \(url)."]
+            let activityViewController = UIActivityViewController(
+                activityItems: fullText as [Any],
+                applicationActivities: nil
+            )
+            
+            activityViewController.popoverPresentationController?.sourceView = navigationController.view
+            activityViewController.excludedActivityTypes = [.print]
+            navigationController.present(activityViewController, animated: true)
+        }
     }
 }

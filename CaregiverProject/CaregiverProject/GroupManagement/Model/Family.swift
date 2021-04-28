@@ -21,6 +21,10 @@ struct Family: ModelProtocol {
 }
 
 extension Family: Storable {
+    static var queryValue: String {
+        EntityTypes.Family.rawValue
+    }
+    
     init(id: String, dictionary: NSDictionary) {
         self.id = id
         self.name = dictionary["name"] as? String ?? ""

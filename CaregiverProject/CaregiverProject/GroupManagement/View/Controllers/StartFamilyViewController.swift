@@ -30,6 +30,12 @@ class StartFamilyViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let _ = UserSession.shared.familyID else { return }
+        coordinator?.pushToFamilyManage(state: .Join)
+    }
+    
     private func configureButtons(){
         startFamilyView.createFamilyButton.addAction(
             UIAction { [weak self] _ in

@@ -21,7 +21,7 @@ final class FamilyBuilder{
             familyTreeView: view,
             dataSource: dataSource
         )
-        let familyIcon = UITabBarItem(title: "Family", image: .actions, tag: 0)
+        let familyIcon = UITabBarItem(title: "Family", image: #imageLiteral(resourceName: "Family"), tag: 0)
         familyTreeController.tabBarItem = familyIcon
         return familyTreeController
     }

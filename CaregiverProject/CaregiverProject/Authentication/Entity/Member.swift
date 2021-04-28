@@ -19,6 +19,10 @@ struct Member: ModelProtocol {
 }
 
 extension Member: Storable {
+    static var queryValue: String {
+        EntityTypes.Member.rawValue
+    }
+    
     init(id: String, dictionary: NSDictionary) {
         let memberTypeValue = dictionary["memberType"] as? Int ?? 0
         let imageString =     dictionary["image"] as? String
