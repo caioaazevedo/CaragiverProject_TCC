@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol TimeTableViewCellDelegate: class {
+    func didChangeTime(time: String)
+}
+
 class TimeTableViewCell: UITableViewCell {
 
+    private weak var delegate: TimeTableViewCellDelegate?
+    
     static let identifier = "TimeCellID"
     
     private let icon: UIImageView = {
@@ -31,19 +37,26 @@ class TimeTableViewCell: UITableViewCell {
         return label
     }()
     
-    var timeLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.text = "15:00"
-        let font = UIFont.preferredFont(forTextStyle: .body)
-        label.font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
-        label.adjustsFontForContentSizeCategory = true
-        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    lazy var timePicker: UIDatePicker = {
+        let view = UIDatePicker()
+        view.datePickerMode = .time
+        view.preferredDatePickerStyle = .inline
+        view.setDate(Date().addingTimeInterval(3600), animated: false)
+        view.addTarget(self, action: #selector(timeDidChange), for: .valueChanged)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
-    func setUp() {
+    func setUp(delegate: TimeTableViewCellDelegate) {
+        self.delegate = delegate
         setUpView()
+    }
+}
+
+//MARK:- Actions
+extension TimeTableViewCell {
+    @objc func timeDidChange(_ picker: UIDatePicker) {
+        delegate?.didChangeTime(time: picker.date.getFormattedDate())
     }
 }
 
@@ -51,7 +64,7 @@ extension TimeTableViewCell: ViewCodeProtocol {
     func setUpViewHierarchy() {
         contentView.addSubview(icon)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(timeLabel)
+        contentView.addSubview(timePicker)
     }
 
     func setUpViewConstraints() {
@@ -65,8 +78,9 @@ extension TimeTableViewCell: ViewCodeProtocol {
             titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
             titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
 
-            timeLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            timeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            timePicker.centerYAnchor.constraint(equalTo: centerYAnchor),
+            timePicker.trailingAnchor.constraint(equalTo: trailingAnchor),
+            timePicker.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
     

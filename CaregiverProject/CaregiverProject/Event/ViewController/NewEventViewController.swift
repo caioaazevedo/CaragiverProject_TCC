@@ -51,6 +51,12 @@ class NewEventViewController: CustomViewController<NewEventView> {
         contentView.delegate = self
         delegate = contentView
     }
+    
+    func setFormattedDate(string: String) -> Date {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "hh:mm"
+        return dateformat.date(from: string) ?? Date().addingTimeInterval(3600)
+    }
 }
 
 extension NewEventViewController: UITableViewDataSource {
@@ -94,9 +100,11 @@ extension NewEventViewController: UITableViewDataSource {
                 return cell
             case NewEventSecondSectionCells.time.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: TimeTableViewCell.identifier, for: indexPath) as! TimeTableViewCell
-                cell.setUp()
-                if viewModel.event.time?.isEmpty == false {
-                    cell.timeLabel.text = viewModel.event.time
+                cell.setUp(delegate: self)
+                
+                if let time = viewModel.event.time, time.isEmpty == false {
+                    let date = setFormattedDate(string: time)
+                    cell.timePicker.setDate(date, animated: true)
                 }
                 
                 return cell
@@ -174,9 +182,23 @@ extension NewEventViewController: LocalTableViewCellDelegate {
     }
 }
 
+extension NewEventViewController: TimeTableViewCellDelegate {
+    func didChangeTime(time: String) {
+        viewModel.event.time = time
+    }
+}
+
 extension NewEventViewController: NewEventViewCoordinator {
     func didTapCreate() {
+        let isValid = viewModel.validateEvent()
         
+        if isValid == false {
+            let alert = UIAlertController(title: "Empty Fields", message: "You can't create an event with empty Title and Responsible fields ", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            coordinator?.didCreateEvent(event: viewModel.event)
+        }
     }
     
     func didChooseCategory(category: CategoryType) {

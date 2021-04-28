@@ -13,6 +13,7 @@ class CalendarViewController: CustomViewController<CalendarView> {
     var formatter = DateFormatter()
     weak var coordinator: CalendarCoodinator?
     private var selectedDate: Date = Date()
+    private var eventList: [EventModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,11 @@ class CalendarViewController: CustomViewController<CalendarView> {
         dateFormatter.dateFormat = "dd MMMM yyyy"
         
         return dateFormatter.string(from: date).uppercased()
+    }
+    
+    func addEvent(event: EventModel) {
+        eventList.append(event)
+        contentView.tableView.reloadData()
     }
 }
 
@@ -73,15 +79,15 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
 
 extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return eventList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier, for: indexPath) as! EventCell
         cell.setUp()
-        cell.title.text = "Levar para o Destista"
-        cell.personName.text = "Ricardo"
-        cell.scheduleTime.text = "13:00"
+        cell.title.text = eventList[indexPath.row].title
+        cell.personName.text = eventList[indexPath.row].responsible
+        cell.scheduleTime.text = eventList[indexPath.row].time
         return cell
     }
 }
