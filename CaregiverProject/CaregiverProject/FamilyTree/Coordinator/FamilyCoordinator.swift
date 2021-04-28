@@ -20,7 +20,7 @@ class FamilyCoordinator: Coordinator {
     func start() {
         let viewController = builder.buildFamilyTreeModule()
         viewController.coordinator = self
-        navigationController.setViewControllers([viewController], animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func presentInvitationView(id: String?) {

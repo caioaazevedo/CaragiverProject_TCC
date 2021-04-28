@@ -11,14 +11,29 @@ class CalendarCoodinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators = [Coordinator]()
     private let builder = CalendarBuilder()
+    var viewController: CalendarViewController
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.navigationController.navigationBar.isHidden = true
+        viewController = builder.setUpCalendarModule()
     }
     
     func start() {
-        let viewController = builder.setUpCalendarModule()
-        navigationController.setViewControllers([viewController], animated: true)
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func createNewEvent() {
+        let coordinator = NewEventCoodinator(navigationController: navigationController)
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+}
+
+extension CalendarCoodinator: NewEventCoodinatorDelegate {
+    func didCreateEvent(event: EventModel) {
+        viewController.addEvent(event: event)
     }
 }

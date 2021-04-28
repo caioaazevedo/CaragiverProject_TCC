@@ -11,6 +11,9 @@ import FSCalendar
 class CalendarViewController: CustomViewController<CalendarView> {
 
     var formatter = DateFormatter()
+    weak var coordinator: CalendarCoodinator?
+    private var selectedDate: Date = Date()
+    private var eventList: [EventModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +23,41 @@ class CalendarViewController: CustomViewController<CalendarView> {
     }
     
     func setUp() {
+        setUpContentView()
+    }
+    
+    func setUpContentView() {
+        contentView.delegate = self
         contentView.calendar.delegate = self
         contentView.calendar.dataSource = self
         
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
     }
-
+    
+    private func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        
+        return dateFormatter.string(from: date).uppercased()
+    }
+    
+    func addEvent(event: EventModel) {
+        eventList.append(event)
+        contentView.tableView.reloadData()
+    }
 }
 
-extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
+extension CalendarViewController: CalendarViewDelegate {
+    func createNewEvent() {
+        coordinator?.createNewEvent()
+    }
+}
+
+extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        formatter.dateFormat = "dd-MMM-yyyy"
-        print("DateSelected == \(formatter.string(from: date))")
+        self.selectedDate = date
+        contentView.dateLabel.text = formatDate(date)
     }
     
     func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
@@ -40,28 +65,29 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        // Indicador de Eventos no calendário
         formatter.dateFormat = "dd-MM-yyyy"
-        guard let eventDate = formatter.date(from: "03-04-2021") else { return 0 }
+        guard let eventDate = formatter.date(from: "29-04-2021") else { return 0 }
         
         if date.compare(eventDate) == .orderedSame {
             return 2
         }
-        
         return 0
     }
 }
 
 extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return eventList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier, for: indexPath) as! EventCell
         cell.setUp()
-        cell.title.text = "Levar para o Destista"
-        cell.personName.text = "Ricardo"
-        cell.scheduleTime.text = "13:00"
+        cell.title.text = eventList[indexPath.row].title
+        cell.personName.text = eventList[indexPath.row].responsible
+        cell.scheduleTime.text = eventList[indexPath.row].time
         return cell
     }
 }
