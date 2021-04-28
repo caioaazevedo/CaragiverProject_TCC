@@ -70,6 +70,7 @@ extension LocalTableViewCell: ViewCodeProtocol {
     }
     
     func setUpAditionalConficuration() {
+        selectionStyle = .none
         backgroundColor = .white
         localText.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
     }

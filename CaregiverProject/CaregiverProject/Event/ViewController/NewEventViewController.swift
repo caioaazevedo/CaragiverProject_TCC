@@ -20,7 +20,7 @@ enum NewEventFirstSectionCells: Int {
 }
 
 protocol NewEventViewControllerDelegate: class {
-    func presentModalView()
+    func presentModalView(type: NewEventModalType)
 }
 
 class NewEventViewController: CustomViewController<NewEventView> {
@@ -146,7 +146,9 @@ extension NewEventViewController: UITableViewDelegate {
         if indexPath.section == 1 {
             switch indexPath.row {
             case NewEventSecondSectionCells.category.rawValue:
-                delegate?.presentModalView()
+                delegate?.presentModalView(type: .category)
+            case NewEventSecondSectionCells.responsible.rawValue:
+                delegate?.presentModalView(type: .responsible)
             default:
                 break
             }
@@ -179,6 +181,11 @@ extension NewEventViewController: NewEventViewCoordinator {
     
     func didChooseCategory(category: CategoryType) {
         viewModel.event.category = category
+        contentView.tableView.reloadData()
+    }
+    
+    func didChooseResponsible(responsible: String) {
+        viewModel.event.responsible = responsible
         contentView.tableView.reloadData()
     }
 }

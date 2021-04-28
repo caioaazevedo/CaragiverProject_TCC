@@ -9,6 +9,12 @@ import UIKit
 
 protocol NewEventModalViewDelegate: class {
     func dismissModalView(category: CategoryType)
+    func dismissModalView(responsible: String)
+}
+
+enum NewEventModalType {
+    case category
+    case responsible
 }
 
 class NewEventModalView: UIView {
@@ -27,6 +33,11 @@ class NewEventModalView: UIView {
                              CategoryType.Food.color,
                              CategoryType.Others.color]
     
+    let responsibles: [String] = ["Guilherme", "Fabio", "Caio"]
+    // TODO: ter o array de ids dos Membros
+    
+    var modalType: NewEventModalType = .category
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "Categories:"
@@ -41,6 +52,7 @@ class NewEventModalView: UIView {
     var tableView: UITableView = {
         var tableView = UITableView(frame: .zero)
         tableView.register(CategoryModalTableViewCell.self, forCellReuseIdentifier: CategoryModalTableViewCell.identifier)
+        tableView.register(ResponsibleModalTableViewCell.self, forCellReuseIdentifier: ResponsibleModalTableViewCell.identifier)
         tableView.separatorStyle = .singleLine
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 0)
         tableView.separatorColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)

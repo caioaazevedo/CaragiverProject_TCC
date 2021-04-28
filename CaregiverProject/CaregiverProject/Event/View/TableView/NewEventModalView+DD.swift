@@ -7,9 +7,9 @@
 
 import UIKit
 
-extension NewEventModalView: UITableViewDelegate,UITableViewDataSource{
+extension NewEventModalView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        return modalType == .category ? categories.count : responsibles.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -21,16 +21,34 @@ extension NewEventModalView: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryModalTableViewCell.identifier) as! CategoryModalTableViewCell
-        cell.setUp()
-        cell.categoryName.text = categories[indexPath.row].rawValue
-        cell.color.backgroundColor = colors[indexPath.row]
-        cell.setCornerRadius()
-        return cell
+        
+        switch modalType {
+        case .category:
+            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryModalTableViewCell.identifier) as! CategoryModalTableViewCell
+            cell.setUp()
+            cell.categoryName.text = categories[indexPath.row].rawValue
+            cell.color.backgroundColor = colors[indexPath.row]
+            cell.setCornerRadius()
+            return cell
+        case .responsible:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ResponsibleModalTableViewCell.identifier) as! ResponsibleModalTableViewCell
+            cell.setUp()
+            cell.responsibleName.text = responsibles[indexPath.row]
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.dismissModalView(category: categories[indexPath.row])
+        switch modalType {
+        case .category:
+            delegate?.dismissModalView(category: categories[indexPath.row])
+        case .responsible:
+            delegate?.dismissModalView(responsible: responsibles[indexPath.row])
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: .zero)
     }
 }
 

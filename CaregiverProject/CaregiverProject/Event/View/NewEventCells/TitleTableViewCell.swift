@@ -70,6 +70,7 @@ extension TitleTableViewCell: ViewCodeProtocol {
     }
     
     func setUpAditionalConficuration() {
+        selectionStyle = .none
         backgroundColor = .white
         titleText.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
     }

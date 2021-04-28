@@ -110,6 +110,7 @@
 		E2DD96DF2551A52200A89A04 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96DE2551A52200A89A04 /* RegisterProtocols.swift */; };
 		E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96E32551A66E00A89A04 /* RegisterInteractor.swift */; };
 		E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96E82551A96800A89A04 /* RegisterPresenter.swift */; };
+		E2F0E7872639A08100B55CE0 /* ResponsibleModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0E7862639A08100B55CE0 /* ResponsibleModalTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,6 +247,7 @@
 		E2DD96E32551A66E00A89A04 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		E2DD96E82551A96800A89A04 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		E2DD97792552168400A89A04 /* CaregiverProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CaregiverProject.entitlements; sourceTree = "<group>"; };
+		E2F0E7862639A08100B55CE0 /* ResponsibleModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsibleModalTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -908,6 +910,7 @@
 			isa = PBXGroup;
 			children = (
 				E29E87E52638BE8300401029 /* CategoryModalTableViewCell.swift */,
+				E2F0E7862639A08100B55CE0 /* ResponsibleModalTableViewCell.swift */,
 			);
 			path = NewEventModalCells;
 			sourceTree = "<group>";
@@ -1263,6 +1266,7 @@
 				E21DF9B0261BC2DB0061AE3A /* EventCell.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				7914620526187BF200EA9AB5 /* FamilyCoordinator.swift in Sources */,
+				E2F0E7872639A08100B55CE0 /* ResponsibleModalTableViewCell.swift in Sources */,
 				E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */,
 				ACC22E66261B4EEE002A9722 /* ActivityViewController.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,

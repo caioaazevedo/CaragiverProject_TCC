@@ -10,6 +10,7 @@ import UIKit
 protocol NewEventViewCoordinator: class {
     func didTapCreate()
     func didChooseCategory(category: CategoryType)
+    func didChooseResponsible(responsible: String)
 }
 
 class NewEventView: UIView {
@@ -59,7 +60,7 @@ class NewEventView: UIView {
         return view
     }()
     
-    lazy var createModalView: NewEventModalView = {
+    lazy var modalView: NewEventModalView = {
         let view = NewEventModalView()
         view.backgroundColor = .white
         view.layer.borderWidth = 4
@@ -89,7 +90,7 @@ extension NewEventView: ViewCodeProtocol {
         addSubview(titleLabel)
         addSubview(addButton)
         addSubview(tableView)
-        addSubview(createModalView)
+        addSubview(modalView)
     }
     
     func setUpViewConstraints() {
@@ -107,13 +108,13 @@ extension NewEventView: ViewCodeProtocol {
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.heightAnchor.constraint(equalToConstant: 456),
             
-            createModalView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            modalView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            createModalView.widthAnchor.constraint(equalToConstant: Metrics.Device.width),
-            createModalView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.45)
+            modalView.widthAnchor.constraint(equalToConstant: Metrics.Device.width),
+            modalView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.45)
         ])
         
-        layoutConstraint = createModalView.centerYAnchor.constraint(equalTo: centerYAnchor,constant: Metrics.Device.height)
+        layoutConstraint = modalView.centerYAnchor.constraint(equalTo: centerYAnchor,constant: Metrics.Device.height)
         layoutConstraint?.isActive = true
     }
     
@@ -123,7 +124,10 @@ extension NewEventView: ViewCodeProtocol {
 }
 
 extension NewEventView: NewEventViewControllerDelegate {
-    func presentModalView() {
+    func presentModalView(type: NewEventModalType) {
+        modalView.modalType = type
+        modalView.titleLabel.text = type == .category ? "Categories:" : "Responsible:"
+        modalView.tableView.reloadData()
         layoutConstraint?.constant = Metrics.Device.height*0.3
         
         UIView.animate(withDuration: 1, animations: { [self] in
@@ -134,6 +138,14 @@ extension NewEventView: NewEventViewControllerDelegate {
 }
 
 extension NewEventView: NewEventModalViewDelegate {
+    func dismissModalView(responsible: String) {
+        self.delegate?.didChooseResponsible(responsible: responsible)
+        layoutConstraint?.constant = Metrics.Device.height
+        UIView.animate(withDuration: 1, animations: { [self] in
+            layoutIfNeeded()
+        })
+    }
+    
     func dismissModalView(category: CategoryType) {
         self.delegate?.didChooseCategory(category: category)
         layoutConstraint?.constant = Metrics.Device.height

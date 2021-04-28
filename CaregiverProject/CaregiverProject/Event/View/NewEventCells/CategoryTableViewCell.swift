@@ -78,6 +78,7 @@ extension CategoryTableViewCell: ViewCodeProtocol {
     }
     
     func setUpAditionalConficuration() {
+        selectionStyle = .none
         backgroundColor = .white
     }
 }
