@@ -8,6 +8,7 @@
 import Foundation
 
 protocol Storable {
+    static var queryValue: String { get }
     var id: String { get set }
     init(id: String, dictionary: NSDictionary)
     func convertToDictionary() -> [String: Any]

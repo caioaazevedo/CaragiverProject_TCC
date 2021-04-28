@@ -20,7 +20,7 @@ class FamilyManageViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        view = FamilyManageView()
+        view = familyManageView
         configureButtons()
     }
     
@@ -38,13 +38,17 @@ class FamilyManageViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let familyID = UserSession.shared.familyID else { return }
+        joinFamily(familyID)
+    }
        
     private func configureButtons(){
-        guard let view = view as? FamilyManageView else {return}
         switch manageState{
         case .Join:
             view.primaryField.placeholder = "Family's Code"
-            
             view.primaryButton.setTitle("Enter in family", for: .normal)
             view.primaryButton.addAction(
                 UIAction { [joinFamily] _ in
@@ -53,11 +57,12 @@ class FamilyManageViewController: UIViewController {
                 for: .touchUpInside
             )
         case .Create:
-            view.primaryField.placeholder = "Family's Name"
-            view.primaryButton.setTitle("Create Family", for: .normal)
-            view.primaryButton.addAction(
-                UIAction { [createFamily] _ in
-                    createFamily()
+            familyManageView.primaryField.placeholder = "Family's Name"
+            familyManageView.primaryButton.setTitle("Create Family", for: .normal)
+            familyManageView.primaryButton.addAction(
+                UIAction { [weak self] _ in
+                    let familyName = self?.familyManageView.primaryField.text ?? "Familia"
+                    self?.createFamily(familyName)
                 },
                 for: .touchUpInside
             )
@@ -72,8 +77,7 @@ class FamilyManageViewController: UIViewController {
         }
     }
     
-    private func createFamily() {
-        let familyName = familyManageView.primaryField.text ?? "Familia"
+    private func createFamily(_ familyName: String) {
         viewModel.createFamily(familyName: familyName) { [goToFamilyModule] in
             goToFamilyModule()
         }
