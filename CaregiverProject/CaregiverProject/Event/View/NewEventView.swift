@@ -7,7 +7,16 @@
 
 import UIKit
 
+protocol NewEventViewCoordinator: class {
+    func didTapCreate()
+    func didChooseCategory(category: CategoryType)
+}
+
 class NewEventView: UIView {
+    
+    weak var delegate: NewEventViewCoordinator?
+    var layoutConstraint : NSLayoutConstraint?
+    
     private var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "New Event"
@@ -50,26 +59,37 @@ class NewEventView: UIView {
         return view
     }()
     
+    lazy var createModalView: NewEventModalView = {
+        let view = NewEventModalView()
+        view.backgroundColor = .white
+        view.layer.borderWidth = 4
+        view.layer.cornerRadius = 10
+        view.layer.borderColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1).cgColor
+        view.delegate = self
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     init() {
         super.init(frame: .zero)
         setUpView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     @objc func createTap() {
-        
+        delegate?.didTapCreate()
     }
 }
 
 extension NewEventView: ViewCodeProtocol {
     func setUpViewHierarchy() {
         addSubview(titleLabel)
-        
         addSubview(addButton)
         addSubview(tableView)
+        addSubview(createModalView)
     }
     
     func setUpViewConstraints() {
@@ -85,11 +105,40 @@ extension NewEventView: ViewCodeProtocol {
             tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: 456)
+            tableView.heightAnchor.constraint(equalToConstant: 456),
+            
+            createModalView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            createModalView.widthAnchor.constraint(equalToConstant: Metrics.Device.width),
+            createModalView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.45)
         ])
+        
+        layoutConstraint = createModalView.centerYAnchor.constraint(equalTo: centerYAnchor,constant: Metrics.Device.height)
+        layoutConstraint?.isActive = true
     }
     
     func setUpAditionalConficuration() {
         backgroundColor = #colorLiteral(red: 0.9732231498, green: 0.9674372077, blue: 0.9776702523, alpha: 1)
+    }
+}
+
+extension NewEventView: NewEventViewControllerDelegate {
+    func presentModalView() {
+        layoutConstraint?.constant = Metrics.Device.height*0.3
+        
+        UIView.animate(withDuration: 1, animations: { [self] in
+            updateConstraints()
+            layoutIfNeeded()
+        })
+    }
+}
+
+extension NewEventView: NewEventModalViewDelegate {
+    func dismissModalView(category: CategoryType) {
+        self.delegate?.didChooseCategory(category: category)
+        layoutConstraint?.constant = Metrics.Device.height
+        UIView.animate(withDuration: 1, animations: { [self] in
+            layoutIfNeeded()
+        })
     }
 }

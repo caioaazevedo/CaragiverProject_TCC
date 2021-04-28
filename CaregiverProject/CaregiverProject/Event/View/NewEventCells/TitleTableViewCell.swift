@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol TitleTableViewCellDelegate: class {
+    func didChangeTitle(text: String)
+}
+
 class TitleTableViewCell: UITableViewCell {
+
+    private weak var delegate: TitleTableViewCellDelegate?
 
     static let identifier = "TitleCellID"
     
@@ -28,9 +34,19 @@ class TitleTableViewCell: UITableViewCell {
         return text
     }()
     
-    func setUp() {
+    func setUp(delegate: TitleTableViewCellDelegate) {
+        self.delegate = delegate
         setUpView()
     }
+}
+
+//MARK:- Actions
+extension TitleTableViewCell {
+    @objc func textDidChange(_ textField: UITextField) {
+        if let text = textField.text {
+            delegate?.didChangeTitle(text: text)
+        }
+    } 
 }
 
 extension TitleTableViewCell: ViewCodeProtocol {
@@ -55,6 +71,7 @@ extension TitleTableViewCell: ViewCodeProtocol {
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
+        titleText.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
     }
 }
 

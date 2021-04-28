@@ -12,6 +12,7 @@ class CalendarViewController: CustomViewController<CalendarView> {
 
     var formatter = DateFormatter()
     weak var coordinator: CalendarCoodinator?
+    private var selectedDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,13 @@ class CalendarViewController: CustomViewController<CalendarView> {
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
     }
+    
+    private func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        
+        return dateFormatter.string(from: date).uppercased()
+    }
 }
 
 extension CalendarViewController: CalendarViewDelegate {
@@ -40,10 +48,10 @@ extension CalendarViewController: CalendarViewDelegate {
     }
 }
 
-extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
+extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        formatter.dateFormat = "dd-MMM-yyyy"
-        print("DateSelected == \(formatter.string(from: date))")
+        self.selectedDate = date
+        contentView.dateLabel.text = formatDate(date)
     }
     
     func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
@@ -51,13 +59,14 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        // Indicador de Eventos no calendário
         formatter.dateFormat = "dd-MM-yyyy"
-        guard let eventDate = formatter.date(from: "03-04-2021") else { return 0 }
+        guard let eventDate = formatter.date(from: "29-04-2021") else { return 0 }
         
         if date.compare(eventDate) == .orderedSame {
             return 2
         }
-        
         return 0
     }
 }

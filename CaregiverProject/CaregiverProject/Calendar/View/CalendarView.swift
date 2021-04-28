@@ -65,7 +65,7 @@ class CalendarView: UIView {
         return view
     }()
     
-    private let dateLabel: UILabel = {
+    let dateLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = ""
         let font = UIFont.preferredFont(forTextStyle: .subheadline)

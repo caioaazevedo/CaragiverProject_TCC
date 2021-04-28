@@ -97,6 +97,11 @@
 		E29E87B626385D9500401029 /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87B526385D9500401029 /* NotesTableViewCell.swift */; };
 		E29E87BB26388FC500401029 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87BA26388FC500401029 /* TitleTableViewCell.swift */; };
 		E29E87C0263891A300401029 /* LocalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87BF263891A300401029 /* LocalTableViewCell.swift */; };
+		E29E87C62638A7A800401029 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87C52638A7A800401029 /* EventModel.swift */; };
+		E29E87CF2638AE8300401029 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87CE2638AE8300401029 /* EventViewModel.swift */; };
+		E29E87E02638BB1300401029 /* NewEventModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87DF2638BB1300401029 /* NewEventModalView.swift */; };
+		E29E87E62638BE8300401029 /* CategoryModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87E52638BE8300401029 /* CategoryModalTableViewCell.swift */; };
+		E29E87F22638C7E900401029 /* NewEventModalView+DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29E87F12638C7E900401029 /* NewEventModalView+DD.swift */; };
 		E2C108BC2567F71D00CDB7FA /* ErrorMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */; };
 		E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C108C32568036300CDB7FA /* ErrorHandler.swift */; };
 		E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */; };
@@ -227,6 +232,11 @@
 		E29E87B526385D9500401029 /* NotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		E29E87BA26388FC500401029 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		E29E87BF263891A300401029 /* LocalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTableViewCell.swift; sourceTree = "<group>"; };
+		E29E87C52638A7A800401029 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		E29E87CE2638AE8300401029 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		E29E87DF2638BB1300401029 /* NewEventModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventModalView.swift; sourceTree = "<group>"; };
+		E29E87E52638BE8300401029 /* CategoryModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModalTableViewCell.swift; sourceTree = "<group>"; };
+		E29E87F12638C7E900401029 /* NewEventModalView+DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewEventModalView+DD.swift"; sourceTree = "<group>"; };
 		E2C108BB2567F71D00CDB7FA /* ErrorMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessages.swift; sourceTree = "<group>"; };
 		E2C108C32568036300CDB7FA /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		E2DC2ACB255CA054008468E5 /* MemberTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTypeEnum.swift; sourceTree = "<group>"; };
@@ -829,8 +839,10 @@
 			isa = PBXGroup;
 			children = (
 				E29E87992636D4B600401029 /* Coordinator */,
-				E29E87982636D4AC00401029 /* ViewController */,
 				E29E87972636D4A300401029 /* View */,
+				E29E87982636D4AC00401029 /* ViewController */,
+				E29E87CD2638AE7000401029 /* ViewModel */,
+				E29E87C42638A78F00401029 /* Model */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -838,8 +850,11 @@
 		E29E87972636D4A300401029 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E29E87A22636D7DB00401029 /* Cells */,
+				E29E87F02638C7CF00401029 /* TableView */,
+				E29E87E42638BE3C00401029 /* NewEventModalCells */,
+				E29E87A22636D7DB00401029 /* NewEventCells */,
 				E29E879A2636D4D100401029 /* NewEventView.swift */,
+				E29E87DF2638BB1300401029 /* NewEventModalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -860,17 +875,49 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		E29E87A22636D7DB00401029 /* Cells */ = {
+		E29E87A22636D7DB00401029 /* NewEventCells */ = {
 			isa = PBXGroup;
 			children = (
+				E29E87BA26388FC500401029 /* TitleTableViewCell.swift */,
+				E29E87BF263891A300401029 /* LocalTableViewCell.swift */,
 				E29E87A32636D7F700401029 /* CategoryTableViewCell.swift */,
 				E29E87AB263859F900401029 /* TimeTableViewCell.swift */,
 				E29E87B026385C8C00401029 /* ResponsibleTableViewCell.swift */,
 				E29E87B526385D9500401029 /* NotesTableViewCell.swift */,
-				E29E87BA26388FC500401029 /* TitleTableViewCell.swift */,
-				E29E87BF263891A300401029 /* LocalTableViewCell.swift */,
 			);
-			path = Cells;
+			path = NewEventCells;
+			sourceTree = "<group>";
+		};
+		E29E87C42638A78F00401029 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E29E87C52638A7A800401029 /* EventModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E29E87CD2638AE7000401029 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E29E87CE2638AE8300401029 /* EventViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E29E87E42638BE3C00401029 /* NewEventModalCells */ = {
+			isa = PBXGroup;
+			children = (
+				E29E87E52638BE8300401029 /* CategoryModalTableViewCell.swift */,
+			);
+			path = NewEventModalCells;
+			sourceTree = "<group>";
+		};
+		E29E87F02638C7CF00401029 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				E29E87F12638C7E900401029 /* NewEventModalView+DD.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		E2DC2ACA255CA03F008468E5 /* Enums */ = {
@@ -1160,6 +1207,7 @@
 				ACF654CA261B497900A5FAC3 /* TaskCell.swift in Sources */,
 				E2DC2AD2255CA8C8008468E5 /* UserDefaultsExtension.swift in Sources */,
 				791461C326171F4E00EA9AB5 /* AuthenticationCoordinator.swift in Sources */,
+				E29E87C62638A7A800401029 /* EventModel.swift in Sources */,
 				7914620E26187D3D00EA9AB5 /* CalendarCoodinator.swift in Sources */,
 				7914615726146EDD00EA9AB5 /* DataManager.swift in Sources */,
 				AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */,
@@ -1167,6 +1215,7 @@
 				ACF654B1261B469D00A5FAC3 /* ActivityView.swift in Sources */,
 				E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */,
 				E2DC2ACC255CA054008468E5 /* MemberTypeEnum.swift in Sources */,
+				E29E87E62638BE8300401029 /* CategoryModalTableViewCell.swift in Sources */,
 				E29E87B126385C8C00401029 /* ResponsibleTableViewCell.swift in Sources */,
 				E29E87B626385D9500401029 /* NotesTableViewCell.swift in Sources */,
 				791462292619BBDD00EA9AB5 /* AppCoordinator.swift in Sources */,
@@ -1196,6 +1245,7 @@
 				E29E87C0263891A300401029 /* LocalTableViewCell.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
 				AC0F44E5261E45EC00710BC0 /* CreateTaskCell.swift in Sources */,
+				E29E87F22638C7E900401029 /* NewEventModalView+DD.swift in Sources */,
 				79146142261458DB00EA9AB5 /* FamilyDataManager.swift in Sources */,
 				AC9D6243261D1EB600EE730B /* Date.swift in Sources */,
 				79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */,
@@ -1203,6 +1253,7 @@
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
+				E29E87E02638BB1300401029 /* NewEventModalView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				7914619F2617100100EA9AB5 /* Coordinator.swift in Sources */,
 				79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */,
@@ -1215,6 +1266,7 @@
 				E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */,
 				ACC22E66261B4EEE002A9722 /* ActivityViewController.swift in Sources */,
 				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
+				E29E87CF2638AE8300401029 /* EventViewModel.swift in Sources */,
 				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,

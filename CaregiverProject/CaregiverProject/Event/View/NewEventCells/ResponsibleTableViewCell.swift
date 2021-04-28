@@ -31,7 +31,7 @@ class ResponsibleTableViewCell: UITableViewCell {
         return label
     }()
     
-    var ResponsibleName: UILabel = {
+    var responsibleName: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = "None"
         let font = UIFont.preferredFont(forTextStyle: .body)
@@ -51,7 +51,7 @@ extension ResponsibleTableViewCell: ViewCodeProtocol {
     func setUpViewHierarchy() {
         contentView.addSubview(icon)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(ResponsibleName)
+        contentView.addSubview(responsibleName)
     }
 
     func setUpViewConstraints() {
@@ -65,8 +65,8 @@ extension ResponsibleTableViewCell: ViewCodeProtocol {
             titleLabel.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
             titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
 
-            ResponsibleName.centerYAnchor.constraint(equalTo: centerYAnchor),
-            ResponsibleName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            responsibleName.centerYAnchor.constraint(equalTo: centerYAnchor),
+            responsibleName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
         ])
     }
     

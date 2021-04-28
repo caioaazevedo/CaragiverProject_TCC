@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol LocalTableViewCellDelegate: class {
+    func didChangeLocal(text: String)
+}
+
 class LocalTableViewCell: UITableViewCell {
+    
+    private weak var delegate: LocalTableViewCellDelegate?
 
     static let identifier = "LocalCellID"
     
@@ -20,7 +26,7 @@ class LocalTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    var titleText: UITextField = {
+    var localText: UITextField = {
         var text = UITextField(frame: .zero)
         text.placeholder = "Local"
         text.textAlignment = .left
@@ -28,15 +34,25 @@ class LocalTableViewCell: UITableViewCell {
         return text
     }()
     
-    func setUp() {
+    func setUp(delegate: LocalTableViewCellDelegate) {
+        self.delegate = delegate
         setUpView()
+    }
+}
+
+//MARK:- Actions
+extension LocalTableViewCell {
+    @objc func textDidChange(_ textField: UITextField) {
+        if let text = textField.text {
+            delegate?.didChangeLocal(text: text)
+        }
     }
 }
 
 extension LocalTableViewCell: ViewCodeProtocol {
     func setUpViewHierarchy() {
         contentView.addSubview(icon)
-        contentView.addSubview(titleText)
+        contentView.addSubview(localText)
     }
 
     func setUpViewConstraints() {
@@ -46,15 +62,16 @@ extension LocalTableViewCell: ViewCodeProtocol {
             icon.heightAnchor.constraint(equalToConstant: 30),
             icon.widthAnchor.constraint(equalToConstant: 30),
 
-            titleText.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleText.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
-            titleText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            titleText.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
+            localText.centerYAnchor.constraint(equalTo: centerYAnchor),
+            localText.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15),
+            localText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            localText.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
     }
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
+        localText.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
     }
 }
 
