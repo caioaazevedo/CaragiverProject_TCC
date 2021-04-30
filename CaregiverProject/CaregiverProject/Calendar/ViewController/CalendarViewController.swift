@@ -7,13 +7,17 @@
 
 import UIKit
 import FSCalendar
+import Combine
+import Firebase
 
 class CalendarViewController: CustomViewController<CalendarView> {
 
     var formatter = DateFormatter()
     weak var coordinator: CalendarCoodinator?
     private var selectedDate: Date = Date()
-    private var eventList: [EventModel] = []
+    private var eventList: [EventModel] { viewModel.eventList }
+    private var subscribers = Set<AnyCancellable>()
+    private var viewModel = CalendarViewModel(dataManager: FamilyDataManager())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +26,14 @@ class CalendarViewController: CustomViewController<CalendarView> {
         setUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        viewModel.fetchData()
+    }
+    
     func setUp() {
         setUpContentView()
+        bindViewModel()
     }
     
     func setUpContentView() {
@@ -35,6 +45,15 @@ class CalendarViewController: CustomViewController<CalendarView> {
         contentView.tableView.dataSource = self
     }
     
+    private func bindViewModel() {
+        viewModel.$eventList
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.contentView.tableView.reloadData()
+            }
+            .store(in: &subscribers)
+    }
+    
     private func formatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMMM yyyy"
@@ -43,8 +62,8 @@ class CalendarViewController: CustomViewController<CalendarView> {
     }
     
     func addEvent(event: EventModel) {
-        eventList.append(event)
-        contentView.tableView.reloadData()
+        viewModel.addEvent(event)
+        viewModel.fetchData()
     }
 }
 

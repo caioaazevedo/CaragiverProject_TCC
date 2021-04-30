@@ -48,11 +48,12 @@ class FamilyManageViewController: UIViewController {
     private func configureButtons(){
         switch manageState{
         case .Join:
-            view.primaryField.placeholder = "Family's Code"
-            view.primaryButton.setTitle("Enter in family", for: .normal)
-            view.primaryButton.addAction(
-                UIAction { [joinFamily] _ in
-                    joinFamily()
+            familyManageView.primaryField.placeholder = "Family's Code"
+            familyManageView.primaryButton.setTitle("Enter in family", for: .normal)
+            familyManageView.primaryButton.addAction(
+                UIAction { [joinFamily, familyManageView] _ in
+                    let familyID = familyManageView.primaryField.text ?? ""
+                    joinFamily(familyID)
                 },
                 for: .touchUpInside
             )
@@ -69,9 +70,7 @@ class FamilyManageViewController: UIViewController {
         }
     }
     
-    private func joinFamily() {
-        guard let view = view as? FamilyManageView else {return}
-        let familyID = view.primaryField.text ?? "Default"
+    private func joinFamily(_ familyID: String) {
         viewModel.joinFamily(familyID: familyID) { [goToFamilyModule] in
             goToFamilyModule()
         }

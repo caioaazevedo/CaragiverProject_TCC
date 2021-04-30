@@ -11,15 +11,8 @@ final class ProfileView: UIView{
     
     private let textFieldDelegate = TextFieldDelegate()
     var profileImageSize: CGFloat { Metrics.Device.width*0.5 }
-    var infoSpacing: CGFloat { 16 }
-    var stackSpacing: CGFloat { 32 }
-        
-    lazy var backView: UIView = {
-        let rect = CGRect(origin: .zero, size: CGSize(width: Metrics.Device.width, height: Metrics.Device.height*0.5))
-        let view = UIView(frame: rect)
-        view.backgroundColor = .white
-        return view
-    }()
+    var infoSpacing: CGFloat { 12 }
+    var stackSpacing: CGFloat { 16 }
     
     lazy var titleLabel: UILabel = {
         var label = UILabel(frame: .zero)
@@ -91,55 +84,32 @@ final class ProfileView: UIView{
     lazy var idTextField = buildTextField()
     lazy var phoneNumberTextField = buildTextField()
     
-    private lazy var ageStackView: UIStackView = {
-        let stack = buildStackView(title: "Age:")
-        ageTextField.keyboardType = .numberPad
-        stack.addArrangedSubview(ageTextField)
-        stack.addArrangedSubview(buildSeparator())
-        return stack
-    }()
-    private lazy var bloodTypeStackView: UIStackView = {
-        let stack = buildStackView(title: "Blood Type:")
-        stack.addArrangedSubview(bloodTypeTextField)
-        stack.addArrangedSubview(buildSeparator())
-        return stack
-    }()
-    private lazy var idStackView: UIStackView = {
-        let stack = buildStackView(title: "Elder's Id:")
-        stack.addArrangedSubview(idTextField)
-        stack.addArrangedSubview(buildSeparator())
-        return stack
-    }()
-    private lazy var phoneNumberStackView: UIStackView = {
-        let stack = buildStackView(title: "Phone Number:")
-        stack.addArrangedSubview(phoneNumberTextField)
-        stack.addArrangedSubview(buildSeparator())
-        return stack
-    }()
-    private lazy var insuranceStackView: UIStackView = {
-        let stack = buildStackView(title: "Health Insurance:")
-        stack.addArrangedSubview(insuranceTextField)
-        return stack
-    }()
-    
     private lazy var infoStackView: UIStackView = {
         let stack = UIStackView()
         stack.alignment    = .fill
         stack.axis         = .vertical
         stack.distribution = .fill
         stack.spacing = stackSpacing
-        stack.addArrangedSubview(ageStackView)
-        stack.addArrangedSubview(bloodTypeStackView)
-        stack.addArrangedSubview(idStackView)
-        stack.addArrangedSubview(phoneNumberStackView)
-        stack.addArrangedSubview(insuranceStackView)
+        stack.addArrangedSubview(buildStackView(title: "Age", textField: ageTextField))
+        stack.addArrangedSubview(buildStackView(title: "Blood Type", textField: bloodTypeTextField))
+        stack.addArrangedSubview(buildStackView(title: "Health Insurance", textField: insuranceTextField))
+        stack.addArrangedSubview(buildStackView(title: "ID", textField: idTextField))
+        let phoneNumberStack = buildStackView(title: "Phone Number", textField: phoneNumberTextField)
+        if let lastSeparator = phoneNumberStack.arrangedSubviews.last {
+            phoneNumberStack.removeArrangedSubview(lastSeparator)
+            lastSeparator.removeFromSuperview()
+        }
+        stack.addArrangedSubview(phoneNumberStack)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
     lazy var infoScrollView: UIScrollView = {
         let scroll = UIScrollView()
+        scroll.backgroundColor = .white
         scroll.addSubview(infoStackView)
+        scroll.layoutMargins.left = 20
+        scroll.alwaysBounceVertical = true
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
@@ -156,7 +126,6 @@ final class ProfileView: UIView{
 
 extension ProfileView: ViewCodeProtocol{
     func setUpViewHierarchy() {
-        addSubview(backView)
         profileImageBackground.addSubview(profileImage)
         addSubview(profileImageBackground)
         addSubview(titleLabel)
@@ -194,23 +163,22 @@ extension ProfileView: ViewCodeProtocol{
             nameTextField.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 32),
             nameTextField.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -32),
             
-            infoScrollView.topAnchor.constraint(equalTo: backView.bottomAnchor),
+            infoScrollView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 32),
             infoScrollView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            infoScrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            infoScrollView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             infoScrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             infoStackView.topAnchor.constraint(equalTo: infoScrollView.topAnchor, constant: stackSpacing),
-            infoStackView.leadingAnchor.constraint(equalTo: infoScrollView.leadingAnchor),
-            infoStackView.trailingAnchor.constraint(equalTo: infoScrollView.trailingAnchor),
-            infoStackView.bottomAnchor.constraint(equalTo: infoScrollView.bottomAnchor, constant: -20),
+            infoStackView.leadingAnchor.constraint(equalTo: infoScrollView.layoutMarginsGuide.leadingAnchor),
+            infoStackView.bottomAnchor.constraint(equalTo: infoScrollView.bottomAnchor, constant: -stackSpacing),
         ])
     }
     
     func setUpAditionalConficuration() {
-        layoutMargins.left = 20
-        layoutMargins.right = 20
-        backgroundColor = #colorLiteral(red: 0.9097241759, green: 0.9098550677, blue: 0.9096955061, alpha: 1)
-        backView.applyShaddow(opacity: 0.3)
+        layoutMargins.left = 2
+        layoutMargins.right = 2
+        backgroundColor = #colorLiteral(red: 0.9732231498, green: 0.9674372077, blue: 0.9776702523, alpha: 1)
+        nameTextField.applyShaddow(cornerRadius: 2, opacity: 0.2)
     }
 }
 
@@ -235,7 +203,7 @@ private extension ProfileView {
         return label
     }
     
-    func buildStackView(title: String) -> UIStackView {
+    func buildStackView(title: String, textField: UITextField) -> UIStackView {
         let stack = UIStackView()
         stack.distribution = .fill
         stack.alignment = .fill
@@ -244,15 +212,17 @@ private extension ProfileView {
         let label = buildLabel()
         label.text = title
         stack.addArrangedSubview(label)
+        stack.addArrangedSubview(textField)
+        stack.addArrangedSubview(buildSeparator())
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }
     
     func buildSeparator() -> UIView {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .lightGray
+        view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         view.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        view.widthAnchor.constraint(equalToConstant: Metrics.Device.width - 20).isActive = true
+        view.widthAnchor.constraint(equalToConstant: Metrics.Device.width - 25).isActive = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }

@@ -34,10 +34,47 @@ enum CategoryType: String {
 }
 
 struct EventModel {
+    var id: String = ""
     var title: String?
     var local: String?
     var category: CategoryType?
     var time: String?
     var responsible: String?
     var notes: String?
+}
+
+extension EventModel: Storable {
+    static var queryValue: String {
+        EntityTypes.Event.rawValue
+    }
+    
+    var convertedDictionary: [String : Any] {
+        let categoryString = category?.rawValue
+        return [
+            "id": id,
+            "title": title ?? "",
+            "local": local ?? "",
+            "category": categoryString ?? "",
+            "time": time ?? "",
+            "responsible": responsible ?? "",
+            "notes": notes ?? ""
+        ]
+    }
+    
+    init(id: String, dictionary: NSDictionary) {
+        self.id = id
+        self.title = dictionary["title"] as? String
+        self.local = dictionary["local"] as? String
+        let categoryString = dictionary["category"] as? String
+        self.category = CategoryType(rawValue: categoryString ?? "")
+        self.time = dictionary["time"] as? String
+        self.responsible = dictionary["responsible"] as?  String
+        self.notes = dictionary["notes"] as? String
+    }
+}
+
+extension EventModel: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
+    }
 }

@@ -197,6 +197,7 @@ extension NewEventViewController: NewEventViewCoordinator {
             alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
+            viewModel.event.id = UUID().uuidString
             coordinator?.didCreateEvent(event: viewModel.event)
         }
     }
