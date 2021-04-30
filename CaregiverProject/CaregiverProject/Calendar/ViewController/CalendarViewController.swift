@@ -28,7 +28,7 @@ class CalendarViewController: CustomViewController<CalendarView> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        viewModel.fetchData()
+        viewModel.fetchEvents()
     }
     
     func setUp() {
@@ -63,7 +63,7 @@ class CalendarViewController: CustomViewController<CalendarView> {
     
     func addEvent(event: EventModel) {
         viewModel.addEvent(event)
-        viewModel.fetchData()
+        viewModel.fetchEvents()
     }
 }
 

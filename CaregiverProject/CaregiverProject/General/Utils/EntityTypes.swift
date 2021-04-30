@@ -11,6 +11,6 @@ enum EntityTypes: String{
     case Family = "Family"
     case Member = "member"
     case Elder  = "ElderProfile"
-    case Event  = "Event"
+    case Event  = "Events"
     case Task   = "Task"
 }

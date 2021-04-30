@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileView: UIView{
+final class ProfileView: UIView {
     
     private let textFieldDelegate = TextFieldDelegate()
     var profileImageSize: CGFloat { Metrics.Device.width*0.5 }

@@ -10,9 +10,6 @@ import Foundation
 
 class CalendarViewModel {
     @Published var eventList = [EventModel]()
-    private var uniqueEvents = Set<EventModel>() {
-        didSet { eventList = uniqueEvents.map { $0 } }
-    }
     private let dataManager: DataManager
     
     private var familyID: String? {
@@ -23,35 +20,24 @@ class CalendarViewModel {
         self.dataManager = dataManager
     }
     
-    func fetchData() {
-        uniqueEvents.removeAll()
-        fetchFamily()
+    func fetchEvents() {
+        guard let id = familyID else { return }
+        dataManager.readValue(from: id, resutlType: Wrapper<EventModel>.self)
+            .subscribe(Subscribers.Sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [weak self] wrapper in
+                    self?.eventList = wrapper.values
+                }
+            ))
     }
     
     func addEvent(_ event: EventModel) {
-        dataManager.add(value: event) { _ in }
-    }
-}
-
-private extension CalendarViewModel {
-    func fetchFamily() {
         guard let id = familyID else { return }
-        dataManager.readValue(from: id, resutlType: Family.self)
-            .subscribe(Subscribers.Sink(
-                receiveCompletion: { _ in },
-                receiveValue: { [fetchEvent] family in
-                    family.members.forEach { fetchEvent($0) }
-                }
-            ))
-    }
-    
-    func fetchEvent(by id: String) {
-        dataManager.readValue(from: id, resutlType: EventModel.self)
-            .subscribe(Subscribers.Sink(
-                receiveCompletion: { _ in },
-                receiveValue: { [weak self] event in
-                    self?.uniqueEvents.insert(event)
-                }
-            ))
+        eventList.append(event)
+        let wrapper = Wrapper<EventModel>(
+            id: id,
+            values: eventList
+        )
+        dataManager.add(value: wrapper) { _ in }
     }
 }
