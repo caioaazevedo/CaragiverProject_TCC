@@ -14,7 +14,9 @@ class CalendarViewController: CustomViewController<CalendarView> {
 
     var formatter = DateFormatter()
     weak var coordinator: CalendarCoodinator?
-    private var selectedDate: Date = Date()
+    private var selectedDate: Date = Date() {
+        didSet { viewModel.filterEvents(by: selectedDate) }
+    }
     private var eventList: [EventModel] { viewModel.eventList }
     private var subscribers = Set<AnyCancellable>()
     private var viewModel = CalendarViewModel(dataManager: FamilyDataManager())
@@ -50,19 +52,15 @@ class CalendarViewController: CustomViewController<CalendarView> {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.contentView.tableView.reloadData()
+                self?.contentView.calendar.reloadData()
             }
             .store(in: &subscribers)
     }
     
-    private func formatDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        
-        return dateFormatter.string(from: date).uppercased()
-    }
-    
     func addEvent(event: EventModel) {
-        viewModel.addEvent(event)
+        var newEvent = event
+        newEvent.date = selectedDate
+        viewModel.addEvent(newEvent)
         viewModel.fetchEvents()
     }
 }
@@ -76,7 +74,7 @@ extension CalendarViewController: CalendarViewDelegate {
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.selectedDate = date
-        contentView.dateLabel.text = formatDate(date)
+        contentView.dateLabel.text = date.formatDate()
     }
     
     func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
@@ -84,15 +82,9 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        
-        // Indicador de Eventos no calendário
-        formatter.dateFormat = "dd-MM-yyyy"
-        guard let eventDate = formatter.date(from: "29-04-2021") else { return 0 }
-        
-        if date.compare(eventDate) == .orderedSame {
-            return 2
-        }
-        return 0
+        viewModel.eventBackUp
+            .filter { $0.date == date }
+            .count
     }
 }
 

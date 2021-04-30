@@ -11,7 +11,10 @@ import UIKit
 struct ProfileModel: ModelProtocol {
     var id: String
     var name: String
-    var age: Int
+    var age: String
+    var bloodType: String
+    var insurance: String
+    var phoneNumber: String
     var photo: UIImage? = UIImage(named: "profileIcon")        
 }
 
@@ -25,6 +28,9 @@ extension ProfileModel: Storable {
             "id": id,
             "name": name,
             "age": age,
+            "bloodType": bloodType,
+            "insurance": insurance,
+            "phoneNumber": phoneNumber,
             "photo": photo?.encode() ?? ""
         ]
     }
@@ -32,7 +38,10 @@ extension ProfileModel: Storable {
     init(id: String, dictionary: NSDictionary) {
         self.id = id
         self.name = dictionary["name"] as? String ?? "Elder"
-        self.age = dictionary["age"] as? Int ?? 70
+        self.age = dictionary["age"] as? String ?? ""
+        self.bloodType = dictionary["bloodType"] as? String ?? ""
+        self.insurance = dictionary["insurance"] as? String ?? ""
+        self.phoneNumber = dictionary["phoneNumber"] as? String ?? ""
         let imageString = dictionary["photo"] as? String
         self.photo = imageString?.decodedImage()
     }

@@ -10,6 +10,9 @@ import Foundation
 
 class CalendarViewModel {
     @Published var eventList = [EventModel]()
+    var eventBackUp = [EventModel]() {
+        didSet { eventList = eventBackUp }
+    }
     private let dataManager: DataManager
     
     private var familyID: String? {
@@ -26,17 +29,21 @@ class CalendarViewModel {
             .subscribe(Subscribers.Sink(
                 receiveCompletion: { _ in },
                 receiveValue: { [weak self] wrapper in
-                    self?.eventList = wrapper.values
+                    self?.eventBackUp = wrapper.values
                 }
             ))
     }
     
+    func filterEvents(by date: Date) {
+        eventList = eventBackUp.filter { $0.date == date }
+    }
+    
     func addEvent(_ event: EventModel) {
         guard let id = familyID else { return }
-        eventList.append(event)
+        eventBackUp.append(event)
         let wrapper = Wrapper<EventModel>(
             id: id,
-            values: eventList
+            values: eventBackUp
         )
         dataManager.add(value: wrapper) { _ in }
     }

@@ -179,6 +179,8 @@ extension ProfileView: ViewCodeProtocol{
         layoutMargins.right = 2
         backgroundColor = #colorLiteral(red: 0.9732231498, green: 0.9674372077, blue: 0.9776702523, alpha: 1)
         nameTextField.applyShaddow(cornerRadius: 2, opacity: 0.2)
+        phoneNumberTextField.keyboardType = .numberPad
+        ageTextField.keyboardType = .numberPad
     }
 }
 

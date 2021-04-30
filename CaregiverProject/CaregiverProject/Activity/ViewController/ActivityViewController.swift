@@ -12,7 +12,8 @@ class ActivityViewController: UIViewController{
     
     override func loadView() {
         super.loadView()
-        view = activityView        
+        view = activityView
+        setupToHideKeyboardOnTapOnView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

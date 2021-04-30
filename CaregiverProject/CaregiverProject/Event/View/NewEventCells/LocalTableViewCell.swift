@@ -13,6 +13,7 @@ protocol LocalTableViewCellDelegate: class {
 
 class LocalTableViewCell: UITableViewCell {
     
+    private let textFieldDelegate = TextFieldDelegate()
     private weak var delegate: LocalTableViewCellDelegate?
 
     static let identifier = "LocalCellID"
@@ -73,6 +74,7 @@ extension LocalTableViewCell: ViewCodeProtocol {
         selectionStyle = .none
         backgroundColor = .white
         localText.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        localText.delegate = textFieldDelegate
     }
 }
 

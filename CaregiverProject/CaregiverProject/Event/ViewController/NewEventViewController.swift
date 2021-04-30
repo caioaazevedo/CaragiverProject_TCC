@@ -51,6 +51,7 @@ class NewEventViewController: CustomViewController<NewEventView> {
         // Do any additional setup after loading the view.
         setUp()
         bindViewModel()
+        setupToHideKeyboardOnTapOnView()
     }
     
     func setUp() {

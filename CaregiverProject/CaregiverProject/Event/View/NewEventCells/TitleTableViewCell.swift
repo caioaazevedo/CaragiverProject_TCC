@@ -12,7 +12,8 @@ protocol TitleTableViewCellDelegate: class {
 }
 
 class TitleTableViewCell: UITableViewCell {
-
+    
+    private let textFieldDelegate = TextFieldDelegate()
     private weak var delegate: TitleTableViewCellDelegate?
 
     static let identifier = "TitleCellID"
@@ -73,6 +74,7 @@ extension TitleTableViewCell: ViewCodeProtocol {
         selectionStyle = .none
         backgroundColor = .white
         titleText.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+        titleText.delegate = textFieldDelegate
     }
 }
 

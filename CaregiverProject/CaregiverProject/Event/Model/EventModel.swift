@@ -39,6 +39,7 @@ struct EventModel {
     var local: String?
     var category: CategoryType?
     var time: String?
+    var date: Date?
     var responsible: Member?
     var notes: String?
 }
@@ -55,6 +56,7 @@ extension EventModel: Storable {
             "local": local ?? "",
             "category": categoryString ?? "",
             "time": time ?? "",
+            "date": date?.formatDate() ?? "",
             "responsible": (responsible?.convertedDictionary ?? [:]) as NSDictionary,
             "notes": notes ?? ""
         ]
@@ -71,6 +73,8 @@ extension EventModel: Storable {
            let memberID = memberDict["uid"] as? String {
             self.responsible = Member(id: memberID, dictionary: memberDict)
         }
+        let dateString = dictionary["date"] as? String ?? ""
+        self.date = dateString.formatToDate()
         self.notes = dictionary["notes"] as? String
     }
 }
