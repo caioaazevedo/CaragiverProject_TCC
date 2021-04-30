@@ -28,7 +28,7 @@ extension Member: Storable {
         return [
             "name": name,
             "image": imageString,
-            "memberType": memberType,
+            "memberType": memberType.rawValue,
             "isAdmin": isAdmin,
             "uid": id
         ]

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 enum NewEventSecondSectionCells: Int {
     case category
@@ -28,6 +29,7 @@ class NewEventViewController: CustomViewController<NewEventView> {
     weak var coordinator: NewEventCoodinator?
     weak var delegate: NewEventViewControllerDelegate?
     private var viewModel: EventViewModel
+    private var subscribers = Set<AnyCancellable>()
     
     init(viewModel: EventViewModel) {
         self.viewModel = viewModel
@@ -38,11 +40,17 @@ class NewEventViewController: CustomViewController<NewEventView> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchMembers()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setUp()
+        bindViewModel()
     }
     
     func setUp() {
@@ -56,6 +64,15 @@ class NewEventViewController: CustomViewController<NewEventView> {
         let dateformat = DateFormatter()
         dateformat.dateFormat = "hh:mm"
         return dateformat.date(from: string) ?? Date().addingTimeInterval(3600)
+    }
+    
+    func bindViewModel() {
+        viewModel.$members
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] members in
+                self?.contentView.modalView.responsibles = members
+            }
+            .store(in: &subscribers)
     }
 }
 
@@ -111,8 +128,8 @@ extension NewEventViewController: UITableViewDataSource {
             case NewEventSecondSectionCells.responsible.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: ResponsibleTableViewCell.identifier, for: indexPath) as! ResponsibleTableViewCell
                 cell.setUp()
-                if viewModel.event.responsible?.isEmpty == false {
-                    cell.responsibleName.text = viewModel.event.responsible
+                if viewModel.event.responsible?.name.isEmpty == false {
+                    cell.responsibleName.text = viewModel.event.responsible?.name
                 }
                 
                 return cell
@@ -207,7 +224,7 @@ extension NewEventViewController: NewEventViewCoordinator {
         contentView.tableView.reloadData()
     }
     
-    func didChooseResponsible(responsible: String) {
+    func didChooseResponsible(responsible: Member) {
         viewModel.event.responsible = responsible
         contentView.tableView.reloadData()
     }

@@ -10,7 +10,7 @@ import UIKit
 protocol NewEventViewCoordinator: class {
     func didTapCreate()
     func didChooseCategory(category: CategoryType)
-    func didChooseResponsible(responsible: String)
+    func didChooseResponsible(responsible: Member)
 }
 
 class NewEventView: UIView {
@@ -138,7 +138,7 @@ extension NewEventView: NewEventViewControllerDelegate {
 }
 
 extension NewEventView: NewEventModalViewDelegate {
-    func dismissModalView(responsible: String) {
+    func dismissModalView(responsible: Member) {
         self.delegate?.didChooseResponsible(responsible: responsible)
         layoutConstraint?.constant = Metrics.Device.height
         UIView.animate(withDuration: 1, animations: { [self] in

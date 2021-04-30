@@ -144,7 +144,7 @@ extension ProfileView: ViewCodeProtocol{
             taskButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
             profileImageBackground.centerXAnchor.constraint(equalTo: centerXAnchor),
-            profileImageBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            profileImageBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32),
             profileImageBackground.heightAnchor.constraint(equalToConstant: profileImageSize),
             profileImageBackground.widthAnchor.constraint(equalToConstant: profileImageSize),
 
@@ -164,8 +164,8 @@ extension ProfileView: ViewCodeProtocol{
             nameTextField.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -32),
             
             infoScrollView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 32),
-            infoScrollView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            infoScrollView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            infoScrollView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            infoScrollView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             infoScrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             infoStackView.topAnchor.constraint(equalTo: infoScrollView.topAnchor, constant: stackSpacing),

@@ -103,10 +103,12 @@ extension CalendarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier, for: indexPath) as! EventCell
+        let event = eventList[indexPath.row]
         cell.setUp()
-        cell.title.text = eventList[indexPath.row].title
-        cell.personName.text = eventList[indexPath.row].responsible
-        cell.scheduleTime.text = eventList[indexPath.row].time
+        cell.title.text = event.title
+        cell.personName.text = event.responsible?.name
+        cell.personImage.image = event.responsible?.image
+        cell.scheduleTime.text = event.time
         return cell
     }
 }

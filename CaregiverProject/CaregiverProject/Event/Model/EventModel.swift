@@ -39,7 +39,7 @@ struct EventModel {
     var local: String?
     var category: CategoryType?
     var time: String?
-    var responsible: String?
+    var responsible: Member?
     var notes: String?
 }
 
@@ -51,12 +51,11 @@ extension EventModel: Storable {
     var convertedDictionary: [String : Any] {
         let categoryString = category?.rawValue
         return [
-            "id": id,
             "title": title ?? "",
             "local": local ?? "",
             "category": categoryString ?? "",
             "time": time ?? "",
-            "responsible": responsible ?? "",
+            "responsible": (responsible?.convertedDictionary ?? [:]) as NSDictionary,
             "notes": notes ?? ""
         ]
     }
@@ -68,7 +67,10 @@ extension EventModel: Storable {
         let categoryString = dictionary["category"] as? String
         self.category = CategoryType(rawValue: categoryString ?? "")
         self.time = dictionary["time"] as? String
-        self.responsible = dictionary["responsible"] as?  String
+        if let memberDict = dictionary["responsible"] as? NSDictionary,
+           let memberID = memberDict["uid"] as? String {
+            self.responsible = Member(id: memberID, dictionary: memberDict)
+        }
         self.notes = dictionary["notes"] as? String
     }
 }
