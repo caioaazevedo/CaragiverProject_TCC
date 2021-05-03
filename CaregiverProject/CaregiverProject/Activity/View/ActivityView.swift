@@ -15,7 +15,7 @@ final class ActivityView: UIView{
     
     lazy var mainLabel: UILabel = {
         let view = UILabel()
-        view.text = "Tarefas do Idoso"
+        view.text = "Tasks"
         let font = UIFont.preferredFont(forTextStyle: .title1)
         view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         view.adjustsFontForContentSizeCategory = true
@@ -33,7 +33,7 @@ final class ActivityView: UIView{
         
     lazy var addButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Adicionar Tarefa", for: .normal)
+        view.setTitle("Add new Task", for: .normal)
         view.setTitleColor(.blue, for: .normal)
         view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
         view.backgroundColor = .white

@@ -44,15 +44,16 @@ class FamilyManageViewController: UIViewController {
         guard let familyID = UserSession.shared.familyID else { return }
         joinFamily(familyID)
     }
-       
+    
     private func configureButtons(){
         switch manageState{
         case .Join:
-            view.primaryField.placeholder = "Family's Code"
-            view.primaryButton.setTitle("Enter in family", for: .normal)
-            view.primaryButton.addAction(
-                UIAction { [joinFamily] _ in
-                    joinFamily()
+            familyManageView.primaryField.placeholder = "Family's Code"
+            familyManageView.primaryButton.setTitle("Enter in family", for: .normal)
+            familyManageView.primaryButton.addAction(
+                UIAction { [weak self] _ in
+                    let familyCode = self?.familyManageView.primaryField.text ?? ""
+                    self?.joinFamily(familyCode)
                 },
                 for: .touchUpInside
             )
@@ -69,9 +70,7 @@ class FamilyManageViewController: UIViewController {
         }
     }
     
-    private func joinFamily() {
-        guard let view = view as? FamilyManageView else {return}
-        let familyID = view.primaryField.text ?? "Default"
+    private func joinFamily(_ familyID: String) {
         viewModel.joinFamily(familyID: familyID) { [goToFamilyModule] in
             goToFamilyModule()
         }
@@ -87,5 +86,5 @@ class FamilyManageViewController: UIViewController {
         UserDefaults.loginState = .enteredFamily
         coordinator?.showFamilyModule()
     }
-
+    
 }

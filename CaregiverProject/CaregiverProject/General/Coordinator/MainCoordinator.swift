@@ -6,24 +6,46 @@
 //
 
 import UIKit
+import Combine
 
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
+    
+    var subscriber: AnyCancellable?
+    var dismissedLaunch = false
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        switch UserDefaults.loginState {
-        case .alreadyLogged:
-            showGroupManagementView()
-        case .enteredFamily:
-            showFamilyTabBarView()
-        case .firstTimer:
-            showAuthenticationView()
+        if dismissedLaunch{
+            switch UserDefaults.loginState {
+            case .alreadyLogged:
+                showGroupManagementView()
+            case .enteredFamily:
+                showFamilyTabBarView()
+            case .firstTimer:
+                showAuthenticationView()
+            }
+        } else {
+            showLaunchView()
         }
+    }
+    
+    private func showLaunchView(){
+        let coordinator = LaunchCoordinator(navigationController: navigationController)
+        
+        self.subscriber = coordinator.publisher!
+            .receive(on: DispatchQueue.main)
+            .sink { [self] (value) in
+                dismissedLaunch = value
+                start()
+            }
+        
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
     
     private func showAuthenticationView() {

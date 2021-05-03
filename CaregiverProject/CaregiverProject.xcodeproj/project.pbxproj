@@ -66,6 +66,9 @@
 		ACF654C1261B48CA00A5FAC3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF654C0261B48CA00A5FAC3 /* Task.swift */; };
 		ACF654CA261B497900A5FAC3 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF654C9261B497900A5FAC3 /* TaskCell.swift */; };
 		B47535054A304F47969D70C3 /* Pods_CaregiverProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430E0E079F774E9BBCDA5F9 /* Pods_CaregiverProjectTests.framework */; };
+		DD9D5E6426403474008C532A /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D5E6326403474008C532A /* LaunchScreenView.swift */; };
+		DD9D5E74264034E9008C532A /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D5E73264034E9008C532A /* LaunchScreenController.swift */; };
+		DD9D5E81264051C5008C532A /* LaunchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9D5E80264051C5008C532A /* LaunchCoordinator.swift */; };
 		E202115825509B7300790DA9 /* StartFamilyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202115725509B7300790DA9 /* StartFamilyView.swift */; };
 		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
 		E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202116A2550A21100790DA9 /* RegisterViewController.swift */; };
@@ -200,6 +203,9 @@
 		ACF654C9261B497900A5FAC3 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		D1B145D0DA6BFC2D85279B9D /* Pods-CaregiverProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.release.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		D2D0AC7856CD11223D8A9F5A /* Pods-CaregiverProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaregiverProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-CaregiverProjectTests/Pods-CaregiverProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DD9D5E6326403474008C532A /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		DD9D5E73264034E9008C532A /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
+		DD9D5E80264051C5008C532A /* LaunchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCoordinator.swift; sourceTree = "<group>"; };
 		E202115725509B7300790DA9 /* StartFamilyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFamilyView.swift; sourceTree = "<group>"; };
 		E20211652550A0E100790DA9 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		E202116A2550A21100790DA9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -594,6 +600,40 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DD9D5E6B2640349B008C532A /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				DD9D5E6F264034CD008C532A /* View */,
+				DD9D5E85264051EF008C532A /* ViewController */,
+				DD9D5E86264051F7008C532A /* Coordinator */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		DD9D5E6F264034CD008C532A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD9D5E6326403474008C532A /* LaunchScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DD9D5E85264051EF008C532A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DD9D5E73264034E9008C532A /* LaunchScreenController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DD9D5E86264051F7008C532A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DD9D5E80264051C5008C532A /* LaunchCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		E20211802550B33700790DA9 /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +682,7 @@
 		E2137F6B254F3118007F4F53 /* CaregiverProject */ = {
 			isa = PBXGroup;
 			children = (
+				DD9D5E6B2640349B008C532A /* Launch */,
 				E2DD97792552168400A89A04 /* CaregiverProject.entitlements */,
 				E20211802550B33700790DA9 /* General */,
 				E2137FA1254F3F11007F4F53 /* Authentication */,
@@ -838,13 +879,6 @@
 				E21DF9AF261BC2DB0061AE3A /* EventCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		E21DF9B7261BC7350061AE3A /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		E29E87892636D00600401029 /* Event */ = {
@@ -1274,6 +1308,8 @@
 				AC0F44D8261E3AA100710BC0 /* TaskCreateView.swift in Sources */,
 				E29E879B2636D4D100401029 /* NewEventView.swift in Sources */,
 				7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */,
+				DD9D5E81264051C5008C532A /* LaunchCoordinator.swift in Sources */,
+				DD9D5E6426403474008C532A /* LaunchScreenView.swift in Sources */,
 				E21DF9B0261BC2DB0061AE3A /* EventCell.swift in Sources */,
 				793E7395262EF2E400941ED7 /* MainTabBarController.swift in Sources */,
 				79848F082630A38A00D996B0 /* TableViewDelegate.swift in Sources */,
@@ -1296,6 +1332,7 @@
 				E21DF91826152FFA0061AE3A /* CustomViewController.swift in Sources */,
 				7933236C255DEA060011FC03 /* Notification+CustomName.swift in Sources */,
 				E2C108C42568036300CDB7FA /* ErrorHandler.swift in Sources */,
+				DD9D5E74264034E9008C532A /* LaunchScreenController.swift in Sources */,
 				AC9D41BD255AC90400925819 /* ProfileViewModel.swift in Sources */,
 				AC38732D2552E5580084590D /* FamilyManageView.swift in Sources */,
 			);

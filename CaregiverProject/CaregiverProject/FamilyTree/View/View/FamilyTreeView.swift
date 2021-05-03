@@ -50,7 +50,7 @@ final class FamilyTreeView: UIView{
     
     lazy var groupInviteLabel: UIButton = {
         var button = UIButton(frame: .zero)
-        button.setTitle("Convidar alguém pro grupo", for: .normal)
+        button.setTitle("Invite people to the group", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
