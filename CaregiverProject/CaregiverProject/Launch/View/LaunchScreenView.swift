@@ -63,15 +63,15 @@ extension LaunchScreenView: ViewCodeProtocol{
         backgroundColor = .white
         icon.alpha = 0
         title.alpha = 0
-        
+        // @gui, se alguém souber um método menos arcaico, favor comentar
         UIView.animate(withDuration: 1, animations: { [self] in
             icon.alpha = 1
             title.alpha = 1
         },completion: { [self] _ in
-            UIView.animate(withDuration: 0.3,delay: 0.6, animations: {
+            UIView.animate(withDuration: 0.5,delay: 0.6, animations: {
                 icon.alpha = 0
                 title.alpha = 0
-            },completion: { _ in
+            },completion: { [self] _ in
                 self.dismiss()
             })
         }
