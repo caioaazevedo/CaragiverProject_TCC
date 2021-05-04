@@ -23,6 +23,17 @@ extension Member: Storable {
         EntityTypes.Member.rawValue
     }
     
+    var convertedDictionary: [String: Any] {
+        let imageString = image?.encode() ?? ""
+        return [
+            "name": name,
+            "image": imageString,
+            "memberType": memberType.rawValue,
+            "isAdmin": isAdmin,
+            "uid": id
+        ]
+    }
+    
     init(id: String, dictionary: NSDictionary) {
         let memberTypeValue = dictionary["memberType"] as? Int ?? 0
         let imageString =     dictionary["image"] as? String
@@ -33,17 +44,6 @@ extension Member: Storable {
         self.isAdmin =        dictionary["isAdmin"] as? Bool ?? false
         self.email =          ""
         self.password =       ""
-    }
-    
-    func convertToDictionary() -> [String: Any] {
-        let imageString = image?.encode() ?? ""
-        return [
-            "name": name,
-            "image": imageString,
-            "memberType": memberType,
-            "isAdmin": isAdmin,
-            "uid": id
-        ]
     }
 }
 

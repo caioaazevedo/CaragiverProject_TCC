@@ -21,7 +21,7 @@ class NewEventCoodinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.navigationController.navigationBar.isHidden = true
-        self.viewModel = EventViewModel()
+        self.viewModel = EventViewModel(dataManager: FamilyDataManager())
         self.viewController = NewEventViewController(viewModel: viewModel)
     }
     

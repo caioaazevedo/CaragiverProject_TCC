@@ -13,4 +13,19 @@ extension Date {
         dateformat.dateFormat = "hh:mm"
         return dateformat.string(from: self)
     }
+    
+    func formatDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        
+        return dateFormatter.string(from: self).uppercased()
+    }
+}
+
+extension String {
+    func formatToDate() -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        return formatter.date(from: self)
+    }
 }

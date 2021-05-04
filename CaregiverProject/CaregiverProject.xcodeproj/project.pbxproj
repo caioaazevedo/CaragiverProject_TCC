@@ -35,6 +35,8 @@
 		7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */; };
 		79476233260F6C840044F1D0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476232260F6C840044F1D0 /* UIViewController.swift */; };
 		79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476237260F6EDB0044F1D0 /* UIViewControllerPreview.swift */; };
+		7965DC12263AA43600BCF951 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7965DC11263AA43600BCF951 /* CalendarViewModel.swift */; };
+		7965DC18263BDBB600BCF951 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7965DC17263BDBB600BCF951 /* Wrapper.swift */; };
 		79848F0326309A6500D996B0 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79848F0226309A6500D996B0 /* TextFieldDelegate.swift */; };
 		79848F082630A38A00D996B0 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79848F072630A38A00D996B0 /* TableViewDelegate.swift */; };
 		79848F452633058300D996B0 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79848F442633058300D996B0 /* String.swift */; };
@@ -166,6 +168,8 @@
 		7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyTreeViewModel.swift; sourceTree = "<group>"; };
 		79476232260F6C840044F1D0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		79476237260F6EDB0044F1D0 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
+		7965DC11263AA43600BCF951 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		7965DC17263BDBB600BCF951 /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
 		79848F0226309A6500D996B0 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		79848F072630A38A00D996B0 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 		79848F442633058300D996B0 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -411,6 +415,22 @@
 				7947621C260F310F0044F1D0 /* FamilyTreeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7965DC10263AA41B00BCF951 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7965DC11263AA43600BCF951 /* CalendarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7965DC16263BDB9300BCF951 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7965DC17263BDBB600BCF951 /* Wrapper.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AC38732A2552E5340084590D /* Controller */ = {
@@ -802,7 +822,9 @@
 			children = (
 				7914620C26187D2D00EA9AB5 /* Coordinator */,
 				E21DF90A26152F580061AE3A /* View */,
+				7965DC10263AA41B00BCF951 /* ViewModel */,
 				E21DF90B26152F5E0061AE3A /* ViewController */,
+				7965DC16263BDB9300BCF951 /* Model */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -838,13 +860,6 @@
 				E21DF9AF261BC2DB0061AE3A /* EventCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		E21DF9B7261BC7350061AE3A /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		E29E87892636D00600401029 /* Event */ = {
@@ -1211,6 +1226,7 @@
 				E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */,
 				AC0F44E0261E451700710BC0 /* TaskCreateView+DD.swift in Sources */,
 				7947621D260F310F0044F1D0 /* FamilyTreeViewModel.swift in Sources */,
+				7965DC12263AA43600BCF951 /* CalendarViewModel.swift in Sources */,
 				E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */,
 				E29E87AC263859F900401029 /* TimeTableViewCell.swift in Sources */,
 				79960FCE255CB71900A01D85 /* FamilyTreeHeaderView.swift in Sources */,
@@ -1279,6 +1295,7 @@
 				79848F082630A38A00D996B0 /* TableViewDelegate.swift in Sources */,
 				79848F0326309A6500D996B0 /* TextFieldDelegate.swift in Sources */,
 				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
+				7965DC18263BDBB600BCF951 /* Wrapper.swift in Sources */,
 				7914620526187BF200EA9AB5 /* FamilyCoordinator.swift in Sources */,
 				E2F0E7872639A08100B55CE0 /* ResponsibleModalTableViewCell.swift in Sources */,
 				E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */,

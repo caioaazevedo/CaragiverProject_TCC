@@ -9,6 +9,7 @@ import UIKit
 
 final class TaskCreateView: UIView{
     
+    private let textFieldDelegate = TextFieldDelegate()
     var cancelCallback: () -> () = {}
     var addCallback: (Task) -> () = { _ in }
     var selectedCategory = 0
@@ -27,7 +28,7 @@ final class TaskCreateView: UIView{
         return view
     }()
     
-    lazy var text: UITextField = {
+    lazy var text: UITextField = { [weak self] in
         var view = UITextField(frame: .zero)
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
@@ -36,6 +37,7 @@ final class TaskCreateView: UIView{
         view.borderStyle = .roundedRect
         view.textAlignment = .center
         view.textContentType = .name
+        view.delegate = self?.textFieldDelegate
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

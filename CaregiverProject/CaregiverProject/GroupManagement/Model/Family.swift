@@ -25,13 +25,7 @@ extension Family: Storable {
         EntityTypes.Family.rawValue
     }
     
-    init(id: String, dictionary: NSDictionary) {
-        self.id = id
-        self.name = dictionary["name"] as? String ?? ""
-        self.members = dictionary["members"] as? [String] ?? []
-        UserSession.shared.elderID = dictionary["elderID"] as? String
-    }
-    func convertToDictionary() -> [String: Any] {
+    var convertedDictionary: [String: Any] {
         let elderID = UserSession.shared.elderID ?? ""
         return [
             "name": name,
@@ -39,5 +33,12 @@ extension Family: Storable {
             "uid": id,
             "elderID": elderID
         ]
+    }
+    
+    init(id: String, dictionary: NSDictionary) {
+        self.id = id
+        self.name = dictionary["name"] as? String ?? ""
+        self.members = dictionary["members"] as? [String] ?? []
+        UserSession.shared.elderID = dictionary["elderID"] as? String
     }
 }

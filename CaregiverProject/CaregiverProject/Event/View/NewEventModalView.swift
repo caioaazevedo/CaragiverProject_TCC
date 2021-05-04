@@ -9,7 +9,7 @@ import UIKit
 
 protocol NewEventModalViewDelegate: class {
     func dismissModalView(category: CategoryType)
-    func dismissModalView(responsible: String)
+    func dismissModalView(responsible: Member)
 }
 
 enum NewEventModalType {
@@ -33,8 +33,9 @@ class NewEventModalView: UIView {
                              CategoryType.Food.color,
                              CategoryType.Others.color]
     
-    let responsibles: [String] = ["Guilherme", "Fabio", "Caio"]
-    // TODO: ter o array de ids dos Membros
+    var responsibles = Members() {
+        didSet { tableView.reloadData() }
+    }
     
     var modalType: NewEventModalType = .category
     
