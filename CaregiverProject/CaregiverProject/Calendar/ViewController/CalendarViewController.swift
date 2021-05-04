@@ -71,6 +71,10 @@ class CalendarViewController: CustomViewController<CalendarView> {
             showOkAlert(title: title, message: message)
         } catch { }
     }
+    
+    func editEvent(event: EventModel) {
+        
+    }
 }
 
 extension CalendarViewController: CalendarViewDelegate {
@@ -123,5 +127,10 @@ extension CalendarViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView(frame: .zero)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let event = viewModel.eventList[indexPath.row]
+        coordinator?.showEvent(event: event)
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 
 protocol NewEventCoodinatorDelegate: class {
     func didCreateEvent(event: EventModel)
+    func didEditEvent(event: EventModel)
 }
 
 class NewEventCoodinator: Coordinator {
@@ -31,7 +32,19 @@ class NewEventCoodinator: Coordinator {
         navigationController.present(viewController, animated: true)
     }
     
+    func showEvent(event: EventModel) {
+        viewModel.event = event
+        viewController.coordinator = self
+        viewController.editEvent = true
+        navigationController.modalPresentationStyle = .automatic
+        navigationController.present(viewController, animated: true)
+    }
+    
     func didCreateEvent(event: EventModel) {
+        parentCoordinator?.didCreateEvent(event: event)
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    func didEditEvent(event: EventModel) {
         parentCoordinator?.didCreateEvent(event: event)
         viewController.dismiss(animated: true, completion: nil)
     }
