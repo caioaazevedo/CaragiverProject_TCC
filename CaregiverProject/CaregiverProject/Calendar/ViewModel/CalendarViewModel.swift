@@ -8,6 +8,10 @@
 import Combine
 import Foundation
 
+enum CalendarError: Error {
+    case DateNodeValid(title: String, description: String)
+}
+
 class CalendarViewModel {
     @Published var eventList = [EventModel]()
     var eventBackUp = [EventModel]() {
@@ -37,6 +41,13 @@ class CalendarViewModel {
     
     func filterEvents(by date: Date) {
         eventList = eventBackUp.filter { $0.date == date }
+    }
+    
+    func validate(date: Date) throws {
+        let today = Date()
+        if today.formatDate() != date.formatDate() && date <= today {
+            throw CalendarError.DateNodeValid(title: "Error!", description: "Date Invalid!")
+        }
     }
     
     func addEvent(_ event: EventModel) {

@@ -61,10 +61,15 @@ class CalendarViewController: CustomViewController<CalendarView> {
     }
     
     func addEvent(event: EventModel) {
-        var newEvent = event
-        newEvent.date = selectedDate
-        viewModel.addEvent(newEvent)
-        viewModel.fetchEvents(at: selectedDate)
+        do {
+            try viewModel.validate(date: selectedDate)
+            var newEvent = event
+            newEvent.date = selectedDate
+            viewModel.addEvent(newEvent)
+            viewModel.fetchEvents(at: selectedDate)
+        } catch CalendarError.DateNodeValid(let title, let message) {
+            showOkAlert(title: title, message: message)
+        } catch { }
     }
 }
 
@@ -77,6 +82,14 @@ extension CalendarViewController: CalendarViewDelegate {
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
+    }
+    
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if let cell = calendar.cell(for: date, at: monthPosition),
+           let index = calendar.collectionView.indexPath(for: cell as UICollectionViewCell) {
+            calendar.collectionView.reloadItems(at: [index])
+        }
+        calendar.deselect(date)
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
