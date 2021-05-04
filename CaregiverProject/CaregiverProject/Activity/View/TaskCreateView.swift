@@ -14,12 +14,12 @@ final class TaskCreateView: UIView{
     var addCallback: (Task) -> () = { _ in }
     var selectedCategory = 0
     
-    let taskTypes: [String] = ["Higiene","Folga","Tempo","Comida","Cama"]
+    let taskTypes: [String] = ["Hygiene","Coffe","Free-time","Food","Sleep"]
     let taskIcons: [String] = ["hygiene","break","clock","food","sleep"]
     
     lazy var title: UILabel = {
         let view = UILabel()
-        view.text = "Adicionar nova tarefa"
+        view.text = "Add new Task"
         let font = UIFont.preferredFont(forTextStyle: .title3)
         view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         view.adjustsFontForContentSizeCategory = true
@@ -32,7 +32,7 @@ final class TaskCreateView: UIView{
         var view = UITextField(frame: .zero)
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
-        let attributedPlaceholder = NSAttributedString(string: "Nome da tarefa", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
+        let attributedPlaceholder = NSAttributedString(string: "Task name", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         view.attributedPlaceholder = attributedPlaceholder
         view.borderStyle = .roundedRect
         view.textAlignment = .center
@@ -59,7 +59,7 @@ final class TaskCreateView: UIView{
     
     lazy var cancelButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Cancelar", for: .normal)
+        view.setTitle("Cancel", for: .normal)
         view.setTitleColor(.red, for: .normal)
         view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
         view.backgroundColor = .white
@@ -73,7 +73,7 @@ final class TaskCreateView: UIView{
     
     lazy var addButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Adicionar Tarefa", for: .normal)
+        view.setTitle("Add Task", for: .normal)
         view.setTitleColor(.blue, for: .normal)
         view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
         view.backgroundColor = .white
@@ -112,7 +112,7 @@ final class TaskCreateView: UIView{
         default:
             iconName = "hygiene"
         }
-        let task = Task(name: text.text ?? "Tarefa", date: datePicker.date.getFormattedDate(), icon: iconName, isCompleted: false)
+        let task = Task(name: text.text ?? "Task", date: datePicker.date.getFormattedDate(), icon: iconName, isCompleted: false)
         addCallback(task)
     }
     
