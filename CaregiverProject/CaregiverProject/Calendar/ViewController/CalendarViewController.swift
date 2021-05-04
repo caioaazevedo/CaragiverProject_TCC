@@ -7,13 +7,22 @@
 
 import UIKit
 import FSCalendar
+import Combine
+import Firebase
 
 class CalendarViewController: CustomViewController<CalendarView> {
 
     var formatter = DateFormatter()
     weak var coordinator: CalendarCoodinator?
-    private var selectedDate: Date = Date()
-    private var eventList: [EventModel] = []
+    private var eventList: [EventModel] { viewModel.eventList }
+    private var subscribers = Set<AnyCancellable>()
+    private var viewModel = CalendarViewModel(dataManager: FamilyDataManager())
+    private var selectedDate = Date() {
+        willSet {
+            contentView.dateLabel.text = newValue.formatDate()
+            viewModel.filterEvents(by: newValue)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,29 +31,45 @@ class CalendarViewController: CustomViewController<CalendarView> {
         setUp()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        viewModel.fetchEvents(at: selectedDate)
+    }
+    
     func setUp() {
         setUpContentView()
+        bindViewModel()
+        selectedDate = Date()
     }
     
     func setUpContentView() {
         contentView.delegate = self
         contentView.calendar.delegate = self
         contentView.calendar.dataSource = self
-        
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
     }
     
-    private func formatDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        
-        return dateFormatter.string(from: date).uppercased()
+    private func bindViewModel() {
+        viewModel.$eventList
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.contentView.tableView.reloadData()
+                self?.contentView.calendar.reloadData()
+            }
+            .store(in: &subscribers)
     }
     
     func addEvent(event: EventModel) {
-        eventList.append(event)
-        contentView.tableView.reloadData()
+        do {
+            try viewModel.validate(date: selectedDate)
+            var newEvent = event
+            newEvent.date = selectedDate
+            viewModel.addEvent(newEvent)
+            viewModel.fetchEvents(at: selectedDate)
+        } catch CalendarError.DateNodeValid(let title, let message) {
+            showOkAlert(title: title, message: message)
+        } catch { }
     }
 }
 
@@ -54,26 +79,23 @@ extension CalendarViewController: CalendarViewDelegate {
     }
 }
 
-extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        self.selectedDate = date
-        contentView.dateLabel.text = formatDate(date)
+        selectedDate = date
     }
     
-    func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        return true
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if let cell = calendar.cell(for: date, at: monthPosition),
+           let index = calendar.collectionView.indexPath(for: cell as UICollectionViewCell) {
+            calendar.collectionView.reloadItems(at: [index])
+        }
+        calendar.deselect(date)
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        
-        // Indicador de Eventos no calendário
-        formatter.dateFormat = "dd-MM-yyyy"
-        guard let eventDate = formatter.date(from: "29-04-2021") else { return 0 }
-        
-        if date.compare(eventDate) == .orderedSame {
-            return 2
-        }
-        return 0
+        viewModel.eventBackUp
+            .filter { $0.date == date }
+            .count
     }
 }
 
@@ -84,10 +106,12 @@ extension CalendarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EventCell.identifier, for: indexPath) as! EventCell
+        let event = eventList[indexPath.row]
         cell.setUp()
-        cell.title.text = eventList[indexPath.row].title
-        cell.personName.text = eventList[indexPath.row].responsible
-        cell.scheduleTime.text = eventList[indexPath.row].time
+        cell.title.text = event.title
+        cell.personName.text = event.responsible?.name
+        cell.personImage.image = event.responsible?.image
+        cell.scheduleTime.text = event.time
         return cell
     }
 }

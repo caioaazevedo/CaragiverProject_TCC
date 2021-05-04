@@ -34,10 +34,53 @@ enum CategoryType: String {
 }
 
 struct EventModel {
+    var id: String = ""
     var title: String?
     var local: String?
     var category: CategoryType?
     var time: String?
-    var responsible: String?
+    var date: Date?
+    var responsible: Member?
     var notes: String?
+}
+
+extension EventModel: Storable {
+    static var queryValue: String {
+        EntityTypes.Event.rawValue
+    }
+    
+    var convertedDictionary: [String : Any] {
+        let categoryString = category?.rawValue
+        return [
+            "title": title ?? "",
+            "local": local ?? "",
+            "category": categoryString ?? "",
+            "time": time ?? "",
+            "date": date?.formatDate() ?? "",
+            "responsible": (responsible?.convertedDictionary ?? [:]) as NSDictionary,
+            "notes": notes ?? ""
+        ]
+    }
+    
+    init(id: String, dictionary: NSDictionary) {
+        self.id = id
+        self.title = dictionary["title"] as? String
+        self.local = dictionary["local"] as? String
+        let categoryString = dictionary["category"] as? String
+        self.category = CategoryType(rawValue: categoryString ?? "")
+        self.time = dictionary["time"] as? String
+        if let memberDict = dictionary["responsible"] as? NSDictionary,
+           let memberID = memberDict["uid"] as? String {
+            self.responsible = Member(id: memberID, dictionary: memberDict)
+        }
+        let dateString = dictionary["date"] as? String ?? ""
+        self.date = dateString.formatToDate()
+        self.notes = dictionary["notes"] as? String
+    }
+}
+
+extension EventModel: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id.hashValue)
+    }
 }

@@ -33,7 +33,9 @@ extension NewEventModalView: UITableViewDelegate, UITableViewDataSource {
         case .responsible:
             let cell = tableView.dequeueReusableCell(withIdentifier: ResponsibleModalTableViewCell.identifier) as! ResponsibleModalTableViewCell
             cell.setUp()
-            cell.responsibleName.text = responsibles[indexPath.row]
+            let member = responsibles[indexPath.row]
+            cell.responsibleName.text = member.name
+            cell.responsibleImage.image = member.image
             return cell
         }
     }

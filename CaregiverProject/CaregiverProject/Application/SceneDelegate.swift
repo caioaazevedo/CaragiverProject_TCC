@@ -32,6 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         UserSession.shared.familyID = id
+        coordinator?.navigationController.viewWillAppear(true)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

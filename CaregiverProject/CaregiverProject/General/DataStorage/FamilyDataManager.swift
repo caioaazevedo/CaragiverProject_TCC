@@ -21,7 +21,7 @@ class FamilyDataManager {
 extension FamilyDataManager: DataManager {
     func add<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler) {
         guard let db = ref else {return}
-        let parameter = value.convertToDictionary()
+        let parameter = value.convertedDictionary
         db.child(ModelType.queryValue).child(value.id).setValue(parameter)
         completion(true)
     }
@@ -44,7 +44,7 @@ extension FamilyDataManager: DataManager {
     }
     
     func update<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler) {
-        let parameters = value.convertToDictionary()
+        let parameters = value.convertedDictionary
         let db = ref?.child("\(ModelType.queryValue)/\(value.id)")
         db?.updateChildValues(parameters)
         completion(true)
