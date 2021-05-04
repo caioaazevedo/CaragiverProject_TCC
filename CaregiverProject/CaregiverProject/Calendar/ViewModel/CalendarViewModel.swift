@@ -23,13 +23,14 @@ class CalendarViewModel {
         self.dataManager = dataManager
     }
     
-    func fetchEvents() {
+    func fetchEvents(at date: Date) {
         guard let id = familyID else { return }
         dataManager.readValue(from: id, resutlType: Wrapper<EventModel>.self)
             .subscribe(Subscribers.Sink(
                 receiveCompletion: { _ in },
                 receiveValue: { [weak self] wrapper in
                     self?.eventBackUp = wrapper.values
+                    self?.filterEvents(by: date)
                 }
             ))
     }

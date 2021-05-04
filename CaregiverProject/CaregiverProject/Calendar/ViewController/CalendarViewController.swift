@@ -14,12 +14,15 @@ class CalendarViewController: CustomViewController<CalendarView> {
 
     var formatter = DateFormatter()
     weak var coordinator: CalendarCoodinator?
-    private var selectedDate: Date = Date() {
-        didSet { viewModel.filterEvents(by: selectedDate) }
-    }
     private var eventList: [EventModel] { viewModel.eventList }
     private var subscribers = Set<AnyCancellable>()
     private var viewModel = CalendarViewModel(dataManager: FamilyDataManager())
+    private var selectedDate = Date() {
+        willSet {
+            contentView.dateLabel.text = newValue.formatDate()
+            viewModel.filterEvents(by: newValue)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +33,19 @@ class CalendarViewController: CustomViewController<CalendarView> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        viewModel.fetchEvents()
+        viewModel.fetchEvents(at: selectedDate)
     }
     
     func setUp() {
         setUpContentView()
         bindViewModel()
+        selectedDate = Date()
     }
     
     func setUpContentView() {
         contentView.delegate = self
         contentView.calendar.delegate = self
         contentView.calendar.dataSource = self
-        
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
     }
@@ -61,7 +64,7 @@ class CalendarViewController: CustomViewController<CalendarView> {
         var newEvent = event
         newEvent.date = selectedDate
         viewModel.addEvent(newEvent)
-        viewModel.fetchEvents()
+        viewModel.fetchEvents(at: selectedDate)
     }
 }
 
@@ -71,14 +74,9 @@ extension CalendarViewController: CalendarViewDelegate {
     }
 }
 
-extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        self.selectedDate = date
-        contentView.dateLabel.text = date.formatDate()
-    }
-    
-    func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-        return true
+        selectedDate = date
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
