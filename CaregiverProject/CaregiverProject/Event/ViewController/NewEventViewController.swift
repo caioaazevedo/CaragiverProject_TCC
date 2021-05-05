@@ -245,14 +245,15 @@ extension NewEventViewController: NewEventViewCoordinator {
             self.present(alert, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Event Edited", message: "Do you really want to save these changes?", preferredStyle: UIAlertController.Style.alert)
+            
             let continueAction = UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: { _ in
                 self.coordinator?.didEditEvent(event: self.viewModel.event)
             })
             
-            let cancelAction = UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil)
             
-            alert.addAction(continueAction)
             alert.addAction(cancelAction)
+            alert.addAction(continueAction)
             self.present(alert, animated: true, completion: nil)
         }
     }

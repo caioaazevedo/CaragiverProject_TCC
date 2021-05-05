@@ -21,7 +21,6 @@ class NewEventView: UIView {
     
     private var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "New Event"
         let font = UIFont.preferredFont(forTextStyle: .title1)
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
@@ -56,7 +55,6 @@ class NewEventView: UIView {
         view.layer.borderWidth = 2
         view.layer.borderColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1).cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(createTap), for: .touchUpInside)
         return view
     }()
     

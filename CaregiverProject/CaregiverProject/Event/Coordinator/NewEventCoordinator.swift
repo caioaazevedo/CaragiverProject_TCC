@@ -45,7 +45,7 @@ class NewEventCoodinator: Coordinator {
         viewController.dismiss(animated: true, completion: nil)
     }
     func didEditEvent(event: EventModel) {
-        parentCoordinator?.didCreateEvent(event: event)
+        parentCoordinator?.didEditEvent(event: event)
         viewController.dismiss(animated: true, completion: nil)
     }
 }

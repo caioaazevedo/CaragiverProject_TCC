@@ -39,6 +39,13 @@ class CalendarViewModel {
             ))
     }
     
+    func updateEvent(_ editedEvent: EventModel, completion: @escaping ()->()) {
+        dataManager.update(value: editedEvent) { result in
+            completion()
+            return
+        }
+    }
+    
     func filterEvents(by date: Date) {
         eventList = eventBackUp.filter { $0.date == date }
     }
