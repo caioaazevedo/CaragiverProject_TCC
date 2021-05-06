@@ -134,4 +134,12 @@ extension CalendarViewController: UITableViewDelegate {
         let event = viewModel.eventList[indexPath.row]
         coordinator?.showEvent(event: event)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let event = eventList[indexPath.row]
+            viewModel.deleteEvent(event)
+            viewModel.filterEvents(by: selectedDate)
+        }
+    }
 }
