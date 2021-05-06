@@ -27,6 +27,39 @@ class CalendarViewModel {
         self.dataManager = dataManager
     }
     
+    func filterEvents(by date: Date) {
+        eventList = eventBackUp.filter { $0.date?.formatDate() == date.formatDate() }
+    }
+    
+    func validate(date: Date) throws {
+        let today = Date()
+        if today.formatDate() != date.formatDate() && date <= today {
+            throw CalendarError.DateNodeValid(title: "Error!", description: "Date Invalid!")
+        }
+    }
+    
+    func addEvent(_ event: EventModel) {
+        eventBackUp.append(event)
+        uploadEvents()
+    }
+    
+    func updateEvent(_ editedEvent: EventModel) {
+        if let eventIndex = eventBackUp.firstIndex(where: { $0.id == editedEvent.id }) {
+            eventBackUp[eventIndex] = editedEvent
+            uploadEvents()
+        }
+    }
+    
+    func deleteEvent(_ event: EventModel) {
+        if let eventIndex = eventBackUp.firstIndex(where: { $0.id == event.id }) {
+            eventBackUp.remove(at: eventIndex)
+            uploadEvents()
+        }
+    }
+}
+
+//MARK: -Data Base
+extension CalendarViewModel {
     func fetchEvents(at date: Date) {
         guard let id = familyID else { return }
         dataManager.readValue(from: id, resutlType: Wrapper<EventModel>.self)
@@ -39,27 +72,8 @@ class CalendarViewModel {
             ))
     }
     
-    func updateEvent(_ editedEvent: EventModel, completion: @escaping ()->()) {
-        dataManager.update(value: editedEvent) { result in
-            completion()
-            return
-        }
-    }
-    
-    func filterEvents(by date: Date) {
-        eventList = eventBackUp.filter { $0.date == date }
-    }
-    
-    func validate(date: Date) throws {
-        let today = Date()
-        if today.formatDate() != date.formatDate() && date <= today {
-            throw CalendarError.DateNodeValid(title: "Error!", description: "Date Invalid!")
-        }
-    }
-    
-    func addEvent(_ event: EventModel) {
+    private func uploadEvents() {
         guard let id = familyID else { return }
-        eventBackUp.append(event)
         let wrapper = Wrapper<EventModel>(
             id: id,
             values: eventBackUp

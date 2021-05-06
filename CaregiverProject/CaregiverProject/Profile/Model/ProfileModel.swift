@@ -10,6 +10,7 @@ import UIKit
 
 struct ProfileModel: ModelProtocol {
     var id: String
+    var idCardNumber: String
     var name: String
     var age: String
     var bloodType: String
@@ -31,6 +32,7 @@ extension ProfileModel: Storable {
             "bloodType": bloodType,
             "insurance": insurance,
             "phoneNumber": phoneNumber,
+            "idCardNumber": idCardNumber,
             "photo": photo?.encode() ?? ""
         ]
     }
@@ -43,6 +45,7 @@ extension ProfileModel: Storable {
         self.insurance = dictionary["insurance"] as? String ?? ""
         self.phoneNumber = dictionary["phoneNumber"] as? String ?? ""
         let imageString = dictionary["photo"] as? String
+        self.idCardNumber = dictionary["idCardNumber"] as? String ?? ""
         self.photo = imageString?.decodedImage()
     }
 }

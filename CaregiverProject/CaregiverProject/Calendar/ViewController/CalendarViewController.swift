@@ -73,17 +73,8 @@ class CalendarViewController: CustomViewController<CalendarView> {
     }
     
     func editEvent(event: EventModel) {
-        do {
-            try viewModel.validate(date: selectedDate)
-            var editedEvent = event
-            editedEvent.date = selectedDate
-            viewModel.updateEvent(editedEvent) {
-                self.viewModel.fetchEvents(at: self.selectedDate)
-                self.contentView.tableView.reloadData()
-            }
-        } catch CalendarError.DateNodeValid(let title, let message) {
-            showOkAlert(title: title, message: message)
-        } catch { }
+        viewModel.updateEvent(event)
+        viewModel.fetchEvents(at: selectedDate)
     }
 }
 
