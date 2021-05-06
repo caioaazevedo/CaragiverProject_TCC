@@ -66,7 +66,7 @@ class CalendarViewController: CustomViewController<CalendarView> {
             var newEvent = event
             newEvent.date = selectedDate
             viewModel.addEvent(newEvent)
-            viewModel.fetchEvents(at: selectedDate)
+            viewModel.filterEvents(by: selectedDate)
         } catch CalendarError.DateNodeValid(let title, let message) {
             showOkAlert(title: title, message: message)
         } catch { }
@@ -74,7 +74,7 @@ class CalendarViewController: CustomViewController<CalendarView> {
     
     func editEvent(event: EventModel) {
         viewModel.updateEvent(event)
-        viewModel.fetchEvents(at: selectedDate)
+        viewModel.filterEvents(by: selectedDate)
     }
 }
 
@@ -99,7 +99,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         viewModel.eventBackUp
-            .filter { $0.date == date }
+            .filter { $0.date?.formatDate() == date.formatDate() }
             .count
     }
 }
