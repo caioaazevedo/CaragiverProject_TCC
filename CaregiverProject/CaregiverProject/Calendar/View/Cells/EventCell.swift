@@ -61,8 +61,9 @@ extension EventCell: ViewCodeProtocol {
     }
     
     func setUpAditionalConficuration() {
-        self.contentView.backgroundColor = .clear
+        contentView.backgroundColor = .clear
         backgroundColor = .clear
+        selectionStyle = .none
     }
 }
 

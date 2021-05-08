@@ -30,6 +30,7 @@ class NewEventViewController: CustomViewController<NewEventView> {
     weak var delegate: NewEventViewControllerDelegate?
     private var viewModel: EventViewModel
     private var subscribers = Set<AnyCancellable>()
+    var editEvent: Bool = false
     
     init(viewModel: EventViewModel) {
         self.viewModel = viewModel
@@ -54,11 +55,20 @@ class NewEventViewController: CustomViewController<NewEventView> {
         setupToHideKeyboardOnTapOnView()
     }
     
-    func setUp() {
+    private func setUp() {
+        setUpDelegates()
+        setUpUI()
+    }
+    
+    private func setUpDelegates() {
         contentView.tableView.delegate = self
         contentView.tableView.dataSource = self
         contentView.delegate = self
         delegate = contentView
+    }
+    
+    private func setUpUI() {
+        contentView.setUpTo(edit: editEvent)
     }
     
     func setFormattedDate(string: String) -> Date {
@@ -96,11 +106,17 @@ extension NewEventViewController: UITableViewDataSource {
             case NewEventFirstSectionCells.title.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as! TitleTableViewCell
                 cell.setUp(delegate: self)
+                if viewModel.event.title?.isEmpty == false {
+                    cell.titleText.text = viewModel.event.title
+                }
                 
                 return cell
             case NewEventFirstSectionCells.local.rawValue:
                 let cell = tableView.dequeueReusableCell(withIdentifier: LocalTableViewCell.identifier, for: indexPath) as! LocalTableViewCell
                 cell.setUp(delegate: self)
+                if viewModel.event.local?.isEmpty == false {
+                    cell.localText.text = viewModel.event.local
+                }
                 
                 return cell
             default:
@@ -211,12 +227,34 @@ extension NewEventViewController: NewEventViewCoordinator {
         let isValid = viewModel.validateEvent()
         
         if isValid == false {
-            let alert = UIAlertController(title: "Empty Fields", message: "You can't create an event with empty Title and Responsible fields ", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Empty Fields", message: "You can't create an event with empty Title and Responsible fields.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
             viewModel.event.id = UUID().uuidString
             coordinator?.didCreateEvent(event: viewModel.event)
+        }
+    }
+    
+    func didTapEdit() {
+        let isValid = viewModel.validateEvent()
+        
+        if isValid == false {
+            let alert = UIAlertController(title: "Empty Fields", message: "You can't create an event with empty Title and Responsible fields.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Event Edited", message: "Do you really want to save these changes?", preferredStyle: UIAlertController.Style.alert)
+            
+            let continueAction = UIAlertAction(title: "Continue", style: UIAlertAction.Style.default, handler: { _ in
+                self.coordinator?.didEditEvent(event: self.viewModel.event)
+            })
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil)
+            
+            alert.addAction(cancelAction)
+            alert.addAction(continueAction)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

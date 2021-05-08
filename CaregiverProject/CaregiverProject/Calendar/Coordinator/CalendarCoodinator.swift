@@ -30,10 +30,21 @@ class CalendarCoodinator: Coordinator {
         childCoordinators.append(coordinator)
         coordinator.start()
     }
+    
+    func showEvent(event: EventModel) {
+        let coordinator = NewEventCoodinator(navigationController: navigationController)
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
+        coordinator.showEvent(event: event)
+        
+    }
 }
 
 extension CalendarCoodinator: NewEventCoodinatorDelegate {
     func didCreateEvent(event: EventModel) {
         viewController.addEvent(event: event)
+    }
+    func didEditEvent(event: EventModel) {
+        viewController.editEvent(event: event)
     }
 }

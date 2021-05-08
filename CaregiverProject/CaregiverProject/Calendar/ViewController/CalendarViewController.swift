@@ -66,10 +66,15 @@ class CalendarViewController: CustomViewController<CalendarView> {
             var newEvent = event
             newEvent.date = selectedDate
             viewModel.addEvent(newEvent)
-            viewModel.fetchEvents(at: selectedDate)
+            viewModel.filterEvents(by: selectedDate)
         } catch CalendarError.DateNodeValid(let title, let message) {
             showOkAlert(title: title, message: message)
         } catch { }
+    }
+    
+    func editEvent(event: EventModel) {
+        viewModel.updateEvent(event)
+        viewModel.filterEvents(by: selectedDate)
     }
 }
 
@@ -94,7 +99,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         viewModel.eventBackUp
-            .filter { $0.date == date }
+            .filter { $0.date?.formatDate() == date.formatDate() }
             .count
     }
 }
@@ -123,5 +128,18 @@ extension CalendarViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView(frame: .zero)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let event = viewModel.eventList[indexPath.row]
+        coordinator?.showEvent(event: event)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let event = eventList[indexPath.row]
+            viewModel.deleteEvent(event)
+            viewModel.filterEvents(by: selectedDate)
+        }
     }
 }

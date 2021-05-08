@@ -9,6 +9,7 @@ import UIKit
 
 protocol NewEventViewCoordinator: class {
     func didTapCreate()
+    func didTapEdit()
     func didChooseCategory(category: CategoryType)
     func didChooseResponsible(responsible: Member)
 }
@@ -20,7 +21,6 @@ class NewEventView: UIView {
     
     private var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.text = "New Event"
         let font = UIFont.preferredFont(forTextStyle: .title1)
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
@@ -46,9 +46,8 @@ class NewEventView: UIView {
         return tableView
     }()
     
-    lazy var addButton: UIButton = {
+    lazy var mainButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("Create", for: .normal)
         view.setTitleColor(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), for: .normal)
         view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
         view.backgroundColor = .clear
@@ -56,7 +55,6 @@ class NewEventView: UIView {
         view.layer.borderWidth = 2
         view.layer.borderColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1).cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(createTap), for: .touchUpInside)
         return view
     }()
     
@@ -83,12 +81,27 @@ class NewEventView: UIView {
     @objc func createTap() {
         delegate?.didTapCreate()
     }
+    @objc func editTap() {
+        delegate?.didTapEdit()
+    }
+    
+    func setUpTo(edit: Bool) {
+        if edit {
+            titleLabel.text = "Event Details"
+            mainButton.setTitle("Save", for: .normal)
+            mainButton.addTarget(self, action: #selector(editTap), for: .touchUpInside)
+        } else {
+            titleLabel.text = "New Event"
+            mainButton.setTitle("Create", for: .normal)
+            mainButton.addTarget(self, action: #selector(createTap), for: .touchUpInside)
+        }
+    }
 }
 
 extension NewEventView: ViewCodeProtocol {
     func setUpViewHierarchy() {
         addSubview(titleLabel)
-        addSubview(addButton)
+        addSubview(mainButton)
         addSubview(tableView)
         addSubview(modalView)
     }
@@ -99,9 +112,9 @@ extension NewEventView: ViewCodeProtocol {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            addButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            addButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            addButton.heightAnchor.constraint(equalToConstant: 40),
+            mainButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            mainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            mainButton.heightAnchor.constraint(equalToConstant: 40),
             
             tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
