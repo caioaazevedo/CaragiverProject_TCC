@@ -117,6 +117,7 @@ extension CalendarViewController: UITableViewDataSource {
         cell.personName.text = event.responsible?.name
         cell.personImage.image = event.responsible?.image
         cell.scheduleTime.text = event.time
+        cell.categoryColor.backgroundColor = event.category?.color ?? #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         return cell
     }
 }
