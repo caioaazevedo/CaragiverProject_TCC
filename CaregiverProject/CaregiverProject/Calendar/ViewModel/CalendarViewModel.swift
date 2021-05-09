@@ -60,7 +60,7 @@ class CalendarViewModel {
 
 //MARK: -Data Base
 extension CalendarViewModel {
-    func fetchEvents(at date: Date) {
+    func fetchEvents(at date: Date, completion: (()->())?) {
         guard let id = familyID else { return }
         dataManager.readValue(from: id, resutlType: Wrapper<EventModel>.self)
             .subscribe(Subscribers.Sink(
@@ -68,6 +68,7 @@ extension CalendarViewModel {
                 receiveValue: { [weak self] wrapper in
                     self?.eventBackUp = wrapper.values
                     self?.filterEvents(by: date)
+                    completion?()
                 }
             ))
     }

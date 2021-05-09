@@ -33,7 +33,10 @@ class CalendarViewController: CustomViewController<CalendarView> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        viewModel.fetchEvents(at: selectedDate)
+        viewModel.fetchEvents(at: selectedDate) { [weak self] in
+            guard let self = self else { return }
+            self.contentView.tableView.reloadData()
+        }
     }
     
     func setUp() {
