@@ -15,7 +15,7 @@ final class ActivityView: UIView{
     
     lazy var mainLabel: UILabel = {
         let view = UILabel()
-        view.text = "Tasks"
+        view.text = "Routine"
         let font = UIFont.preferredFont(forTextStyle: .title1)
         view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         view.adjustsFontForContentSizeCategory = true
@@ -28,21 +28,16 @@ final class ActivityView: UIView{
         let view = UITableView(frame: .zero, style: .plain)
         view.register(TaskCell.self, forCellReuseIdentifier: "TaskCell")
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.separatorStyle = .none
         return view
     }()
         
     lazy var addButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Add new Task", for: .normal)
-        view.setTitleColor(.blue, for: .normal)
-        view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 2
-        view.layer.borderColor = .init(red: 0, green: 0, blue: 1, alpha: 1)
-        view.addTarget(self, action: #selector(presentCreateTask), for: .touchUpInside)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let button = CustomButton(type: .secondary)
+        button.setTitle("Add new Task", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(presentCreateTask), for: .touchUpInside)
+        return button
     }()
     
     lazy var createTaskView: TaskCreateView = {

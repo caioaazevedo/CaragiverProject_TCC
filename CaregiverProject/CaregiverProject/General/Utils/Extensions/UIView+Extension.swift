@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    func applyShaddow(cornerRadius: CGFloat = 20.0, opacity: Float = 0.5) {
+    func applyShaddow(cornerRadius: CGFloat = 10.0, opacity: Float = 0.5) {
         self.layer.shadowColor = .init(gray: 0.0, alpha: 0.5)
         self.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
         self.layer.shadowOpacity = opacity

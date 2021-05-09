@@ -55,18 +55,12 @@ class CalendarView: UIView {
         return stack
     }()
     
-    private lazy var addEventButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Create Event", for: .normal)
-        view.setTitleColor(#colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), for: .normal)
-        view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 2
-        view.layer.borderColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1).cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(createEvent), for: .touchUpInside)
-        return view
+    private lazy var addEventButton: CustomButton = {
+        let button = CustomButton(type: .primary)
+        button.setTitle("Create Event", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(createEvent), for: .touchUpInside)
+        return button
     }()
     
     let dateLabel: UILabel = {

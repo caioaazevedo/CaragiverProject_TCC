@@ -13,6 +13,17 @@ final class FamilyTreeView: UIView{
     var cellSpacing: CGFloat { Metrics.Device.width/4 - cellSize.width/2 }
     var cellSize: CGSize { CGSize(width: 125, height: 170) }
     
+    lazy var titleLabel: UILabel = {
+        var label = UILabel(frame: .zero)
+        label.text = "Family"
+        let font = UIFont.preferredFont(forTextStyle: .title1)
+        label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
+        label.adjustsFontForContentSizeCategory = true
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy var imageBackground: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .clear
@@ -48,10 +59,13 @@ final class FamilyTreeView: UIView{
         return label
     }()
     
-    lazy var groupInviteLabel: UIButton = {
-        var button = UIButton(frame: .zero)
-        button.setTitle("Invite people to the group", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
+    lazy var inviteButton: UIButton = {
+        let button = CustomButton(type: .primary)
+        button.setTitle("Invite ", for: .normal)
+        let image = UIImage(systemName: "square.and.arrow.up")
+        button.setImage(image, for: .normal)
+        button.tintColor = .white
+        button.semanticContentAttribute = .forceRightToLeft
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -103,18 +117,22 @@ final class FamilyTreeView: UIView{
 
 extension FamilyTreeView: ViewCodeProtocol{
     func setUpViewHierarchy() {
+        addSubview(titleLabel)
         imageBackground.addSubview(elderImage)
         addSubview(imageBackground)
         addSubview(collectionView)
         addSubview(elderName)
         addSubview(breakLine)
-        addSubview(groupInviteLabel)
+        addSubview(inviteButton)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35),
+            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            
             imageBackground.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageBackground.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 25),
+            imageBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
             imageBackground.heightAnchor.constraint(equalToConstant: imageSize),
             imageBackground.widthAnchor.constraint(equalToConstant: imageSize),
             
@@ -128,12 +146,11 @@ extension FamilyTreeView: ViewCodeProtocol{
             elderName.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             elderName.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
-            groupInviteLabel.topAnchor.constraint(equalTo: elderName.bottomAnchor,constant: 10),
-            groupInviteLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            groupInviteLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            inviteButton.topAnchor.constraint(equalTo: elderName.bottomAnchor,constant: 10),
+            inviteButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             breakLine.centerXAnchor.constraint(equalTo: centerXAnchor),
-            breakLine.topAnchor.constraint(equalTo: groupInviteLabel.bottomAnchor, constant: 12),
+            breakLine.topAnchor.constraint(equalTo: inviteButton.bottomAnchor, constant: 12),
             breakLine.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             breakLine.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             breakLine.heightAnchor.constraint(equalToConstant: 5),

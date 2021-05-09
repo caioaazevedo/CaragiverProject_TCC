@@ -58,31 +58,19 @@ final class TaskCreateView: UIView{
     }()
     
     lazy var cancelButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Cancel", for: .normal)
-        view.setTitleColor(.red, for: .normal)
-        view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 2
-        view.layer.borderColor = .init(red: 1, green: 0, blue: 0, alpha: 1)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(cancelTap), for: .touchUpInside)
-        return view
+        let button = CustomButton(type: .cancel)
+        button.setTitle("Cancel", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(cancelTap), for: .touchUpInside)
+        return button
     }()
     
     lazy var addButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Add Task", for: .normal)
-        view.setTitleColor(.blue, for: .normal)
-        view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 2
-        view.layer.borderColor = .init(red: 0, green: 0, blue: 1, alpha: 1)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(addTap), for: .touchUpInside)
-        return view
+        let button = CustomButton(type: .tertiary)
+        button.setTitle("Add Task", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(addTap), for: .touchUpInside)
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -128,9 +116,9 @@ extension TaskCreateView: ViewCodeProtocol{
         addSubview(title)
         addSubview(text)
         addSubview(datePicker)
-        addSubview(tableView)
         addSubview(cancelButton)
         addSubview(addButton)
+        addSubview(tableView)
     }
     
     func setUpViewConstraints() {
@@ -146,16 +134,17 @@ extension TaskCreateView: ViewCodeProtocol{
             datePicker.topAnchor.constraint(equalTo: text.bottomAnchor,constant: 20),
             datePicker.widthAnchor.constraint(equalTo: widthAnchor,multiplier: 0.6),
             
+            cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
+            cancelButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -20),
+            
+            addButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
+            addButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -20),
+            
             tableView.centerXAnchor.constraint(equalTo: centerXAnchor),
             tableView.topAnchor.constraint(equalTo: datePicker.bottomAnchor,constant: 5),
-            tableView.heightAnchor.constraint(equalToConstant: 100),
-            tableView.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.8),
+            tableView.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -20),
+            tableView.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.8)
 
-            cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
-            cancelButton.topAnchor.constraint(equalTo: tableView.bottomAnchor,constant: 15),
-
-            addButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
-            addButton.topAnchor.constraint(equalTo: tableView.bottomAnchor,constant: 15)
 //
         ])
     }
