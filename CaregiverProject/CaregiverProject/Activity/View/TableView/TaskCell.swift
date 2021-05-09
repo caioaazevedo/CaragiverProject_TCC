@@ -12,6 +12,13 @@ class TaskCell: UITableViewCell{
     var tapCallback: () -> () = { }
     var deleteTaskCallback: (String) -> () = { _ in }
     
+    lazy var backView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var check: UIButton = {
         let view = UIButton(frame: .zero)
         view.setImage(UIImage(named: "unchecked"), for: .normal)
@@ -29,6 +36,7 @@ class TaskCell: UITableViewCell{
         view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         view.adjustsFontForContentSizeCategory = true
         view.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -55,8 +63,9 @@ class TaskCell: UITableViewCell{
     
     lazy var deleteButton: UIButton = {
         let view = UIButton(frame: .zero)
-        view.setTitle("ⓧ", for: .normal)
-        view.setTitleColor(.gray, for: .normal)
+        let image = UIImage(systemName: "x.circle.fill")
+        view.setImage(image, for: .normal)
+        view.tintColor = .gray
         view.addTarget(self, action: #selector(deleteTask), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -85,37 +94,43 @@ class TaskCell: UITableViewCell{
 
 extension TaskCell: ViewCodeProtocol{
     func setUpViewHierarchy() {
-        addSubview(check)
-        addSubview(title)
-        addSubview(icon)
-        addSubview(date)
-        addSubview(deleteButton)
+        addSubview(backView)
+        backView.addSubview(check)
+        backView.addSubview(icon)
+        backView.addSubview(date)
+        backView.addSubview(deleteButton)
+        backView.addSubview(title)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            check.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10),
-            check.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            title.leadingAnchor.constraint(equalTo: check.trailingAnchor,constant: 5),
-            title.centerYAnchor.constraint(equalTo: centerYAnchor),
+            backView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            backView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            backView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            backView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             
-            deleteButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -5),
-            deleteButton.topAnchor.constraint(equalTo: topAnchor),
+            check.leadingAnchor.constraint(equalTo: backView.leadingAnchor,constant: 30),
+            check.centerYAnchor.constraint(equalTo: backView.centerYAnchor),
             
-            icon.trailingAnchor.constraint(equalTo: trailingAnchor),
-            icon.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor,constant: 10),
-            icon.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            deleteButton.trailingAnchor.constraint(equalTo: backView.trailingAnchor,constant: -10),
+            deleteButton.topAnchor.constraint(equalTo: backView.topAnchor, constant: 10),
+            
+            icon.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -30),
+            icon.topAnchor.constraint(equalTo: backView.topAnchor,constant: 15),
+            icon.heightAnchor.constraint(equalTo: backView.heightAnchor, multiplier: 0.4),
             
             date.centerXAnchor.constraint(equalTo: icon.centerXAnchor),
             date.topAnchor.constraint(equalTo: icon.bottomAnchor,constant: 5),
+            
+            title.leadingAnchor.constraint(equalTo: check.trailingAnchor,constant: 5),
+            title.trailingAnchor.constraint(equalTo: icon.leadingAnchor, constant: -5),
+            title.centerYAnchor.constraint(equalTo: backView.centerYAnchor)
         ])
     }
     
     func setUpAditionalConficuration() {
-        layer.borderWidth = 2
-        layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 0.4)
-        layer.cornerRadius = 20
+        backView.applyShaddow(cornerRadius: 10, opacity: 0.5)
         isUserInteractionEnabled = true        
     }
 }

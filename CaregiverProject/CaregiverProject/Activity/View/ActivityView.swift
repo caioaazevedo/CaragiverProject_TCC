@@ -43,9 +43,6 @@ final class ActivityView: UIView{
     lazy var createTaskView: TaskCreateView = {
         let view = TaskCreateView()
         view.backgroundColor = .white
-        view.layer.borderWidth = 4
-        view.layer.cornerRadius = 10
-        view.layer.borderColor = .init(red: 1, green: 131/255, blue: 0, alpha: 1)
         view.addCallback = addTask
         view.cancelCallback = dismissView
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -98,8 +95,8 @@ extension ActivityView: ViewCodeProtocol{
             mainLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor,constant: 20),
             mainLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             
-            tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor,constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor,constant: -20),
+            tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: mainLabel.bottomAnchor,constant: 10),
             tableView.bottomAnchor.constraint(equalTo: addButton.topAnchor,constant: -15),
 //            tableView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.8),
@@ -123,6 +120,7 @@ extension ActivityView: ViewCodeProtocol{
         backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.allowsSelection = false                
+        tableView.allowsSelection = false
+        createTaskView.applyShaddow(cornerRadius: 20, opacity: 0.7)
     }
 }
