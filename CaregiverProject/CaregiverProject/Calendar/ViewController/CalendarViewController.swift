@@ -118,7 +118,7 @@ extension CalendarViewController: UITableViewDataSource {
         cell.setUp()
         cell.title.text = event.title
         cell.personName.text = event.responsible?.name
-        cell.personImage.image = event.responsible?.image
+        cell.personImage.image = event.responsible?.image ?? #imageLiteral(resourceName: "profileIcon")
         cell.scheduleTime.text = event.time
         cell.categoryColor.backgroundColor = event.category?.color ?? #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         return cell
@@ -127,7 +127,7 @@ extension CalendarViewController: UITableViewDataSource {
 
 extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 130
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

@@ -48,10 +48,10 @@ final class ProfileView: UIView {
     lazy var profileImage: UIImageView = {
         var image = UIImageView(frame: .zero)
         image.image = UIImage(named: "profileIcon")
-        image.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         image.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = profileImageSize/2
+        image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image

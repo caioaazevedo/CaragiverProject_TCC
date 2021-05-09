@@ -35,7 +35,7 @@ extension NewEventModalView: UITableViewDelegate, UITableViewDataSource {
             cell.setUp()
             let member = responsibles[indexPath.row]
             cell.responsibleName.text = member.name
-            cell.responsibleImage.image = member.image
+            cell.responsibleImage.image = member.image ?? #imageLiteral(resourceName: "profileIcon")
             return cell
         }
     }

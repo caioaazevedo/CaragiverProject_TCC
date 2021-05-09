@@ -13,7 +13,7 @@ class EventCell: UITableViewCell {
     
     private enum Layout {
         static var imageSize: CGFloat = 50.0
-        static var categorySize: CGFloat = 20.0
+        static var categorySize: CGFloat = 25.0
     }
     
     lazy var backView = buildBackView()
@@ -52,6 +52,8 @@ extension EventCell: ViewCodeProtocol {
             
             personName.topAnchor.constraint(equalTo: personImage.bottomAnchor, constant: 10),
             personName.centerXAnchor.constraint(equalTo: personImage.centerXAnchor),
+            personName.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 20),
+            personName.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: 5),
             
             scheduleTime.centerYAnchor.constraint(equalTo: personName.centerYAnchor),
             scheduleTime.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
@@ -86,9 +88,7 @@ extension EventCell {
 
     private func buildPersonImage() -> UIImageView {
         let image = UIImageView(frame: .zero)
-        image.image = UIImage(named: "profileIcon")
-        image.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        image.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        image.image = #imageLiteral(resourceName: "profileIcon")
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = Layout.imageSize/2
         image.clipsToBounds = true
@@ -103,6 +103,8 @@ extension EventCell {
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         label.adjustsFontForContentSizeCategory = true
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textAlignment = .center
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
