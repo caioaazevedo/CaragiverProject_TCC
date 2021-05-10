@@ -38,7 +38,7 @@ final class ProfileView: UIView {
         view.clipsToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.5
-        view.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
         view.layer.shadowRadius = 6
         view.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: profileImageSize, height: profileImageSize), cornerRadius: profileImageSize/2).cgPath
         view.translatesAutoresizingMaskIntoConstraints = false

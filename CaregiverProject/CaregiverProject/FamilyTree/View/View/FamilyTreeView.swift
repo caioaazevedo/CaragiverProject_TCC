@@ -24,18 +24,18 @@ final class FamilyTreeView: UIView{
         return label
     }()
     
-//    lazy var imageBackground: UIView = {
-//        let view = UIView(frame: .zero)
-//        view.backgroundColor = .clear
-//        view.clipsToBounds = false
-//        view.layer.shadowColor = UIColor.black.cgColor
-//        view.layer.shadowOpacity = 0.5
-//        view.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
-//        view.layer.shadowRadius = 6
-//        view.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: imageSize, height: imageSize), cornerRadius: imageSize/2).cgPath
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
+    lazy var imageBackground: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .clear
+        view.clipsToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        view.layer.shadowRadius = 6
+        view.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: imageSize, height: imageSize), cornerRadius: imageSize/2).cgPath
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     lazy var elderImage: UIImageView = {
         let image = UIImage(named: "profileIcon")
@@ -44,7 +44,7 @@ final class FamilyTreeView: UIView{
         imageView.layer.cornerRadius = imageSize/2
         imageView.clipsToBounds = true
         imageView.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -118,8 +118,8 @@ final class FamilyTreeView: UIView{
 extension FamilyTreeView: ViewCodeProtocol{
     func setUpViewHierarchy() {
         addSubview(titleLabel)
-//        imageBackground.addSubview(elderImage)
-        addSubview(elderImage)
+        imageBackground.addSubview(elderImage)
+        addSubview(imageBackground)
         addSubview(collectionView)
         addSubview(elderName)
         addSubview(breakLine)
@@ -131,18 +131,18 @@ extension FamilyTreeView: ViewCodeProtocol{
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35),
             titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             
-            elderImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            elderImage.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
+            imageBackground.centerXAnchor.constraint(equalTo: centerXAnchor),
+            imageBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25),
+            imageBackground.heightAnchor.constraint(equalToConstant: imageSize),
+            imageBackground.widthAnchor.constraint(equalToConstant: imageSize),
+            
+            elderImage.centerXAnchor.constraint(equalTo: imageBackground.centerXAnchor),
+            elderImage.centerYAnchor.constraint(equalTo: imageBackground.centerYAnchor),
             elderImage.heightAnchor.constraint(equalToConstant: imageSize),
             elderImage.widthAnchor.constraint(equalToConstant: imageSize),
             
-//            elderImage.centerXAnchor.constraint(equalTo: imageBackground.centerXAnchor),
-//            elderImage.centerYAnchor.constraint(equalTo: imageBackground.centerYAnchor),
-//            elderImage.heightAnchor.constraint(equalToConstant: imageSize),
-//            elderImage.widthAnchor.constraint(equalToConstant: imageSize),
-            
             elderName.centerXAnchor.constraint(equalTo: centerXAnchor),
-            elderName.topAnchor.constraint(equalTo: elderImage.bottomAnchor, constant: 16),
+            elderName.topAnchor.constraint(equalTo: imageBackground.bottomAnchor, constant: 16),
             elderName.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             elderName.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
@@ -165,6 +165,5 @@ extension FamilyTreeView: ViewCodeProtocol{
     
     func setUpAditionalConficuration() {
         self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        elderImage.applyShaddow(cornerRadius: imageSize/2, opacity: 0.5, offset: CGSize(width: 1, height: 1), radius: 6)
     }
 }
