@@ -33,7 +33,10 @@ class CalendarViewController: CustomViewController<CalendarView> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        viewModel.fetchEvents(at: selectedDate)
+        viewModel.fetchEvents(at: selectedDate) { [weak self] in
+            guard let self = self else { return }
+            self.contentView.tableView.reloadData()
+        }
     }
     
     func setUp() {
@@ -115,15 +118,16 @@ extension CalendarViewController: UITableViewDataSource {
         cell.setUp()
         cell.title.text = event.title
         cell.personName.text = event.responsible?.name
-        cell.personImage.image = event.responsible?.image
+        cell.personImage.image = event.responsible?.image ?? #imageLiteral(resourceName: "profileIcon")
         cell.scheduleTime.text = event.time
+        cell.categoryColor.backgroundColor = event.category?.color ?? #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         return cell
     }
 }
 
 extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 130
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

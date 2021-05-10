@@ -47,7 +47,7 @@ class FamilyTreeViewController: UIViewController {
     }
     
     private func setupButton() {
-        familyTreeView.groupInviteLabel
+        familyTreeView.inviteButton
             .addAction(UIAction { [inviteMember] _ in
                 inviteMember()
             },

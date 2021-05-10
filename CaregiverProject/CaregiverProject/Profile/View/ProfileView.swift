@@ -25,9 +25,9 @@ final class ProfileView: UIView {
         return label
     }()
     
-    lazy var taskButton: UIButton = {
-        var button = UIButton(frame: .zero)
-        button.setImage(UIImage(named: "taskIcon"), for: .normal)
+    lazy var taskButton: CustomButton = {
+        let button = CustomButton(type: .primary)
+        button.setTitle("Routine", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -38,7 +38,7 @@ final class ProfileView: UIView {
         view.clipsToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.5
-        view.layer.shadowOffset = CGSize(width: 3.0, height: 3.0)
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
         view.layer.shadowRadius = 6
         view.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: profileImageSize, height: profileImageSize), cornerRadius: profileImageSize/2).cgPath
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -48,10 +48,10 @@ final class ProfileView: UIView {
     lazy var profileImage: UIImageView = {
         var image = UIImageView(frame: .zero)
         image.image = UIImage(named: "profileIcon")
-        image.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         image.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = profileImageSize/2
+        image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -129,19 +129,16 @@ extension ProfileView: ViewCodeProtocol{
         profileImageBackground.addSubview(profileImage)
         addSubview(profileImageBackground)
         addSubview(titleLabel)
-        addSubview(taskButton)
         addSubview(imageButton)
+        addSubview(taskButton)
         addSubview(nameTextField)
         addSubview(infoScrollView)
     }
     
     func setUpViewConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 35),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 35),
             titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            
-            taskButton.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 50),
-            taskButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
             profileImageBackground.centerXAnchor.constraint(equalTo: centerXAnchor),
             profileImageBackground.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32),
@@ -158,7 +155,10 @@ extension ProfileView: ViewCodeProtocol{
             imageButton.trailingAnchor.constraint(equalTo: profileImage.trailingAnchor),
             imageButton.bottomAnchor.constraint(equalTo: profileImage.bottomAnchor),
             
-            nameTextField.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 32),
+            taskButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 20),
+            taskButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
+            nameTextField.topAnchor.constraint(equalTo: taskButton.bottomAnchor, constant: 40),
             nameTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
             nameTextField.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 32),
             nameTextField.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -32),
@@ -177,7 +177,7 @@ extension ProfileView: ViewCodeProtocol{
     func setUpAditionalConficuration() {
         layoutMargins.left = 2
         layoutMargins.right = 2
-        backgroundColor = #colorLiteral(red: 0.9732231498, green: 0.9674372077, blue: 0.9776702523, alpha: 1)
+        backgroundColor = .white
         nameTextField.applyShaddow(cornerRadius: 2, opacity: 0.2)
         phoneNumberTextField.keyboardType = .numberPad
         ageTextField.keyboardType = .numberPad

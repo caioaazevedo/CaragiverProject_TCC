@@ -46,16 +46,10 @@ class NewEventView: UIView {
         return tableView
     }()
     
-    lazy var mainButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitleColor(#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), for: .normal)
-        view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
-        view.backgroundColor = .clear
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 2
-        view.layer.borderColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1).cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    lazy var mainButton: CustomButton = {
+        let button = CustomButton(type: .secondary)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     lazy var modalView: NewEventModalView = {

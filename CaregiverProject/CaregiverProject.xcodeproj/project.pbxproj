@@ -120,6 +120,7 @@
 		E2DD96E42551A66E00A89A04 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96E32551A66E00A89A04 /* RegisterInteractor.swift */; };
 		E2DD96E92551A96800A89A04 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD96E82551A96800A89A04 /* RegisterPresenter.swift */; };
 		E2F0E7872639A08100B55CE0 /* ResponsibleModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0E7862639A08100B55CE0 /* ResponsibleModalTableViewCell.swift */; };
+		E2F1E555264817A70011958B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F1E554264817A70011958B /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,6 +267,7 @@
 		E2DD96E82551A96800A89A04 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		E2DD97792552168400A89A04 /* CaregiverProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CaregiverProject.entitlements; sourceTree = "<group>"; };
 		E2F0E7862639A08100B55CE0 /* ResponsibleModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsibleModalTableViewCell.swift; sourceTree = "<group>"; };
+		E2F1E554264817A70011958B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -487,6 +489,7 @@
 		AC3D575F2552D8040013D470 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E2F1E553264817800011958B /* CustomButton */,
 				E21DF91626152FB70061AE3A /* ViewController */,
 				E21DF8EE261350090061AE3A /* ImageConverter */,
 				E2DC2AD0255CA8AD008468E5 /* Extensions */,
@@ -1012,6 +1015,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		E2F1E553264817800011958B /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				E2F1E554264817A70011958B /* CustomButton.swift */,
+			);
+			path = CustomButton;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1313,6 +1324,7 @@
 				E21DF8F0261350200061AE3A /* ImageConverter.swift in Sources */,
 				AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */,
 				791461DC2617367800EA9AB5 /* GroupManagementCoordinator.swift in Sources */,
+				E2F1E555264817A70011958B /* CustomButton.swift in Sources */,
 				E29E87C0263891A300401029 /* LocalTableViewCell.swift in Sources */,
 				E202118E2550B55700790DA9 /* Member.swift in Sources */,
 				AC0F44E5261E45EC00710BC0 /* CreateTaskCell.swift in Sources */,
