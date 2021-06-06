@@ -89,7 +89,7 @@ extension EventCell {
     private func buildPersonImage() -> UIImageView {
         let image = UIImageView(frame: .zero)
         image.image = #imageLiteral(resourceName: "profileIcon")
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = Layout.imageSize/2
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false

@@ -8,8 +8,8 @@
 import Combine
 import Foundation
 
-enum CalendarError: Error {
-    case DateNodeValid(title: String, description: String)
+enum DataManagerError: Error {
+    case invalidDate(title: String, description: String)
 }
 
 class CalendarViewModel {
@@ -34,7 +34,7 @@ class CalendarViewModel {
     func validate(date: Date) throws {
         let today = Date()
         if today.formatDate() != date.formatDate() && date <= today {
-            throw CalendarError.DateNodeValid(title: "Error!", description: "Date Invalid!")
+            throw DataManagerError.invalidDate(title: "Error!", description: "Date Invalid!")
         }
     }
     

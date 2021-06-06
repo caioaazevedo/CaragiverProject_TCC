@@ -19,7 +19,7 @@ class ResponsibleModalTableViewCell: UITableViewCell {
         let image = UIImageView(frame: .zero)
         image.image = UIImage(named: "profileIcon")
         image.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = imageSize/2
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false

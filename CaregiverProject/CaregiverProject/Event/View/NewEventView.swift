@@ -55,9 +55,6 @@ class NewEventView: UIView {
     lazy var modalView: NewEventModalView = {
         let view = NewEventModalView()
         view.backgroundColor = .white
-        view.layer.borderWidth = 4
-        view.layer.cornerRadius = 10
-        view.layer.borderColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1).cgColor
         view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -135,6 +132,7 @@ extension NewEventView: NewEventViewControllerDelegate {
         modalView.modalType = type
         modalView.titleLabel.text = type == .category ? "Categories:" : "Responsible:"
         modalView.tableView.reloadData()
+        modalView.applyShaddow(cornerRadius: 20, opacity: 0.7)
         layoutConstraint?.constant = Metrics.Device.height*0.3
         
         UIView.animate(withDuration: 1, animations: { [self] in

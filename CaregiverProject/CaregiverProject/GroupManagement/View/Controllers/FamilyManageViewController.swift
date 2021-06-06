@@ -71,8 +71,12 @@ class FamilyManageViewController: UIViewController {
     }
     
     private func joinFamily(_ familyID: String) {
-        viewModel.joinFamily(familyID: familyID) { [goToFamilyModule] in
-            goToFamilyModule()
+        viewModel.joinFamily(familyID: familyID) { [goToFamilyModule, showOkAlert] valid in
+            if valid {
+                goToFamilyModule()
+            } else {
+                showOkAlert("Error!", "The token entered is invalid.")
+            }
         }
     }
     

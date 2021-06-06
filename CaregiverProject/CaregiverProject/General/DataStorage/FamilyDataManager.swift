@@ -34,7 +34,10 @@ extension FamilyDataManager: DataManager {
     func readValue<ModelType: Storable>(from dataID: String, resutlType: ModelType.Type) -> AnyPublisher<ModelType, Error> {
         return Future<ModelType, Error> { [ref] promise in
             ref?.child(ModelType.queryValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
-                guard let dictionary = snapshot.value as? NSDictionary else { return }
+                guard let dictionary = snapshot.value as? NSDictionary else {
+                    promise(.failure(DataManagerError.invalidDate(title: "Error!", description: "The token is invalid.")))
+                    return
+                }
                 let model = ModelType(id: dataID, dictionary: dictionary)
                 promise(.success(model))
             }) { (error) in
