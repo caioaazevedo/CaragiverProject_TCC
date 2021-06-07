@@ -44,7 +44,7 @@ final class FamilyTreeView: UIView{
         imageView.layer.cornerRadius = imageSize/2
         imageView.clipsToBounds = true
         imageView.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

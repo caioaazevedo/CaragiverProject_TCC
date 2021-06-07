@@ -32,9 +32,19 @@ class FamilyManageViewModel {
         }
     }
     
-    func joinFamily(familyID: String, completion: @escaping () -> Void) {
-        guard let memberId = UserSession.shared.id else { return }
+    func joinFamily(familyID: String, completion: @escaping (Bool) -> Void) {
+        guard
+            let memberId = UserSession.shared.id,
+            !familyID.isEmpty,
+            ![".","#","$","[","]"].contains(familyID) else {
+            completion(false)
+            return
+        }
         dataManager.readValue(from: familyID, resutlType: Family.self)
+            .mapError { (error) -> Error in
+                completion(false)
+                return error
+            }
             .subscribe(Subscribers.Sink(
                 receiveCompletion: { _ in },
                 receiveValue: { [dataManager] family in
@@ -42,7 +52,7 @@ class FamilyManageViewModel {
                     addedFamily.members.append(memberId)
                     dataManager.update(value: addedFamily) { _ in
                         UserSession.shared.familyID = familyID
-                        completion()
+                        completion(true)
                     }
                 }
             ))

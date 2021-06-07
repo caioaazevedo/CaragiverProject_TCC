@@ -26,7 +26,6 @@ class CalendarViewController: CustomViewController<CalendarView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         setUp()
     }
@@ -70,8 +69,10 @@ class CalendarViewController: CustomViewController<CalendarView> {
             newEvent.date = selectedDate
             viewModel.addEvent(newEvent)
             viewModel.filterEvents(by: selectedDate)
-        } catch CalendarError.DateNodeValid(let title, let message) {
-            showOkAlert(title: title, message: message)
+        } catch DataManagerError.invalidDate(let title, let message) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                self?.showOkAlert(title: title, message: message)
+            }
         } catch { }
     }
     
