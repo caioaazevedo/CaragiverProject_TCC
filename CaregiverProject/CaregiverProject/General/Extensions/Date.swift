@@ -21,7 +21,7 @@ extension Date {
         return dateFormatter.string(from: self).uppercased()
     }
     
-    func getNumber() -> Int {
+    func getTodayNumber() -> Int {
         return Calendar.current.dateComponents([.day], from: self).day ?? 1
     }
 }

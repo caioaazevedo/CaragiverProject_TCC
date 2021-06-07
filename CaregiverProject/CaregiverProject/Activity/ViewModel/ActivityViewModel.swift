@@ -31,7 +31,7 @@ struct ActivityViewModel{
                                     isCompleted: converted?["isCompleted"] as! Bool,
                                     specificDay: day as! Int)
                     
-                    if task.specificDay != Date().getNumber() {
+                    if task.specificDay != Date().getTodayNumber() {
                         task.isCompleted = false
                     }
                     
