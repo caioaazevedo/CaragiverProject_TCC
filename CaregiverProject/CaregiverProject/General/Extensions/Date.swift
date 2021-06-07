@@ -20,6 +20,10 @@ extension Date {
         
         return dateFormatter.string(from: self).uppercased()
     }
+    
+    func getNumber() -> Int {
+        return Calendar.current.dateComponents([.day], from: self).day ?? 1
+    }
 }
 
 extension String {
