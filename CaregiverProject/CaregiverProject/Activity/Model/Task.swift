@@ -14,4 +14,5 @@ struct Task {
     var date: String
     var icon: String
     var isCompleted: Bool
+    var specificDay: Int
 }

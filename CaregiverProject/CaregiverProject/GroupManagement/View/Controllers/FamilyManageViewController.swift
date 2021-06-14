@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-protocol FamilyManageCoordinator: class {
+protocol FamilyManageCoordinator: AnyObject {
     func showFamilyModule()
 }
 

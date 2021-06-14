@@ -24,11 +24,19 @@ struct ActivityViewModel{
             guard let dictionary = snapshot.value as? NSDictionary else {return}
             dictionary.allKeys.forEach { (value) in
                 let converted = dictionary[value] as? NSDictionary
-                let task = Task(name: converted?["name"] as! String,
-                                date: converted?["date"] as! String,
-                                icon: converted?["icon"] as! String,
-                                isCompleted: converted?["isCompleted"] as! Bool)
-                tasks.append(task)
+                if let day = converted?["specificDay"]{
+                    var task = Task(name: converted?["name"] as! String,
+                                    date: converted?["date"] as! String,
+                                    icon: converted?["icon"] as! String,
+                                    isCompleted: converted?["isCompleted"] as! Bool,
+                                    specificDay: day as! Int)
+                    
+                    if task.specificDay != Date().getTodayNumber() {
+                        task.isCompleted = false
+                    }
+                    
+                    tasks.append(task)
+                }
             }
             completion(tasks)            
         }
@@ -41,6 +49,7 @@ struct ActivityViewModel{
             let taskDict: [String:Any] = ["name": task.name,
                                           "date": task.date,
                                           "icon": task.icon,
+                                          "specificDay": task.specificDay,
                                           "isCompleted": task.isCompleted
             ]
             fbTasks[UUID().uuidString] = taskDict

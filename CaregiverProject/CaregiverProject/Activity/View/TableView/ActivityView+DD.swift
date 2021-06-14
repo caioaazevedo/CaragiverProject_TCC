@@ -38,7 +38,7 @@ extension ActivityView: UITableViewDelegate, UITableViewDataSource{
             cell.icon.isHidden = true
             cell.date.isHidden = true
             cell.deleteButton.isHidden = true
-            cell.title.text = "The elderly doesn't have any tasks yet..."
+            cell.title.text = "The elder doesn't have any tasks yet..."
             return cell
         } else {
             cell.check.isHidden = false

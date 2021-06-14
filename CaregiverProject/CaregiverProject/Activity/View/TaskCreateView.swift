@@ -100,7 +100,8 @@ final class TaskCreateView: UIView{
         default:
             iconName = "hygiene"
         }
-        let task = Task(name: text.text ?? "Task", date: datePicker.date.getFormattedDate(), icon: iconName, isCompleted: false)
+                
+        let task = Task(name: text.text ?? "Task", date: datePicker.date.getFormattedDate(), icon: iconName, isCompleted: false, specificDay: Date().getTodayNumber())
         addCallback(task)
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NewEventViewCoordinator: class {
+protocol NewEventViewCoordinator: AnyObject {
     func didTapCreate()
     func didTapEdit()
     func didChooseCategory(category: CategoryType)

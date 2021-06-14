@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NewEventModalViewDelegate: class {
+protocol NewEventModalViewDelegate: AnyObject {
     func dismissModalView(category: CategoryType)
     func dismissModalView(responsible: Member)
 }
