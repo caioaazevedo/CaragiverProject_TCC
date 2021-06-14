@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TimeTableViewCellDelegate: class {
+protocol TimeTableViewCellDelegate: AnyObject {
     func didChangeTime(time: String)
 }
 

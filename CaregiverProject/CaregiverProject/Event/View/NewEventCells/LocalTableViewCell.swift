@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol LocalTableViewCellDelegate: class {
+protocol LocalTableViewCellDelegate: AnyObject {
     func didChangeLocal(text: String)
 }
 

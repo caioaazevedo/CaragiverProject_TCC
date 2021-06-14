@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-protocol CalendarViewDelegate: class {
+protocol CalendarViewDelegate: AnyObject {
     func createNewEvent()
 }
 
