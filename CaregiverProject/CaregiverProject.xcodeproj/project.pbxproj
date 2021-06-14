@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1BFCFACFDCC1DF898A4BBEAE /* Pods_CaregiverProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 313ADE18372FCB029E4D7D5D /* Pods_CaregiverProject.framework */; };
 		2D6F3A3126BEC3E77F70008F /* Pods_CaregiverProject_CaregiverProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8127C265ABC15FE38B9E554E /* Pods_CaregiverProject_CaregiverProjectUITests.framework */; };
+		7901CC612671DA7E00C29D87 /* FamilyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4672672552DF15002AC45B /* FamilyBuilder.swift */; };
+		7901CC622671DACF00C29D87 /* AuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202117B2550B2EC00790DA9 /* AuthenticationInteractor.swift */; };
+		7901CC632671DB1F00C29D87 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137FB0254F4204007F4F53 /* LoginView.swift */; };
+		7901CC642671DB1F00C29D87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6E254F3118007F4F53 /* SceneDelegate.swift */; };
 		7904B48E255AB4C400D078F5 /* FamilyTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B48D255AB4C400D078F5 /* FamilyTreeView.swift */; };
 		7904B499255ABC9D00D078F5 /* FamilyTreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B498255ABC9D00D078F5 /* FamilyTreeCell.swift */; };
 		7904B49E255AD74A00D078F5 /* FamilyTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7904B49D255AD74A00D078F5 /* FamilyTreeViewController.swift */; };
@@ -53,7 +57,6 @@
 		AC38732F2552E8190084590D /* CRUDOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC38732E2552E8190084590D /* CRUDOperations.swift */; };
 		AC3D574E2552D41D0013D470 /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D574D2552D41D0013D470 /* Family.swift */; };
 		AC3D57612552D8140013D470 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3D57602552D8140013D470 /* Metrics.swift */; };
-		AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4672672552DF15002AC45B /* FamilyBuilder.swift */; };
 		AC7C029F2554AD71002FE9DD /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7C029E2554AD71002FE9DD /* UserSession.swift */; };
 		AC9D41B8255AC8EF00925819 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41B7255AC8EF00925819 /* ProfileView.swift */; };
 		AC9D41BD255AC90400925819 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D41BC255AC90400925819 /* ProfileViewModel.swift */; };
@@ -75,11 +78,9 @@
 		E20211662550A0E100790DA9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211652550A0E100790DA9 /* RegisterView.swift */; };
 		E202116B2550A21100790DA9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202116A2550A21100790DA9 /* RegisterViewController.swift */; };
 		E20211772550AC4D00790DA9 /* StartFamilyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211762550AC4D00790DA9 /* StartFamilyViewController.swift */; };
-		E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202117B2550B2EC00790DA9 /* AuthenticationInteractor.swift */; };
 		E20211832550B35900790DA9 /* ViewCodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20211822550B35900790DA9 /* ViewCodeProtocol.swift */; };
 		E202118E2550B55700790DA9 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202118D2550B55700790DA9 /* Member.swift */; };
 		E2137F6D254F3118007F4F53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6C254F3118007F4F53 /* AppDelegate.swift */; };
-		E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F6E254F3118007F4F53 /* SceneDelegate.swift */; };
 		E2137F71254F3118007F4F53 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F70254F3118007F4F53 /* AuthenticationViewController.swift */; };
 		E2137F74254F3118007F4F53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2137F72254F3118007F4F53 /* Main.storyboard */; };
 		E2137F76254F311A007F4F53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2137F75254F311A007F4F53 /* Assets.xcassets */; };
@@ -87,7 +88,6 @@
 		E2137F84254F311A007F4F53 /* CaregiverProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F83254F311A007F4F53 /* CaregiverProjectTests.swift */; };
 		E2137F8F254F311A007F4F53 /* CaregiverProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137F8E254F311A007F4F53 /* CaregiverProjectUITests.swift */; };
 		E2137FAC254F4108007F4F53 /* AuthenticationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137FAB254F4108007F4F53 /* AuthenticationProtocols.swift */; };
-		E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2137FB0254F4204007F4F53 /* LoginView.swift */; };
 		E2137FD5255092E1007F4F53 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2137FD4255092E1007F4F53 /* GoogleService-Info.plist */; };
 		E2194788255B587A0013E942 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2194787255B587A0013E942 /* ImagePickerManager.swift */; };
 		E219478D255B592B0013E942 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E219478C255B592B0013E942 /* StringHelper.swift */; };
@@ -1262,6 +1262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7901CC632671DB1F00C29D87 /* LoginView.swift in Sources */,
+				7901CC642671DB1F00C29D87 /* SceneDelegate.swift in Sources */,
+				7901CC622671DACF00C29D87 /* AuthenticationInteractor.swift in Sources */,
+				7901CC612671DA7E00C29D87 /* FamilyBuilder.swift in Sources */,
 				7914614A26145A1C00EA9AB5 /* Storable.swift in Sources */,
 				E29E878E2636D3DB00401029 /* NewEventCoordinator.swift in Sources */,
 				7914622426187DE700EA9AB5 /* ProfileBuilder.swift in Sources */,
@@ -1333,11 +1337,7 @@
 				AC9D6243261D1EB600EE730B /* Date.swift in Sources */,
 				79960FC9255C3ECD00A01D85 /* AppUtility.swift in Sources */,
 				7914621C26187DC600EA9AB5 /* ProfileCoordinator.swift in Sources */,
-				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
-				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
-				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
 				E29E87E02638BB1300401029 /* NewEventModalView.swift in Sources */,
-				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				7914619F2617100100EA9AB5 /* Coordinator.swift in Sources */,
 				79476238260F6EDB0044F1D0 /* UIViewControllerPreview.swift in Sources */,
 				AC0F44D8261E3AA100710BC0 /* TaskCreateView.swift in Sources */,
@@ -1349,16 +1349,12 @@
 				793E7395262EF2E400941ED7 /* MainTabBarController.swift in Sources */,
 				79848F082630A38A00D996B0 /* TableViewDelegate.swift in Sources */,
 				79848F0326309A6500D996B0 /* TextFieldDelegate.swift in Sources */,
-				AC4672682552DF15002AC45B /* FamilyBuilder.swift in Sources */,
 				7965DC18263BDBB600BCF951 /* Wrapper.swift in Sources */,
 				7914620526187BF200EA9AB5 /* FamilyCoordinator.swift in Sources */,
 				E2F0E7872639A08100B55CE0 /* ResponsibleModalTableViewCell.swift in Sources */,
 				E21DF90D26152F730061AE3A /* CalendarView.swift in Sources */,
 				ACC22E66261B4EEE002A9722 /* ActivityViewController.swift in Sources */,
-				E202117C2550B2EC00790DA9 /* AuthenticationInteractor.swift in Sources */,
 				E29E87CF2638AE8300401029 /* EventViewModel.swift in Sources */,
-				E2137FB1254F4204007F4F53 /* LoginView.swift in Sources */,
-				E2137F6F254F3118007F4F53 /* SceneDelegate.swift in Sources */,
 				ACEF1C14255425CF00346B67 /* EntityTypes.swift in Sources */,
 				79848F452633058300D996B0 /* String.swift in Sources */,
 				791461E526173F5400EA9AB5 /* GroupManagementBuilder.swift in Sources */,
@@ -1555,10 +1551,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.UCB.TCC.CaregiverProject2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1576,10 +1573,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.UCB.TCC.CaregiverProject2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -20,7 +20,7 @@ enum NewEventFirstSectionCells: Int {
     case local
 }
 
-protocol NewEventViewControllerDelegate: class {
+protocol NewEventViewControllerDelegate: AnyObject {
     func presentModalView(type: NewEventModalType)
 }
 

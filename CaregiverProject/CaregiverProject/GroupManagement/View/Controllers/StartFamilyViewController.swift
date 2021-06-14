@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol StartFamilyCoordinator: class {
+protocol StartFamilyCoordinator: AnyObject {
     func pushToFamilyManage(state: ManageState)
 }
 

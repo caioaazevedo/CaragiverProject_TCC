@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ViewToPresenterRegisterProtocol: class {
+protocol ViewToPresenterRegisterProtocol: AnyObject {
     var view: PresenterToViewRegisterProtocol? {get set}
     var interactor: PresenterToInteractorRegisterProtocol? {get set}
     var router: PresenterToRouterRegisterProtocol? {get set}
@@ -15,21 +15,21 @@ protocol ViewToPresenterRegisterProtocol: class {
     func presentFamily(vc: UIViewController)
 }
 
-protocol PresenterToViewRegisterProtocol: class {
+protocol PresenterToViewRegisterProtocol: AnyObject {
     func registerSucceded()
     func showError(errorMsg: String)
 }
 
-protocol PresenterToInteractorRegisterProtocol: class {
+protocol PresenterToInteractorRegisterProtocol: AnyObject {
     var presenter: InteractorToPresenterRegisterProtocol? { get set }
     func createUser(member: Member)
 }
 
-protocol InteractorToPresenterRegisterProtocol: class {
+protocol InteractorToPresenterRegisterProtocol: AnyObject {
     func registerUserSucceded()
     func failedToRegister(error: Error)
 }
 
-protocol PresenterToRouterRegisterProtocol: class {
+protocol PresenterToRouterRegisterProtocol: AnyObject {
     func showStartFamilyScreen()
 }

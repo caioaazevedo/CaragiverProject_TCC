@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol NewEventCoodinatorDelegate: class {
+protocol NewEventCoodinatorDelegate: AnyObject {
     func didCreateEvent(event: EventModel)
     func didEditEvent(event: EventModel)
 }
