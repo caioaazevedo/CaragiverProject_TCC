@@ -37,10 +37,8 @@ class RegisterView: UIView {
     
     var imageView: UIImageView = {
         var image = UIImageView(frame: .zero)
-        image.image = UIImage(systemName: "camera")
-        image.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        image.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        image.contentMode = .scaleAspectFit
+        image.image = #imageLiteral(resourceName: "profileIcon")
+        image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = (UIScreen.main.bounds.width*0.25)/2
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -101,7 +99,7 @@ class RegisterView: UIView {
         var text = UITextField(frame: .zero)
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
-        let attributedPlaceholder = NSAttributedString(string: "Relationship with the Elderly", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
+        let attributedPlaceholder = NSAttributedString(string: "Relationship with the Elder", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         text.attributedPlaceholder = attributedPlaceholder
         text.borderStyle = .roundedRect
         text.textAlignment = .center

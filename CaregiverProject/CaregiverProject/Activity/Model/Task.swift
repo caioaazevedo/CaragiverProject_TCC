@@ -12,6 +12,7 @@ typealias Tasks = [Task]
 struct Task {
     var name: String
     var date: String
-    var icon: UIImage
+    var icon: String
     var isCompleted: Bool
+    var specificDay: Int
 }

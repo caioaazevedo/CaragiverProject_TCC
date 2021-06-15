@@ -9,16 +9,17 @@ import UIKit
 
 final class TaskCreateView: UIView{
     
+    private let textFieldDelegate = TextFieldDelegate()
     var cancelCallback: () -> () = {}
     var addCallback: (Task) -> () = { _ in }
     var selectedCategory = 0
     
-    let taskTypes: [String] = ["Higiene","Folga","Tempo","Comida","Cama"]
+    let taskTypes: [String] = ["Hygiene","Coffe","Free-time","Food","Sleep"]
     let taskIcons: [String] = ["hygiene","break","clock","food","sleep"]
     
     lazy var title: UILabel = {
         let view = UILabel()
-        view.text = "Adicionar nova tarefa"
+        view.text = "Add new Task"
         let font = UIFont.preferredFont(forTextStyle: .title3)
         view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         view.adjustsFontForContentSizeCategory = true
@@ -27,15 +28,16 @@ final class TaskCreateView: UIView{
         return view
     }()
     
-    lazy var text: UITextField = {
+    lazy var text: UITextField = { [weak self] in
         var view = UITextField(frame: .zero)
         let centeredParagraphStyle = NSMutableParagraphStyle()
         centeredParagraphStyle.alignment = .center
-        let attributedPlaceholder = NSAttributedString(string: "Nome da tarefa", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
+        let attributedPlaceholder = NSAttributedString(string: "Task name", attributes: [NSAttributedString.Key.paragraphStyle: centeredParagraphStyle])
         view.attributedPlaceholder = attributedPlaceholder
         view.borderStyle = .roundedRect
         view.textAlignment = .center
         view.textContentType = .name
+        view.delegate = self?.textFieldDelegate
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -56,31 +58,19 @@ final class TaskCreateView: UIView{
     }()
     
     lazy var cancelButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Cancelar", for: .normal)
-        view.setTitleColor(.red, for: .normal)
-        view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 2
-        view.layer.borderColor = .init(red: 1, green: 0, blue: 0, alpha: 1)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(cancelTap), for: .touchUpInside)
-        return view
+        let button = CustomButton(type: .cancel)
+        button.setTitle("Cancel", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(cancelTap), for: .touchUpInside)
+        return button
     }()
     
     lazy var addButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Adicionar Tarefa", for: .normal)
-        view.setTitleColor(.blue, for: .normal)
-        view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 2
-        view.layer.borderColor = .init(red: 0, green: 0, blue: 1, alpha: 1)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(addTap), for: .touchUpInside)
-        return view
+        let button = CustomButton(type: .tertiary)
+        button.setTitle("Add Task", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(addTap), for: .touchUpInside)
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -110,7 +100,8 @@ final class TaskCreateView: UIView{
         default:
             iconName = "hygiene"
         }
-        let task = Task(name: text.text ?? "Tarefa", date: datePicker.date.getFormattedDate(), icon: UIImage(named: iconName)!, isCompleted: false)
+                
+        let task = Task(name: text.text ?? "Task", date: datePicker.date.getFormattedDate(), icon: iconName, isCompleted: false, specificDay: Date().getTodayNumber())
         addCallback(task)
     }
     
@@ -126,9 +117,9 @@ extension TaskCreateView: ViewCodeProtocol{
         addSubview(title)
         addSubview(text)
         addSubview(datePicker)
-        addSubview(tableView)
         addSubview(cancelButton)
         addSubview(addButton)
+        addSubview(tableView)
     }
     
     func setUpViewConstraints() {
@@ -144,16 +135,17 @@ extension TaskCreateView: ViewCodeProtocol{
             datePicker.topAnchor.constraint(equalTo: text.bottomAnchor,constant: 20),
             datePicker.widthAnchor.constraint(equalTo: widthAnchor,multiplier: 0.6),
             
+            cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
+            cancelButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -20),
+            
+            addButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
+            addButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor,constant: -20),
+            
             tableView.centerXAnchor.constraint(equalTo: centerXAnchor),
             tableView.topAnchor.constraint(equalTo: datePicker.bottomAnchor,constant: 5),
-            tableView.heightAnchor.constraint(equalToConstant: 100),
-            tableView.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.8),
+            tableView.bottomAnchor.constraint(equalTo: addButton.topAnchor, constant: -20),
+            tableView.widthAnchor.constraint(equalToConstant: Metrics.Device.width*0.8)
 
-            cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
-            cancelButton.topAnchor.constraint(equalTo: tableView.bottomAnchor,constant: 15),
-
-            addButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
-            addButton.topAnchor.constraint(equalTo: tableView.bottomAnchor,constant: 15)
 //
         ])
     }

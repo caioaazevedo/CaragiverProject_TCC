@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-protocol FamilyManageCoordinator: class {
+protocol FamilyManageCoordinator: AnyObject {
     func showFamilyModule()
 }
 
@@ -44,7 +44,7 @@ class FamilyManageViewController: UIViewController {
         guard let familyID = UserSession.shared.familyID else { return }
         joinFamily(familyID)
     }
-       
+    
     private func configureButtons(){
         switch manageState{
         case .Join:
@@ -52,8 +52,8 @@ class FamilyManageViewController: UIViewController {
             familyManageView.primaryButton.setTitle("Enter in family", for: .normal)
             familyManageView.primaryButton.addAction(
                 UIAction { [weak self] _ in
-                    let familyID = self?.familyManageView.primaryField.text ?? "Default"
-                    self?.joinFamily(familyID)
+                    let familyCode = self?.familyManageView.primaryField.text ?? ""
+                    self?.joinFamily(familyCode)
                 },
                 for: .touchUpInside
             )
@@ -71,8 +71,12 @@ class FamilyManageViewController: UIViewController {
     }
     
     private func joinFamily(_ familyID: String) {
-        viewModel.joinFamily(familyID: familyID) { [goToFamilyModule] in
-            goToFamilyModule()
+        viewModel.joinFamily(familyID: familyID) { [goToFamilyModule, showOkAlert] valid in
+            if valid {
+                goToFamilyModule()
+            } else {
+                showOkAlert("Error!", "The token entered is invalid.")
+            }
         }
     }
     
@@ -86,5 +90,5 @@ class FamilyManageViewController: UIViewController {
         UserDefaults.loginState = .enteredFamily
         coordinator?.showFamilyModule()
     }
-
+    
 }

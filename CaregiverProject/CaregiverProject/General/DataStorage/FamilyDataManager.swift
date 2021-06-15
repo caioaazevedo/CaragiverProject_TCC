@@ -21,7 +21,7 @@ class FamilyDataManager {
 extension FamilyDataManager: DataManager {
     func add<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler) {
         guard let db = ref else {return}
-        let parameter = value.convertToDictionary()
+        let parameter = value.convertedDictionary
         db.child(ModelType.queryValue).child(value.id).setValue(parameter)
         completion(true)
     }
@@ -34,7 +34,10 @@ extension FamilyDataManager: DataManager {
     func readValue<ModelType: Storable>(from dataID: String, resutlType: ModelType.Type) -> AnyPublisher<ModelType, Error> {
         return Future<ModelType, Error> { [ref] promise in
             ref?.child(ModelType.queryValue).child(dataID).observeSingleEvent(of: .value, with: { (snapshot) in
-                guard let dictionary = snapshot.value as? NSDictionary else { return }
+                guard let dictionary = snapshot.value as? NSDictionary else {
+                    promise(.failure(DataManagerError.invalidDate(title: "Error!", description: "The token is invalid.")))
+                    return
+                }
                 let model = ModelType(id: dataID, dictionary: dictionary)
                 promise(.success(model))
             }) { (error) in
@@ -44,7 +47,7 @@ extension FamilyDataManager: DataManager {
     }
     
     func update<ModelType: Storable>(value: ModelType, completion: @escaping ValidationHandler) {
-        let parameters = value.convertToDictionary()
+        let parameters = value.convertedDictionary
         let db = ref?.child("\(ModelType.queryValue)/\(value.id)")
         db?.updateChildValues(parameters)
         completion(true)

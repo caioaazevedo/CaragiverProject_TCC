@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ViewToPresenterAuthenticationProtocol: class {
+protocol ViewToPresenterAuthenticationProtocol: AnyObject {
     var view: PresenterToViewAuthenticationProtocol? {get set}
     var interactor: PresenterToInteractorAuthenticationProtocol? {get set}
     var router: PresenterToRouterAuthenticationProtocol? {get set}
@@ -16,24 +16,24 @@ protocol ViewToPresenterAuthenticationProtocol: class {
     func loginUser(email: String, password: String)
 }
 
-protocol PresenterToViewAuthenticationProtocol: class {
+protocol PresenterToViewAuthenticationProtocol: AnyObject {
     func performLogin()
     func showError(errorMsg: String)
 }
 
-protocol PresenterToInteractorAuthenticationProtocol: class {
+protocol PresenterToInteractorAuthenticationProtocol: AnyObject {
     var presenter: InteractorToPresenterAuthenticationProtocol? { get set }
     func authenticateUser(email: String, password: String)
     func addStateListener()
     func removeStateListener()
 }
 
-protocol InteractorToPresenterAuthenticationProtocol: class {
+protocol InteractorToPresenterAuthenticationProtocol: AnyObject {
     func loginSucceded()
     func failedToLogin(error: Error)
 }
 
-protocol PresenterToRouterAuthenticationProtocol: class {
+protocol PresenterToRouterAuthenticationProtocol: AnyObject {
     func showStartFamilyScreen()
     func presentRegisterScreen()
 }

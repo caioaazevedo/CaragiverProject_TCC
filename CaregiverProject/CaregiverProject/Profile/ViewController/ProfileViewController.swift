@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         bindViewModel()
         setUpButtons()
+        setupToHideKeyboardOnTapOnView()
     }
     
     required init?(coder: NSCoder) {
@@ -61,6 +62,8 @@ class ProfileViewController: UIViewController {
         profileView.nameTextField.addAction(storeDataAction, for: .editingDidEnd)
         profileView.ageTextField.addAction(storeDataAction, for: .editingDidEnd)
         profileView.bloodTypeTextField.addAction(storeDataAction, for: .editingDidEnd)
+        profileView.idTextField.addAction(storeDataAction, for: .editingDidEnd)
+        profileView.phoneNumberTextField.addAction(storeDataAction, for: .editingDidEnd)
     }
     
     private func bindViewModel() {
@@ -71,21 +74,28 @@ class ProfileViewController: UIViewController {
     }
     
     private func updateView(_ elder: ProfileModel?) {
-        profileView.nameTextField.text = elder?.name ?? ""
-        profileView.ageTextField.text = elder == nil ? "" : "\(elder?.age ?? 0)"
-        profileView.profileImage.image = elder?.photo ?? #imageLiteral(resourceName: "profileIcon")
+        profileView.idTextField.text          = elder?.idCardNumber ?? ""
+        profileView.nameTextField.text        = elder?.name         ?? ""
+        profileView.ageTextField.text         = elder?.age          ?? ""
+        profileView.bloodTypeTextField.text   = elder?.bloodType    ?? ""
+        profileView.insuranceTextField.text   = elder?.insurance    ?? ""
+        profileView.phoneNumberTextField.text = elder?.phoneNumber  ?? ""
+        profileView.profileImage.image        = elder?.photo        ?? #imageLiteral(resourceName: "profileIcon")
     }
     
     private func storeData() {
         guard let elderID = UserSession.shared.elderID else {
             fatalError("Elder not registered!")
         }
-        let age = Int(profileView.ageTextField.text ?? "")
         let elder = ProfileModel(
             id: elderID,
-            name: profileView.nameTextField.text ?? "",
-            age: age ?? 0,
-            photo: profileView.profileImage.image
+            idCardNumber: profileView.idTextField.text       ?? "",
+            name:        profileView.nameTextField.text      ?? "",
+            age:         profileView.ageTextField.text       ?? "",
+            bloodType:   profileView.bloodTypeTextField.text ?? "",
+            insurance:   profileView.insuranceTextField.text ?? "",
+            phoneNumber: profileView.phoneNumberTextField.text ?? "",
+            photo:       profileView.profileImage.image
         )
         viewModel.update(profile: elder)
     }

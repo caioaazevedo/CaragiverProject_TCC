@@ -15,7 +15,7 @@ final class ActivityView: UIView{
     
     lazy var mainLabel: UILabel = {
         let view = UILabel()
-        view.text = "Tarefas do Idoso"
+        view.text = "Routine"
         let font = UIFont.preferredFont(forTextStyle: .title1)
         view.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: font)
         view.adjustsFontForContentSizeCategory = true
@@ -28,29 +28,21 @@ final class ActivityView: UIView{
         let view = UITableView(frame: .zero, style: .plain)
         view.register(TaskCell.self, forCellReuseIdentifier: "TaskCell")
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.separatorStyle = .none
         return view
     }()
         
     lazy var addButton: UIButton = {
-        let view = UIButton(frame: .zero)
-        view.setTitle("Adicionar Tarefa", for: .normal)
-        view.setTitleColor(.blue, for: .normal)
-        view.contentEdgeInsets = .init(top: 8, left: 14, bottom: 8, right: 14)
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 5
-        view.layer.borderWidth = 2
-        view.layer.borderColor = .init(red: 0, green: 0, blue: 1, alpha: 1)
-        view.addTarget(self, action: #selector(presentCreateTask), for: .touchUpInside)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let button = CustomButton(type: .secondary)
+        button.setTitle("Add new Task", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(presentCreateTask), for: .touchUpInside)
+        return button
     }()
     
     lazy var createTaskView: TaskCreateView = {
         let view = TaskCreateView()
         view.backgroundColor = .white
-        view.layer.borderWidth = 4
-        view.layer.cornerRadius = 10
-        view.layer.borderColor = .init(red: 1, green: 131/255, blue: 0, alpha: 1)
         view.addCallback = addTask
         view.cancelCallback = dismissView
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +59,7 @@ final class ActivityView: UIView{
     }
     
     @objc func presentCreateTask(){
-        layoutConstraint?.constant = Metrics.Device.height*0.3
+        layoutConstraint?.constant = Metrics.Device.height*0.25
         
         UIView.animate(withDuration: 1, animations: { [self] in
             updateConstraints()
@@ -103,13 +95,14 @@ extension ActivityView: ViewCodeProtocol{
             mainLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor,constant: 20),
             mainLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             
-            tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor,constant: 20),
-            tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor,constant: -20),
+            tableView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: mainLabel.bottomAnchor,constant: 10),
-            tableView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.8),
+            tableView.bottomAnchor.constraint(equalTo: addButton.topAnchor,constant: -15),
+//            tableView.heightAnchor.constraint(equalToConstant: Metrics.Device.height*0.8),
             
             addButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            addButton.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -60),
+            addButton.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor,constant: -10),
             
             createTaskView.centerXAnchor.constraint(equalTo: centerXAnchor),
             
@@ -127,6 +120,7 @@ extension ActivityView: ViewCodeProtocol{
         backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.allowsSelection = false                
+        tableView.allowsSelection = false
+        createTaskView.applyShaddow(cornerRadius: 20, opacity: 0.7)
     }
 }

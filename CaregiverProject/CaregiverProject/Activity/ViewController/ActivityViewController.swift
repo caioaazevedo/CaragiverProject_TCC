@@ -12,7 +12,19 @@ class ActivityViewController: UIViewController{
     
     override func loadView() {
         super.loadView()
-        view = activityView        
+        view = activityView
+        setupToHideKeyboardOnTapOnView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        activityView.viewModel.fetchFromFirebase(completion: { tasks in
+            self.activityView.viewModel.tasks = tasks
+            self.activityView.tableView.reloadData()
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        activityView.viewModel.uploadToFirebase()
     }
     
 }

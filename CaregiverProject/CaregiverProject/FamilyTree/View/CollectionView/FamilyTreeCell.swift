@@ -16,29 +16,33 @@ class FamilyTreeCell: UICollectionViewCell {
     lazy var backView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .white
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = #colorLiteral(red: 0.6979769468, green: 0.6980791688, blue: 0.6979545951, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
-        imageView.image = UIImage(named: "profileIcon")
-        imageView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        imageView.image = #imageLiteral(resourceName: "profileIcon")
         imageView.tintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = imageSize/2
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
+    lazy var nameView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var name: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.numberOfLines = 1
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -66,9 +70,10 @@ class FamilyTreeCell: UICollectionViewCell {
 extension FamilyTreeCell: ViewCodeProtocol{
     func setUpViewHierarchy() {
         contentView.addSubview(backView)
-        backView.addSubview(name)
-        backView.addSubview(hierarchy)
         backView.addSubview(imageView)
+        backView.addSubview(nameView)
+        nameView.addSubview(name)
+//        backView.addSubview(hierarchy)
     }
     
     func setUpViewConstraints() {
@@ -79,25 +84,30 @@ extension FamilyTreeCell: ViewCodeProtocol{
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 15),
             imageView.heightAnchor.constraint(equalToConstant: imageSize),
             imageView.widthAnchor.constraint(equalToConstant: imageSize),
             
-            name.centerXAnchor.constraint(equalTo: centerXAnchor),
-            name.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
-            name.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            name.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            nameView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            nameView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nameView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            nameView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            hierarchy.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            hierarchy.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 8),
-            hierarchy.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            hierarchy.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            name.centerXAnchor.constraint(equalTo: nameView.centerXAnchor),
+            name.centerYAnchor.constraint(equalTo: nameView.centerYAnchor),
+            name.leadingAnchor.constraint(greaterThanOrEqualTo: nameView.leadingAnchor, constant: 20),
+            name.trailingAnchor.constraint(lessThanOrEqualTo: nameView.trailingAnchor, constant: -20),
+            
+//            hierarchy.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            hierarchy.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 8),
+//            hierarchy.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+//            hierarchy.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
         ])
     }
     
     func setUpAditionalConficuration() {
         backgroundColor = .white
-        backView.applyShaddow(cornerRadius: 25)
+        backView.applyShaddow(cornerRadius: 10)
     }
     
 }
