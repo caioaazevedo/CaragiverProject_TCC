@@ -48,13 +48,13 @@ Permite consultar e gerenciar as informações e a rotina do familiar portador d
 
 ## Como usar
 ### TestFlight
-* Baixe o applicativo *TestFlight* na *App Store*.
+* Baixe o aplicativo *TestFlight* na *App Store*.
 * Entre no link https://testflight.apple.com/join/CYRRVhQO
 
 ### Clonar o repositório:
 * Abra o terminal e selecione a pasta onde deseja colocar o repositório com o comando ```cd NOME_DA_PASTA```.
 * Use o comando ``` git clone https://github.com/caioaazevedo/CaragiverProject_TCC.git ``` para clonar o repositório do projeto.
-* Entre na pasta criada pelo terminal e use o comando ```pod install``` para installar as dependencias.
+* Entre na pasta criada pelo terminal e use o comando ```pod install``` para instalar as dependências.
 * Abra o arquivo *CaregiverProject.xcworkspace* e execute o projeto no *Xcode*.
 
 ### Conta teste
