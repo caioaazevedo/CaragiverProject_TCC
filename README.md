@@ -1,7 +1,7 @@
-# I CARE - Caregiver
+# iCare - Caregiver
 Trabalho de conclusão de curso (TCC) voltado aos familiares de portadores de Alzheimer. O projeto tem como objetivo unir, auxiliar e dividir a responsabilidade que é cuidar de um ente querido.
 
-O aplicativo I CARE é um gerenciador de famílias, que visa dividir tarefas e retirar a sobrecarga de ter que cuidar de uma pessoa dependente sozinho(a).
+O aplicativo iCare é um gerenciador de famílias, que visa dividir tarefas e retirar a sobrecarga de ter que cuidar de uma pessoa dependente sozinho(a).
 
 ## Funcionalidades
 ### **Autenticação**
@@ -40,15 +40,24 @@ Permite consultar e gerenciar as informações e a rotina do familiar portador d
 
 ## Tecnologias usadas
 
-* Linguagem:
-	* Swift
-* IDE(Integrated Development Environment):
-	* Xcode
-* Arquitetura:
-	* MVVM-C
-* Back-end:
-	* Firebase
-* Outros:
-	* Combine
-	* View code
-	* UIKit
+* **Linguagem:** Swift.
+* **IDE(Integrated Development Environment):** Xcode.
+* **Arquitetura:** MVVM-C.
+* **Back-end:** Firebase.
+* **Outros:** Combine; View code; UIKit.
+
+## Como usar
+### TestFlight
+* Baixe o applicativo *TestFlight* na *App Store*.
+* Entre no link https://testflight.apple.com/join/CYRRVhQO
+
+### Clonar o repositório:
+* Abra o terminal e selecione a pasta onde deseja colocar o repositório com o comando ```cd NOME_DA_PASTA```.
+* Use o comando ``` git clone https://github.com/caioaazevedo/CaragiverProject_TCC.git ``` para clonar o repositório do projeto.
+* Entre na pasta criada pelo terminal e use o comando ```pod install``` para installar as dependencias.
+* Abra o arquivo *CaregiverProject.xcworkspace* e execute o projeto no *Xcode*.
+
+### Conta teste
+* E-mail: jhon@gmail.com
+* Password: 123123123
+* Chave do grupo: C451E5D7-C887-4FE7-8D52-EB280EC8D834
